@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joel Moran — Marketing Leader & Consultant</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBPG9X0J23"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PBPG9X0J23');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #F9F6F1;
+      --white: #FFFFFF;
+      --dark: #141412;
+      --charcoal: #2C2C2A;
+      --gold: #B8935A;
+      --gold-light: #D4AF7A;
+      --mid: #7A7060;
+      --border: #EAE5DC;
+      --border-gold: rgba(184, 147, 90, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    .cursor {
+      position: fixed; width: 7px; height: 7px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease;
+    }
+    .cursor-ring {
+      position: fixed; width: 28px; height: 28px;
+      border: 1px solid var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%); opacity: 0.4;
+      transition: width 0.3s, height 0.3s, opacity 0.3s;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(249, 246, 241, 0.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      gap: 2rem;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex; gap: 1.8rem; list-style: none;
+      flex-wrap: nowrap; justify-content: flex-end; align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.63rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      transition: color 0.3s; position: relative; white-space: nowrap;
+    }
+
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--gold); color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      transition: background 0.3s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--dark) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 62px;
+    }
+
+    .hero-photo {
+      position: relative; overflow: hidden; background: var(--dark);
+    }
+
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      filter: brightness(0.9) contrast(1.04);
+      transition: transform 8s ease;
+    }
+
+    .hero-photo:hover img { transform: scale(1.03); }
+
+    .hero-photo::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(249,246,241,0.5) 100%),
+                  linear-gradient(to top, rgba(20,20,18,0.55) 0%, transparent 45%);
+    }
+
+    .hero-photo-badge {
+      position: absolute; bottom: 2.5rem; left: 2.5rem; z-index: 2;
+      border-left: 2px solid var(--gold); padding-left: 1rem;
+    }
+
+    .hero-photo-badge-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 300;
+      color: var(--white); letter-spacing: 0.04em;
+    }
+
+    .hero-photo-badge-title {
+      font-size: 0.58rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .hero-right {
+      padding: 5vw 5vw 5vw 4vw;
+      display: flex; flex-direction: column; justify-content: center;
+      background: var(--ivory);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.58rem; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.6rem;
+      display: flex; align-items: center; gap: 0.7rem;
+      opacity: 0; animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: ''; width: 20px; height: 1px;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.1rem, 3.8vw, 3.6rem);
+      font-weight: 300; line-height: 1.12;
+      color: var(--dark); margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 1s 0.5s forwards;
+    }
+
+    .hero-headline em { font-style: italic; color: var(--gold); }
+    .hero-headline strong { font-weight: 600; }
+
+    .hero-rule {
+      width: 36px; height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 1s 0.6s forwards;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem; color: var(--mid);
+      max-width: 400px; line-height: 1.9;
+      margin-bottom: 1.3rem;
+      opacity: 0; animation: fadeUp 1s 0.7s forwards;
+    }
+
+    .hero-belief {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem; font-style: italic;
+      color: var(--charcoal); max-width: 380px;
+      line-height: 1.6; margin-bottom: 2.2rem;
+      padding-left: 1rem;
+      border-left: 1px solid var(--border-gold);
+      opacity: 0; animation: fadeUp 1s 0.8s forwards;
+    }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      margin-bottom: 2.2rem;
+      opacity: 0; animation: fadeUp 1s 0.85s forwards;
+    }
+
+    .hero-stat {
+      padding: 1rem 0.8rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat:hover { background: rgba(184,147,90,0.05); }
+
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300;
+      color: var(--gold); line-height: 1; margin-bottom: 0.3rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.54rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid); line-height: 1.4;
+    }
+
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold); text-decoration: none;
+      font-size: 0.63rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden; width: fit-content;
+      opacity: 0; animation: fadeUp 1s 0.95s forwards;
+    }
+
+    .hero-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%); transition: transform 0.4s ease; z-index: -1;
+    }
+
+    .hero-cta:hover { color: var(--white); }
+    .hero-cta:hover::before { transform: translateX(0); }
+    .cta-arrow { transition: transform 0.3s; }
+    .hero-cta:hover .cta-arrow { transform: translateX(4px); }
+
+    /* SECTIONS */
+    section { padding: 6rem 8vw; }
+
+    .eyebrow {
+      font-size: 0.57rem; font-weight: 400;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .eyebrow::before {
+      content: ''; width: 14px; height: 1px;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+      font-weight: 300; line-height: 1.2;
+      color: var(--dark); max-width: 600px;
+      margin-bottom: 2.8rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-title.light { color: var(--white); }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+
+    .about-punch {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      font-weight: 300; line-height: 1.3;
+      color: var(--dark); max-width: 680px;
+      margin-bottom: 0.9rem;
+    }
+
+    .about-punch em { font-style: italic; color: var(--gold); }
+
+    .about-sub-punch {
+      font-size: 0.93rem; color: var(--mid);
+      max-width: 620px; line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .expandable { border-top: 1px solid var(--border); margin-top: 1.5rem; }
+
+    .expand-trigger {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 0; cursor: pointer;
+      border-bottom: 1px solid var(--border); user-select: none;
+    }
+
+    .expand-trigger-label {
+      font-size: 0.67rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .expand-icon {
+      width: 20px; height: 20px;
+      border: 1px solid var(--border-gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: var(--gold);
+      transition: transform 0.3s, background 0.3s; flex-shrink: 0;
+    }
+
+    .expand-trigger.open .expand-icon {
+      transform: rotate(45deg);
+      background: var(--gold); color: var(--white);
+    }
+
+    .expand-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.55s ease, padding 0.3s ease;
+    }
+
+    .expand-body.open { max-height: 2000px; padding: 1.6rem 0 0.8rem; }
+
+    .expand-body p {
+      font-size: 0.88rem; color: var(--mid);
+      line-height: 1.9; margin-bottom: 1rem;
+    }
+
+    .expand-body p:last-child { margin-bottom: 0; }
+    .expand-body p strong { color: var(--charcoal); font-weight: 500; }
+
+    .expand-body h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--dark); margin: 1.3rem 0 0.4rem;
+    }
+
+    /* CREDENTIALS */
+    #credentials { background: var(--ivory); }
+
+    .cred-section { margin-bottom: 3.5rem; }
+    .cred-section:last-child { margin-bottom: 0; }
+
+    .cred-section-title {
+      font-size: 0.58rem; font-weight: 400;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-gold);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .cred-section-title::before {
+      content: ''; width: 12px; height: 1px; background: var(--gold);
+    }
+
+    .cred-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
+
+    .cred-item {
+      background: var(--white); padding: 1.6rem 2rem;
+      transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .cred-item::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 0; background: var(--gold); transition: width 0.4s;
+    }
+
+    .cred-item:hover { background: #FDFCFA; }
+    .cred-item:hover::after { width: 2px; }
+
+    .cred-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 1rem;
+    }
+
+    .cred-info { flex: 1; }
+
+    .cred-org {
+      font-size: 0.57rem; color: var(--gold); font-weight: 400;
+      text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 0.2rem;
+    }
+
+    .cred-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; color: var(--dark); margin-bottom: 0.2rem;
+    }
+
+    .cred-detail { font-size: 0.74rem; color: var(--mid); line-height: 1.5; }
+
+    /* Expandable inside credential */
+    .cred-expand-trigger {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); cursor: pointer;
+      margin-top: 0.7rem; user-select: none;
+      background: none; border: none; font-family: 'Jost', sans-serif;
+      padding: 0;
+    }
+
+    .cred-expand-trigger .ci { transition: transform 0.3s; display: inline-block; }
+    .cred-expand-trigger.open .ci { transform: rotate(45deg); }
+
+    .cred-expand-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s;
+    }
+
+    .cred-expand-body.open { max-height: 800px; padding-top: 1rem; }
+
+    .cred-expand-body p {
+      font-size: 0.84rem; color: var(--mid); line-height: 1.85;
+      margin-bottom: 0.8rem;
+    }
+
+    .cred-expand-body p:last-child { margin-bottom: 0; }
+
+    /* WORK */
+    #work { background: var(--white); }
+
+    .work-intro-text {
+      font-size: 0.88rem; color: var(--mid);
+      max-width: 560px; line-height: 1.85; margin-bottom: 2.5rem;
+    }
+
+    .work-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); margin-bottom: 1.4rem;
+    }
+
+    .work-card {
+      background: var(--ivory); padding: 2.4rem;
+      position: relative; overflow: hidden; transition: background 0.3s;
+    }
+
+    .work-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      transition: width 0.5s ease;
+    }
+
+    .work-card:hover::after { width: 100%; }
+    .work-card:hover { background: var(--white); }
+
+    .work-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 300;
+      color: rgba(184,147,90,0.07);
+      position: absolute; top: 1rem; right: 1.4rem; line-height: 1;
+    }
+
+    .work-tag {
+      display: inline-block; font-size: 0.55rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--border-gold);
+      padding: 0.2rem 0.6rem; margin-bottom: 1rem;
+    }
+
+    .work-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--dark); margin-bottom: 0.7rem; line-height: 1.3;
+    }
+
+    .work-card p { font-size: 0.83rem; color: var(--mid); line-height: 1.85; margin-bottom: 0.9rem; }
+
+    .work-result {
+      font-size: 0.73rem; color: var(--charcoal);
+      padding-top: 0.85rem; border-top: 1px solid var(--border);
+    }
+
+    .work-result span { color: var(--gold); font-weight: 500; }
+
+    .work-card.hidden { display: none; }
+    .work-card.shown { display: block; }
+
+    .see-more-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); background: none; border: 1px solid var(--border-gold);
+      padding: 0.7rem 1.5rem; cursor: pointer;
+      transition: all 0.3s; font-family: 'Jost', sans-serif;
+    }
+
+    .see-more-btn:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    /* SERVICES */
+    #services { background: var(--dark); color: var(--white); position: relative; overflow: hidden; }
+
+    #services::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,147,90,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,147,90,0.04) 1px, transparent 1px);
+      background-size: 55px 55px;
+    }
+
+    .services-intro {
+      margin-bottom: 2.5rem; padding: 1.8rem 2.2rem;
+      border: 1px solid rgba(184,147,90,0.15);
+      max-width: 680px; position: relative;
+    }
+
+    .services-intro p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.8; }
+    .services-intro strong { color: var(--gold-light); font-weight: 400; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: rgba(184,147,90,0.1); position: relative;
+    }
+
+    .service-item {
+      padding: 2.5rem 2rem; background: var(--dark);
+      transition: background 0.4s; position: relative;
+    }
+
+    .service-item:hover { background: rgba(184,147,90,0.03); }
+
+    .service-item::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .service-item:hover::after { width: 100%; }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem; font-weight: 300;
+      color: rgba(184,147,90,0.1); line-height: 1; margin-bottom: 1rem;
+    }
+
+    .service-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.6rem;
+    }
+
+    .service-item p { font-size: 0.8rem; color: rgba(255,255,255,0.32); line-height: 1.8; }
+
+    .service-book-link {
+      display: inline-block; margin-top: 0.8rem;
+      font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--border-gold);
+      transition: color 0.3s;
+    }
+
+    .service-book-link:hover { color: var(--gold-light); }
+
+    /* CONTACT */
+    #contact {
+      background: var(--ivory); text-align: center;
+      position: relative; overflow: hidden;
+    }
+
+    #contact::before {
+      content: 'JM'; position: absolute; bottom: -3rem; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18rem; font-weight: 600;
+      color: rgba(184,147,90,0.035); line-height: 1;
+      pointer-events: none; white-space: nowrap;
+    }
+
+    #contact .eyebrow { justify-content: center; }
+    #contact .eyebrow::before { display: none; }
+    #contact .section-title { max-width: 100%; text-align: center; margin: 0 auto 0.8rem; }
+
+    .contact-why {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic;
+      color: var(--mid); max-width: 480px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+
+    .contact-options {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-option {
+      display: flex; align-items: center; gap: 1.2rem;
+      width: 100%; max-width: 440px;
+      padding: 1.2rem 1.8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+
+    .contact-option::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%); transition: transform 0.4s ease; z-index: 0;
+    }
+
+    .contact-option:hover::before { transform: translateX(0); }
+
+    .contact-option-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300;
+      color: var(--gold); line-height: 1;
+      position: relative; z-index: 1;
+      transition: color 0.3s;
+      flex-shrink: 0;
+    }
+
+    .contact-option:hover .contact-option-num { color: rgba(255,255,255,0.5); }
+
+    .contact-option-content { position: relative; z-index: 1; text-align: left; }
+
+    .contact-option-label {
+      font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.2rem;
+      transition: color 0.3s;
+    }
+
+    .contact-option:hover .contact-option-label { color: rgba(255,255,255,0.6); }
+
+    .contact-option-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; color: var(--dark);
+      font-weight: 300; transition: color 0.3s;
+    }
+
+    .contact-option:hover .contact-option-value { color: var(--white); }
+
+    .contact-option-primary {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+    }
+
+    .contact-option-primary .contact-option-label { color: rgba(255,255,255,0.7); }
+    .contact-option-primary .contact-option-value { color: var(--white); font-size: 1.1rem; }
+    .contact-option-primary::before { background: var(--dark); }
+
+    .contact-availability {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; font-size: 0.6rem;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid);
+      margin-top: 1rem;
+    }
+
+    .dot {
+      width: 5px; height: 5px; background: #7BAF7B;
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* STICKY BAR */
+    .sticky-contact {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
+      background: var(--dark);
+      border-top: 1px solid rgba(184,147,90,0.2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 5vw;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .sticky-contact.visible { transform: translateY(0); }
+
+    .sticky-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem; font-style: italic;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .sticky-actions { display: flex; gap: 0.7rem; align-items: center; }
+
+    .sticky-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.58rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+      font-family: 'Jost', sans-serif; white-space: nowrap;
+    }
+
+    .sticky-btn-gold { background: var(--gold); color: var(--white); }
+    .sticky-btn-gold:hover { background: var(--gold-light); }
+
+    .sticky-btn-outline { color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.12); }
+    .sticky-btn-outline:hover { color: var(--white); border-color: rgba(255,255,255,0.35); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); padding: 1.8rem 8vw;
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 4.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem; font-weight: 300;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.2); text-decoration: none;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem; font-style: italic;
+      color: rgba(184,147,90,0.2);
+    }
+
+    .footer-copy { font-size: 0.6rem; color: rgba(255,255,255,0.14); letter-spacing: 0.07em; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { 
+        min-height: 70vw;
+        max-height: 85vw;
+      }
+      .hero-photo img {
+        object-position: center 20%;
+      }
+      .hero-right { padding: 3rem 6vw; }
+      .work-grid, .services-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links li:not(:last-child):not(:last-child) { display: none; }
+      .nav-links li:nth-last-child(2) { display: flex; }
+      .hero-photo { 
+        min-height: 100vw;
+        max-height: 120vw;
+      }
+      .hero-photo img {
+        object-position: center 15%;
+      }
+      .hero-photo-badge { bottom: 1.5rem; left: 1.5rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat:nth-child(2) { border-right: none; }
+      .hero-stat:nth-child(3) { 
+        grid-column: span 2; 
+        border-right: none;
+        border-top: 1px solid var(--border);
+      }
+      .hero-right { padding: 2.5rem 5vw; }
+      section { padding: 4rem 6vw; }
+      .contact-option { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Joel Moran</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#credentials">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book a call</a></li>
+    </ul>
+  </nav>
+
+  <!-- STICKY BAR -->
+  <div class="sticky-contact" id="stickyContact">
+    <span class="sticky-text">Available for new engagements</span>
+    <div class="sticky-actions">
+      <a href="https://www.linkedin.com/in/moranjoel" target="_blank" class="sticky-btn sticky-btn-outline">LinkedIn</a>
+      <a href="#contact" class="sticky-btn sticky-btn-gold">Book a call</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="joel.jpg" alt="Joel Moran" />
+      <div class="hero-photo-badge">
+        <div class="hero-photo-badge-name">Joel Moran, MBA</div>
+        <div class="hero-photo-badge-title">CMO · Consultant · Coach · Advisor</div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <p class="hero-eyebrow">Hands-on marketing leader</p>
+
+      <h1 class="hero-headline">
+        Big-company thinking.<br>
+        <em>Roll-up-your-sleeves</em> style.
+      </h1>
+
+      <div class="hero-rule"></div>
+
+      <p class="hero-sub">
+        20+ years helping businesses grow. From Optus and Vodafone, to Kayo Sports and Afterpay, and hands-on with small businesses along the way. I solve messy problems, build great teams, and make marketing that actually works.
+      </p>
+
+      <p class="hero-belief">
+        "Marketing's job is to grow the business. Brand, performance, product, experience — all of it is in service of that."
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">20+</div>
+          <div class="hero-stat-label">Years leading marketing</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Global</div>
+          <div class="hero-stat-label">International marketing</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5yr</div>
+          <div class="hero-stat-label">Double-digit GPV growth at Afterpay</div>
+        </div>
+      </div>
+
+      <a href="#contact" class="hero-cta">
+        Begin the conversation <span class="cta-arrow">&#8594;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="eyebrow reveal">About</p>
+
+    <div class="about-punch reveal">
+      I've spent 20 years solving the problems<br>
+      most marketers <em>avoid.</em>
+    </div>
+
+    <p class="about-sub-punch reveal">
+      From launching Kayo Sports Streaming from zero; turning Afterpay's reputation from predatory to trusted; rebuilding Afterpay's marketing team after it was cut by 60% using AI and tech; building Gen Z brands in a fast-moving, high-stakes world.
+    </p>
+
+    <div class="expandable reveal">
+      <div class="expand-trigger" onclick="toggleExpand(this)">
+        <span class="expand-trigger-label">Read more about how I work</span>
+        <span class="expand-icon">+</span>
+      </div>
+      <div class="expand-body">
+        <h5>I love the messy stuff</h5>
+        <p>Scaling teams under pressure, cracking new markets, navigating regulation, and building brands people actually trust. Deep in fintech, retail and streaming — and hands-on with MarTech, growth marketing and creative.</p>
+
+        <h5>I make marketing a commercial driver</h5>
+        <p>I'm most at home in businesses where marketing has a real seat at the table — where the CMO is a commercial leader, not the head of the advertising team. I've operated that way across some of Australia's most recognised consumer brands, and most recently as the de facto CMO for Afterpay across all international markets, reporting directly to the Executive responsible for all sales and marketing at Block globally.</p>
+
+        <h5>I work across the full marketing remit</h5>
+        <p>Brand strategy, performance and growth, product marketing, trade and retail, CX, B2B. I love working multi-regional — across AU, NZ, UK and Canada simultaneously. I know how to plan for differing markets and the challenges of efficiently marketing in multiple places at the same time.</p>
+
+        <h5>I am a problem-first technology advocate</h5>
+        <p>My early career was in ecommerce and performance marketing — I love learning about tech and bringing it into my work. More recently I've been focused on using AI to reshape what modern marketing and teams look like — helping teams automate what can be done with AI and elevate people to focus on more meaningful work.</p>
+
+        <h5>On people</h5>
+        <p>Probably my greatest passion. I believe in finding what motivates each person and helping them achieve it. As AI reshapes how we market, that human side of leadership matters more than ever. My style is big-company experience without the big-company distance — I work alongside a team, not above them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS / EXPERIENCE -->
+  <section id="credentials">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="section-title reveal">What each role <em>taught me.</em></h2>
+
+    <!-- Employment -->
+    <div class="cred-section reveal">
+
+      <div class="cred-grid">
+
+        <div class="cred-item">
+          <div class="cred-header">
+            <div class="cred-info">
+              <div class="cred-org">Afterpay / Clearpay · Block Inc, NYSE: SQ</div>
+              <div class="cred-role">CMO / VP Marketing, International</div>
+              <div class="cred-detail">5+ years · AU, NZ, UK and Canada · Delivered double-digit YoY GPV growth for 5 consecutive years</div>
+            </div>
+          </div>
+          <button class="cred-expand-trigger" onclick="toggleCred(this)">
+            What this role taught me <span class="ci">+</span>
+          </button>
+          <div class="cred-expand-body">
+            <p>Afterpay's merchant-consumer flywheel put marketing at the heart of the commercial engine. We grew the brand largely by being a genuine growth engine for some of the world's biggest retailers — which in turn grew us. I joined when the business was an ASX darling and stayed through its evolution into part of a US S&P 500 company alongside Square, Cash App, and Tidal.</p>
+            <p>What made Afterpay unusual was the brand itself — a financial services product that operated like a lifestyle brand, deeply embedded in fashion, culture, and the lives of Gen Z and millennial consumers. That duality shaped how we marketed: commercial rigour on one side, cultural relevance on the other.</p>
+            <p>I led the brand through multiple growth phases — from disruptor to household name — and built Afterpay Day into a retail sales event that delivered double-digit growth every year. The team were Effies finalists for campaigns that drove measurable commercial ROI across five categories in 2024.</p>
+          </div>
+        </div>
+
+        <div class="cred-item">
+          <div class="cred-header">
+            <div class="cred-info">
+              <div class="cred-org">Kayo Sports · News Corp</div>
+              <div class="cred-role">Head of Marketing</div>
+              <div class="cred-detail">Brand launch from zero · 700k+ subscribers · 83% brand awareness · Sports Marketing Team of the Year</div>
+            </div>
+          </div>
+          <button class="cred-expand-trigger" onclick="toggleCred(this)">
+            What this role taught me <span class="ci">+</span>
+          </button>
+          <div class="cred-expand-body">
+            <p>A startup inside a large media company — all the ambition, with the added complexity of a corporate parent. I was part of the founding team: helped name the brand, built the identity from scratch, then led all marketing to scale the service to over 700,000 subscribers and 83% brand awareness within two and a half years.</p>
+            <p>The work spanned large-scale product-brand campaigns tied to major sports moments, leading a sizable in-house creative team across Kayo, BINGE, and Watch AFL/NRL, and launching eight major campaigns across the period. The team won Mumbrella's Sports Marketing Team of the Year.</p>
+          </div>
+        </div>
+
+        <div class="cred-item">
+          <div class="cred-header">
+            <div class="cred-info">
+              <div class="cred-org">Optus</div>
+              <div class="cred-role">Associate Director, Digital Marketing</div>
+              <div class="cred-detail">~6 years · Ecommerce, performance marketing and digital customer marketing</div>
+            </div>
+          </div>
+          <button class="cred-expand-trigger" onclick="toggleCred(this)">
+            What this role taught me <span class="ci">+</span>
+          </button>
+          <div class="cred-expand-body">
+            <p>Where I went deep on performance marketing and ecommerce. I built Optus's first mobile site, led retention and digital customer marketing, and owned ecommerce channel development. This is where I learned to connect brand and commercial outcomes in a highly competitive, price-sensitive category.</p>
+          </div>
+        </div>
+
+        <div class="cred-item">
+          <div class="cred-header">
+            <div class="cred-info">
+              <div class="cred-org">Vodafone and 3 Mobile</div>
+              <div class="cred-role">Various Roles</div>
+              <div class="cred-detail">~9 years combined · Digital merchandising, prepaid product management, retail distribution</div>
+            </div>
+          </div>
+          <button class="cred-expand-trigger" onclick="toggleCred(this)">
+            What this role taught me <span class="ci">+</span>
+          </button>
+          <div class="cred-expand-body">
+            <p>My foundations. Hands-on experience across digital merchandising, prepaid segment management, and mass-market retail distribution through Coles and Woolworths. At 3 Mobile I was a product manager, designing the first prepaid product — which gave me a commercial and product lens I've carried through everything since.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="cred-section reveal">
+      <div class="cred-section-title">Education</div>
+      <div class="cred-grid">
+        <div class="cred-item">
+          <div class="cred-info">
+            <div class="cred-org">AGSM @ UNSW Business School</div>
+            <div class="cred-role">Executive MBA — Distinction</div>
+            <div class="cred-detail">Marketing, Management and Finance</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-info">
+            <div class="cred-org">Charles Sturt University</div>
+            <div class="cred-role">Bachelor of Business — Marketing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recognition -->
+    <div class="cred-section reveal">
+      <div class="cred-section-title">Recognition</div>
+      <div class="cred-grid">
+        <div class="cred-item">
+          <div class="cred-info">
+            <div class="cred-org">The Marketing Academy</div>
+            <div class="cred-role">Scholar, 2020</div>
+            <div class="cred-detail">A selective, globally respected program developing leadership capability in marketing and communications</div>
+          </div>
+        </div>
+        <div class="cred-item">
+          <div class="cred-info">
+            <div class="cred-org">Effies</div>
+            <div class="cred-role">Finalist — 5 categories, 2024</div>
+            <div class="cred-detail">Effies Judge · Ad News Marketing Awards Judge · The Drum APAC Marketing Awards Judge (2025)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="eyebrow reveal">Selected Work</p>
+    <h2 class="section-title reveal">Proof is in the <em>results.</em></h2>
+    <p class="work-intro-text reveal">A selection of engagements that required bold thinking, real accountability, and the willingness to do what others wouldn't.</p>
+
+    <div class="work-grid">
+      <div class="work-card reveal">
+        <div class="work-num">01</div>
+        <span class="work-tag">Fintech · Transformation</span>
+        <h3>Afterpay International Marketing Rebuild</h3>
+        <p>Team cut by 60%, scope doubled. Rebuilt structure, strategy and systems across ANZ, UK and Canada. Implemented AI tools, in-house creative studio, and 120+ automated lifecycle journeys.</p>
+        <div class="work-result"><span>Double-digit YoY GPV growth</span> · 108% to annual targets · $19M incremental revenue from AI-driven lifecycle campaigns</div>
+      </div>
+
+      <div class="work-card reveal">
+        <div class="work-num">02</div>
+        <span class="work-tag">Streaming · Brand Launch</span>
+        <h3>Kayo Sports — Brand of the Year</h3>
+        <p>Built the brand, team and go-to-market from scratch. Launch campaign with 1,500 unique OOH executions and 30+ athletes. First News Corp subsidiary to win "Brand of the Year" and Mumbrella Sports Marketing Team of the Year.</p>
+        <div class="work-result"><span>700k+ paying subscribers</span> in 13 months · Awareness 0% to 83%</div>
+      </div>
+
+      <div class="work-card hidden reveal">
+        <div class="work-num">03</div>
+        <span class="work-tag">Brand Reputation · Audience Strategy</span>
+        <h3>"Old Money Doesn't Like How New Money Works" — Afterpay</h3>
+        <p>Took on Afterpay's hardest audience: people who had actively rejected the brand. A risky brief that required bold creative and a sharp strategic point of view.</p>
+        <div class="work-result"><span>80% increase in consideration</span> among target audience after seeing the ad</div>
+      </div>
+
+      <div class="work-card hidden reveal">
+        <div class="work-num">04</div>
+        <span class="work-tag">AI · MarTech</span>
+        <h3>AI Transformation in a Traditional Marketing Org</h3>
+        <p>Led AI adoption at its inception — first to adopt GPT Enterprise in marketing. Built custom GPTs for copywriting, ran hackathons, and rolled out Hightouch CDP and AI-driven personalisation in lifecycle marketing.</p>
+        <div class="work-result"><span>Replaced 4+ FTEs of manual work</span> · $19M incremental GPV in lifecycle before fully scaling</div>
+      </div>
+    </div>
+
+    <button class="see-more-btn" id="seeMoreBtn" onclick="toggleWork()">
+      See more work <span id="seeMoreArrow">&#8595;</span>
+    </button>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="eyebrow reveal" style="color:var(--gold-light)">What I Do and What's Next</p>
+    <h2 class="section-title light reveal">How I can help <em>your</em> team.</h2>
+
+    <div class="services-intro reveal">
+      <p>I'm in search of my next role as <strong>CMO for a major organisation</strong>. In the meantime, I'm taking on projects and considering contracts. If you have a challenge worth solving, I'd love to hear about it.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-item reveal">
+        <div class="service-num">01</div>
+        <h3>Marketing Strategy and Execution</h3>
+        <p>Brand strategy, go-to-market, campaigns, performance marketing and growth. Real-world work, not decks that sit in a drawer.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-num">02</div>
+        <h3>Interim Executive / Fractional CMO</h3>
+        <p>Step into a CMO or VP Marketing role while you search, scale, or transform. I integrate fast, build trust quickly, and deliver from day one.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-num">03</div>
+        <h3>People and Technology</h3>
+        <p>Train people, restructure marketing teams, help you hire, change culture. Assess your AI and MarTech stack and provide recommendations for doing more with less.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-num">04</div>
+        <h3>Coaching and Advisory</h3>
+        <p>1:1 coaching for marketing leaders, business owners, and individuals. Thought partnership, career navigation, and the honest conversations most advisors avoid.</p>
+        <a href="https://cal.com/joelmoran" target="_blank" class="service-book-link">Book a free 30 min chat &#8599;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="eyebrow reveal">Get In Touch Today</p>
+    <h2 class="section-title reveal">Got a challenge worth <em>solving?</em></h2>
+
+    <p class="contact-why reveal">
+      Senior marketing partner, not a consultant who disappears after the strategy deck.
+    </p>
+
+    <div class="contact-options reveal">
+      <a href="https://cal.com/joelmoran" target="_blank" class="contact-option contact-option-primary">
+        <div class="contact-option-content">
+          <div class="contact-option-label">Book a call</div>
+          <div class="contact-option-value">Free 30 minute consultation &#8599;</div>
+        </div>
+      </a>
+      <a href="/cdn-cgi/l/email-protection#e18b8e848d8c8e93808fd9d9d9a19880898e8ecf828e8c" class="contact-option">
+        <div class="contact-option-content">
+          <div class="contact-option-label">Send an email</div>
+          <div class="contact-option-value">Get in touch directly</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/moranjoel" target="_blank" class="contact-option">
+        <div class="contact-option-content">
+          <div class="contact-option-label">Connect on LinkedIn</div>
+          <div class="contact-option-value">Let's connect &#8599;</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="contact-availability reveal">
+      <span class="dot"></span>
+      Available for new engagements
+    </div>
+  </section>
+
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+    });
+
+    (function animateRing() {
+      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+        ring.style.width = '44px'; ring.style.height = '44px'; ring.style.opacity = '0.2';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+        ring.style.width = '28px'; ring.style.height = '28px'; ring.style.opacity = '0.4';
+      });
+    });
+
+    // About expand
+    function toggleExpand(trigger) {
+      trigger.classList.toggle('open');
+      trigger.nextElementSibling.classList.toggle('open');
+    }
+
+    // Credential expand
+    function toggleCred(btn) {
+      btn.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open');
+    }
+
+    // See more work
+    let workExpanded = false;
+    function toggleWork() {
+      workExpanded = !workExpanded;
+      document.querySelectorAll('.work-card.hidden').forEach(c => {
+        c.classList.toggle('shown', workExpanded);
+      });
+      const btn = document.getElementById('seeMoreBtn');
+      btn.innerHTML = workExpanded
+        ? 'See less &#8593;'
+        : 'See more work &#8595;';
+    }
+
+    // Sticky bar
+    window.addEventListener('scroll', () => {
+      document.getElementById('stickyContact').classList.toggle('visible', window.scrollY > 500);
+    });
+
+    // Scroll reveal
+    const
