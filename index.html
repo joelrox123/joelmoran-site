@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joel Moran — Marketing Leader & Consultant</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBPG9X0J23"></script>
+  <title>Joel Moran · Marketing Leader & Consultant</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141412'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='600' fill='%23B8935A'%3EJM%3C/text%3E%3C/svg%3E" />
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-PBPG9X0J23"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -37,7 +37,7 @@
       font-weight: 300;
       line-height: 1.75;
       overflow-x: hidden;
-      cursor: none;
+      cursor: auto;
     }
 
     .cursor {
@@ -45,13 +45,14 @@
       background: var(--gold); border-radius: 50%;
       pointer-events: none; z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.2s ease;
+      opacity: 0;
     }
     .cursor-ring {
       position: fixed; width: 28px; height: 28px;
       border: 1px solid var(--gold); border-radius: 50%;
       pointer-events: none; z-index: 9998;
-      transform: translate(-50%, -50%); opacity: 0.4;
+      transform: translate(-50%, -50%); opacity: 0;
       transition: width 0.3s, height 0.3s, opacity 0.3s;
     }
 
@@ -120,7 +121,7 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       display: block;
-      filter: brightness(0.9) contrast(1.04);
+      filter: brightness(0.95) contrast(1.02);
       transition: transform 8s ease;
     }
 
@@ -129,7 +130,7 @@
     .hero-photo::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to right, transparent 60%, rgba(249,246,241,0.5) 100%),
-                  linear-gradient(to top, rgba(20,20,18,0.55) 0%, transparent 45%);
+                  linear-gradient(to top, rgba(20,20,18,0.45) 0%, transparent 45%);
     }
 
     .hero-photo-badge {
@@ -296,55 +297,100 @@
     .about-sub-punch {
       font-size: 0.93rem; color: var(--mid);
       max-width: 620px; line-height: 1.85;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
     }
 
-    .expandable { border-top: 1px solid var(--border); margin-top: 1.5rem; }
-
-    .expand-trigger {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.1rem 0; cursor: pointer;
-      border-bottom: 1px solid var(--border); user-select: none;
+    /* AWARDS STRIP */
+    .awards-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 3rem;
     }
 
-    .expand-trigger-label {
-      font-size: 0.67rem; font-weight: 400;
-      letter-spacing: 0.18em; text-transform: uppercase;
+    .award-item {
+      background: var(--ivory);
+      padding: 1.4rem 1.6rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .award-item:hover { background: white; }
+
+    .award-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+
+    .award-icon {
+      font-size: 1.1rem; margin-bottom: 0.5rem;
+    }
+
+    .award-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem; font-weight: 400;
+      color: var(--dark); line-height: 1.35;
+      margin-bottom: 0.2rem;
+    }
+
+    .award-org {
+      font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--gold);
     }
 
-    .expand-icon {
-      width: 20px; height: 20px;
-      border: 1px solid var(--border-gold); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; color: var(--gold);
-      transition: transform 0.3s, background 0.3s; flex-shrink: 0;
+    /* HOW I WORK */
+    .how-i-work {
+      margin-top: 1rem;
     }
 
-    .expand-trigger.open .expand-icon {
-      transform: rotate(45deg);
-      background: var(--gold); color: var(--white);
+    .how-i-work-title {
+      font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.8rem;
+      display: flex; align-items: center; gap: 0.6rem;
     }
 
-    .expand-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.55s ease, padding 0.3s ease;
+    .how-i-work-title::before {
+      content: ''; width: 14px; height: 1px; background: var(--gold);
     }
 
-    .expand-body.open { max-height: 2000px; padding: 1.6rem 0 0.8rem; }
-
-    .expand-body p {
-      font-size: 0.88rem; color: var(--mid);
-      line-height: 1.9; margin-bottom: 1rem;
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
     }
 
-    .expand-body p:last-child { margin-bottom: 0; }
-    .expand-body p strong { color: var(--charcoal); font-weight: 500; }
+    .how-item {
+      background: var(--white);
+      padding: 1.8rem 2rem;
+      transition: background 0.3s;
+      position: relative; overflow: hidden;
+    }
 
-    .expand-body h5 {
+    .how-item:hover { background: #FDFCF9; }
+
+    .how-item::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.4s;
+    }
+
+    .how-item:hover::after { width: 100%; }
+
+    .how-item h4 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem; font-weight: 400;
-      color: var(--dark); margin: 1.3rem 0 0.4rem;
+      color: var(--dark); margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .how-item p {
+      font-size: 0.83rem; color: var(--mid); line-height: 1.8;
     }
 
     /* CREDENTIALS */
@@ -382,13 +428,6 @@
     .cred-item:hover { background: #FDFCFA; }
     .cred-item:hover::after { width: 2px; }
 
-    .cred-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; gap: 1rem;
-    }
-
-    .cred-info { flex: 1; }
-
     .cred-org {
       font-size: 0.57rem; color: var(--gold); font-weight: 400;
       text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 0.2rem;
@@ -399,17 +438,25 @@
       font-size: 1rem; color: var(--dark); margin-bottom: 0.2rem;
     }
 
-    .cred-detail { font-size: 0.74rem; color: var(--mid); line-height: 1.5; }
+    .cred-detail { font-size: 0.74rem; color: var(--mid); line-height: 1.5; margin-bottom: 0.8rem; }
 
-    /* Expandable inside credential */
+    .cred-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
     .cred-expand-trigger {
       display: inline-flex; align-items: center; gap: 0.4rem;
       font-size: 0.6rem; font-weight: 400;
       letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--gold); cursor: pointer;
-      margin-top: 0.7rem; user-select: none;
-      background: none; border: none; font-family: 'Jost', sans-serif;
-      padding: 0;
+      user-select: none;
+      background: none;
+      border: 1px solid var(--border-gold);
+      padding: 0.3rem 0.75rem;
+      font-family: 'Jost', sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cred-expand-trigger:hover {
+      background: var(--gold); color: var(--white);
     }
 
     .cred-expand-trigger .ci { transition: transform 0.3s; display: inline-block; }
@@ -420,7 +467,7 @@
       transition: max-height 0.5s ease, padding 0.3s;
     }
 
-    .cred-expand-body.open { max-height: 800px; padding-top: 1rem; }
+    .cred-expand-body.open { max-height: 2000px; padding-top: 1rem; }
 
     .cred-expand-body p {
       font-size: 0.84rem; color: var(--mid); line-height: 1.85;
@@ -428,6 +475,31 @@
     }
 
     .cred-expand-body p:last-child { margin-bottom: 0; }
+
+    .cred-expand-body ul {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .cred-expand-body ul li {
+      font-size: 0.84rem; color: var(--mid); line-height: 1.75;
+      padding-left: 1rem; position: relative;
+    }
+
+    .cred-expand-body ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 0.6em;
+      width: 4px; height: 1px; background: var(--gold);
+    }
+
+    .cred-expand-body h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem; font-weight: 400;
+      color: var(--charcoal); margin: 1.2rem 0 0.4rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+    }
 
     /* WORK */
     #work { background: var(--white); }
@@ -460,7 +532,7 @@
     .work-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 3rem; font-weight: 300;
-      color: rgba(184,147,90,0.07);
+      color: rgba(184,147,90,0.18);
       position: absolute; top: 1rem; right: 1.4rem; line-height: 1;
     }
 
@@ -543,7 +615,7 @@
     .service-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.6rem; font-weight: 300;
-      color: rgba(184,147,90,0.1); line-height: 1; margin-bottom: 1rem;
+      color: rgba(184,147,90,0.35); line-height: 1; margin-bottom: 1rem;
     }
 
     .service-item h3 {
@@ -614,17 +686,6 @@
 
     .contact-option:hover::before { transform: translateX(0); }
 
-    .contact-option-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 300;
-      color: var(--gold); line-height: 1;
-      position: relative; z-index: 1;
-      transition: color 0.3s;
-      flex-shrink: 0;
-    }
-
-    .contact-option:hover .contact-option-num { color: rgba(255,255,255,0.5); }
-
     .contact-option-content { position: relative; z-index: 1; text-align: left; }
 
     .contact-option-label {
@@ -683,6 +744,11 @@
 
     .sticky-contact.visible { transform: translateY(0); }
 
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .sticky-contact { padding-bottom: calc(0.75rem + env(safe-area-inset-bottom)); }
+      footer { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+    }
+
     .sticky-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.9rem; font-style: italic;
@@ -710,23 +776,23 @@
     footer {
       background: var(--dark); padding: 1.8rem 8vw;
       display: flex; justify-content: space-between; align-items: center;
-      padding-bottom: 4.5rem;
+      padding-bottom: 5.5rem;
     }
 
     .footer-logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.88rem; font-weight: 300;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.2); text-decoration: none;
+      color: rgba(255,255,255,0.6); text-decoration: none;
     }
 
     .footer-tagline {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.72rem; font-style: italic;
-      color: rgba(184,147,90,0.2);
+      color: rgba(184,147,90,0.7);
     }
 
-    .footer-copy { font-size: 0.6rem; color: rgba(255,255,255,0.14); letter-spacing: 0.07em; }
+    .footer-copy { font-size: 0.6rem; color: rgba(255,255,255,0.45); letter-spacing: 0.07em; }
 
     /* ANIMATIONS */
     @keyframes fadeUp {
@@ -734,25 +800,17 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .reveal {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.visible { opacity: 1; transform: none; }
+    .reveal { opacity: 1; transform: none; }
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-photo { 
-        min-height: 70vw;
-        max-height: 85vw;
-      }
-      .hero-photo img {
-        object-position: center 20%;
-      }
+      .hero-photo { min-height: 70vw; max-height: 85vw; }
+      .hero-photo img { object-position: center 20%; }
       .hero-right { padding: 3rem 6vw; }
       .work-grid, .services-grid { grid-template-columns: 1fr; }
+      .awards-strip { grid-template-columns: 1fr 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
       .nav-links { gap: 1rem; }
       body { cursor: auto; }
       .cursor, .cursor-ring { display: none; }
@@ -761,24 +819,37 @@
     @media (max-width: 640px) {
       .nav-links li:not(:last-child):not(:last-child) { display: none; }
       .nav-links li:nth-last-child(2) { display: flex; }
-      .hero-photo { 
-        min-height: 100vw;
-        max-height: 120vw;
-      }
-      .hero-photo img {
-        object-position: center 15%;
-      }
+      .hero-photo { min-height: 100vw; max-height: 120vw; }
+      .hero-photo img { object-position: center 15%; }
       .hero-photo-badge { bottom: 1.5rem; left: 1.5rem; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
       .hero-stat:nth-child(2) { border-right: none; }
-      .hero-stat:nth-child(3) { 
-        grid-column: span 2; 
-        border-right: none;
-        border-top: 1px solid var(--border);
-      }
+      .hero-stat:nth-child(3) { grid-column: span 2; border-right: none; border-top: 1px solid var(--border); }
       .hero-right { padding: 2.5rem 5vw; }
       section { padding: 4rem 6vw; }
       .contact-option { padding: 1rem 1.2rem; }
+      .awards-strip { grid-template-columns: 1fr; }
+
+      /* Mobile font size increases */
+      .hero-sub { font-size: 1rem; }
+      .hero-belief { font-size: 1.05rem; }
+      .about-sub-punch { font-size: 1rem; }
+      .how-item p { font-size: 0.95rem; }
+      .award-title { font-size: 0.95rem; }
+      .work-card p { font-size: 0.95rem; }
+      .work-result { font-size: 0.85rem; }
+      .cred-detail { font-size: 0.85rem; }
+      .cred-expand-body p { font-size: 0.95rem; }
+      .cred-expand-body ul li { font-size: 0.95rem; }
+      .service-item p { font-size: 0.92rem; }
+      .contact-why { font-size: 1.1rem; }
+      .hero-stat-label { font-size: 0.65rem; }
+      .work-tag { font-size: 0.65rem; }
+      .eyebrow { font-size: 0.68rem; }
+      .cred-org { font-size: 0.68rem; }
+      .hero-eyebrow { font-size: 0.68rem; }
+      .nav-links a { font-size: 0.75rem; }
+      .cred-expand-trigger { font-size: 0.7rem; padding: 0.4rem 0.9rem; }
     }
   </style>
 </head>
@@ -812,7 +883,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-photo">
-      <img src="joel.jpg" alt="Joel Moran" />
+      <img src="https://raw.githubusercontent.com/joelrox123/joelmoran-site/main/joel-profile.jpg" alt="Joel Moran" />
       <div class="hero-photo-badge">
         <div class="hero-photo-badge-name">Joel Moran, MBA</div>
         <div class="hero-photo-badge-title">CMO · Consultant · Coach · Advisor</div>
@@ -830,11 +901,11 @@
       <div class="hero-rule"></div>
 
       <p class="hero-sub">
-        20+ years helping businesses grow. From Optus and Vodafone, to Kayo Sports and Afterpay, and hands-on with small businesses along the way. I solve messy problems, build great teams, and make marketing that actually works.
+        20+ years helping businesses grow. From Optus and Vodafone, to Kayo Sports and Afterpay. Messy problems, great teams, marketing that actually works.
       </p>
 
       <p class="hero-belief">
-        "Marketing's job is to grow the business. Brand, performance, product, experience — all of it is in service of that."
+        "Marketing's job is to grow the business. Brand, performance, product, experience. All of it is in service of that."
       </p>
 
       <div class="hero-stats">
@@ -844,7 +915,7 @@
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">Global</div>
-          <div class="hero-stat-label">International marketing</div>
+          <div class="hero-stat-label">ANZ, UK + Canada</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">5yr</div>
@@ -863,34 +934,66 @@
     <p class="eyebrow reveal">About</p>
 
     <div class="about-punch reveal">
-      I've spent 20 years solving the problems<br>
+      20 years solving the problems<br>
       most marketers <em>avoid.</em>
     </div>
 
     <p class="about-sub-punch reveal">
-      From launching Kayo Sports Streaming from zero; turning Afterpay's reputation from predatory to trusted; rebuilding Afterpay's marketing team after it was cut by 60% using AI and tech; building Gen Z brands in a fast-moving, high-stakes world.
+      From launching Kayo Sports from zero, to rebuilding Afterpay's marketing with half the team using AI. I've built brands in fast-moving, high-stakes environments. Deep in fintech, streaming + retail. Hands-on with MarTech, growth and creative.
     </p>
 
-    <div class="expandable reveal">
-      <div class="expand-trigger" onclick="toggleExpand(this)">
-        <span class="expand-trigger-label">Read more about how I work</span>
-        <span class="expand-icon">+</span>
+    <!-- AWARDS -->
+    <div class="awards-strip reveal">
+      <div class="award-item">
+        <div class="award-icon">🥇</div>
+        <div class="award-title">Gold: Data-Driven Marketing Campaign of the Year</div>
+        <div class="award-org">Mumbrella Awards</div>
       </div>
-      <div class="expand-body">
-        <h5>I love the messy stuff</h5>
-        <p>Scaling teams under pressure, cracking new markets, navigating regulation, and building brands people actually trust. Deep in fintech, retail and streaming — and hands-on with MarTech, growth marketing and creative.</p>
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div class="award-title">Effies Finalist: 5 categories incl. ROI + Marketing Effectiveness</div>
+        <div class="award-org">Effies Australia</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">⚡</div>
+        <div class="award-title">Sports Marketing Team of the Year</div>
+        <div class="award-org">Mumbrella Awards</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🎯</div>
+        <div class="award-title">Excellence in Performance Marketing: Influencer + UGC</div>
+        <div class="award-org">TikTok Recognition</div>
+      </div>
+    </div>
 
-        <h5>I make marketing a commercial driver</h5>
-        <p>I'm most at home in businesses where marketing has a real seat at the table — where the CMO is a commercial leader, not the head of the advertising team. I've operated that way across some of Australia's most recognised consumer brands, and most recently as the de facto CMO for Afterpay across all international markets, reporting directly to the Executive responsible for all sales and marketing at Block globally.</p>
-
-        <h5>I work across the full marketing remit</h5>
-        <p>Brand strategy, performance and growth, product marketing, trade and retail, CX, B2B. I love working multi-regional — across AU, NZ, UK and Canada simultaneously. I know how to plan for differing markets and the challenges of efficiently marketing in multiple places at the same time.</p>
-
-        <h5>I am a problem-first technology advocate</h5>
-        <p>My early career was in ecommerce and performance marketing — I love learning about tech and bringing it into my work. More recently I've been focused on using AI to reshape what modern marketing and teams look like — helping teams automate what can be done with AI and elevate people to focus on more meaningful work.</p>
-
-        <h5>On people</h5>
-        <p>Probably my greatest passion. I believe in finding what motivates each person and helping them achieve it. As AI reshapes how we market, that human side of leadership matters more than ever. My style is big-company experience without the big-company distance — I work alongside a team, not above them.</p>
+    <!-- HOW I WORK -->
+    <div class="how-i-work reveal">
+      <div class="how-i-work-title">How I work</div>
+      <div class="how-grid">
+        <div class="how-item">
+          <h4>Drawn to the messy stuff</h4>
+          <p>Scaling teams under pressure, cracking new markets, navigating regulation, building brands people trust. If it's complicated, that's where I do my best work.</p>
+        </div>
+        <div class="how-item">
+          <h4>Marketing as a commercial driver</h4>
+          <p>Most at home where marketing has a real seat at the table, where the CMO is accountable to commercial outcomes, not just the advertising budget.</p>
+        </div>
+        <div class="how-item">
+          <h4>Full-funnel, multi-market fluency</h4>
+          <p>Brand strategy, performance + growth, product marketing, trade, CX, B2B. Built for multi-regional work across AU, NZ, UK + Canada simultaneously.</p>
+        </div>
+        <div class="how-item">
+          <h4>Technology in service of the problem</h4>
+          <p>Early in ecommerce + performance marketing, obsessed with what's next. Now focused on AI to reshape what modern marketing teams look like: automating what can be automated, elevating people to do better work.</p>
+        </div>
+        <div class="how-item">
+          <h4>People are the strategy</h4>
+          <p>The work is only as good as the team. Finding what motivates each person, developing their capability, building culture. That's not a nice-to-have. It's how great marketing gets made.</p>
+        </div>
+        <div class="how-item">
+          <h4>Alongside the team, not above it</h4>
+          <p>Big-company experience without the big-company distance. MBA from UNSW. Effies Judge. Genuinely passionate about developing people.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -902,73 +1005,129 @@
 
     <!-- Employment -->
     <div class="cred-section reveal">
-
       <div class="cred-grid">
 
+        <!-- AFTERPAY -->
         <div class="cred-item">
-          <div class="cred-header">
-            <div class="cred-info">
-              <div class="cred-org">Afterpay / Clearpay · Block Inc, NYSE: SQ</div>
-              <div class="cred-role">CMO / VP Marketing, International</div>
-              <div class="cred-detail">5+ years · AU, NZ, UK and Canada · Delivered double-digit YoY GPV growth for 5 consecutive years</div>
-            </div>
+          <div class="cred-org">Afterpay / Clearpay · Block Inc, NYSE: SQ</div>
+          <div class="cred-role">CMO / VP Marketing, International</div>
+          <div class="cred-detail">5+ years · AU, NZ, UK + Canada · Delivered double-digit YoY GPV growth for 5 consecutive years</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-did">
+              What I did <span class="ci">+</span>
+            </button>
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-proud">
+              Proudest moments <span class="ci">+</span>
+            </button>
           </div>
-          <button class="cred-expand-trigger" onclick="toggleCred(this)">
-            What this role taught me <span class="ci">+</span>
-          </button>
-          <div class="cred-expand-body">
-            <p>Afterpay's merchant-consumer flywheel put marketing at the heart of the commercial engine. We grew the brand largely by being a genuine growth engine for some of the world's biggest retailers — which in turn grew us. I joined when the business was an ASX darling and stayed through its evolution into part of a US S&P 500 company alongside Square, Cash App, and Tidal.</p>
-            <p>What made Afterpay unusual was the brand itself — a financial services product that operated like a lifestyle brand, deeply embedded in fashion, culture, and the lives of Gen Z and millennial consumers. That duality shaped how we marketed: commercial rigour on one side, cultural relevance on the other.</p>
-            <p>I led the brand through multiple growth phases — from disruptor to household name — and built Afterpay Day into a retail sales event that delivered double-digit growth every year. The team were Effies finalists for campaigns that drove measurable commercial ROI across five categories in 2024.</p>
+          <div class="cred-expand-body" id="afterpay-did">
+            <p>Over five years I helped double revenue by taking significant share from banks and credit cards, building one of Australia's most trusted consumer brands, driving merchant partner businesses to grow in the process.</p>
+            <p>I was there when Afterpay was an ASX darling and when it was acquired by Block. Started as Director of Brand for ANZ, took on Growth + Product Marketing, then in 2024 became VP Marketing International, leading the full marketing program across AU, NZ, UK + Canada. The most senior marketer, reporting directly to Nick Molnar (Afterpay founder, now leads Sales + Marketing at Block Inc).</p>
+            <p>Accountable for driving part of the consumer side of the P+L, in partnership with product, sales, risk + customer service, then executing the full marketing funnel to deliver variable profit through new customer acquisition, increased frequency, product attach + brand health.</p>
+            <p>Directly responsible for: brand strategy, growth/performance marketing, CRM, sponsorships, social, trade + merchant marketing, media + advertising, product marketing, and go-to-market.</p>
+          </div>
+          <div class="cred-expand-body" id="afterpay-proud">
+            <h5>Rebuilt the team using AI + still exceeded targets</h5>
+            <ul>
+              <li>When the team was cut by 60%, ran a transformation program using AI + technology to do more with far less.</li>
+              <li>Exceeded revenue targets in every market: ANZ +18% YoY, UK +21%, Canada +13%.</li>
+              <li>Market share: >80% in AU, >90% in NZ, >20% in UK.</li>
+              <li>Launched new BNPL regulations in NZ, AU + Canada.</li>
+              <li>Grew to most trusted BNPL brand in ANZ + UK.</li>
+            </ul>
+            <h5>Proved ROI for brand advertising</h5>
+            <ul>
+              <li>Gold at Mumbrella Awards: Data-Driven Marketing Campaign of the Year.</li>
+              <li>Effies finalist in 5 categories for marketing effectiveness.</li>
+              <li>"Afterpay Where You Wouldn't Believe": drove new vertical adoption, proved brand spend delivers positive ROI.</li>
+              <li>"Pay Better" with Rebel Wilson: two-year integrated brand platform that redefined how Australians thought about Afterpay.</li>
+            </ul>
+            <h5>Made work that moved the needle</h5>
+            <ul>
+              <li>"Old Money Doesn't Like How New Money Works": tackled brand rejection head-on.</li>
+              <li>"Own It": repositioned Afterpay for financially savvy consumers.</li>
+              <li>600 UGC ads, recognised by TikTok for excellence in performance marketing (influencer/UGC).</li>
+              <li>Launched Amazon, Uber Eats, Dan Murphy's, Ampol + more.</li>
+            </ul>
+            <h5>Sponsorships that punched above their cost</h5>
+            <ul>
+              <li>Afterpay Australian Fashion Week: 3 consecutive years, $99M p.a. earned media value.</li>
+              <li>Daniel Ricciardo partnership: year-long multichannel campaign, 42M reach.</li>
+            </ul>
+            <h5>Made Afterpay Day a commercial juggernaut</h5>
+            <ul>
+              <li>Introduced "Carpe Diem" as the Afterpay Day trade platform; drove 21% YoY growth.</li>
+            </ul>
+            <h5>Turned around customer acquisition when it was broken</h5>
+            <ul>
+              <li>Reversed a 20% YoY decline to 6% growth within 12 months.</li>
+              <li>Rebuilt the full conversion funnel + performance marketing from the ground up.</li>
+            </ul>
+
           </div>
         </div>
 
+        <!-- KAYO -->
         <div class="cred-item">
-          <div class="cred-header">
-            <div class="cred-info">
-              <div class="cred-org">Kayo Sports · News Corp</div>
-              <div class="cred-role">Head of Marketing</div>
-              <div class="cred-detail">Brand launch from zero · 700k+ subscribers · 83% brand awareness · Sports Marketing Team of the Year</div>
-            </div>
+          <div class="cred-org">Kayo Sports · News Corp / Foxtel</div>
+          <div class="cred-role">Head of Marketing</div>
+          <div class="cred-detail">Brand launch from zero · 600K+ subscribers · 83% brand awareness · Sports Marketing Team of the Year</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-did">
+              What I did <span class="ci">+</span>
+            </button>
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-proud">
+              Proudest moments <span class="ci">+</span>
+            </button>
           </div>
-          <button class="cred-expand-trigger" onclick="toggleCred(this)">
-            What this role taught me <span class="ci">+</span>
-          </button>
-          <div class="cred-expand-body">
-            <p>A startup inside a large media company — all the ambition, with the added complexity of a corporate parent. I was part of the founding team: helped name the brand, built the identity from scratch, then led all marketing to scale the service to over 700,000 subscribers and 83% brand awareness within two and a half years.</p>
-            <p>The work spanned large-scale product-brand campaigns tied to major sports moments, leading a sizable in-house creative team across Kayo, BINGE, and Watch AFL/NRL, and launching eight major campaigns across the period. The team won Mumbrella's Sports Marketing Team of the Year.</p>
+          <div class="cred-expand-body" id="kayo-did">
+            <p>Founding marketing hire for Australia's biggest sports streaming platform, a start-up inside Foxtel/News Corp. Joined just after finishing my Executive MBA. Built the brand, team + go-to-market from scratch.</p>
+            <ul>
+              <li>Developed + executed the strategic sales + marketing plan to grow Kayo's subscriber base.</li>
+              <li>Accountable for go-to-market across marketing, brand, sales, customer engagement, social + publicity.</li>
+              <li>Owned brand positioning, identity, all advertising + content marketing including creative + media planning.</li>
+              <li>Led a 16-person in-house creative services team across Kayo, BINGE, Watch AFL/NRL.</li>
+            </ul>
+          </div>
+          <div class="cred-expand-body" id="kayo-proud">
+            <ul>
+              <li>Grew Kayo to 600K+ subscribers: ~19% of Australia's sporting population, ~$122M revenue p.a.</li>
+              <li>Built awareness from 0% to 83% in under 3 years.</li>
+              <li>Ran 8 large integrated campaigns with full measurement frameworks, leveraging mass-market channels + sophisticated digital strategy.</li>
+              <li>Hired + built a high-performing sales + marketing team using cutting-edge agile working practices, regarded as a role-model across the Foxtel Group.</li>
+              <li>Won Mumbrella Sports Marketing Team of the Year 2019.</li>
+              <li>Won News Corp Brand of the Year 2019, first subsidiary company ever to secure the award.</li>
+            </ul>
           </div>
         </div>
 
+        <!-- OPTUS -->
         <div class="cred-item">
-          <div class="cred-header">
-            <div class="cred-info">
-              <div class="cred-org">Optus</div>
-              <div class="cred-role">Associate Director, Digital Marketing</div>
-              <div class="cred-detail">~6 years · Ecommerce, performance marketing and digital customer marketing</div>
-            </div>
+          <div class="cred-org">Optus</div>
+          <div class="cred-role">Associate Director, Digital Marketing</div>
+          <div class="cred-detail">~6 years · Ecommerce, performance marketing + digital customer marketing</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="optus-did">
+              What I did <span class="ci">+</span>
+            </button>
           </div>
-          <button class="cred-expand-trigger" onclick="toggleCred(this)">
-            What this role taught me <span class="ci">+</span>
-          </button>
-          <div class="cred-expand-body">
-            <p>Where I went deep on performance marketing and ecommerce. I built Optus's first mobile site, led retention and digital customer marketing, and owned ecommerce channel development. This is where I learned to connect brand and commercial outcomes in a highly competitive, price-sensitive category.</p>
+          <div class="cred-expand-body" id="optus-did">
+            <p>Where I went deep on performance marketing + ecommerce. Built Optus's first mobile site, led retention + digital customer marketing, and owned ecommerce channel development. Learned to connect brand + commercial outcomes in a highly competitive, price-sensitive category.</p>
           </div>
         </div>
 
+        <!-- VODAFONE -->
         <div class="cred-item">
-          <div class="cred-header">
-            <div class="cred-info">
-              <div class="cred-org">Vodafone and 3 Mobile</div>
-              <div class="cred-role">Various Roles</div>
-              <div class="cred-detail">~9 years combined · Digital merchandising, prepaid product management, retail distribution</div>
-            </div>
+          <div class="cred-org">Vodafone + 3 Mobile</div>
+          <div class="cred-role">Various Roles</div>
+          <div class="cred-detail">~9 years combined · Digital merchandising, prepaid product management, retail distribution</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="voda-did">
+              What I did <span class="ci">+</span>
+            </button>
           </div>
-          <button class="cred-expand-trigger" onclick="toggleCred(this)">
-            What this role taught me <span class="ci">+</span>
-          </button>
-          <div class="cred-expand-body">
-            <p>My foundations. Hands-on experience across digital merchandising, prepaid segment management, and mass-market retail distribution through Coles and Woolworths. At 3 Mobile I was a product manager, designing the first prepaid product — which gave me a commercial and product lens I've carried through everything since.</p>
+          <div class="cred-expand-body" id="voda-did">
+            <p>My foundations. Hands-on experience across digital merchandising, prepaid segment management + mass-market retail distribution through Coles + Woolworths. At 3 Mobile, designed the first prepaid product, which gave me a commercial + product lens I've carried through everything since.</p>
           </div>
         </div>
 
@@ -980,40 +1139,18 @@
       <div class="cred-section-title">Education</div>
       <div class="cred-grid">
         <div class="cred-item">
-          <div class="cred-info">
-            <div class="cred-org">AGSM @ UNSW Business School</div>
-            <div class="cred-role">Executive MBA — Distinction</div>
-            <div class="cred-detail">Marketing, Management and Finance</div>
-          </div>
+          <div class="cred-org">AGSM @ UNSW Business School</div>
+          <div class="cred-role">Executive MBA, Distinction</div>
+          <div class="cred-detail">Marketing, Management + Finance</div>
         </div>
         <div class="cred-item">
-          <div class="cred-info">
-            <div class="cred-org">Charles Sturt University</div>
-            <div class="cred-role">Bachelor of Business — Marketing</div>
-          </div>
+          <div class="cred-org">Charles Sturt University</div>
+          <div class="cred-role">Bachelor of Business, Marketing</div>
         </div>
       </div>
     </div>
 
-    <!-- Recognition -->
-    <div class="cred-section reveal">
-      <div class="cred-section-title">Recognition</div>
-      <div class="cred-grid">
-        <div class="cred-item">
-          <div class="cred-info">
-            <div class="cred-org">The Marketing Academy</div>
-            <div class="cred-role">Scholar, 2020</div>
-            <div class="cred-detail">A selective, globally respected program developing leadership capability in marketing and communications</div>
-          </div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-info">
-            <div class="cred-org">Effies</div>
-            <div class="cred-role">Finalist — 5 categories, 2024</div>
-            <div class="cred-detail">Effies Judge · Ad News Marketing Awards Judge · The Drum APAC Marketing Awards Judge (2025)</div>
-          </div>
-        </div>
-      </div>
+    
     </div>
 
   </section>
@@ -1029,23 +1166,23 @@
         <div class="work-num">01</div>
         <span class="work-tag">Fintech · Transformation</span>
         <h3>Afterpay International Marketing Rebuild</h3>
-        <p>Team cut by 60%, scope doubled. Rebuilt structure, strategy and systems across ANZ, UK and Canada. Implemented AI tools, in-house creative studio, and 120+ automated lifecycle journeys.</p>
-        <div class="work-result"><span>Double-digit YoY GPV growth</span> · 108% to annual targets · $19M incremental revenue from AI-driven lifecycle campaigns</div>
+        <p>Team cut by 60%, scope doubled. Rebuilt structure, strategy + systems across ANZ, UK + Canada. Implemented AI tools, in-house creative studio, and 120+ automated lifecycle journeys.</p>
+        <div class="work-result"><span>Double-digit YoY GPV growth</span> · 108% to annual targets · $19M incremental revenue from AI-driven lifecycle</div>
       </div>
 
       <div class="work-card reveal">
         <div class="work-num">02</div>
         <span class="work-tag">Streaming · Brand Launch</span>
-        <h3>Kayo Sports — Brand of the Year</h3>
-        <p>Built the brand, team and go-to-market from scratch. Launch campaign with 1,500 unique OOH executions and 30+ athletes. First News Corp subsidiary to win "Brand of the Year" and Mumbrella Sports Marketing Team of the Year.</p>
-        <div class="work-result"><span>700k+ paying subscribers</span> in 13 months · Awareness 0% to 83%</div>
+        <h3>Kayo Sports: Brand of the Year</h3>
+        <p>Built the brand, team + go-to-market from scratch. Launch campaign with 1,500 unique OOH executions + 30+ athletes. First News Corp subsidiary to win Brand of the Year.</p>
+        <div class="work-result"><span>600K+ paying subscribers</span> in 13 months · Awareness 0% to 83%</div>
       </div>
 
       <div class="work-card hidden reveal">
         <div class="work-num">03</div>
         <span class="work-tag">Brand Reputation · Audience Strategy</span>
-        <h3>"Old Money Doesn't Like How New Money Works" — Afterpay</h3>
-        <p>Took on Afterpay's hardest audience: people who had actively rejected the brand. A risky brief that required bold creative and a sharp strategic point of view.</p>
+        <h3>"Old Money Doesn't Like How New Money Works"</h3>
+        <p>Took on Afterpay's hardest audience: people who had actively rejected the brand. A risky brief that required bold creative + a sharp strategic point of view.</p>
         <div class="work-result"><span>80% increase in consideration</span> among target audience after seeing the ad</div>
       </div>
 
@@ -1053,46 +1190,49 @@
         <div class="work-num">04</div>
         <span class="work-tag">AI · MarTech</span>
         <h3>AI Transformation in a Traditional Marketing Org</h3>
-        <p>Led AI adoption at its inception — first to adopt GPT Enterprise in marketing. Built custom GPTs for copywriting, ran hackathons, and rolled out Hightouch CDP and AI-driven personalisation in lifecycle marketing.</p>
-        <div class="work-result"><span>Replaced 4+ FTEs of manual work</span> · $19M incremental GPV in lifecycle before fully scaling</div>
+        <p>Led AI adoption at its inception, first to adopt GPT Enterprise in marketing. Built custom GPTs, ran hackathons, rolled out Hightouch CDP + AI-driven lifecycle personalisation.</p>
+        <div class="work-result"><span>Replaced 4+ FTEs of manual work</span> · $19M incremental GPV before fully scaling</div>
       </div>
     </div>
 
-    <button class="see-more-btn" id="seeMoreBtn" onclick="toggleWork()">
+    <button class="see-more-btn" id="seeMoreBtn" data-action="toggleWork">
       See more work <span id="seeMoreArrow">&#8595;</span>
     </button>
   </section>
 
   <!-- SERVICES -->
   <section id="services">
-    <p class="eyebrow reveal" style="color:var(--gold-light)">What I Do and What's Next</p>
+    <p class="eyebrow reveal" style="color:var(--gold-light)">What I Do + What's Next</p>
     <h2 class="section-title light reveal">How I can help <em>your</em> team.</h2>
 
     <div class="services-intro reveal">
-      <p>I'm in search of my next role as <strong>CMO for a major organisation</strong>. In the meantime, I'm taking on projects and considering contracts. If you have a challenge worth solving, I'd love to hear about it.</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:white; line-height:1.3; margin-bottom:0.8rem;">
+        Ready to be the CMO<br>of a great organisation.
+      </p>
+      <p>In the meantime, taking on consulting projects, contracts + advisory work. If you have a challenge worth solving, let's talk.</p>
     </div>
 
     <div class="services-grid">
       <div class="service-item reveal">
         <div class="service-num">01</div>
-        <h3>Marketing Strategy and Execution</h3>
-        <p>Brand strategy, go-to-market, campaigns, performance marketing and growth. Real-world work, not decks that sit in a drawer.</p>
+        <h3>Marketing Strategy + Execution</h3>
+        <p>Brand strategy, go-to-market, campaigns, performance marketing + growth. Real-world work, not decks that sit in a drawer.</p>
       </div>
       <div class="service-item reveal">
         <div class="service-num">02</div>
         <h3>Interim Executive / Fractional CMO</h3>
-        <p>Step into a CMO or VP Marketing role while you search, scale, or transform. I integrate fast, build trust quickly, and deliver from day one.</p>
+        <p>Step into a CMO or VP Marketing role while you search, scale, or transform. Integrate fast, build trust quickly, deliver from day one.</p>
       </div>
       <div class="service-item reveal">
         <div class="service-num">03</div>
-        <h3>People and Technology</h3>
-        <p>Train people, restructure marketing teams, help you hire, change culture. Assess your AI and MarTech stack and provide recommendations for doing more with less.</p>
+        <h3>People + Technology</h3>
+        <p>Train people, restructure marketing teams, help you hire, change culture. Assess your AI + MarTech stack and provide recommendations for doing more with less.</p>
       </div>
       <div class="service-item reveal">
         <div class="service-num">04</div>
-        <h3>Coaching and Advisory</h3>
-        <p>1:1 coaching for marketing leaders, business owners, and individuals. Thought partnership, career navigation, and the honest conversations most advisors avoid.</p>
-        <a href="https://cal.com/joelmoran" target="_blank" class="service-book-link">Book a free 30 min chat &#8599;</a>
+        <h3>Coaching + Advisory</h3>
+        <p>1:1 coaching for marketing leaders, business owners + individuals. Thought partnership, career navigation, and the honest conversations most advisors avoid.</p>
+        <a href="https://cal.com/joelmoran/30-min-consultation-free" target="_blank" class="service-book-link">Book a free 30 min chat &#8599;</a>
       </div>
     </div>
   </section>
@@ -1107,16 +1247,16 @@
     </p>
 
     <div class="contact-options reveal">
-      <a href="https://cal.com/joelmoran" target="_blank" class="contact-option contact-option-primary">
+      <a href="https://cal.com/joelmoran/30-min-consultation-free" target="_blank" class="contact-option contact-option-primary">
         <div class="contact-option-content">
           <div class="contact-option-label">Book a call</div>
           <div class="contact-option-value">Free 30 minute consultation &#8599;</div>
         </div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#e18b8e848d8c8e93808fd9d9d9a19880898e8ecf828e8c" class="contact-option">
+      <a href="#" id="emailLink" class="contact-option">
         <div class="contact-option-content">
           <div class="contact-option-label">Send an email</div>
-          <div class="contact-option-value">Get in touch directly</div>
+          <div class="contact-option-value">Get in touch directly &#8599;</div>
         </div>
       </a>
       <a href="https://www.linkedin.com/in/moranjoel" target="_blank" class="contact-option">
@@ -1133,65 +1273,108 @@
     </div>
   </section>
 
+  <footer>
+    <a href="#" class="footer-logo">Joel Moran</a>
+    <span class="footer-tagline">Marketing that actually works.</span>
+    <span class="footer-copy">© 2026 joelmoran.com</span>
+  </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
+  <script>
 
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-    });
+  // Build email link at runtime so Cloudflare can't obfuscate it
+  var el = document.getElementById('emailLink');
+  if (el) {
+    var u = 'joelmoran888';
+    var d = 'yahoo.com';
+    el.href = 'mailto:' + u + '@' + d;
+  }
 
-    (function animateRing() {
-      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    })();
+  document.addEventListener('click', function(e) {
+    var btn = e.target;
+    while (btn && btn !== document) {
+      if (btn.getAttribute && btn.getAttribute('data-action')) break;
+      btn = btn.parentNode;
+    }
+    if (!btn || btn === document) return;
+    var action = btn.getAttribute('data-action');
 
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
+    if (action === 'toggleCred') {
+      var targetId = btn.getAttribute('data-target');
+      var body = document.getElementById(targetId);
+      if (!body) return;
+      var isOpen = body.classList.contains('open');
+      var credItem = btn.parentNode;
+      while (credItem && !credItem.classList.contains('cred-item')) {
+        credItem = credItem.parentNode;
+      }
+      if (credItem) {
+        credItem.querySelectorAll('.cred-expand-trigger').forEach(function(b) { b.classList.remove('open'); });
+        credItem.querySelectorAll('.cred-expand-body').forEach(function(b) { b.classList.remove('open'); });
+      }
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    if (action === 'toggleWork') {
+      var seeMoreBtn = document.getElementById('seeMoreBtn');
+      var expanded = seeMoreBtn.getAttribute('data-expanded') === 'true';
+      expanded = !expanded;
+      seeMoreBtn.setAttribute('data-expanded', String(expanded));
+      document.querySelectorAll('.work-card.hidden').forEach(function(c) {
+        c.classList.toggle('shown', expanded);
+      });
+      seeMoreBtn.innerHTML = expanded ? 'See less &#8593;' : 'See more work &#8595;';
+    }
+
+  }, true);
+
+  window.addEventListener('scroll', function() {
+    var sticky = document.getElementById('stickyContact');
+    if (sticky) sticky.classList.toggle('visible', window.scrollY > 500);
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    var cursor = document.getElementById('cursor');
+    var ring = document.getElementById('cursorRing');
+    if (!cursor || !ring) return;
+    document.body.style.cursor = 'none';
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.opacity = '1';
+    ring.style.opacity = '0.4';
+    if (!window._ringStarted) {
+      window._ringStarted = true;
+      var rx = e.clientX, ry = e.clientY;
+      (function tick() {
+        rx += (e.clientX - rx) * 0.1;
+        ry += (e.clientY - ry) * 0.1;
+        if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+        requestAnimationFrame(tick);
+      })();
+    }
+  });
+
+  document.addEventListener('mouseover', function(e) {
+    var cursor = document.getElementById('cursor');
+    var ring = document.getElementById('cursorRing');
+    if (!cursor || !ring) return;
+    var el = e.target;
+    while (el && el !== document) {
+      if (el.tagName === 'A' || el.tagName === 'BUTTON') {
         cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
-        ring.style.width = '44px'; ring.style.height = '44px'; ring.style.opacity = '0.2';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-        ring.style.width = '28px'; ring.style.height = '28px'; ring.style.opacity = '0.4';
-      });
-    });
-
-    // About expand
-    function toggleExpand(trigger) {
-      trigger.classList.toggle('open');
-      trigger.nextElementSibling.classList.toggle('open');
+        ring.style.width = '44px'; ring.style.height = '44px';
+        return;
+      }
+      el = el.parentNode;
     }
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    ring.style.width = '28px'; ring.style.height = '28px';
+  });
+  </script>
 
-    // Credential expand
-    function toggleCred(btn) {
-      btn.classList.toggle('open');
-      btn.nextElementSibling.classList.toggle('open');
-    }
-
-    // See more work
-    let workExpanded = false;
-    function toggleWork() {
-      workExpanded = !workExpanded;
-      document.querySelectorAll('.work-card.hidden').forEach(c => {
-        c.classList.toggle('shown', workExpanded);
-      });
-      const btn = document.getElementById('seeMoreBtn');
-      btn.innerHTML = workExpanded
-        ? 'See less &#8593;'
-        : 'See more work &#8595;';
-    }
-
-    // Sticky bar
-    window.addEventListener('scroll', () => {
-      document.getElementById('stickyContact').classList.toggle('visible', window.scrollY > 500);
-    });
-
-    // Scroll reveal
-    const
+</body>
+</html>
