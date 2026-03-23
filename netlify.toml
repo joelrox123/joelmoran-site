@@ -1,0 +1,12 @@
+# netlify.toml
+# Routes /api/chat and /api/lookup to the same Netlify function
+
+[[redirects]]
+  from = "/api/chat"
+  to   = "/.netlify/functions/chat"
+  status = 200
+
+[[redirects]]
+  from = "/api/lookup"
+  to   = "/.netlify/functions/chat"
+  status = 200
