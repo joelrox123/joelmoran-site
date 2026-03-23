@@ -796,7 +796,27 @@ SESSION WALL
     document.getElementById('context-pill').innerHTML =
       `<strong>${business}</strong> &middot; <span>${role}</span>`;
 
-    appendMessage('cmo', `Your session is live. I've got the context on ${business} and I've read your brief. Let's get into it.`);
+    // Fire the challenge as the first user message immediately
+    appendMessage('user', challenge);
+    conversationHistory.push({ role: 'user', content: challenge });
+    exchangeCount++;
+    updateWishes();
+    setLoading(true);
+
+    try {
+      const reply  = await callClaude(conversationHistory);
+      const isLast = exchangeCount >= MAX_EXCHANGES;
+      const displayed = isLast
+        ? reply + `\n\n*That is your 3 wishes. If this sparked something worth pursuing, [book 15 minutes with the real Joel](${BOOKING_URL}). No pitch, just a proper conversation.*`
+        : reply;
+      conversationHistory.push({ role: 'assistant', content: reply });
+      appendMessage('cmo', displayed);
+    } catch(e) {
+      appendMessage('cmo', 'The genie hit a snag. Refresh and try again.');
+    }
+
+    setLoading(false);
+    if (exchangeCount >= MAX_EXCHANGES) setTimeout(showWall, 2600);
   };
 
   // ---- SEND ----
