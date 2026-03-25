@@ -11,7 +11,6 @@
     :root {
       --ivory: #F9F6F1;
       --dark: #141412;
-      --charcoal: #2C2C2A;
       --gold: #B8935A;
       --gold-light: #D4AF7A;
       --mid: #7A7060;
@@ -29,12 +28,8 @@
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
       padding: 1.2rem 5vw;
       background: rgba(249,246,241,0.97);
       backdrop-filter: blur(20px);
@@ -45,13 +40,9 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem; font-weight: 400;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--dark); text-decoration: none;
-      flex-shrink: 0;
+      color: var(--dark); text-decoration: none; flex-shrink: 0;
     }
-    .nav-links {
-      display: flex; gap: 1.8rem;
-      list-style: none; align-items: center;
-    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
     .nav-links a {
       font-size: 0.63rem; font-weight: 400;
       letter-spacing: 0.16em; text-transform: uppercase;
@@ -59,17 +50,14 @@
       transition: color 0.3s; position: relative; white-space: nowrap;
     }
     .nav-links a::after {
-      content: ''; position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: var(--gold); transition: width 0.3s ease;
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease;
     }
     .nav-links a:hover { color: var(--gold); }
     .nav-links a:hover::after { width: 100%; }
     .nav-cta {
       background: var(--gold); color: #fff !important;
-      padding: 0.45rem 1.1rem;
-      transition: background 0.3s !important;
+      padding: 0.45rem 1.1rem; transition: background 0.3s !important;
     }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: var(--dark) !important; }
@@ -78,8 +66,7 @@
     .hero {
       background: var(--dark);
       padding: 8rem 8vw 5rem;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .hero-eyebrow {
       font-size: 0.7rem; font-weight: 400;
@@ -90,27 +77,20 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 300; color: #F9F6F1;
-      line-height: 1.15; margin-bottom: 1.4rem;
-      max-width: 700px;
+      line-height: 1.15; margin-bottom: 1.4rem; max-width: 700px;
     }
     .hero-title em { font-style: italic; color: var(--gold); }
     .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.55);
+      font-size: 1rem; color: rgba(255,255,255,0.5);
       max-width: 520px; line-height: 1.7;
     }
     .hero-deco {
-      position: absolute;
-      right: 8vw; top: 50%; transform: translateY(-50%);
-      font-size: 7rem; opacity: 0.06;
-      pointer-events: none; user-select: none;
+      position: absolute; right: 8vw; top: 50%; transform: translateY(-50%);
+      font-size: 8rem; opacity: 0.05; pointer-events: none; user-select: none;
     }
 
-    /* CONTENT */
-    .content {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 5rem 6vw;
-    }
+    /* CONTENT WRAPPER */
+    .content { max-width: 680px; margin: 0 auto; padding: 5rem 6vw; }
 
     /* SECTION LABEL */
     .section-label {
@@ -119,14 +99,11 @@
       color: var(--gold); margin-bottom: 0.8rem;
       display: flex; align-items: center; gap: 0.7rem;
     }
-    .section-label::after {
-      content: ''; flex: 1; height: 1px;
-      background: var(--border);
-    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
     h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
       font-weight: 400; line-height: 1.2;
       margin-bottom: 1.2rem; color: var(--dark);
     }
@@ -134,110 +111,56 @@
 
     p { color: var(--mid); margin-bottom: 1.2rem; font-size: 0.97rem; }
     p strong { color: var(--dark); font-weight: 500; }
+    p a { color: var(--gold); text-decoration: underline; }
 
     .section { margin-bottom: 4rem; }
 
-    /* STEP CARDS */
-    .steps { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
-    .step {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 1.2rem;
-      align-items: start;
-      padding: 1.4rem;
-      background: white;
-      border: 1px solid var(--border);
-    }
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem; font-weight: 300;
-      color: var(--gold); line-height: 1;
-      padding-top: 0.1rem;
-    }
-    .step-body h3 {
-      font-size: 0.9rem; font-weight: 500;
-      color: var(--dark); margin-bottom: 0.3rem;
-      letter-spacing: 0.02em;
-    }
-    .step-body p {
-      font-size: 0.87rem; color: var(--mid);
-      margin-bottom: 0;
-    }
-    .step-tool {
-      display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.65rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid rgba(184,147,90,0.3);
-      padding: 0.2rem 0.55rem;
-    }
-
-    /* TOOL GRID */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .tool-card {
-      padding: 1.4rem;
-      background: white;
-      border: 1px solid var(--border);
-    }
-    .tool-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
-    .tool-card h3 {
-      font-size: 0.88rem; font-weight: 500;
-      color: var(--dark); margin-bottom: 0.3rem;
-    }
-    .tool-card p {
-      font-size: 0.82rem; color: var(--mid); margin-bottom: 0;
-    }
-
-    /* QUOTE BLOCK */
+    /* PULL QUOTE */
     .pull-quote {
       border-left: 3px solid var(--gold);
       padding: 1.2rem 1.5rem;
-      margin: 2.5rem 0;
+      margin: 2rem 0;
       background: white;
     }
     .pull-quote p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-style: italic;
+      font-size: 1.2rem; font-style: italic;
       font-weight: 300; color: var(--dark);
       margin-bottom: 0; line-height: 1.5;
     }
 
+    /* HONEST MOMENT CARDS */
+    .moment-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .moment {
+      padding: 1.3rem 1.4rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+    }
+    .moment-label {
+      font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .moment p { font-size: 0.9rem; margin-bottom: 0; }
+
+    /* TOOLS */
+    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .tool-card { padding: 1.3rem; background: white; border: 1px solid var(--border); }
+    .tool-card-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .tool-card h3 { font-size: 0.88rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; }
+    .tool-card p { font-size: 0.82rem; color: var(--mid); margin-bottom: 0; }
+
     /* HINDSIGHT */
-    .hindsight-list {
-      list-style: none;
-      margin-top: 1.5rem;
-      display: flex; flex-direction: column; gap: 0.9rem;
-    }
-    .hindsight-list li {
-      display: flex; gap: 1rem; align-items: start;
-      font-size: 0.92rem; color: var(--mid);
-    }
-    .hindsight-list li::before {
-      content: '→';
-      color: var(--gold); font-size: 0.9rem;
-      flex-shrink: 0; margin-top: 0.15rem;
-    }
+    .hindsight-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+    .hindsight-list li { display: flex; gap: 1rem; align-items: start; font-size: 0.92rem; color: var(--mid); }
+    .hindsight-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 0.15rem; }
     .hindsight-list li strong { color: var(--dark); font-weight: 500; }
 
-    /* CTA BLOCK */
-    .cta-block {
-      background: var(--dark);
-      padding: 4rem 3rem;
-      text-align: center;
-      margin-top: 5rem;
-    }
+    /* CTA */
+    .cta-block { background: var(--dark); padding: 4rem 3rem; text-align: center; margin-top: 5rem; }
     .cta-lamp { font-size: 3rem; display: block; margin-bottom: 1rem; }
-    .cta-eyebrow {
-      font-size: 0.65rem; font-weight: 400;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1rem;
-    }
+    .cta-eyebrow { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
     .cta-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -245,41 +168,29 @@
       line-height: 1.2; margin-bottom: 0.8rem;
     }
     .cta-title em { font-style: italic; color: var(--gold); }
-    .cta-sub {
-      font-size: 0.88rem; color: rgba(255,255,255,0.45);
-      max-width: 400px; margin: 0 auto 2rem;
-    }
-    .cta-buttons {
-      display: flex; gap: 1rem;
-      justify-content: center; flex-wrap: wrap;
-    }
+    .cta-sub { font-size: 0.88rem; color: rgba(255,255,255,0.45); max-width: 400px; margin: 0 auto 2rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
+      display: inline-block; padding: 0.9rem 2.2rem;
       background: var(--gold); color: var(--dark);
       font-size: 0.78rem; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
+      text-decoration: none; transition: background 0.2s, transform 0.2s;
     }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
     .btn-secondary {
-      display: inline-block;
-      padding: 0.9rem 2.2rem;
-      background: transparent;
-      color: rgba(255,255,255,0.5);
+      display: inline-block; padding: 0.9rem 2.2rem;
+      background: transparent; color: rgba(255,255,255,0.5);
       border: 1px solid rgba(255,255,255,0.15);
       font-size: 0.78rem; font-weight: 400;
       letter-spacing: 0.1em; text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
+      text-decoration: none; transition: color 0.2s, border-color 0.2s;
     }
     .btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 
     /* FOOTER */
     footer {
-      background: var(--dark);
-      padding: 1.8rem 8vw;
+      background: var(--dark); padding: 1.8rem 8vw;
       display: flex; justify-content: space-between; align-items: center;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
@@ -289,11 +200,7 @@
       letter-spacing: 0.1em; text-transform: uppercase;
       color: rgba(255,255,255,0.6); text-decoration: none;
     }
-    .footer-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem; font-style: italic;
-      color: rgba(184,147,90,0.7);
-    }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-size: 0.72rem; font-style: italic; color: rgba(184,147,90,0.7); }
     .footer-copy { font-size: 0.6rem; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; }
 
     @keyframes fadeUp {
@@ -326,105 +233,87 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero fade-in">
   <p class="hero-eyebrow">The Blueprint · Behind the build</p>
   <h1 class="hero-title">
-    How I built an AI<br>
-    <em>Fractional CMO</em><br>
-    in an afternoon.
+    The honest story of how<br>
+    <em>the CMO Genie</em><br>
+    actually got built.
   </h1>
-  <p class="hero-sub">No developers. No code. Just Claude, a good idea, and 20 years of marketing experience worth distilling.</p>
+  <p class="hero-sub">Inspired by someone else. Brought to life by Claude. The genie theme? That was mine. Here's exactly how it went.</p>
   <div class="hero-deco">🪔</div>
 </div>
 
-<!-- CONTENT -->
 <div class="content">
 
-  <!-- THE IDEA -->
+  <!-- HONEST INSPIRATION -->
   <div class="section fade-in">
-    <p class="section-label">The idea</p>
-    <h2>Making myself redundant.<br><em>On purpose.</em></h2>
-    <p>I made myself redundant at Block. Then I did it again — this time deliberately. I wanted to see if I could take 20 years of hard-won marketing experience, distill it into an AI advisor, and put it on my website for anyone to use.</p>
-    <p>The concept: a fractional CMO that knows my frameworks, my career, my instincts. Sharp, specific, no fluff. To keep it from going completely rogue, I limited it to <strong>3 wishes</strong>. Ask your hardest marketing problem. Get the kind of clarity that usually costs $500/hr.</p>
+    <p class="section-label">Where it started</p>
+    <h2>I saw someone else do it.<br><em>And I wanted mine to feel different.</em></h2>
+    <p>I'll be honest — I was inspired by a LinkedIn post from someone who had built a fractional CMO using AI. Smart idea. But theirs felt like a bolt-on. A standalone chat window that could have lived anywhere.</p>
+    <p>I wanted mine to feel like it was actually <strong>part of my site</strong> — integrated into my brand, my story, my design. Not just a chatbot with my name on it.</p>
+    <p>So I started building. And the first version was, let's say, functional. It worked. But it was quite plain. The concept was there but the soul wasn't.</p>
     <div class="pull-quote">
-      <p>"The wild part wasn't that it worked. It was how fast it worked."</p>
+      <p>"Then I had an idea. What if it was a genie in a bottle? 3 wishes. A lamp. Smoke. Magic."</p>
+    </div>
+    <p>That was mine. Claude didn't suggest it. I did. And then Claude took that idea and made it something I'm genuinely proud of — the floating lamp, the smoke particles, the gold glow, the wish counter. The execution was a collaboration. The concept was my brain.</p>
+  </div>
+
+  <!-- THE REAL BUILD -->
+  <div class="section fade-in">
+    <p class="section-label">How it actually went</p>
+    <h2>The messy reality<br><em>of building with AI.</em></h2>
+    <p>I'm not going to pretend this was a smooth 5-step process. It wasn't. Here are the honest moments from the build:</p>
+
+    <div class="moment-list">
+      <div class="moment">
+        <p class="moment-label">The hallucination problem</p>
+        <p>Early on, the genie started making up specific stories from my career — invented numbers, fabricated campaign results. Things I never said or did. I had to hard-code strict rules: the genie can only reference <strong>verified facts</strong> about my career, nothing else. That took real work to get right.</p>
+      </div>
+      <div class="moment">
+        <p class="moment-label">The API key saga</p>
+        <p>Getting the Anthropic API connected was... a journey. Missing environment variables. A truncated key that looked right but wasn't. A credit balance that was there but not registering. Each issue looked different to the last. Eventually resolved, but it took longer than I'd like to admit.</p>
+      </div>
+      <div class="moment">
+        <p class="moment-label">The dead-end form</p>
+        <p>The first version had a form that just... stopped. You'd fill in your challenge, hit submit, and get a "session is live" message. Then you had to type your question again. A complete dead end. Fixed it so your challenge fires immediately as the first message.</p>
+      </div>
+      <div class="moment">
+        <p class="moment-label">The Netlify quirk</p>
+        <p>Netlify injects scripts that can corrupt inline JavaScript. Spent time debugging functions that just weren't being found. Fix: everything has to be explicitly assigned to the <code>window</code> object. One of those things you only learn the hard way.</p>
+      </div>
+      <div class="moment">
+        <p class="moment-label">Moving from chat to Cowork</p>
+        <p>I built the early version by manually downloading files from Claude chat and uploading them to GitHub and Netlify one by one. Every. Single. Change. Moving to Cowork changed everything — it manages the files, the git workflow, staging vs live. Night and day.</p>
+      </div>
     </div>
   </div>
 
   <!-- THE TOOLS -->
   <div class="section fade-in">
-    <p class="section-label">The tools</p>
-    <h2>What I actually used.<br><em>All of it, no code.</em></h2>
-    <p>The whole stack is two tools. That's it.</p>
+    <p class="section-label">The actual stack</p>
+    <h2>What I used.<br><em>All of it.</em></h2>
+    <p>No developers. No code written by hand. Two AI tools and a bit of persistence.</p>
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-card-icon">🤖</div>
         <h3>Claude (Anthropic)</h3>
-        <p>The AI brain. I used it to write the HTML, design the system prompt, and refine the genie's personality and rules. Claude is the engine under the hood.</p>
+        <p>The brain. Built the HTML, CSS, designed the system prompt, refined the genie's personality and rules.</p>
       </div>
       <div class="tool-card">
         <div class="tool-card-icon">🖥️</div>
-        <h3>Cowork (Claude Desktop)</h3>
-        <p>The agentic layer that made it real. Cowork let me direct Claude to build, edit, push to GitHub, and deploy to Netlify — all by talking to it. No terminal. No dev environment.</p>
+        <h3>Cowork</h3>
+        <p>The hands. Manages files, pushes to GitHub, deploys to Netlify. You just talk to it. No terminal required.</p>
       </div>
       <div class="tool-card">
         <div class="tool-card-icon">🐙</div>
         <h3>GitHub</h3>
-        <p>Version control and the bridge to deployment. Claude pushed every change directly to the repo.</p>
+        <p>Version control. Staging branch for testing, main branch for live. Cowork handles all the pushing.</p>
       </div>
       <div class="tool-card">
         <div class="tool-card-icon">🚀</div>
         <h3>Netlify</h3>
-        <p>Hosting and serverless functions. Auto-deploys on every push to main. The CMO tool's API calls run through Netlify Functions.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE WORKFLOW -->
-  <div class="section fade-in">
-    <p class="section-label">The workflow</p>
-    <h2>Step by step.<br><em>Exactly how it happened.</em></h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-body">
-          <h3>Start with the concept, not the code</h3>
-          <p>I described what I wanted to Claude in plain English: a genie lamp metaphor, 3-wish limit, system prompt trained on my actual career. Claude helped me pressure-test the concept before writing a single line.</p>
-          <span class="step-tool">Claude · Conversation</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-body">
-          <h3>Write the system prompt</h3>
-          <p>This is the most important part. I wrote strict rules: verified facts Claude could reference from my career, what it was never allowed to fabricate, tone, format, and the session wall logic. Claude helped me tighten every line.</p>
-          <span class="step-tool">Claude · Prompt Engineering</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-body">
-          <h3>Build the page in Cowork</h3>
-          <p>I described the design — dark hero, floating lamp, smoke particles, gold accents — and Cowork built the full HTML/CSS. I reviewed, gave feedback, and it iterated. Back and forth until it looked exactly right.</p>
-          <span class="step-tool">Cowork · Build</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-body">
-          <h3>Wire up the backend</h3>
-          <p>The tool needed to call the Claude API securely. Cowork built a Netlify Function to handle the API calls server-side, so my API key never touches the browser.</p>
-          <span class="step-tool">Cowork · Netlify Functions</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">05</div>
-        <div class="step-body">
-          <h3>Set up staging and push to live</h3>
-          <p>Cowork cloned my repo, set up a staging branch, and managed every push. Test on staging. Happy? "Promote to live." One sentence and it's done.</p>
-          <span class="step-tool">Cowork · GitHub · Netlify</span>
-        </div>
+        <p>Hosting + serverless functions. The API key never touches the browser — it all runs server-side.</p>
       </div>
     </div>
   </div>
@@ -434,19 +323,20 @@
     <p class="section-label">Hindsight</p>
     <h2>What I'd do<br><em>differently.</em></h2>
     <ul class="hindsight-list">
-      <li><strong>Start with the system prompt.</strong> I iterated on the design first and had to re-tune the prompt later. Write the AI's brain before you build the body.</li>
-      <li><strong>Set up staging from day one.</strong> I pushed a few things directly to live early on. Once I had staging locked, the workflow became clean and stress-free.</li>
-      <li><strong>Nail the session wall sooner.</strong> The 3-wish limit and the booking CTA are where the tool converts. I treated it as an afterthought. It should be the first thing you design.</li>
-      <li><strong>Test on real problems earlier.</strong> I tested with hypothetical scenarios. Real-world problems exposed gaps in the system prompt I wouldn't have caught otherwise.</li>
+      <li><strong>Start with Cowork, not chat.</strong> The manual download-upload loop in early Claude chat was painful. Cowork handles all of that automatically. Start there.</li>
+      <li><strong>Write the system prompt first.</strong> I built the design before nailing the AI's rules. The genie's brain should come before its face.</li>
+      <li><strong>Tackle the hallucination rules on day one.</strong> It's uncomfortable to find your AI making up stories about your career. Lock the verified facts list down immediately.</li>
+      <li><strong>Design the session wall early.</strong> The 3-wish limit and booking CTA is where the tool actually converts. I treated it as an afterthought. It's the most important bit.</li>
+      <li><strong>Set up staging before touching live.</strong> A few early pushes went straight to production before I had staging sorted. Every change should go to staging first.</li>
     </ul>
   </div>
 
   <!-- CTA -->
   <div class="cta-block fade-in">
     <span class="cta-lamp">🪔</span>
-    <p class="cta-eyebrow">What's next</p>
-    <h2 class="cta-title">Try it yourself.<br><em>Or let's talk.</em></h2>
-    <p class="cta-sub">The CMO Genie is live on my site. 3 wishes, no signup. Or if you want to build something like this for your own business, let's have a proper conversation.</p>
+    <p class="cta-eyebrow">Your turn</p>
+    <h2 class="cta-title">Try the genie.<br><em>Or let's build yours.</em></h2>
+    <p class="cta-sub">The CMO Genie is live. 3 wishes, no signup. Or if you want to build something like this for your own practice or business, book 15 minutes — no pitch, just a proper conversation.</p>
     <div class="cta-buttons">
       <a href="/ai-marketing-strategy-tool" class="btn-primary">🪔 Try the CMO Genie</a>
       <a href="https://cal.com/joelmoran" target="_blank" class="btn-secondary">Book a free 15-min call</a>
