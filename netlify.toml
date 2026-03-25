@@ -10,3 +10,13 @@
   from = "/api/lookup"
   to   = "/.netlify/functions/chat"
   status = 200
+
+[[redirects]]
+  from = "/cmo-tool"
+  to   = "/ai-marketing-strategy-tool"
+  status = 301
+
+[[redirects]]
+  from = "/cmo-tool.html"
+  to   = "/ai-marketing-strategy-tool"
+  status = 301
