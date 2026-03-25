@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How I Built the CMO Genie — Joel Moran</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141412'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='600' fill='%23B8935A'%3EJM%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ivory: #F9F6F1;
+      --dark: #141412;
+      --charcoal: #2C2C2A;
+      --gold: #B8935A;
+      --gold-light: #D4AF7A;
+      --mid: #7A7060;
+      --border: #EAE5DC;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ivory);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(249,246,241,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      gap: 2rem;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark); text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex; gap: 1.8rem;
+      list-style: none; align-items: center;
+    }
+    .nav-links a {
+      font-size: 0.63rem; font-weight: 400;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--mid); text-decoration: none;
+      transition: color 0.3s; position: relative; white-space: nowrap;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold); transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--gold); color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      transition: background 0.3s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--dark) !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--dark);
+      padding: 8rem 8vw 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300; color: #F9F6F1;
+      line-height: 1.15; margin-bottom: 1.4rem;
+      max-width: 700px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.55);
+      max-width: 520px; line-height: 1.7;
+    }
+    .hero-deco {
+      position: absolute;
+      right: 8vw; top: 50%; transform: translateY(-50%);
+      font-size: 7rem; opacity: 0.06;
+      pointer-events: none; user-select: none;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 6vw;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--border);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 1.2rem; color: var(--dark);
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+
+    p { color: var(--mid); margin-bottom: 1.2rem; font-size: 0.97rem; }
+    p strong { color: var(--dark); font-weight: 500; }
+
+    .section { margin-bottom: 4rem; }
+
+    /* STEP CARDS */
+    .steps { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      padding: 1.4rem;
+      background: white;
+      border: 1px solid var(--border);
+    }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 300;
+      color: var(--gold); line-height: 1;
+      padding-top: 0.1rem;
+    }
+    .step-body h3 {
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--dark); margin-bottom: 0.3rem;
+      letter-spacing: 0.02em;
+    }
+    .step-body p {
+      font-size: 0.87rem; color: var(--mid);
+      margin-bottom: 0;
+    }
+    .step-tool {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,147,90,0.3);
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* TOOL GRID */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .tool-card {
+      padding: 1.4rem;
+      background: white;
+      border: 1px solid var(--border);
+    }
+    .tool-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .tool-card h3 {
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--dark); margin-bottom: 0.3rem;
+    }
+    .tool-card p {
+      font-size: 0.82rem; color: var(--mid); margin-bottom: 0;
+    }
+
+    /* QUOTE BLOCK */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1.2rem 1.5rem;
+      margin: 2.5rem 0;
+      background: white;
+    }
+    .pull-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-style: italic;
+      font-weight: 300; color: var(--dark);
+      margin-bottom: 0; line-height: 1.5;
+    }
+
+    /* HINDSIGHT */
+    .hindsight-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.9rem;
+    }
+    .hindsight-list li {
+      display: flex; gap: 1rem; align-items: start;
+      font-size: 0.92rem; color: var(--mid);
+    }
+    .hindsight-list li::before {
+      content: '→';
+      color: var(--gold); font-size: 0.9rem;
+      flex-shrink: 0; margin-top: 0.15rem;
+    }
+    .hindsight-list li strong { color: var(--dark); font-weight: 500; }
+
+    /* CTA BLOCK */
+    .cta-block {
+      background: var(--dark);
+      padding: 4rem 3rem;
+      text-align: center;
+      margin-top: 5rem;
+    }
+    .cta-lamp { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .cta-eyebrow {
+      font-size: 0.65rem; font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300; color: #F9F6F1;
+      line-height: 1.2; margin-bottom: 0.8rem;
+    }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-sub {
+      font-size: 0.88rem; color: rgba(255,255,255,0.45);
+      max-width: 400px; margin: 0 auto 2rem;
+    }
+    .cta-buttons {
+      display: flex; gap: 1rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: var(--gold); color: var(--dark);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 1.8rem 8vw;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem; font-weight: 300;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+    }
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem; font-style: italic;
+      color: rgba(184,147,90,0.7);
+    }
+    .footer-copy { font-size: 0.6rem; color: rgba(255,255,255,0.35); letter-spacing: 0.07em; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeUp 0.6s ease forwards; }
+
+    @media (max-width: 680px) {
+      .hero { padding: 7rem 6vw 4rem; }
+      .hero-deco { display: none; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .cta-block { padding: 3rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Joel Moran</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#credentials">Experience</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="/ai-marketing-strategy-tool">🪔 CMO Tool</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Book a call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero fade-in">
+  <p class="hero-eyebrow">The Blueprint · Behind the build</p>
+  <h1 class="hero-title">
+    How I built an AI<br>
+    <em>Fractional CMO</em><br>
+    in an afternoon.
+  </h1>
+  <p class="hero-sub">No developers. No code. Just Claude, a good idea, and 20 years of marketing experience worth distilling.</p>
+  <div class="hero-deco">🪔</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- THE IDEA -->
+  <div class="section fade-in">
+    <p class="section-label">The idea</p>
+    <h2>Making myself redundant.<br><em>On purpose.</em></h2>
+    <p>I made myself redundant at Block. Then I did it again — this time deliberately. I wanted to see if I could take 20 years of hard-won marketing experience, distill it into an AI advisor, and put it on my website for anyone to use.</p>
+    <p>The concept: a fractional CMO that knows my frameworks, my career, my instincts. Sharp, specific, no fluff. To keep it from going completely rogue, I limited it to <strong>3 wishes</strong>. Ask your hardest marketing problem. Get the kind of clarity that usually costs $500/hr.</p>
+    <div class="pull-quote">
+      <p>"The wild part wasn't that it worked. It was how fast it worked."</p>
+    </div>
+  </div>
+
+  <!-- THE TOOLS -->
+  <div class="section fade-in">
+    <p class="section-label">The tools</p>
+    <h2>What I actually used.<br><em>All of it, no code.</em></h2>
+    <p>The whole stack is two tools. That's it.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-card-icon">🤖</div>
+        <h3>Claude (Anthropic)</h3>
+        <p>The AI brain. I used it to write the HTML, design the system prompt, and refine the genie's personality and rules. Claude is the engine under the hood.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🖥️</div>
+        <h3>Cowork (Claude Desktop)</h3>
+        <p>The agentic layer that made it real. Cowork let me direct Claude to build, edit, push to GitHub, and deploy to Netlify — all by talking to it. No terminal. No dev environment.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🐙</div>
+        <h3>GitHub</h3>
+        <p>Version control and the bridge to deployment. Claude pushed every change directly to the repo.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🚀</div>
+        <h3>Netlify</h3>
+        <p>Hosting and serverless functions. Auto-deploys on every push to main. The CMO tool's API calls run through Netlify Functions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE WORKFLOW -->
+  <div class="section fade-in">
+    <p class="section-label">The workflow</p>
+    <h2>Step by step.<br><em>Exactly how it happened.</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Start with the concept, not the code</h3>
+          <p>I described what I wanted to Claude in plain English: a genie lamp metaphor, 3-wish limit, system prompt trained on my actual career. Claude helped me pressure-test the concept before writing a single line.</p>
+          <span class="step-tool">Claude · Conversation</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Write the system prompt</h3>
+          <p>This is the most important part. I wrote strict rules: verified facts Claude could reference from my career, what it was never allowed to fabricate, tone, format, and the session wall logic. Claude helped me tighten every line.</p>
+          <span class="step-tool">Claude · Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Build the page in Cowork</h3>
+          <p>I described the design — dark hero, floating lamp, smoke particles, gold accents — and Cowork built the full HTML/CSS. I reviewed, gave feedback, and it iterated. Back and forth until it looked exactly right.</p>
+          <span class="step-tool">Cowork · Build</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Wire up the backend</h3>
+          <p>The tool needed to call the Claude API securely. Cowork built a Netlify Function to handle the API calls server-side, so my API key never touches the browser.</p>
+          <span class="step-tool">Cowork · Netlify Functions</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>Set up staging and push to live</h3>
+          <p>Cowork cloned my repo, set up a staging branch, and managed every push. Test on staging. Happy? "Promote to live." One sentence and it's done.</p>
+          <span class="step-tool">Cowork · GitHub · Netlify</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT I'D DO DIFFERENTLY -->
+  <div class="section fade-in">
+    <p class="section-label">Hindsight</p>
+    <h2>What I'd do<br><em>differently.</em></h2>
+    <ul class="hindsight-list">
+      <li><strong>Start with the system prompt.</strong> I iterated on the design first and had to re-tune the prompt later. Write the AI's brain before you build the body.</li>
+      <li><strong>Set up staging from day one.</strong> I pushed a few things directly to live early on. Once I had staging locked, the workflow became clean and stress-free.</li>
+      <li><strong>Nail the session wall sooner.</strong> The 3-wish limit and the booking CTA are where the tool converts. I treated it as an afterthought. It should be the first thing you design.</li>
+      <li><strong>Test on real problems earlier.</strong> I tested with hypothetical scenarios. Real-world problems exposed gaps in the system prompt I wouldn't have caught otherwise.</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block fade-in">
+    <span class="cta-lamp">🪔</span>
+    <p class="cta-eyebrow">What's next</p>
+    <h2 class="cta-title">Try it yourself.<br><em>Or let's talk.</em></h2>
+    <p class="cta-sub">The CMO Genie is live on my site. 3 wishes, no signup. Or if you want to build something like this for your own business, let's have a proper conversation.</p>
+    <div class="cta-buttons">
+      <a href="/ai-marketing-strategy-tool" class="btn-primary">🪔 Try the CMO Genie</a>
+      <a href="https://cal.com/joelmoran" target="_blank" class="btn-secondary">Book a free 15-min call</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Joel Moran</a>
+  <span class="footer-tagline">Marketing that actually works.</span>
+  <span class="footer-copy">© 2026 joelmoran.com</span>
+</footer>
+
+</body>
+</html>
