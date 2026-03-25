@@ -20,3 +20,13 @@
   from = "/cmo-tool.html"
   to   = "/ai-marketing-strategy-tool"
   status = 301
+
+[[redirects]]
+  from = "/blueprint"
+  to   = "/how-i-built-an-ai-fractional-cmo"
+  status = 301
+
+[[redirects]]
+  from = "/blueprint.html"
+  to   = "/how-i-built-an-ai-fractional-cmo"
+  status = 301
