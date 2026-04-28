@@ -86,10 +86,23 @@
     }
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: #141412 !important; color: #fff !important; }
-    .nav-tool-active {
-      color: #B8935A !important;
-    }
+    .nav-tool-active { color: #B8935A !important; }
     .nav-tool-active::after { width: 100% !important; background: #B8935A; }
+    /* HAMBURGER */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0; z-index: 600; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #141412; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: rgba(20,20,18,0.97); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .nav-mobile-overlay.open { display: flex; opacity: 1; }
+    .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool, .nav-mobile-overlay ul li a.nav-mobile-cta { color: #B8935A !important; }
+    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
+    @media (max-width: 640px) { .nav-links { display: none !important; } .nav-hamburger { display: flex; } }
     .page-wrap {
       padding-top: 80px;
       min-height: 100vh;
@@ -572,7 +585,22 @@
     <li><a href="/ai-marketing-strategy-tool" class="nav-tool-active">CMO Tool</a></li>
     <li><a href="index.html#contact" class="nav-cta">Book a call</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-overlay" id="navMobileOverlay">
+  <ul>
+    <li><a href="index.html" class="nav-mobile-link">Home</a></li>
+    <li><a href="index.html#about" class="nav-mobile-link">About</a></li>
+    <li><a href="index.html#credentials" class="nav-mobile-link">Experience</a></li>
+    <li><a href="index.html#work" class="nav-mobile-link">Work</a></li>
+    <li><a href="index.html#services" class="nav-mobile-link">Services</a></li>
+    <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link nav-tool">🪔 CMO Tool</a></li>
+    <li><a href="index.html#contact" class="nav-mobile-link nav-mobile-cta">Book a call</a></li>
+  </ul>
+  <p class="nav-mobile-footer">Marketing that actually works.</p>
+</div>
 <div class="page-wrap">
   <!-- HERO -->
   <div class="tool-hero">
@@ -952,6 +980,26 @@ SESSION WALL
   document.getElementById('user-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); window.sendMessage(); }
   });
+  // HAMBURGER MENU
+  window.navHamburgerInit = function() {
+    var btn = document.getElementById('navHamburger');
+    var overlay = document.getElementById('navMobileOverlay');
+    if (!btn || !overlay) return;
+    btn.addEventListener('click', function() {
+      var isOpen = overlay.classList.contains('open');
+      overlay.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+    overlay.querySelectorAll('.nav-mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  };
+  window.navHamburgerInit();
 </script>
 </body>
 </html>

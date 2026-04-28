@@ -105,6 +105,82 @@
     .nav-cta::after { display: none !important; }
     .nav-cta:hover { background: var(--dark) !important; color: var(--white) !important; }
 
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+      flex-shrink: 0; z-index: 600;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--dark);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* MOBILE MENU OVERLAY */
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 490;
+      background: rgba(20,20,18,0.97);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav-mobile-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+    .nav-mobile-overlay ul {
+      list-style: none;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0;
+      width: 100%;
+    }
+    .nav-mobile-overlay ul li {
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-mobile-overlay ul li:first-child {
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-mobile-overlay ul li a {
+      display: block;
+      padding: 1.3rem 8vw;
+      font-size: 0.8rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-mobile-overlay ul li a:hover { color: var(--gold); padding-left: calc(8vw + 6px); }
+    .nav-mobile-overlay ul li a.nav-cta {
+      color: var(--gold) !important;
+      background: none;
+      padding: 1.3rem 8vw;
+    }
+    .nav-mobile-overlay ul li a.nav-tool {
+      color: var(--gold) !important;
+    }
+    .nav-mobile-footer {
+      margin-top: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem; font-style: italic;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
     /* HERO */
     .hero {
       min-height: 100vh;
@@ -817,8 +893,8 @@
     }
 
     @media (max-width: 640px) {
-      .nav-links li:not(:last-child):not(:last-child) { display: none; }
-      .nav-links li:nth-last-child(2) { display: flex; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       .hero-photo { min-height: 100vw; max-height: 120vw; }
       .hero-photo img { object-position: center 15%; }
       .hero-photo-badge { bottom: 1.5rem; left: 1.5rem; }
@@ -870,7 +946,24 @@
       <li><a href="/ai-marketing-strategy-tool" style="color:var(--gold)">🪔 CMO Tool</a></li>
       <li><a href="#contact" class="nav-cta">Book a call</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="nav-mobile-overlay" id="navMobileOverlay">
+    <ul>
+      <li><a href="#about" class="nav-mobile-link">About</a></li>
+      <li><a href="#credentials" class="nav-mobile-link">Experience</a></li>
+      <li><a href="#work" class="nav-mobile-link">Work</a></li>
+      <li><a href="#services" class="nav-mobile-link">Services</a></li>
+      <li><a href="#contact" class="nav-mobile-link">Contact</a></li>
+      <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link nav-tool">🪔 CMO Tool</a></li>
+      <li><a href="#contact" class="nav-mobile-link nav-cta">Book a call</a></li>
+    </ul>
+    <p class="nav-mobile-footer">Marketing that actually works.</p>
+  </div>
 
   <!-- STICKY BAR -->
   <div class="sticky-contact" id="stickyContact">
@@ -1358,6 +1451,34 @@
       })();
     }
   });
+
+  // HAMBURGER MENU
+  window.navHamburgerInit = function() {
+    var btn = document.getElementById('navHamburger');
+    var overlay = document.getElementById('navMobileOverlay');
+    if (!btn || !overlay) return;
+    btn.addEventListener('click', function() {
+      var isOpen = overlay.classList.contains('open');
+      if (isOpen) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        overlay.classList.add('open');
+        btn.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    var mobileLinks = overlay.querySelectorAll('.nav-mobile-link');
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  };
+  window.navHamburgerInit();
 
   document.addEventListener('mouseover', function(e) {
     var cursor = document.getElementById('cursor');
