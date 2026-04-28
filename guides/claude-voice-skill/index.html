@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Make Claude Sound Like You | Joel Moran</title>
+  <meta name="description" content="A no-code setup that turns generic AI output into writing that's recognisably yours. Build a custom Claude skill in about 30 minutes.">
+  <link rel="canonical" href="https://joelmoran.com/guides/claude-voice-skill/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Make Claude Sound Like You | Joel Moran">
+  <meta property="og:description" content="A no-code setup that turns generic AI output into writing that's recognisably yours. Build a custom Claude skill in about 30 minutes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://joelmoran.com/guides/claude-voice-skill/">
+  <meta property="og:image" content="https://raw.githubusercontent.com/joelrox123/joelmoran-site/main/joel-profile.jpg">
+  <meta property="og:site_name" content="Joel Moran">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Make Claude Sound Like You | Joel Moran">
+  <meta name="twitter:description" content="A no-code setup that turns generic AI output into writing that's recognisably yours. Build a custom Claude skill in about 30 minutes.">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/joelrox123/joelmoran-site/main/joel-profile.jpg">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Make Claude Sound Like You",
+    "description": "A no-code setup that turns generic AI output into writing that's recognisably yours. Build a custom Claude skill in about 30 minutes.",
+    "author": {
+      "@type": "Person",
+      "name": "Joel Moran",
+      "url": "https://joelmoran.com",
+      "jobTitle": "Marketing Leader + Fractional CMO"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Joel Moran",
+      "url": "https://joelmoran.com"
+    },
+    "datePublished": "2026-04-29",
+    "dateModified": "2026-04-29",
+    "url": "https://joelmoran.com/guides/claude-voice-skill/",
+    "image": "https://raw.githubusercontent.com/joelrox123/joelmoran-site/main/joel-profile.jpg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://joelmoran.com/guides/claude-voice-skill/"
+    },
+    "keywords": ["Claude skill", "Claude tone of voice", "custom Claude skill", "AI writing voice", "make Claude sound like you", "SKILL.md", "AI tone of voice", "no-code AI"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #F9F6F1;
+      --white: #FFFFFF;
+      --dark: #141412;
+      --charcoal: #2C2C2A;
+      --gold: #B8935A;
+      --gold-light: #D4AF7A;
+      --mid: #7A7060;
+      --border: #EAE5DC;
+      --border-gold: rgba(184, 147, 90, 0.25);
+      --gold-tint: rgba(184, 147, 90, 0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav.site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(20, 20, 18, 0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.35rem;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(249, 246, 241, 0.72);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      color: var(--gold) !important;
+      border: 1px solid var(--border-gold);
+      padding: 0.5rem 1.25rem;
+      transition: background 0.2s ease, color 0.2s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--dark) !important;
+    }
+
+    /* ---- HERO ---- */
+    .guide-hero {
+      padding: 8rem 2rem 3.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .guide-breadcrumb {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 2rem;
+    }
+
+    .guide-breadcrumb a {
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .guide-breadcrumb a:hover { color: var(--gold); }
+    .guide-breadcrumb span { margin: 0 0.6rem; opacity: 0.5; }
+
+    .guide-category {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .guide-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.015em;
+    }
+
+    .guide-hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .guide-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.45rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .guide-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    .guide-meta span { padding: 0 1rem; }
+
+    .guide-meta span + span {
+      border-left: 1px solid var(--border);
+    }
+
+    .gold-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.5rem auto 0;
+    }
+
+    /* ---- ARTICLE BODY ---- */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    .article-wrap p {
+      margin-bottom: 1.6rem;
+      color: var(--charcoal);
+    }
+
+    .article-wrap h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.7rem, 3vw, 2.1rem);
+      line-height: 1.2;
+      color: var(--dark);
+      margin-top: 4.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-wrap h2 .num {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .article-wrap h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-top: 2.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .article-wrap strong {
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .article-wrap code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      background: var(--gold-tint);
+      padding: 0.1rem 0.45rem;
+      border-radius: 2px;
+      color: var(--dark);
+    }
+
+    /* Section divider */
+    .s-rule {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 3.5rem 0;
+    }
+
+    /* Heads-up callout */
+    .heads-up {
+      margin: 2.5rem 0;
+      padding: 1.5rem 1.75rem;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: 0;
+    }
+
+    .heads-up .label {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .heads-up p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .heads-up p:last-child { margin-bottom: 0; }
+
+    /* Prompt block */
+    .prompt-shell {
+      margin: 2.5rem 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      background: var(--gold-tint);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prompt-header-left { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+
+    .prompt-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--white);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border-gold);
+    }
+
+    .prompt-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .copy-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: var(--gold);
+      border: none;
+      color: var(--dark);
+      padding: 0.55rem 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .copy-btn:hover { background: var(--gold-light); }
+    .copy-btn.copied { background: var(--dark); color: var(--ivory); }
+
+    pre.prompt-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--charcoal);
+      padding: 1.5rem 1.25rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: var(--white);
+    }
+
+    pre.prompt-text .stage {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    pre.prompt-text .emph {
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    /* Skill code block */
+    .skill-block {
+      background: var(--dark);
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.15);
+    }
+
+    .skill-filename {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ivory);
+    }
+
+    .skill-filename .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .copy-btn-dark {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--border-gold);
+      color: var(--gold);
+      padding: 0.4rem 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn-dark:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .copy-btn-dark.copied {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    pre.skill-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--ivory);
+      padding: 1.5rem 1.25rem;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    pre.skill-code .heading {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    pre.skill-code .frontmatter {
+      color: rgba(212, 175, 122, 0.75);
+    }
+
+    pre.skill-code .good {
+      color: #A8C99B;
+      font-weight: 500;
+    }
+
+    pre.skill-code .bad {
+      color: #C77B6B;
+      font-weight: 500;
+    }
+
+    /* Install steps */
+    .steps {
+      margin: 2.5rem 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gold);
+    }
+
+    .step-body h3 {
+      margin: 0 0 0.4rem !important;
+      font-size: 1.2rem !important;
+      font-weight: 600;
+    }
+
+    .step-body p {
+      margin: 0 !important;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--charcoal);
+    }
+
+    /* Tips grid */
+    .tips {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    @media (min-width: 720px) {
+      .tips { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .tip {
+      background: var(--ivory);
+      padding: 1.75rem 1.5rem;
+    }
+
+    .tip-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .tip h3 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 600 !important;
+      font-size: 1.15rem !important;
+      color: var(--dark) !important;
+      margin: 0 0 0.5rem !important;
+    }
+
+    .tip p {
+      font-size: 0.92rem !important;
+      line-height: 1.6 !important;
+      color: var(--mid) !important;
+      margin: 0 !important;
+    }
+
+    /* Inline CTA */
+    .inline-cta {
+      background: var(--dark);
+      padding: 2.75rem 2.5rem;
+      margin: 4.5rem 0;
+      text-align: center;
+    }
+
+    .inline-cta h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.8rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+
+    .inline-cta p {
+      color: rgba(249, 246, 241, 0.65);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dark);
+      background: var(--gold);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      margin: 0 0.35rem;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: transparent;
+      border: 1px solid rgba(249, 246, 241, 0.3);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      margin: 0 0.35rem;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Related guides */
+    .related-guides {
+      margin: 0 0 5rem;
+    }
+
+    .related-guides h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .guide-card {
+      display: block;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      margin-bottom: 0.85rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .guide-card:hover { border-color: var(--gold); }
+
+    .guide-card-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .guide-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    /* Author bio */
+    .author-bio {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding: 2.25rem;
+      border: 1px solid var(--border);
+      margin-bottom: 5rem;
+    }
+
+    .author-bio img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border-gold);
+    }
+
+    .author-bio h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .author-bio p {
+      font-size: 0.87rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .author-bio a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.5rem;
+      color: var(--ivory);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.83rem;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copy {
+      font-size: 0.73rem;
+      color: rgba(122, 112, 96, 0.55);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      nav.site-nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .guide-hero { padding: 6rem 1.5rem 3rem; }
+      .article-wrap { padding: 3rem 1.5rem 4rem; }
+      .inline-cta { padding: 2.25rem 1.5rem; }
+      .author-bio { flex-direction: column; text-align: center; padding: 1.75rem; }
+      footer { padding: 2rem 1.5rem; }
+      .prompt-header { flex-wrap: wrap; gap: 0.75rem; }
+      pre.prompt-text { font-size: 12px; padding: 1.25rem 1rem; }
+      pre.skill-code { font-size: 12px; padding: 1.25rem 1rem; }
+      .step { grid-template-columns: 48px 1fr; gap: 1rem; }
+      .step-num { font-size: 2rem; }
+      .btn-gold, .btn-ghost { display: block; margin: 0.5rem auto; max-width: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">Joel Moran</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#credentials">Experience</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-cta">Book a call</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="guide-hero">
+    <div class="guide-breadcrumb">
+      <a href="/">Home</a><span>/</span><a href="/guides/">Guides</a><span>/</span>How to Make Claude Sound Like You
+    </div>
+    <div class="guide-category">AI &middot; No-Code Setup</div>
+    <h1>How to Make Claude Sound Like <em>You</em></h1>
+    <p class="guide-lead">A no-code setup that turns generic AI output into writing that's recognisably yours.</p>
+    <div class="guide-meta">
+      <span>Joel Moran</span>
+      <span>April 2026</span>
+      <span>6 min read</span>
+    </div>
+    <div class="gold-rule"></div>
+  </header>
+
+  <!-- ARTICLE -->
+  <article class="article-wrap">
+
+    <p>If your AI-assisted writing keeps coming out sounding like everyone else's AI-assisted writing, the problem isn't your prompts. It's that you're prompting from scratch every time. There's nothing telling the model what your standards actually are.</p>
+
+    <p>Skills fix that. A Skill is a small, persistent set of instructions Claude loads automatically when the right kind of task comes up. Set it up once. Use it forever. Your tone, your rules, your bans, baked in before the first word gets generated.</p>
+
+    <p>This guide walks you through the whole thing: a copy-paste prompt that gets Claude to interview you and generate your skill, an example of what the finished file should look like, how to actually install it (it's a ZIP upload, not a paste), and the three things that separate a useful skill from a useless one.</p>
+
+    <div class="heads-up">
+      <span class="label">Before you start</span>
+      <p><strong>You'll need a paid Claude plan.</strong> Custom skills require Pro, Max, Team, or Enterprise, with code execution enabled in your settings. Free-tier accounts can use built-in skills but can't upload custom ones.</p>
+      <p><strong>Have 4 to 6 writing samples ready.</strong> LinkedIn posts, emails, articles, anything that sounds like you at your best. The skill is only as good as the samples you feed it.</p>
+    </div>
+
+    <div class="s-rule"></div>
+
+    <h2><span class="num">01 / The prompt</span>Copy this into a fresh Claude chat</h2>
+
+    <p>Open a new conversation in Claude, paste this in, hit send, and follow the stages. Don't skip ahead. The output is only as good as the inputs you give it.</p>
+
+    <div class="prompt-shell">
+      <div class="prompt-header">
+        <div class="prompt-header-left">
+          <span class="prompt-tag">Prompt</span>
+          <span class="prompt-title">Build my tone-of-voice Skill</span>
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">Copy prompt</button>
+      </div>
+<pre class="prompt-text" id="prompt-text">I want to create a Claude Skill that captures my personal tone of voice, so every piece of AI-assisted writing I produce sounds like me, not generic AI output. The end deliverable is a SKILL.md file I can package and upload into Claude's Skills feature.
+
+Work through this with me in five stages. Do not skip ahead. Wait for my input at each stage before moving on. Do not pad your responses with filler.
+
+<span class="stage">STAGE 1: Sample collection</span>
+Ask me to paste in 4 to 6 pieces of writing I'm proud of. Anything that sounds like me at my best: LinkedIn posts, emails, articles, Slack messages, blog posts. Wait until I've shared them before moving on.
+
+<span class="stage">STAGE 2: Pattern analysis</span>
+Once I've shared the samples, analyse them carefully and tell me:
+- My typical sentence length and rhythm (short and punchy, long and flowing, or a mix)
+- How I open pieces (hook, anecdote, statement, question, contrarian take)
+- How I close pieces (call to action, rhetorical question, sharp line, callback)
+- Words, phrases, or constructions I use repeatedly, both good and bad
+- Formatting habits (bullets, line breaks, capitalisation, punctuation choices)
+- Tone qualities (warm, dry, direct, formal, playful, self-aware, etc.)
+- What I never seem to do (passive voice, hedging language, corporate filler)
+
+Show me your full analysis before moving on. I'll correct anything that's off.
+
+<span class="stage">STAGE 3: Rule extraction</span>
+Turn the analysis into a usable rule set. Ask me direct questions to lock in:
+- 3 to 6 hard rules I want enforced every single time (e.g. "never use em dashes")
+- 5 to 10 banned words and phrases I refuse to publish (clichés, corporate filler, anything that makes me cringe)
+- 3 to 5 tone descriptors that capture how I sound at my best
+- 3 to 5 structural habits I want preserved (opener style, paragraph length, closing style)
+
+<span class="emph">Push me to be specific.</span> Vague instructions ("don't be corporate") don't survive contact with the model. Concrete bans ("never use 'leverage,' 'unlock value,' 'circle back,' or 'I hope this email finds you well'") do.
+
+<span class="stage">STAGE 4: Trigger description</span>
+Help me write a clear, specific, "pushy" description of when this skill should fire. Skills tend to under-trigger by default, so the description needs to be assertive.
+
+The description must include two parts:
+1. A pushy "use when" trigger. Use language like "Make sure to use this skill whenever..." and list the specific scenarios.
+2. An explicit "Do NOT use for" non-trigger that prevents the skill firing on tasks it shouldn't touch (e.g. code, internal scratch notes, technical documentation).
+
+Bad: "writing tasks."
+Good: "Make sure to use this skill whenever the user asks Claude to draft or edit any content that will be sent or published externally, including LinkedIn posts, emails, Slack messages, web copy, articles, and cover letters. Apply the rules and tone defined below. Do NOT use this skill for code, technical documentation, internal scratch notes, or research summaries the user is reading for themselves."
+
+Draft three versions. I'll pick or combine.
+
+<span class="stage">STAGE 5: Generate the SKILL.md</span>
+Output the final SKILL.md file in this exact format, ready for me to package:
+
+---
+name: [my-name]-voice
+description: [pushy use-when + explicit do-not-use-for from stage 4]
+---
+
+# [My name]'s voice
+
+## Hard rules (non-negotiable)
+[3 to 6 rules from stage 3, each as a bullet, written as absolute instructions starting with "Never" or "Always"]
+
+## Tone
+[3 to 5 descriptors from stage 3, each as a bullet]
+
+## Structure
+[3 to 5 structural habits from stage 3, each as a bullet]
+
+## Banned phrases
+[5 to 10 phrases from stage 3, each as a bullet]
+
+## Examples
+Generate 4 examples that show the voice in action. Two "good" (matching the rules) and two "bad" (violating them, would be rewritten). Cover at least two formats from my actual use case (e.g. LinkedIn post + email).
+
+### Good: [format 1]
+[3 to 5 sentences in my voice]
+
+### Bad: [format 1]
+[3 to 5 sentences in generic AI voice that breaks my rules]
+
+### Good: [format 2]
+[3 to 5 sentences in my voice]
+
+### Bad: [format 2]
+[3 to 5 sentences in generic AI voice that breaks my rules]
+
+Do not generate the skill until we've worked through every stage. Do not assume my voice without samples. Do not invent rules I haven't given you. If my answers are vague or contradictory, push back and ask me to sharpen them. Be direct with me throughout.</pre>
+    </div>
+
+    <div class="s-rule"></div>
+
+    <h2><span class="num">02 / The output</span>What you'll end up with</h2>
+
+    <p>After working through the five stages, Claude will hand you a finished SKILL.md file. Here's roughly what mine looks like, so you know what you're aiming at. Yours will look different because it's yours.</p>
+
+    <div class="skill-block">
+      <div class="skill-header">
+        <span class="skill-filename"><span class="dot"></span>joel-voice / SKILL.md</span>
+        <button class="copy-btn-dark" onclick="copySkill(this)">Copy</button>
+      </div>
+<pre class="skill-code" id="skill-code"><span class="frontmatter">---
+name: joel-voice
+description: Make sure to use this skill whenever Joel asks Claude
+  to create or edit any content that will be published, sent, or
+  shared externally. Triggers include drafting LinkedIn posts,
+  emails, Slack messages, web copy, cover letters, blog articles,
+  and anything else that leaves Joel's keyboard. Apply the rules,
+  tone, structure, and banned phrases defined below.
+
+  Do NOT use this skill for code, technical documentation,
+  internal scratch notes, research summaries, or analysis that
+  Joel is reading for himself.
+---</span>
+
+<span class="heading"># Joel's voice</span>
+
+<span class="heading">## Hard rules (non-negotiable)</span>
+- Never use em dashes. Use commas, full stops, colons,
+  or parentheses instead.
+- Use &gt; for bullets in LinkedIn-style content.
+- Never open with an apology.
+- When proofing, proof only. Do not rewrite or restructure
+  unless explicitly asked.
+
+<span class="heading">## Tone</span>
+- Warm but punchy.
+- Casual, self-aware, dry humour.
+- Senior, but never stiff.
+- Confident, but not cocky.
+
+<span class="heading">## Structure</span>
+- Open with a hook, not a preamble.
+- Short paragraphs. One idea per paragraph.
+- End with a clear CTA or a sharp closing thought.
+
+<span class="heading">## Banned phrases</span>
+- "game-changer" / "synergies" / "deep dive"
+- "unlock value" / "circle back" / "touch base"
+- "I hope this email finds you well"
+- Any sentence starting with "In today's fast-paced world"
+
+<span class="heading">## Examples</span>
+
+<span class="good">### Good: LinkedIn post opener</span>
+"Reading my favourite childhood book to my 5-year-old last
+night, I clocked an em dash. For a split second I thought:
+even THIS got AI'd?"
+
+<span class="bad">### Bad: LinkedIn post opener (would be rewritten)</span>
+"In today's fast-paced AI landscape, I wanted to share some
+thoughts on how we can leverage tone-of-voice tools to unlock
+value in our content workflows."
+
+<span class="good">### Good: email opener</span>
+"Quick one. Saw your post about the Q3 numbers. The shift in
+the second half is more than a blip, and I think it changes
+how we should be thinking about FY26."
+
+<span class="bad">### Bad: email opener (would be rewritten)</span>
+"I hope this email finds you well. I just wanted to circle
+back on the Q3 numbers and touch base about FY26 planning."</pre>
+    </div>
+
+    <div class="s-rule"></div>
+
+    <h2><span class="num">03 / Install</span>Package and upload your skill</h2>
+
+    <p>Skills aren't pasted into a text box. They upload as a ZIP file containing a folder with your <code>SKILL.md</code> inside. Five steps from finished file to live skill.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Save the SKILL.md</h3>
+          <p>Copy what Claude generated. Paste into a plain text editor (TextEdit, Notepad, VS Code, anything). Save it as exactly <code>SKILL.md</code>. No <code>.txt</code> extension.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Put it in a folder</h3>
+          <p>Create a folder named after your skill, lowercase with hyphens (<code>joel-voice</code>, <code>amy-voice</code>, etc.). Drop the <code>SKILL.md</code> inside.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Zip the folder</h3>
+          <p>Right-click the folder, pick "Compress" on Mac or "Send to &gt; Compressed (zipped) folder" on Windows. You'll get a file like <code>joel-voice.zip</code>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Upload to Claude</h3>
+          <p>In claude.ai, go to <strong>Customize &gt; Skills</strong>. Click the <strong>+</strong> button, then <strong>Create skill</strong>. Upload your ZIP. Claude reads the description and adds it to your skill list.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Test it</h3>
+          <p>Open a fresh chat. Ask Claude to draft something that should trigger your skill (a LinkedIn post, an email). Watch for the skill loading. Read the output. If the voice is off, edit the SKILL.md, re-zip, re-upload.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="s-rule"></div>
+
+    <h2><span class="num">04 / Make it stick</span>Three things that separate a useful skill from a useless one</h2>
+
+    <div class="tips">
+      <div class="tip">
+        <span class="tip-num">1</span>
+        <h3>Triggers do the heavy lifting</h3>
+        <p>Skills under-trigger by default. Make your description pushy ("Make sure to use this skill whenever...") and include explicit "Do NOT use for" language. The trigger matters more than the rules.</p>
+      </div>
+      <div class="tip">
+        <span class="tip-num">2</span>
+        <h3>Absolutes beat preferences</h3>
+        <p>"Try to avoid corporate language" is a coin flip. "Never use 'leverage' or 'circle back'" is a rule. Models respond to absolute language. Use it everywhere, especially in hard rules and bans.</p>
+      </div>
+      <div class="tip">
+        <span class="tip-num">3</span>
+        <h3>Run a real eval</h3>
+        <p>Write 10 test queries: 5 that should trigger your skill (drafting an email, a LinkedIn post) and 5 that shouldn't (debugging code, summarising an article). Run them in fresh chats. If hit rate isn't 10/10, fix the description.</p>
+      </div>
+    </div>
+
+    <p>That's the whole setup. The em dash thing was the breaking point that pushed me to do it. The bigger win is that every email, post, and message I draft with Claude now starts from somewhere closer to finished. The voice stays mine. The drafts get sharper. The edits get shorter.</p>
+
+    <p>If you build one and it works, send it to me. I'm collecting examples.</p>
+
+    <div class="inline-cta">
+      <h3>Want help putting AI to work in your business?</h3>
+      <p>I help senior teams build the kind of marketing operation that actually moves the business. Strategy, brand, and AI-native ways of working. Available for fractional CMO, advisory, and project work.</p>
+      <a href="https://cal.com/joelmoran/30-min-consultation-free" class="btn-gold">Book an intro call</a>
+      <a href="https://linkedin.com/in/moranjoel" class="btn-ghost">Connect on LinkedIn</a>
+    </div>
+
+    <div class="related-guides">
+      <h3>More Guides</h3>
+      <a href="/guides/ai-marketing-team/" class="guide-card">
+        <div class="guide-card-label">AI Marketing</div>
+        <div class="guide-card-title">How to Build an AI Marketing Team</div>
+      </a>
+      <a href="/cmo-tool.html" class="guide-card">
+        <div class="guide-card-label">Free Tool</div>
+        <div class="guide-card-title">Try the AI CMO Advisor</div>
+      </a>
+    </div>
+
+    <div class="author-bio">
+      <img src="https://raw.githubusercontent.com/joelrox123/joelmoran-site/main/joel-profile.jpg" alt="Joel Moran">
+      <div>
+        <h4>Joel Moran</h4>
+        <p>Senior marketing leader + consultant. Former VP Marketing International at Afterpay (Block / S+P 500). Founding Head of Marketing at Kayo Sports. Available as a <a href="/guides/what-is-a-fractional-cmo/">fractional CMO</a> + open to senior in-house roles. <a href="/">joelmoran.com</a></p>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/" class="footer-logo">Joel Moran</a>
+    <p class="footer-tagline">Marketing that actually works.</p>
+    <p class="footer-copy">&copy; 2026 joelmoran.com</p>
+  </footer>
+
+  <script>
+    function copyPrompt(btn) {
+      var el = document.getElementById('prompt-text');
+      var text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+    function copySkill(btn) {
+      var el = document.getElementById('skill-code');
+      var text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function() {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+    // Make functions globally accessible (Netlify script injection guard)
+    window.copyPrompt = copyPrompt;
+    window.copySkill = copySkill;
+  </script>
+
+</body>
+</html>
