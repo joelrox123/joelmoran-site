@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketing Guides — Joel Moran</title>
+  <meta name="description" content="Practical guides on AI marketing, brand strategy, and growth. Written by Joel Moran, former VP Marketing at Afterpay and founding Head of Marketing at Kayo Sports." />
+  <meta property="og:title" content="Marketing Guides — Joel Moran" />
+  <meta property="og:description" content="Practical guides on AI marketing, brand strategy, and growth." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joelmoran.com/guides/" />
+  <link rel="canonical" href="https://joelmoran.com/guides/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141412'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='600' fill='%23B8935A'%3EJM%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ivory: #F9F6F1;
+      --dark: #141412;
+      --gold: #B8935A;
+      --gold-light: #D4AF7A;
+      --mid: #7A7060;
+      --border: #EAE5DC;
+      --border-gold: rgba(184,147,90,0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ivory);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav.site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(20,20,18,0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(184,147,90,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 1.35rem;
+      color: var(--ivory); text-decoration: none; letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(249,246,241,0.72); text-decoration: none; transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      color: var(--gold) !important; border: 1px solid var(--border-gold);
+      padding: 0.5rem 1.25rem; transition: background 0.2s ease, color 0.2s ease !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+
+    /* HAMBURGER */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0; z-index: 600; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(249,246,241,0.9); transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: rgba(20,20,18,0.97); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .nav-mobile-overlay.open { display: flex; opacity: 1; }
+    .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool, .nav-mobile-overlay ul li a.nav-mobile-cta { color: var(--gold) !important; }
+    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
+
+    /* HERO */
+    .page-hero {
+      background: var(--dark);
+      padding: 8rem 3rem 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 300; line-height: 1.15;
+      color: var(--ivory); margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: 1rem; color: rgba(249,246,241,0.6);
+      max-width: 520px; line-height: 1.7;
+    }
+
+    /* GUIDES GRID */
+    .guides-wrap {
+      max-width: 900px; margin: 0 auto;
+      padding: 4rem 3rem 6rem;
+    }
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .guide-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .guide-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(184,147,90,0.1);
+    }
+    .guide-tag {
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.75rem; display: block;
+    }
+    .guide-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400; line-height: 1.25;
+      color: var(--dark); margin-bottom: 0.75rem;
+    }
+    .guide-desc {
+      font-size: 0.9rem; color: var(--mid);
+      line-height: 1.65; margin-bottom: 1.25rem;
+    }
+    .guide-read-more {
+      font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); padding: 3rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+      color: var(--ivory); text-decoration: none; letter-spacing: 0.08em;
+    }
+    .footer-tagline { font-size: 0.78rem; color: rgba(249,246,241,0.4); letter-spacing: 0.1em; }
+    .footer-copy { font-size: 0.72rem; color: rgba(249,246,241,0.25); }
+
+    @media (max-width: 768px) {
+      nav.site-nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: flex; }
+      .page-hero { padding: 6rem 1.5rem 3rem; }
+      .guides-wrap { padding: 3rem 1.5rem 4rem; }
+      .guides-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="nav-logo">Joel Moran</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#credentials">Experience</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/guides/" style="color:var(--gold)">Guides</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-cta">Book a call</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="navMobileOverlay">
+    <ul>
+      <li><a href="/" class="nav-mobile-link">Home</a></li>
+      <li><a href="/#about" class="nav-mobile-link">About</a></li>
+      <li><a href="/#credentials" class="nav-mobile-link">Experience</a></li>
+      <li><a href="/#work" class="nav-mobile-link">Work</a></li>
+      <li><a href="/#services" class="nav-mobile-link">Services</a></li>
+      <li><a href="/guides/" class="nav-mobile-link nav-tool">Guides</a></li>
+      <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link">🪔 CMO Tool</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-mobile-link nav-mobile-cta">Book a call</a></li>
+    </ul>
+    <p class="nav-mobile-footer">Marketing that actually works.</p>
+  </div>
+
+  <div class="page-hero">
+    <p class="hero-eyebrow">Guides</p>
+    <h1 class="hero-title">Things that actually work.<br>Written down.</h1>
+    <p class="hero-sub">Practical guides on AI marketing, brand strategy, and growth — from 20+ years across fintech, media, and retail.</p>
+  </div>
+
+  <div class="guides-wrap">
+    <div class="guides-grid">
+
+      <a href="/guides/ai-marketing-team/" class="guide-card">
+        <span class="guide-tag">AI + Operations</span>
+        <h2 class="guide-title">How to Build an AI Marketing Team</h2>
+        <p class="guide-desc">The roles, tools, and workflow for running a lean marketing function with AI doing the heavy lifting. No fluff. Just the setup that works.</p>
+        <span class="guide-read-more">Read the guide →</span>
+      </a>
+
+      <a href="/guides/claude-voice-skill/" class="guide-card">
+        <span class="guide-tag">AI + Brand Voice</span>
+        <h2 class="guide-title">How to Make Claude Sound Like You</h2>
+        <p class="guide-desc">The exact method for training Claude on your tone of voice — including the skill file I built for my own site. Copy it, adapt it, use it.</p>
+        <span class="guide-read-more">Read the guide →</span>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">Joel Moran</a>
+    <span class="footer-tagline">Marketing that actually works.</span>
+    <span class="footer-copy">© 2026 joelmoran.com</span>
+  </footer>
+
+  <script>
+    window.navHamburgerInit = function() {
+      var btn = document.getElementById('navHamburger');
+      var overlay = document.getElementById('navMobileOverlay');
+      if (!btn || !overlay) return;
+      btn.addEventListener('click', function() {
+        var isOpen = overlay.classList.contains('open');
+        overlay.classList.toggle('open', !isOpen);
+        btn.classList.toggle('open', !isOpen);
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+      });
+      overlay.querySelectorAll('.nav-mobile-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          overlay.classList.remove('open');
+          btn.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    };
+    window.navHamburgerInit();
+  </script>
+
+</body>
+</html>

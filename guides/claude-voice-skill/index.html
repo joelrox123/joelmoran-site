@@ -128,6 +128,21 @@
 
     .nav-links a:hover { color: var(--gold); }
 
+    /* HAMBURGER */
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0; z-index: 600; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(249,246,241,0.9); transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: rgba(20,20,18,0.97); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .nav-mobile-overlay.open { display: flex; opacity: 1; }
+    .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+    .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool, .nav-mobile-overlay ul li a.nav-mobile-cta { color: var(--gold) !important; }
+    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
+
     .nav-cta {
       color: var(--gold) !important;
       border: 1px solid var(--border-gold);
@@ -740,7 +755,8 @@
     /* Mobile */
     @media (max-width: 768px) {
       nav.site-nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: flex; }
       .guide-hero { padding: 6rem 1.5rem 3rem; }
       .article-wrap { padding: 3rem 1.5rem 4rem; }
       .inline-cta { padding: 2.25rem 1.5rem; }
@@ -765,10 +781,28 @@
       <li><a href="/#credentials">Experience</a></li>
       <li><a href="/#work">Work</a></li>
       <li><a href="/#services">Services</a></li>
+      <li><a href="/guides/">Guides</a></li>
       <li><a href="/#contact">Contact</a></li>
       <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-cta">Book a call</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="nav-mobile-overlay" id="navMobileOverlay">
+    <ul>
+      <li><a href="/" class="nav-mobile-link">Home</a></li>
+      <li><a href="/#about" class="nav-mobile-link">About</a></li>
+      <li><a href="/#credentials" class="nav-mobile-link">Experience</a></li>
+      <li><a href="/#work" class="nav-mobile-link">Work</a></li>
+      <li><a href="/#services" class="nav-mobile-link">Services</a></li>
+      <li><a href="/guides/" class="nav-mobile-link nav-tool">Guides</a></li>
+      <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link">🪔 CMO Tool</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-mobile-link nav-mobile-cta">Book a call</a></li>
+    </ul>
+    <p class="nav-mobile-footer">Marketing that actually works.</p>
+  </div>
 
   <!-- HERO -->
   <header class="guide-hero">
@@ -1105,6 +1139,26 @@ back on the Q3 numbers and touch base about FY26 planning."</pre>
     // Make functions globally accessible (Netlify script injection guard)
     window.copyPrompt = copyPrompt;
     window.copySkill = copySkill;
+
+    window.navHamburgerInit = function() {
+      var btn = document.getElementById('navHamburger');
+      var overlay = document.getElementById('navMobileOverlay');
+      if (!btn || !overlay) return;
+      btn.addEventListener('click', function() {
+        var isOpen = overlay.classList.contains('open');
+        overlay.classList.toggle('open', !isOpen);
+        btn.classList.toggle('open', !isOpen);
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+      });
+      overlay.querySelectorAll('.nav-mobile-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          overlay.classList.remove('open');
+          btn.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    };
+    window.navHamburgerInit();
   </script>
 
 </body>
