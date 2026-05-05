@@ -60,12 +60,12 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ivory: #F9F6F1;
+      --ivory: #FFFFEB;
       --white: #FFFFFF;
-      --dark: #141412;
+      --dark: #1A1A1A;
       --charcoal: #2C2C2A;
-      --gold: #B8935A;
-      --gold-light: #D4AF7A;
+      --gold: #034F46;
+      --gold-light: #F0D7FF;
       --mid: #7A7060;
       --border: #EAE5DC;
       --border-gold: rgba(184, 147, 90, 0.25);
@@ -76,7 +76,7 @@
     body {
       background: var(--ivory);
       color: var(--dark);
-      font-family: 'Jost', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-weight: 300;
       font-size: 18px;
       line-height: 1.8;
@@ -99,7 +99,7 @@
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 300;
       font-size: 1.35rem;
       color: var(--ivory);
@@ -115,7 +115,7 @@
     }
 
     .nav-links a {
-      font-family: 'Jost', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-weight: 300;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
@@ -133,14 +133,14 @@
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: rgba(20,20,18,0.97); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: var(--green); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
     .nav-mobile-overlay.open { display: flex; opacity: 1; }
     .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
     .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
-    .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
     .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool, .nav-mobile-overlay ul li a.nav-mobile-cta { color: var(--gold) !important; }
-    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
+    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'EB Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
 
     .nav-cta {
       color: var(--gold) !important;
@@ -163,7 +163,7 @@
     }
 
     .guide-breadcrumb {
-      font-family: 'Jost', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 0.72rem;
       font-weight: 300;
       letter-spacing: 0.14em;
@@ -183,7 +183,7 @@
 
     .guide-category {
       display: inline-block;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-size: 0.68rem;
       font-weight: 400;
       letter-spacing: 0.22em;
@@ -193,7 +193,7 @@
     }
 
     .guide-hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 300;
       font-size: clamp(2.6rem, 5.5vw, 4.2rem);
       line-height: 1.12;
@@ -203,7 +203,7 @@
     }
 
     .guide-lead {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-style: italic;
       font-weight: 300;
       font-size: 1.45rem;
@@ -253,7 +253,7 @@
     }
 
     .article-wrap h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 400;
       font-size: clamp(1.7rem, 3vw, 2.1rem);
       line-height: 1.2;
@@ -264,7 +264,7 @@
     }
 
     .article-wrap h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 600;
       font-size: 1.3rem;
       color: var(--dark);
@@ -305,7 +305,7 @@
     }
 
     .pull-quote p {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 1.65rem;
       font-style: italic;
       font-weight: 300;
@@ -323,7 +323,7 @@
     }
 
     .stat-block p {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 1.45rem;
       font-style: italic;
       font-weight: 300;
@@ -349,7 +349,7 @@
     }
 
     .result-number {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 2.5rem;
       font-weight: 300;
       color: var(--gold);
@@ -375,7 +375,7 @@
     }
 
     .inline-cta h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 300;
       font-size: 1.8rem;
       color: var(--ivory);
@@ -393,7 +393,7 @@
 
     .btn-gold {
       display: inline-block;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Figtree', sans-serif;
       font-weight: 400;
       font-size: 0.75rem;
       letter-spacing: 0.16em;
@@ -413,7 +413,7 @@
     }
 
     .related-guides h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 300;
       font-size: 1.5rem;
       color: var(--dark);
@@ -440,7 +440,7 @@
     }
 
     .guide-card-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 1.25rem;
       font-weight: 400;
       color: var(--dark);
@@ -466,7 +466,7 @@
     }
 
     .author-bio h4 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 600;
       font-size: 1.15rem;
       color: var(--dark);
@@ -493,7 +493,7 @@
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-weight: 300;
       font-size: 1.5rem;
       color: var(--ivory);
@@ -527,6 +527,54 @@
       footer { padding: 2rem 1.5rem; }
     }
   </style>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* === WISPR DESIGN SYSTEM UPDATE === */
+    :root {
+      --cream: #FFFFEB !important;
+      --green: #034F46 !important;
+      --lavender: #F0D7FF !important;
+      --dark: #1A1A1A !important;
+      --border: #E4E4D0 !important;
+      --mid: #6A6858 !important;
+      /* legacy aliases */
+      --gold: #034F46 !important;
+      --gold-light: #F0D7FF !important;
+      --border-gold: rgba(3,79,70,0.18) !important;
+      --ivory: #FFFFEB !important;
+    }
+    body { font-family: 'Figtree', sans-serif !important; background: #FFFFEB !important; }
+    h1, h2, h3, h4, h5, .section-title, .hero-title, .guide-title, .about-punch,
+    .hero-headline, .page-hero h1 {
+      font-family: 'EB Garamond', serif !important;
+    }
+    .nav-logo {
+      font-family: 'Figtree', sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.01em !important;
+    }
+    /* Nav pill stays on desktop, flat on mobile */
+    @media (max-width: 640px) {
+      nav, nav.site-nav {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+        padding: 0.7rem 1.2rem !important;
+      }
+    }
+    /* Thicker button borders */
+    .nav-cta { border-width: 2px !important; }
+    a[class*="cta"], button[class*="cta"] { border-width: 2px !important; }
+  </style>
 </head>
 <body>
 
@@ -535,7 +583,7 @@
     <a href="/" class="nav-logo">Joel Moran</a>
     <ul class="nav-links">
       <li><a href="/#about">About</a></li>
-      <li><a href="/#credentials">Experience</a></li>
+      <li><a href="/about/">Full Profile</a></li>
       <li><a href="/#work">Work</a></li>
       <li><a href="/#services">Services</a></li>
       <li><a href="/guides/">Guides</a></li>
@@ -551,6 +599,7 @@
     <ul>
       <li><a href="/" class="nav-mobile-link">Home</a></li>
       <li><a href="/#about" class="nav-mobile-link">About</a></li>
+      <li><a href="/about/" class="nav-mobile-link nav-tool">Full Profile</a></li>
       <li><a href="/#credentials" class="nav-mobile-link">Experience</a></li>
       <li><a href="/#work" class="nav-mobile-link">Work</a></li>
       <li><a href="/#services" class="nav-mobile-link">Services</a></li>

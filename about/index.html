@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Joel Moran · Marketing Leader & Consultant</title>
+  <meta name="description" content="Full credentials, career history, education and awards for Joel Moran — former CMO at Afterpay International and founding Head of Marketing at Kayo Sports." />
+  <meta property="og:title" content="About Joel Moran" />
+  <meta property="og:description" content="Full credentials, career history, education and awards." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://joelmoran.com/about/" />
+  <link rel="canonical" href="https://joelmoran.com/about/" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A1A1A'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='600' fill='%23034F46'%3EJM%3C/text%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FFFFEB;
+      --white: #FFFFFF;
+      --dark: #1A1A1A;
+      --green: #034F46;
+      --lavender: #F0D7FF;
+      --mid: #6A6858;
+      --border: #E4E4D0;
+      --border-dark: rgba(26,26,26,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Figtree', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0.9rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0.75rem 0.65rem 1.5rem;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      gap: 1.2rem;
+      width: calc(100% - 2.4rem);
+      max-width: 1080px;
+      box-shadow: 0 2px 16px rgba(26,26,26,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Figtree', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--dark); text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex; gap: 1.4rem; list-style: none;
+      flex-wrap: nowrap; justify-content: flex-end; align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 400;
+      color: var(--mid); text-decoration: none;
+      transition: color 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-links a.active { color: var(--dark); font-weight: 500; }
+
+    .nav-cta {
+      background: var(--lavender) !important;
+      color: var(--dark) !important;
+      border: 2px solid var(--dark) !important;
+      border-radius: 100px !important;
+      padding: 0.45rem 1.2rem !important;
+      font-weight: 500 !important;
+      transition: background 0.2s, color 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--dark) !important; color: var(--white) !important; }
+
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+      flex-shrink: 0; z-index: 600;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--dark);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* MOBILE OVERLAY */
+    .nav-mobile-overlay {
+      display: none; position: fixed; inset: 0; z-index: 490;
+      background: var(--green);
+      flex-direction: column; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .nav-mobile-overlay.open { display: flex; opacity: 1; }
+    .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,235,0.1); }
+    .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,235,0.1); }
+    .nav-mobile-overlay ul li a {
+      display: block; padding: 1.3rem 8vw;
+      font-size: 1rem; font-weight: 400;
+      color: rgba(255,255,235,0.65); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool { color: var(--cream); }
+    .nav-mobile-overlay ul li a.nav-cta { color: var(--lavender) !important; }
+    .nav-mobile-footer {
+      margin-top: 2.5rem; font-family: 'EB Garamond', serif;
+      font-size: 0.9rem; font-style: italic; color: rgba(255,255,235,0.25);
+    }
+
+    /* ---- PAGE HERO ---- */
+    .page-hero {
+      background: var(--dark);
+      padding: 8rem 8vw 5rem;
+      border-radius: 0 0 4rem 4rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--lavender); margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 400; line-height: 1.1;
+      color: var(--cream); margin-bottom: 1.2rem;
+    }
+    .hero-title em { font-style: italic; }
+    .hero-sub {
+      font-size: 1rem; color: rgba(255,255,235,0.55);
+      max-width: 520px; line-height: 1.8;
+    }
+    .hero-back {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; color: rgba(255,255,235,0.45);
+      text-decoration: none; margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .hero-back:hover { color: var(--cream); }
+
+    /* ---- SECTIONS ---- */
+    section { padding: 5rem 8vw; }
+
+    .eyebrow {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--dark); margin-bottom: 2.5rem;
+    }
+    .section-title em {
+      font-style: italic;
+      text-decoration: underline;
+      text-decoration-color: var(--green);
+      text-underline-offset: 4px;
+    }
+
+    /* ---- CREDENTIALS ---- */
+    #experience { background: var(--white); }
+    .cred-section { margin-bottom: 3.5rem; }
+    .cred-section:last-child { margin-bottom: 0; }
+    .cred-section-title {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1rem;
+      padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+    }
+    .cred-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+    .cred-item {
+      background: var(--cream); border: 1.5px solid var(--border);
+      border-radius: 1.2rem; padding: 1.8rem 2rem;
+      transition: border-color 0.2s;
+    }
+    .cred-item:hover { border-color: var(--dark); }
+    .cred-org {
+      font-size: 0.68rem; color: var(--green); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem;
+    }
+    .cred-role {
+      font-family: 'EB Garamond', serif; font-size: 1.2rem;
+      color: var(--dark); margin-bottom: 0.25rem;
+    }
+    .cred-detail { font-size: 0.82rem; color: var(--mid); line-height: 1.5; margin-bottom: 1rem; }
+    .cred-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .cred-expand-trigger {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--dark); cursor: pointer;
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: 100px; padding: 0.35rem 1rem;
+      font-family: 'Figtree', sans-serif;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .cred-expand-trigger:hover { background: var(--dark); color: var(--white); border-color: var(--dark); }
+    .cred-expand-trigger.open { background: var(--green); color: var(--white); border-color: var(--green); }
+    .cred-expand-trigger .ci { transition: transform 0.3s; display: inline-block; }
+    .cred-expand-trigger.open .ci { transform: rotate(45deg); }
+    .cred-expand-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s; }
+    .cred-expand-body.open { max-height: 2000px; padding-top: 1.2rem; }
+    .cred-expand-body p { font-size: 0.9rem; color: var(--mid); line-height: 1.85; margin-bottom: 0.8rem; }
+    .cred-expand-body p:last-child { margin-bottom: 0; }
+    .cred-expand-body ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+    .cred-expand-body ul li { font-size: 0.9rem; color: var(--mid); line-height: 1.75; padding-left: 1.2rem; position: relative; }
+    .cred-expand-body ul li::before { content: '→'; position: absolute; left: 0; top: 0; font-size: 0.7rem; color: var(--green); }
+    .cred-expand-body h5 {
+      font-family: 'EB Garamond', serif; font-size: 1rem; font-weight: 400;
+      color: var(--dark); margin: 1.2rem 0 0.4rem;
+      border-bottom: 1px solid var(--border); padding-bottom: 0.3rem;
+    }
+
+    /* ---- EDUCATION ---- */
+    #education { background: var(--cream); }
+
+    /* ---- AWARDS ---- */
+    #awards {
+      background: var(--dark);
+      border-radius: 4rem 4rem 0 0;
+    }
+    #awards .eyebrow { color: var(--lavender); }
+    #awards .section-title { color: var(--cream); }
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .award-item {
+      background: rgba(255,255,235,0.05);
+      border: 1px solid rgba(255,255,235,0.1);
+      border-radius: 1.2rem; padding: 1.8rem 2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .award-item:hover {
+      border-color: rgba(255,255,235,0.25);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .award-title {
+      font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 400;
+      color: var(--cream); line-height: 1.35; margin-bottom: 0.4rem;
+    }
+    .award-org {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--lavender);
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--green); padding: 1.8rem 8vw;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo { font-family: 'EB Garamond', serif; font-size: 0.95rem; font-weight: 400; letter-spacing: 0.06em; color: rgba(255,255,235,0.65); text-decoration: none; }
+    .footer-tagline { font-family: 'EB Garamond', serif; font-size: 0.85rem; font-style: italic; color: rgba(240,215,255,0.55); }
+    .footer-copy { font-size: 0.68rem; color: rgba(255,255,235,0.35); letter-spacing: 0.07em; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .awards-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: none;
+        transform: none;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        padding: 0.7rem 1.2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: flex; }
+      .page-hero { padding: 6rem 5vw 3.5rem; border-radius: 0 0 2rem 2rem; }
+      section { padding: 3.5rem 5vw; }
+      #awards { border-radius: 2rem 2rem 0 0; }
+      footer { padding: 2rem 5vw; flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Joel Moran</a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/about/" class="active">Full Profile</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/ai-marketing-strategy-tool" style="color:#034F46">🪔 CMO Tool</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-cta">Book a call</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile-overlay" id="navMobileOverlay">
+    <ul>
+      <li><a href="/" class="nav-mobile-link">Home</a></li>
+      <li><a href="/#about" class="nav-mobile-link">About</a></li>
+      <li><a href="/about/" class="nav-mobile-link nav-tool">Full Profile</a></li>
+      <li><a href="/#work" class="nav-mobile-link">Work</a></li>
+      <li><a href="/#services" class="nav-mobile-link">Services</a></li>
+      <li><a href="/guides/" class="nav-mobile-link nav-tool">Guides</a></li>
+      <li><a href="/#contact" class="nav-mobile-link">Contact</a></li>
+      <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link nav-tool">🪔 CMO Tool</a></li>
+      <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-mobile-link nav-cta">Book a call</a></li>
+    </ul>
+    <p class="nav-mobile-footer">Marketing that actually works.</p>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <a href="/" class="hero-back">&#8592; Back to joelmoran.com</a>
+    <p class="hero-eyebrow">Full Profile</p>
+    <h1 class="hero-title">20+ years.<br><em>No shortcuts.</em></h1>
+    <p class="hero-sub">Career history, education and recognition — everything that doesn't fit neatly on a homepage.</p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">What each role <em>taught me.</em></h2>
+
+    <div class="cred-section">
+      <div class="cred-grid">
+
+        <!-- AFTERPAY -->
+        <div class="cred-item">
+          <div class="cred-org">Afterpay / Clearpay · Block Inc, NYSE: SQ</div>
+          <div class="cred-role">CMO / VP Marketing, International</div>
+          <div class="cred-detail">5+ years · AU, NZ, UK + Canada · Delivered double-digit YoY GPV growth for 5 consecutive years</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-did">
+              What I did <span class="ci">+</span>
+            </button>
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-proud">
+              Proudest moments <span class="ci">+</span>
+            </button>
+          </div>
+          <div class="cred-expand-body" id="afterpay-did">
+            <p>Over five years I helped double revenue by taking significant share from banks and credit cards, building one of Australia's most trusted consumer brands, driving merchant partner businesses to grow in the process.</p>
+            <p>I was there when Afterpay was an ASX darling and when it was acquired by Block. Started as Director of Brand for ANZ, took on Growth + Product Marketing, then in 2024 became VP Marketing International, leading the full marketing program across AU, NZ, UK + Canada. The most senior marketer, reporting directly to Nick Molnar (Afterpay founder, now leads Sales + Marketing at Block Inc).</p>
+            <p>Accountable for driving part of the consumer side of the P+L, in partnership with product, sales, risk + customer service, then executing the full marketing funnel to deliver variable profit through new customer acquisition, increased frequency, product attach + brand health.</p>
+            <p>Directly responsible for: brand strategy, growth/performance marketing, CRM, sponsorships, social, trade + merchant marketing, media + advertising, product marketing, and go-to-market.</p>
+          </div>
+          <div class="cred-expand-body" id="afterpay-proud">
+            <h5>Rebuilt the team using AI + still exceeded targets</h5>
+            <ul>
+              <li>When the team was cut by 60%, ran a transformation program using AI + technology to do more with far less.</li>
+              <li>Exceeded revenue targets in every market: ANZ +18% YoY, UK +21%, Canada +13%.</li>
+              <li>Market share: >80% in AU, >90% in NZ, >20% in UK.</li>
+              <li>Launched new BNPL regulations in NZ, AU + Canada.</li>
+              <li>Grew to most trusted BNPL brand in ANZ + UK.</li>
+            </ul>
+            <h5>Proved ROI for brand advertising</h5>
+            <ul>
+              <li>Gold at Mumbrella Awards: Data-Driven Marketing Campaign of the Year.</li>
+              <li>Effies finalist in 5 categories for marketing effectiveness.</li>
+              <li>"Afterpay Where You Wouldn't Believe": drove new vertical adoption, proved brand spend delivers positive ROI.</li>
+              <li>"Pay Better" with Rebel Wilson: two-year integrated brand platform that redefined how Australians thought about Afterpay.</li>
+            </ul>
+            <h5>Made work that moved the needle</h5>
+            <ul>
+              <li>"Old Money Doesn't Like How New Money Works": tackled brand rejection head-on.</li>
+              <li>"Own It": repositioned Afterpay for financially savvy consumers.</li>
+              <li>600 UGC ads, recognised by TikTok for excellence in performance marketing (influencer/UGC).</li>
+              <li>Launched Amazon, Uber Eats, Dan Murphy's, Ampol + more.</li>
+            </ul>
+            <h5>Sponsorships that punched above their cost</h5>
+            <ul>
+              <li>Afterpay Australian Fashion Week: 3 consecutive years, $99M p.a. earned media value.</li>
+              <li>Daniel Ricciardo partnership: year-long multichannel campaign, 42M reach.</li>
+            </ul>
+            <h5>Made Afterpay Day a commercial juggernaut</h5>
+            <ul>
+              <li>Introduced "Carpe Diem" as the Afterpay Day trade platform; drove 21% YoY growth.</li>
+            </ul>
+            <h5>Turned around customer acquisition when it was broken</h5>
+            <ul>
+              <li>Reversed a 20% YoY decline to 6% growth within 12 months.</li>
+              <li>Rebuilt the full conversion funnel + performance marketing from the ground up.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- KAYO -->
+        <div class="cred-item">
+          <div class="cred-org">Kayo Sports · News Corp / Foxtel</div>
+          <div class="cred-role">Head of Marketing</div>
+          <div class="cred-detail">Brand launch from zero · 600K+ subscribers · 83% brand awareness · Sports Marketing Team of the Year</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-did">
+              What I did <span class="ci">+</span>
+            </button>
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-proud">
+              Proudest moments <span class="ci">+</span>
+            </button>
+          </div>
+          <div class="cred-expand-body" id="kayo-did">
+            <p>Founding marketing hire for Australia's biggest sports streaming platform, a start-up inside Foxtel/News Corp. Joined just after finishing my Executive MBA. Built the brand, team + go-to-market from scratch.</p>
+            <ul>
+              <li>Developed + executed the strategic sales + marketing plan to grow Kayo's subscriber base.</li>
+              <li>Accountable for go-to-market across marketing, brand, sales, customer engagement, social + publicity.</li>
+              <li>Owned brand positioning, identity, all advertising + content marketing including creative + media planning.</li>
+              <li>Led a 16-person in-house creative services team across Kayo, BINGE, Watch AFL/NRL.</li>
+            </ul>
+          </div>
+          <div class="cred-expand-body" id="kayo-proud">
+            <ul>
+              <li>Grew Kayo to 600K+ subscribers: ~19% of Australia's sporting population, ~$122M revenue p.a.</li>
+              <li>Built awareness from 0% to 83% in under 3 years.</li>
+              <li>Ran 8 large integrated campaigns with full measurement frameworks.</li>
+              <li>Hired + built a high-performing sales + marketing team using cutting-edge agile working practices, regarded as a role-model across the Foxtel Group.</li>
+              <li>Won Mumbrella Sports Marketing Team of the Year 2019.</li>
+              <li>Won News Corp Brand of the Year 2019, first subsidiary company ever to secure the award.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- OPTUS -->
+        <div class="cred-item">
+          <div class="cred-org">Optus</div>
+          <div class="cred-role">Associate Director, Digital Marketing</div>
+          <div class="cred-detail">~6 years · Ecommerce, performance marketing + digital customer marketing</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="optus-did">
+              What I did <span class="ci">+</span>
+            </button>
+          </div>
+          <div class="cred-expand-body" id="optus-did">
+            <p>Where I went deep on performance marketing + ecommerce. Built Optus's first mobile site, led retention + digital customer marketing, and owned ecommerce channel development. Learned to connect brand + commercial outcomes in a highly competitive, price-sensitive category.</p>
+          </div>
+        </div>
+
+        <!-- VODAFONE -->
+        <div class="cred-item">
+          <div class="cred-org">Vodafone + 3 Mobile</div>
+          <div class="cred-role">Various Roles</div>
+          <div class="cred-detail">~9 years combined · Digital merchandising, prepaid product management, retail distribution</div>
+          <div class="cred-buttons">
+            <button class="cred-expand-trigger" data-action="toggleCred" data-target="voda-did">
+              What I did <span class="ci">+</span>
+            </button>
+          </div>
+          <div class="cred-expand-body" id="voda-did">
+            <p>My foundations. Hands-on experience across digital merchandising, prepaid segment management + mass-market retail distribution through Coles + Woolworths. At 3 Mobile, designed the first prepaid product, which gave me a commercial + product lens I've carried through everything since.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="eyebrow">Education</p>
+    <h2 class="section-title">Built on <em>strong foundations.</em></h2>
+
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="cred-org">AGSM @ UNSW Business School</div>
+        <div class="cred-role">Executive MBA, Distinction</div>
+        <div class="cred-detail">Marketing, Management + Finance · AGSM is ranked among the top business schools in the Asia-Pacific region.</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-org">Charles Sturt University</div>
+        <div class="cred-role">Bachelor of Business, Marketing</div>
+        <div class="cred-detail">Foundation in marketing, communications, and business strategy.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <p class="eyebrow">Recognition</p>
+    <h2 class="section-title">Work that <em>gets noticed.</em></h2>
+
+    <div class="awards-grid">
+      <div class="award-item">
+        <div class="award-title">Gold: Data-Driven Marketing Campaign of the Year</div>
+        <div class="award-org">Mumbrella Awards</div>
+      </div>
+      <div class="award-item">
+        <div class="award-title">Effies Finalist: 5 categories including ROI + Marketing Effectiveness</div>
+        <div class="award-org">Effies Australia</div>
+      </div>
+      <div class="award-item">
+        <div class="award-title">Sports Marketing Team of the Year</div>
+        <div class="award-org">Mumbrella Awards</div>
+      </div>
+      <div class="award-item">
+        <div class="award-title">Excellence in Performance Marketing: Influencer + UGC</div>
+        <div class="award-org">TikTok Recognition</div>
+      </div>
+      <div class="award-item">
+        <div class="award-title">Brand of the Year</div>
+        <div class="award-org">News Corp — first subsidiary company to win</div>
+      </div>
+      <div class="award-item">
+        <div class="award-title">Effies Judge</div>
+        <div class="award-org">Effies Australia — judging panel member</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="footer-logo">Joel Moran</a>
+    <span class="footer-tagline">Marketing that actually works.</span>
+    <span class="footer-copy">© 2026 joelmoran.com</span>
+  </footer>
+
+  <script>
+  document.addEventListener('click', function(e) {
+    var btn = e.target;
+    while (btn && btn !== document) {
+      if (btn.getAttribute && btn.getAttribute('data-action')) break;
+      btn = btn.parentNode;
+    }
+    if (!btn || btn === document) return;
+    var action = btn.getAttribute('data-action');
+
+    if (action === 'toggleCred') {
+      var targetId = btn.getAttribute('data-target');
+      var body = document.getElementById(targetId);
+      if (!body) return;
+      var isOpen = body.classList.contains('open');
+      var credItem = btn.parentNode;
+      while (credItem && !credItem.classList.contains('cred-item')) {
+        credItem = credItem.parentNode;
+      }
+      if (credItem) {
+        credItem.querySelectorAll('.cred-expand-trigger').forEach(function(b) { b.classList.remove('open'); });
+        credItem.querySelectorAll('.cred-expand-body').forEach(function(b) { b.classList.remove('open'); });
+      }
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+  }, true);
+
+  // HAMBURGER MENU
+  window.navHamburgerInit = function() {
+    var btn = document.getElementById('navHamburger');
+    var overlay = document.getElementById('navMobileOverlay');
+    if (!btn || !overlay) return;
+    btn.addEventListener('click', function() {
+      var isOpen = overlay.classList.contains('open');
+      if (isOpen) {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        overlay.classList.add('open');
+        btn.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    overlay.querySelectorAll('.nav-mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        overlay.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  };
+  window.navHamburgerInit();
+  </script>
+
+</body>
+</html>

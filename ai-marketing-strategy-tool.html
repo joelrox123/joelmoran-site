@@ -42,7 +42,7 @@
       gap: 2rem;
     }
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 1.05rem;
       font-weight: 400;
       letter-spacing: 0.1em;
@@ -94,14 +94,14 @@
     .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
     .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: rgba(20,20,18,0.97); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    .nav-mobile-overlay { display: none; position: fixed; inset: 0; z-index: 490; background: var(--green); flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
     .nav-mobile-overlay.open { display: flex; opacity: 1; }
     .nav-mobile-overlay ul { list-style: none; display: flex; flex-direction: column; align-items: center; width: 100%; }
     .nav-mobile-overlay ul li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .nav-mobile-overlay ul li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
     .nav-mobile-overlay ul li a { display: block; padding: 1.3rem 8vw; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
     .nav-mobile-overlay ul li a:hover, .nav-mobile-overlay ul li a.nav-tool, .nav-mobile-overlay ul li a.nav-mobile-cta { color: #B8935A !important; }
-    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
+    .nav-mobile-footer { margin-top: 2.5rem; font-family: 'EB Garamond', serif; font-size: 0.75rem; font-style: italic; color: rgba(255,255,255,0.2); }
     @media (max-width: 640px) { .nav-links { display: none !important; } .nav-hamburger { display: flex; } }
     .page-wrap {
       padding-top: 80px;
@@ -541,7 +541,7 @@
       align-items: center;
     }
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 0.88rem;
       font-weight: 300;
       letter-spacing: 0.1em;
@@ -550,7 +550,7 @@
       text-decoration: none;
     }
     .footer-tagline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'EB Garamond', serif;
       font-size: 0.72rem;
       font-style: italic;
       color: rgba(184,147,90,0.7);
@@ -573,12 +573,61 @@
       .site-footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* === WISPR DESIGN SYSTEM UPDATE === */
+    :root {
+      --cream: #FFFFEB !important;
+      --green: #034F46 !important;
+      --lavender: #F0D7FF !important;
+      --dark: #1A1A1A !important;
+      --border: #E4E4D0 !important;
+      --mid: #6A6858 !important;
+      /* legacy aliases */
+      --gold: #034F46 !important;
+      --gold-light: #F0D7FF !important;
+      --border-gold: rgba(3,79,70,0.18) !important;
+      --ivory: #FFFFEB !important;
+    }
+    body { font-family: 'Figtree', sans-serif !important; background: #FFFFEB !important; }
+    h1, h2, h3, h4, h5, .section-title, .hero-title, .guide-title, .about-punch,
+    .hero-headline, .page-hero h1 {
+      font-family: 'EB Garamond', serif !important;
+    }
+    .nav-logo {
+      font-family: 'Figtree', sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.01em !important;
+    }
+    /* Nav pill stays on desktop, flat on mobile */
+    @media (max-width: 640px) {
+      nav, nav.site-nav {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        transform: none !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+        padding: 0.7rem 1.2rem !important;
+      }
+    }
+    /* Thicker button borders */
+    .nav-cta { border-width: 2px !important; }
+    a[class*="cta"], button[class*="cta"] { border-width: 2px !important; }
+  </style>
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-logo">Joel Moran</a>
   <ul class="nav-links">
     <li><a href="index.html#about">About</a></li>
+    <li><a href="/about/">Full Profile</a></li>
     <li><a href="index.html#credentials">Experience</a></li>
     <li><a href="index.html#work">Work</a></li>
     <li><a href="index.html#services">Services</a></li>
@@ -594,7 +643,7 @@
   <ul>
     <li><a href="index.html" class="nav-mobile-link">Home</a></li>
     <li><a href="index.html#about" class="nav-mobile-link">About</a></li>
-    <li><a href="index.html#credentials" class="nav-mobile-link">Experience</a></li>
+      <li><a href="/about/" class="nav-mobile-link nav-tool">Full Profile</a></li>
     <li><a href="index.html#work" class="nav-mobile-link">Work</a></li>
     <li><a href="index.html#services" class="nav-mobile-link">Services</a></li>
     <li><a href="/guides/" class="nav-mobile-link nav-tool">Guides</a></li>
