@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMA at Mumbrella360 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4 landscape;margin:0}
+
+body{background:#f0f2f5;font-family:'IBM Plex Sans',sans-serif;padding:16px;-webkit-text-size-adjust:100%}
+
+.page{width:100%;max-width:1050px;margin:0 auto;background:#fff;padding:28px 28px 24px;border:0.5px solid #dde1ea;border-radius:6px}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;border-bottom:2px solid #1B3873;padding-bottom:16px;gap:16px;flex-wrap:wrap}
+.event-label{font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#1B3873;opacity:0.5;margin-bottom:5px}
+.headline{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;line-height:1.1;color:#1B3873}
+.event-meta{font-size:11px;color:#6b7a99;margin-top:5px;font-weight:400}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.brand-pill{display:flex;align-items:center;gap:6px;border:1px solid #dde1ea;border-radius:100px;padding:5px 12px;font-size:10px;font-weight:500;color:#1B3873;background:#f7f8fc;white-space:nowrap}
+.bdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-m360{background:#e8132a}
+.dot-tma{background:#1B3873}
+
+/* Days grid */
+.days-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:20px}
+
+.day-column{display:flex;flex-direction:column;gap:5px}
+.day-header{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.day-label{font-size:8px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#9ba8c0;white-space:nowrap}
+.day-date{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#1B3873;white-space:nowrap}
+.day-line{flex:1;height:1px;background:#e4e8f0}
+
+/* Session rows */
+.session{background:#f7f8fc;border:0.5px solid #e4e8f0;border-radius:4px;padding:8px 10px 7px 10px;display:flex;gap:9px;align-items:flex-start}
+.stime{font-size:8.5px;font-weight:500;color:#9ba8c0;min-width:32px;padding-top:2px;white-space:nowrap}
+.scontent{flex:1;min-width:0}
+.speakers{display:flex;flex-direction:column;gap:2px;margin-bottom:2px}
+.speaker-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.sname{font-size:11px;font-weight:600;color:#1B3873}
+.rb{font-size:7.5px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;border-radius:3px;padding:1.5px 5px;white-space:nowrap;background:#e8ecf5;color:#1B3873;border:0.5px solid #c5cde3}
+.stitle{font-size:9.5px;color:#4a5570;line-height:1.35;margin-top:1px}
+.strack{font-size:7.5px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#9ba8c0;margin-top:3px}
+.sep{color:#c5cde3;font-size:8px;padding:0 1px}
+
+/* Footer */
+.footer{margin-top:18px;padding-top:12px;border-top:1px solid #e4e8f0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-note{font-size:8px;color:#9ba8c0;font-style:italic}
+.footer-r{font-size:8px;color:#9ba8c0;text-align:right;line-height:1.6}
+
+/* ── MOBILE ── */
+@media (max-width: 680px) {
+  body{padding:0;background:#fff}
+  .page{border:none;border-radius:0;padding:20px 16px 32px;max-width:100%}
+
+  .header{flex-direction:column;gap:14px;padding-bottom:14px;margin-bottom:16px}
+  .header-right{flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:6px}
+  .headline{font-size:21px}
+  .event-label{font-size:8.5px}
+  .event-meta{font-size:11px}
+
+  .days-grid{grid-template-columns:1fr;gap:24px}
+
+  .day-date{font-size:14px}
+  .day-label{font-size:8px}
+
+  .session{padding:10px 12px 9px 12px;gap:10px}
+  .stime{font-size:10px;min-width:38px}
+  .sname{font-size:13px}
+  .rb{font-size:8.5px;padding:2px 6px}
+  .stitle{font-size:11px;line-height:1.4;margin-top:3px}
+  .strack{font-size:8.5px;margin-top:4px}
+
+  .footer{flex-direction:column;align-items:flex-start;gap:4px}
+  .footer-r{text-align:left}
+}
+
+@media print{body{background:#fff;padding:0}.page{border:none;border-radius:0}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="event-label">Mumbrella360 · 27–28 May 2026 · Carriageworks, Sydney</div>
+      <div class="headline">TMA Community on Stage at Mumbrella360</div>
+      <div class="event-meta">Our scholars, fellows, mentors &amp; board on stage over both days</div>
+    </div>
+    <div class="header-right">
+      <div class="brand-pill"><span class="bdot dot-m360"></span>Mumbrella360</div>
+      <div class="brand-pill"><span class="bdot dot-tma"></span>The Marketing Academy</div>
+    </div>
+  </div>
+
+  <div class="days-grid">
+
+    <!-- DAY 1 -->
+    <div class="day-column">
+      <div class="day-header">
+        <div class="day-label">Day 1</div>
+        <div class="day-date">Wednesday 27 May</div>
+        <div class="day-line"></div>
+      </div>
+
+      <div class="session">
+        <div class="stime">9:10am</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Thomas Barta</span><span class="rb">Fellowship Dean</span></div></div>
+          <div class="stitle">Catalyst — Make The Future Happen</div>
+          <div class="strack">Main Stage</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">10:00am</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Joanna Robinson</span><span class="rb">APAC Fellow 2025</span></div></div>
+          <div class="stitle">What's Keeping CMOs Up at Night?</div>
+          <div class="strack">Main Stage</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">2:45pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Alex Light</span><span class="rb">Scholar 2015</span></div></div>
+          <div class="stitle">Will The Real Snoop Please Stand Up? The Power of Cultural Spikes</div>
+          <div class="strack">Cognition</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">2:45pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Lauren Dawber</span><span class="rb">Scholar 2023</span></div></div>
+          <div class="stitle">The Future of Marketing Is Here</div>
+          <div class="strack">Futurist</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">3:30pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Kenny Hill</span><span class="rb">Scholar Mentor</span></div></div>
+          <div class="stitle">AI Brain Fry: Beating the Overload Nobody Saw Coming</div>
+          <div class="strack">Futurist</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">3:30pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Rowena Millward</span><span class="rb">Scholar Mentor</span></div></div>
+          <div class="stitle">How To Communicate During Reinvention — So People Actually Change</div>
+          <div class="strack">Masterclass</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">4:15pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Nicole Bardsley</span><span class="rb">Scholar 2015</span></div></div>
+          <div class="stitle">The CreaTVity Multiplier: Supercharge Your Campaign to Create Cultural Capital</div>
+          <div class="strack">Main Stage</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-column">
+      <div class="day-header">
+        <div class="day-label">Day 2</div>
+        <div class="day-date">Thursday 28 May</div>
+        <div class="day-line"></div>
+      </div>
+
+      <div class="session">
+        <div class="stime">9:05am</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Adam Ferrier</span><span class="rb">Scholar Mentor</span></div></div>
+          <div class="stitle">How to Create Extraordinary Creativity... with a Mystery Guest</div>
+          <div class="strack">Catalyst · Thinkerbell Scholarship Partner</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">10:00am</div>
+        <div class="scontent">
+          <div class="speakers">
+            <div class="speaker-row"><span class="sname">Sherilyn Shackell</span><span class="rb">TMA Founder &amp; CEO</span></div>
+            <div class="speaker-row"><span class="sname">Mel Hopkins</span><span class="rb">Scholar Mentor</span><span class="sep">·</span><span class="sname">Katie Dally</span><span class="rb">Scholar 2022</span></div>
+          </div>
+          <div class="stitle">Redundancy Unmasked: Ditch the Shame, Own Your Story</div>
+          <div class="strack">Catalyst</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">11:15am</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Kate Gamble</span><span class="rb">Scholar 2017</span></div></div>
+          <div class="stitle">Stop Implementing AI. Start Redesigning How Marketing Works</div>
+          <div class="strack">Main Stage</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">2:00pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Lucinda Barlow</span><span class="rb">Fellow APAC 2024</span></div></div>
+          <div class="stitle">Once Upon a Time in the Age of AI: Why Storytelling Is Your Most Effective Strategy</div>
+          <div class="strack">AI Track</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">2:45pm</div>
+        <div class="scontent">
+          <div class="speakers">
+            <div class="speaker-row"><span class="sname">Nick Garrett</span><span class="rb">Scholar Mentor</span><span class="sep">·</span><span class="sname">Rowena Millward</span><span class="rb">Scholar Mentor</span></div>
+          </div>
+          <div class="stitle">Disrupt, Consolidate, Accelerate: Who Wins Adland's Big Reset?</div>
+          <div class="strack">Main Stage · Omnicom Global Fellowship Partner</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">2:45pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Phillip Smith</span><span class="rb">Scholar Mentor</span></div></div>
+          <div class="stitle">One Partner or Many? How CMOs Are Redesigning the Agency Services Equation</div>
+          <div class="strack">Culture</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">3:30pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Rebecca Darley</span><span class="rb">Fellow APAC 2023</span></div></div>
+          <div class="stitle">Dawn of a New Day: Reawakening Brand Love and Disrupting the Status Quo</div>
+          <div class="strack">Main Stage</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">3:30pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Lucio Ribeiro</span><span class="rb">Scholar 2018</span></div></div>
+          <div class="stitle">The Human Signal: What Hundreds of AI Films Reveal About Craft, Judgement and Creative Quality</div>
+          <div class="strack">AI Track</div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="stime">4:15pm</div>
+        <div class="scontent">
+          <div class="speakers"><div class="speaker-row"><span class="sname">Mark Ritson</span><span class="rb">Board Director</span></div></div>
+          <div class="stitle">Marketing Anchors: The Case for Capability in an Era of Transformation</div>
+          <div class="strack">Main Stage · Closing Keynote</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Compiled for TMA community use · Mumbrella360 2026</div>
+    <div class="footer-r">themarketingacademy.org · mumbrella.com.au/mumbrella360</div>
+  </div>
+
+</div>
+</body>
+</html>
