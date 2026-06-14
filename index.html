@@ -974,30 +974,6 @@
       From launching Kayo Sports from zero, to rebuilding Afterpay's marketing with half the team using AI. I've built brands in fast-moving, high-stakes environments. Deep in fintech, streaming + retail. Hands-on with MarTech, growth and creative.
     </p>
 
-    <!-- Awards -->
-    <div class="awards-strip">
-      <div class="award-item">
-        <span class="award-icon">🥇</span>
-        <div class="award-title">Gold: Data-Driven Marketing Campaign of the Year</div>
-        <div class="award-org">Mumbrella Awards</div>
-      </div>
-      <div class="award-item">
-        <span class="award-icon">🏆</span>
-        <div class="award-title">Effies Finalist: 5 categories incl. ROI + Marketing Effectiveness</div>
-        <div class="award-org">Effies Australia</div>
-      </div>
-      <div class="award-item">
-        <span class="award-icon">⚡</span>
-        <div class="award-title">Sports Marketing Team of the Year</div>
-        <div class="award-org">Mumbrella Awards</div>
-      </div>
-      <div class="award-item">
-        <span class="award-icon">🎯</span>
-        <div class="award-title">Excellence in Performance Marketing: Influencer + UGC</div>
-        <div class="award-org">TikTok Recognition</div>
-      </div>
-    </div>
-
     <!-- How I Work -->
     <div class="how-i-work">
       <span class="how-eyebrow">How I Work</span>
@@ -1104,7 +1080,7 @@
         </div>
       </div>
 
-      <div class="work-item hidden">
+      <div class="work-item">
         <div class="work-item-inner">
           <div class="work-num">03</div>
           <div class="work-content">
@@ -1118,7 +1094,7 @@
         </div>
       </div>
 
-      <div class="work-item hidden">
+      <div class="work-item">
         <div class="work-item-inner">
           <div class="work-num">04</div>
           <div class="work-content">
@@ -1134,9 +1110,6 @@
 
     </div>
 
-    <button class="see-more-btn" id="seeMoreBtn" data-action="toggleWork">
-      See more work &#8595;
-    </button>
   </section>
 
   <!-- ===================== SERVICES ===================== -->
@@ -1282,17 +1255,6 @@
       body.classList.toggle('open', !isOpen);
     }
 
-    // Work see more toggle
-    if (action === 'toggleWork') {
-      var seeMoreBtn = document.getElementById('seeMoreBtn');
-      var expanded = seeMoreBtn.getAttribute('data-expanded') === 'true';
-      expanded = !expanded;
-      seeMoreBtn.setAttribute('data-expanded', String(expanded));
-      document.querySelectorAll('.work-item.hidden').forEach(function(c) {
-        c.classList.toggle('shown', expanded);
-      });
-      seeMoreBtn.innerHTML = expanded ? 'See less &#8593;' : 'See more work &#8595;';
-    }
   }, true);
 
   // Sticky bar on scroll
