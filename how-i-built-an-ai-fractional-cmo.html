@@ -11,9 +11,62 @@
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://joelmoran.com/how-i-built-an-ai-fractional-cmo" />
   <link rel="canonical" href="https://joelmoran.com/how-i-built-an-ai-fractional-cmo" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141412'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='600' fill='%23B8935A'%3EJM%3C/text%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000000'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='%23C6FF1B'%3EJM%3C/text%3E%3C/svg%3E" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
+
+    /* NAV OVERRIDE — dark editorial */
+    :root {
+      --black:      #000000;
+      --accent:     #C6FF1B;
+      --gray-mid:   #878EA0;
+      --white:      #FFFFFF;
+    }
+    nav {
+      position: sticky !important; top: 0 !important;
+      left: 0 !important; right: 0 !important;
+      z-index: 500 !important;
+      display: flex !important; justify-content: space-between !important; align-items: center !important;
+      padding: 0 5vw !important; height: 64px !important;
+      background: #000 !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+      border-radius: 0 !important; box-shadow: none !important;
+      transform: none !important; width: auto !important; max-width: none !important;
+    }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif !important; font-size: 1.05rem !important; letter-spacing: -0.01em !important; text-decoration: none !important; color: #fff !important; flex-shrink: 0 !important; }
+    .nav-logo strong { font-weight: 700 !important; }
+    .nav-logo span { font-weight: 300 !important; }
+    .nav-links { display: flex !important; gap: 2rem !important; list-style: none !important; align-items: center !important; position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; }
+    .nav-links a { font-family: 'Inter', sans-serif !important; font-size: 0.7rem !important; font-weight: 500 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; color: #878EA0 !important; text-decoration: none !important; background: none !important; border: none !important; border-radius: 0 !important; padding: 0 !important; }
+    .nav-links a:hover { color: #fff !important; background: none !important; }
+    .nav-links .nav-tool { color: #C6FF1B !important; }
+    .nav-links .nav-tool.active { color: #C6FF1B !important; }
+    .nav-cta { font-family: 'Inter', sans-serif !important; font-size: 0.68rem !important; font-weight: 700 !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; background: #C6FF1B !important; color: #000 !important; padding: 0.6rem 1.4rem !important; text-decoration: none !important; border: 1px solid #C6FF1B !important; border-radius: 0 !important; transition: background 0.15s, color 0.15s !important; white-space: nowrap !important; display: inline-block !important; }
+    .nav-cta:hover { background: #000 !important; color: #C6FF1B !important; }
+    .nav-hamburger span { background: #fff !important; }
+    .nav-mobile-overlay { background: #000 !important; }
+    .nav-mobile-overlay ul li a { color: #878EA0 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; }
+    .nav-mobile-overlay ul li a:hover { color: #fff !important; }
+    .nav-mobile-overlay ul li a.nav-cta { color: #000 !important; background: #C6FF1B !important; }
+    .site-footer, footer.site-footer {
+      background: #000 !important; border-top: 1px solid rgba(255,255,255,0.08) !important;
+      padding: 1.8rem 5vw !important;
+      display: flex !important; justify-content: space-between !important; align-items: center !important;
+      flex-direction: row !important; gap: 0 !important;
+    }
+    .footer-left { display: flex !important; align-items: center !important; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif !important; font-size: 0.95rem !important; font-weight: 700 !important; color: #fff !important; text-decoration: none !important; }
+    .footer-logo span { font-weight: 300 !important; }
+    .footer-tagline { font-size: 0.75rem !important; color: #878EA0 !important; }
+    .footer-copy { font-size: 0.65rem !important; color: rgba(255,255,255,0.25) !important; }
+    @media (max-width: 640px) {
+      .nav-links { display: none !important; }
+      .nav-hamburger { display: flex !important; }
+      .site-footer, footer.site-footer { flex-direction: column !important; gap: 0.5rem !important; text-align: center !important; }
+      .footer-left { flex-direction: column !important; gap: 0.5rem !important; }
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --ivory: #FFFFEB;
@@ -285,9 +338,7 @@
       .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
     }
   </style>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
-  <style>
+<style>
     /* === WISPR DESIGN SYSTEM UPDATE === */
     :root {
       --cream: #FFFFEB !important;
@@ -337,51 +388,35 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">Joel Moran</a>
+  <a href="/" class="nav-logo"><strong>joel</strong><span>moran</span></a>
   <ul class="nav-links">
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="/#about">About</a></li>
     <li><a href="/about/">Full Profile</a></li>
-    <li><a href="index.html#credentials">Experience</a></li>
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="index.html#services">Services</a></li>
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#services">Services</a></li>
     <li><a href="/guides/">Guides</a></li>
-    <li><a href="/ai-marketing-strategy-tool">🪔 CMO Tool</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Book a call</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/ai-marketing-strategy-tool" class="nav-tool active">🪔 CMO Tool</a></li>
+    <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-cta">Book a call</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
 <div class="nav-mobile-overlay" id="navMobileOverlay">
   <ul>
-    <li><a href="index.html" class="nav-mobile-link">Home</a></li>
-    <li><a href="index.html#about" class="nav-mobile-link">About</a></li>
-      <li><a href="/about/" class="nav-mobile-link nav-tool">Full Profile</a></li>
-    <li><a href="index.html#credentials" class="nav-mobile-link">Experience</a></li>
-    <li><a href="index.html#work" class="nav-mobile-link">Work</a></li>
-    <li><a href="index.html#services" class="nav-mobile-link">Services</a></li>
-    <li><a href="/guides/" class="nav-mobile-link nav-tool">Guides</a></li>
-    <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link nav-tool">🪔 CMO Tool</a></li>
-    <li><a href="index.html#contact" class="nav-mobile-link nav-mobile-cta">Book a call</a></li>
+    <li><a href="/" class="nav-mobile-link">Home</a></li>
+    <li><a href="/#about" class="nav-mobile-link">About</a></li>
+    <li><a href="/about/" class="nav-mobile-link">Full Profile</a></li>
+    <li><a href="/#work" class="nav-mobile-link">Work</a></li>
+    <li><a href="/#services" class="nav-mobile-link">Services</a></li>
+    <li><a href="/guides/" class="nav-mobile-link">Guides</a></li>
+    <li><a href="/#contact" class="nav-mobile-link">Contact</a></li>
+    <li><a href="/ai-marketing-strategy-tool" class="nav-mobile-link">CMO Tool</a></li>
+    <li><a href="https://cal.com/joelmoran/30-min-consultation-free" class="nav-mobile-link nav-cta">Book a call</a></li>
   </ul>
-  <p class="nav-mobile-footer">Marketing that actually works.</p>
 </div>
 
-<div class="hero fade-in">
-  <p class="hero-eyebrow">The Blueprint · Behind the build</p>
-  <h1 class="hero-title">
-    How I built an <em>AI fractional CMO</em><br>
-    into my website. No code.<br>
-    No developers. One afternoon.
-  </h1>
-  <p class="hero-sub">The honest, unfiltered story. What I started with, what went wrong, the actual system prompt powering it, and everything I'd do differently.</p>
-  <div class="hero-meta">
-    <span>Joel Moran</span>
-    <span>March 2026</span>
-    <span>Tools: Claude + Cowork</span>
-    <span>10 min read</span>
-  </div>
   <div class="hero-deco">🪔</div>
 </div>
 
@@ -541,10 +576,12 @@ If this is the last wish, make it count. End with a witty nudge to book time wit
 
 </div>
 
-<footer>
-  <a href="index.html" class="footer-logo">Joel Moran</a>
+<footer class="site-footer">
+  <div class="footer-left">
+    <a href="/" class="footer-logo"><strong>joel</strong><span>moran</span></a>
+  </div>
   <span class="footer-tagline">Marketing that actually works.</span>
-  <span class="footer-copy">© 2026 joelmoran.com</span>
+  <span class="footer-copy">&copy; 2026 joelmoran.com</span>
 </footer>
 
 <script>

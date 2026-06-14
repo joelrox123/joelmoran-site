@@ -775,6 +775,23 @@
       animation: pulse 2s infinite; display: inline-block;
     }
 
+
+    .hero-about-link {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--gray-mid); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-about-link:hover { color: var(--white); }
+
+    .about-more { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .about-more-link {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--gray-mid); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .about-more-link:hover { color: var(--accent); }
+
     /* ============================================================
        RESPONSIVE
     ============================================================ */
@@ -820,7 +837,7 @@
     <a href="#" class="nav-logo"><strong>joel</strong><span>moran</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#credentials">Experience</a></li>
+      <li><a href="/about/">Full Profile</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="/guides/">Guides</a></li>
@@ -837,7 +854,7 @@
   <div class="nav-mobile-overlay" id="navMobileOverlay">
     <ul>
       <li><a href="#about" class="nav-mobile-link">About</a></li>
-      <li><a href="#credentials" class="nav-mobile-link">Experience</a></li>
+      <li><a href="/about/" class="nav-mobile-link">Full Profile</a></li>
       <li><a href="#work" class="nav-mobile-link">Work</a></li>
       <li><a href="#services" class="nav-mobile-link">Services</a></li>
       <li><a href="/guides/" class="nav-mobile-link">Guides</a></li>
@@ -884,6 +901,7 @@
       <li>Associate Director, Digital Marketing — Optus</li>
     </ul>
     <a href="#contact" class="btn-primary">Begin the conversation &rarr;</a>
+    <a href="/about/" class="hero-about-link">View my full profile &rarr;</a>
   </div>
 
   <!-- ===================== MARQUEE ===================== -->
@@ -1044,158 +1062,11 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===================== EXPERIENCE ===================== -->
-  <section id="credentials">
-    <span class="eyebrow">Experience</span>
-    <h2 class="section-title">What each role <span class="accent">taught me.</span></h2>
-
-    <div class="cred-section">
-      <div class="cred-grid">
-
-        <!-- AFTERPAY -->
-        <div class="cred-item">
-          <div class="cred-org">Afterpay / Clearpay · Block Inc, NYSE: SQ</div>
-          <div class="cred-role">CMO / VP Marketing, International</div>
-          <div class="cred-detail">5+ years · AU, NZ, UK + Canada · Delivered double-digit YoY GPV growth for 5 consecutive years</div>
-          <div class="cred-buttons">
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-did">
-              What I did <span class="ci">+</span>
-            </button>
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="afterpay-proud">
-              Proudest moments <span class="ci">+</span>
-            </button>
-          </div>
-          <div class="cred-expand-body" id="afterpay-did">
-            <p>Over five years I helped double revenue by taking significant share from banks and credit cards, building one of Australia's most trusted consumer brands, driving merchant partner businesses to grow in the process.</p>
-            <p>I was there when Afterpay was an ASX darling and when it was acquired by Block. Started as Director of Brand for ANZ, took on Growth + Product Marketing, then in 2024 became VP Marketing International, leading the full marketing program across AU, NZ, UK + Canada. The most senior marketer, reporting directly to Nick Molnar (Afterpay founder, now leads Sales + Marketing at Block Inc).</p>
-            <p>Accountable for driving part of the consumer side of the P+L, in partnership with product, sales, risk + customer service, then executing the full marketing funnel to deliver variable profit through new customer acquisition, increased frequency, product attach + brand health.</p>
-            <p>Directly responsible for: brand strategy, growth/performance marketing, CRM, sponsorships, social, trade + merchant marketing, media + advertising, product marketing, and go-to-market.</p>
-          </div>
-          <div class="cred-expand-body" id="afterpay-proud">
-            <h5>Rebuilt the team using AI + still exceeded targets</h5>
-            <ul>
-              <li>When the team was cut by 60%, ran a transformation program using AI + technology to do more with far less.</li>
-              <li>Exceeded revenue targets in every market: ANZ +18% YoY, UK +21%, Canada +13%.</li>
-              <li>Market share: &gt;80% in AU, &gt;90% in NZ, &gt;20% in UK.</li>
-              <li>Launched new BNPL regulations in NZ, AU + Canada.</li>
-              <li>Grew to most trusted BNPL brand in ANZ + UK.</li>
-            </ul>
-            <h5>Proved ROI for brand advertising</h5>
-            <ul>
-              <li>Gold at Mumbrella Awards: Data-Driven Marketing Campaign of the Year.</li>
-              <li>Effies finalist in 5 categories for marketing effectiveness.</li>
-              <li>"Afterpay Where You Wouldn't Believe": drove new vertical adoption, proved brand spend delivers positive ROI.</li>
-              <li>"Pay Better" with Rebel Wilson: two-year integrated brand platform that redefined how Australians thought about Afterpay.</li>
-            </ul>
-            <h5>Made work that moved the needle</h5>
-            <ul>
-              <li>"Old Money Doesn't Like How New Money Works": tackled brand rejection head-on.</li>
-              <li>"Own It": repositioned Afterpay for financially savvy consumers.</li>
-              <li>600 UGC ads, recognised by TikTok for excellence in performance marketing (influencer/UGC).</li>
-              <li>Launched Amazon, Uber Eats, Dan Murphy's, Ampol + more.</li>
-            </ul>
-            <h5>Sponsorships that punched above their cost</h5>
-            <ul>
-              <li>Afterpay Australian Fashion Week: 3 consecutive years, $99M p.a. earned media value.</li>
-              <li>Daniel Ricciardo partnership: year-long multichannel campaign, 42M reach.</li>
-            </ul>
-            <h5>Made Afterpay Day a commercial juggernaut</h5>
-            <ul>
-              <li>Introduced "Carpe Diem" as the Afterpay Day trade platform; drove 21% YoY growth.</li>
-            </ul>
-            <h5>Turned around customer acquisition when it was broken</h5>
-            <ul>
-              <li>Reversed a 20% YoY decline to 6% growth within 12 months.</li>
-              <li>Rebuilt the full conversion funnel + performance marketing from the ground up.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- KAYO -->
-        <div class="cred-item">
-          <div class="cred-org">Kayo Sports · News Corp / Foxtel</div>
-          <div class="cred-role">Head of Marketing</div>
-          <div class="cred-detail">Brand launch from zero · 600K+ subscribers · 83% brand awareness · Sports Marketing Team of the Year</div>
-          <div class="cred-buttons">
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-did">
-              What I did <span class="ci">+</span>
-            </button>
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="kayo-proud">
-              Proudest moments <span class="ci">+</span>
-            </button>
-          </div>
-          <div class="cred-expand-body" id="kayo-did">
-            <p>Founding marketing hire for Australia's biggest sports streaming platform, a start-up inside Foxtel/News Corp. Joined just after finishing my Executive MBA. Built the brand, team + go-to-market from scratch.</p>
-            <ul>
-              <li>Developed + executed the strategic sales + marketing plan to grow Kayo's subscriber base.</li>
-              <li>Accountable for go-to-market across marketing, brand, sales, customer engagement, social + publicity.</li>
-              <li>Owned brand positioning, identity, all advertising + content marketing including creative + media planning.</li>
-              <li>Led a 16-person in-house creative services team across Kayo, BINGE, Watch AFL/NRL.</li>
-            </ul>
-          </div>
-          <div class="cred-expand-body" id="kayo-proud">
-            <ul>
-              <li>Grew Kayo to 600K+ subscribers: ~19% of Australia's sporting population, ~$122M revenue p.a.</li>
-              <li>Built awareness from 0% to 83% in under 3 years.</li>
-              <li>Ran 8 large integrated campaigns with full measurement frameworks, leveraging mass-market channels + sophisticated digital strategy.</li>
-              <li>Hired + built a high-performing sales + marketing team using cutting-edge agile working practices, regarded as a role-model across the Foxtel Group.</li>
-              <li>Won Mumbrella Sports Marketing Team of the Year 2019.</li>
-              <li>Won News Corp Brand of the Year 2019, first subsidiary company ever to secure the award.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- OPTUS -->
-        <div class="cred-item">
-          <div class="cred-org">Optus</div>
-          <div class="cred-role">Associate Director, Digital Marketing</div>
-          <div class="cred-detail">~6 years · Ecommerce, performance marketing + digital customer marketing</div>
-          <div class="cred-buttons">
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="optus-did">
-              What I did <span class="ci">+</span>
-            </button>
-          </div>
-          <div class="cred-expand-body" id="optus-did">
-            <p>Where I went deep on performance marketing + ecommerce. Built Optus's first mobile site, led retention + digital customer marketing, and owned ecommerce channel development. Learned to connect brand + commercial outcomes in a highly competitive, price-sensitive category.</p>
-          </div>
-        </div>
-
-        <!-- VODAFONE -->
-        <div class="cred-item">
-          <div class="cred-org">Vodafone + 3 Mobile</div>
-          <div class="cred-role">Various Roles</div>
-          <div class="cred-detail">~9 years combined · Digital merchandising, prepaid product management, retail distribution</div>
-          <div class="cred-buttons">
-            <button class="cred-expand-trigger" data-action="toggleCred" data-target="voda-did">
-              What I did <span class="ci">+</span>
-            </button>
-          </div>
-          <div class="cred-expand-body" id="voda-did">
-            <p>My foundations. Hands-on experience across digital merchandising, prepaid segment management + mass-market retail distribution through Coles + Woolworths. At 3 Mobile, designed the first prepaid product, which gave me a commercial + product lens I've carried through everything since.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Education -->
-    <div class="cred-section">
-      <span class="cred-section-title">Education</span>
-      <div class="cred-grid">
-        <div class="cred-item">
-          <div class="cred-org">AGSM @ UNSW Business School</div>
-          <div class="cred-role">Executive MBA, Distinction</div>
-          <div class="cred-detail">Marketing, Management + Finance</div>
-        </div>
-        <div class="cred-item">
-          <div class="cred-org">Charles Sturt University</div>
-          <div class="cred-role">Bachelor of Business, Marketing</div>
-        </div>
-      </div>
+    <div class="about-more">
+      <a href="/about/" class="about-more-link">View full credentials, education + awards &rarr;</a>
     </div>
   </section>
+
 
   <!-- ===================== WORK ===================== -->
   <section id="work">
