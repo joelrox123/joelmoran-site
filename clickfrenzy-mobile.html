@@ -318,8 +318,11 @@
   .sheet .shclose{position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-weight:800;color:#52525c;cursor:pointer;z-index:3;}
 
   /* preview toggle bar */
-  .previewbar{position:fixed;top:0;left:0;right:0;height:40px;z-index:300;background:#0d0d12;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 12px;}
-  .previewbar .seg{display:inline-flex;background:#23232c;border-radius:100px;padding:3px;gap:3px;}
+  .previewbar{position:fixed;top:0;left:0;right:0;height:40px;z-index:300;background:repeating-linear-gradient(45deg,#0d0d12,#0d0d12 10px,#15151c 10px,#15151c 20px);border-bottom:2px dashed #ffce33;display:flex;align-items:center;gap:12px;padding:0 12px;overflow-x:auto;scrollbar-width:none;}
+  .previewbar::-webkit-scrollbar{display:none;}
+  .pv-tag{flex:0 0 auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:1px;color:#ffce33;text-transform:uppercase;white-space:nowrap;}
+  .pv-toggles{display:flex;align-items:center;gap:10px;margin-left:auto;}
+  .previewbar .seg{display:inline-flex;background:#23232c;border-radius:100px;padding:3px;gap:3px;flex:0 0 auto;}
   .previewbar .seg button{border:0;background:transparent;color:#9a9aa6;font-size:11px;font-weight:700;padding:5px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
   .previewbar .seg button.on{background:var(--pink);color:#fff;}
   /* account next to search */
@@ -401,7 +404,7 @@
 
   /* ===== component kit pass ===== */
   /* drop nav chip row; desktop header nav instead */
-  .pills{display:none !important;}
+  body.desktop .pills{display:none;}
   .dnav{display:none;}
   body.desktop .dnav{display:flex;align-items:center;gap:4px;background:#fff;border-bottom:1px solid var(--line);padding:8px 24px;}
   body.desktop .dnav a{font-size:13px;font-weight:700;color:var(--ink);padding:7px 14px;border-radius:100px;cursor:pointer;text-decoration:none;white-space:nowrap;}
@@ -451,9 +454,12 @@
 <body>
 
   <div class="previewbar">
-    <div class="seg"><button id="btnMobile" class="on" onclick="setView('mobile')">Mobile</button><button id="btnDesktop" onclick="setView('desktop')">Desktop</button></div>
-    <div class="seg"><button id="btnOut" class="on" onclick="setLogin(false)">Logged out</button><button id="btnIn" onclick="setLogin(true)">Logged in</button></div>
-    <div class="seg"><button id="btnFlashLive" class="on" onclick="setFlash('live')">Flash: Live</button><button id="btnFlashSoon" onclick="setFlash('soon')">Soon</button></div>
+    <span class="pv-tag">⚙ Prototype preview · not the live site</span>
+    <div class="pv-toggles">
+      <div class="seg"><button id="btnMobile" class="on" onclick="setView('mobile')">Mobile</button><button id="btnDesktop" onclick="setView('desktop')">Desktop</button></div>
+      <div class="seg"><button id="btnOut" class="on" onclick="setLogin(false)">Logged out</button><button id="btnIn" onclick="setLogin(true)">Logged in</button></div>
+      <div class="seg"><button id="btnFlashLive" class="on" onclick="setFlash('live')">Flash: Live</button><button id="btnFlashSoon" onclick="setFlash('soon')">Soon</button></div>
+    </div>
   </div>
 
   <div class="screen" id="screen">
