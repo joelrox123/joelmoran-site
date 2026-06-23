@@ -29,7 +29,7 @@
   .demobar .sw button{border:0;background:transparent;color:#9a9aa6;font-size:11px;font-weight:700;padding:6px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
   .demobar .sw button.on{background:var(--pink);color:#fff;}
 
-  .screen{background:var(--paper);max-width:480px;margin:0 auto;min-height:100vh;position:relative;box-shadow:0 0 40px rgba(0,0,0,.06);}
+  .screen{background:var(--paper);max-width:480px;margin:40px auto 0;min-height:100vh;position:relative;box-shadow:0 0 40px rgba(0,0,0,.06);}
 
   .promostrip{background:linear-gradient(90deg,var(--pink),var(--pink-deep));color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 12px;font-size:12px;font-weight:700;}
   .promostrip .live{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.22);padding:2px 8px;border-radius:100px;font-size:10px;letter-spacing:1px;}
@@ -49,7 +49,7 @@
   .ticker .star{color:var(--pink);font-size:9px;}
   @keyframes tickerscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .pills{position:sticky;top:0;z-index:40;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:7px;padding:9px 14px;overflow-x:auto;scrollbar-width:none;}
+  .pills{position:sticky;top:40px;z-index:40;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:7px;padding:9px 14px;overflow-x:auto;scrollbar-width:none;}
   .pills::-webkit-scrollbar{display:none;}
   .pill{flex:0 0 auto;font-size:13px;font-weight:700;padding:7px 12px 7px 14px;border-radius:100px;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:5px;border:1px solid var(--line);}
   .pill .chev{width:13px;height:13px;opacity:.55;}
@@ -317,6 +317,43 @@
   .sheet .shcta{display:block;text-align:center;background:var(--pink);color:#fff;font-weight:800;font-size:14px;padding:13px;border-radius:100px;}
   .sheet .shclose{position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-weight:800;color:#52525c;cursor:pointer;z-index:3;}
 
+  /* preview toggle bar */
+  .previewbar{position:fixed;top:0;left:0;right:0;height:40px;z-index:300;background:#0d0d12;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 12px;}
+  .previewbar .seg{display:inline-flex;background:#23232c;border-radius:100px;padding:3px;gap:3px;}
+  .previewbar .seg button{border:0;background:transparent;color:#9a9aa6;font-size:11px;font-weight:700;padding:5px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
+  .previewbar .seg button.on{background:var(--pink);color:#fff;}
+  /* account next to search */
+  .appbar .acct-btn{flex:0 0 auto;font-size:11px;font-weight:700;color:var(--ink);border:1px solid var(--line);padding:7px 11px;border-radius:100px;cursor:pointer;white-space:nowrap;}
+  .appbar .avatar{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:none;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
+  .logged-in .acct-btn{display:none;}
+  .logged-in .avatar{display:flex;}
+  /* shop by brand */
+  .brandrow{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .brandrow::-webkit-scrollbar{display:none;}
+  .brand{flex:0 0 auto;cursor:pointer;}
+  .brand .b-tile{height:58px;min-width:88px;padding:0 16px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#2a2a32;white-space:nowrap;letter-spacing:-.2px;}
+
+  /* ===== DESKTOP MODE ===== */
+  body.desktop{background:#e7e7ee;}
+  body.desktop .screen{max-width:1080px;box-shadow:0 0 60px rgba(0,0,0,.08);}
+  body.desktop .appsearch{max-width:560px;font-size:14px;padding:11px 14px;}
+  body.desktop .logo img{width:90px;}
+  body.desktop .bb{height:300px;}
+  body.desktop .bb .bigoffer{font-size:40px;}
+  body.desktop .sec{padding:0 24px;}
+  body.desktop .sec.promo{margin-left:24px;margin-right:24px;}
+  body.desktop .feed{column-count:4;}
+  body.desktop .finds{grid-template-columns:repeat(4,1fr);}
+  body.desktop .find .imgwrap{height:150px;}
+  body.desktop .ret{flex:0 0 96px;} body.desktop .ret .logo-tile{width:96px;height:96px;}
+  body.desktop .flashcard,body.desktop .flycard{max-width:640px;margin-left:auto;margin-right:auto;}
+  body.desktop .pass-out,body.desktop .pass-in{max-width:640px;margin-left:auto;margin-right:auto;}
+  /* desktop half-card -> centered modal dialog */
+  body.desktop .sheet{left:50%;right:auto;top:50%;bottom:auto;width:440px;max-width:92vw;transform:translate(-50%,-46%);border-radius:22px;}
+  body.desktop .sheet.open{transform:translate(-50%,-50%);}
+  body.desktop .sheet .grab{display:none;}
+  body.desktop .sheet .shbody{padding:18px 22px 24px;}
+
   /* brand style notes under prototype */
   .brandnotes{width:392px;margin-top:26px;background:#1f1f27;border:1px solid #2e2e38;border-radius:20px;padding:22px;color:#cfcfd6;}
   .brandnotes h4{color:#fff;font-size:14px;font-weight:800;margin-bottom:4px;}
@@ -330,12 +367,19 @@
 </head>
 <body>
 
+  <div class="previewbar">
+    <div class="seg"><button id="btnMobile" class="on" onclick="setView('mobile')">Mobile</button><button id="btnDesktop" onclick="setView('desktop')">Desktop</button></div>
+    <div class="seg"><button id="btnOut" class="on" onclick="setLogin(false)">Logged out</button><button id="btnIn" onclick="setLogin(true)">Logged in</button></div>
+  </div>
+
   <div class="screen" id="screen">
       <div class="promostrip"><span class="live"><span class="dotlive"></span>LIVE</span>EOFY Frenzy · Up to 70% off everything</div>
 
       <div class="appbar">
         <div class="logo"><img src="data:image/png;base64,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" alt="Click Frenzy"></div>
         <div class="appsearch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search stores &amp; deals…</div>
+        <span class="acct-btn">Log in</span>
+        <span class="avatar">J</span>
         <button class="hamb" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       </div>
       <div class="ticker"><div class="ticker-track"><span class="name">EB Games</span><span class="star">✦</span><span class="name">MECCA</span><span class="star">✦</span><span class="name">New Balance</span><span class="star">✦</span><span class="name">Takingshape</span><span class="star">✦</span><span class="name">Volley</span><span class="star">✦</span><span class="name">BWS</span><span class="star">✦</span><span class="name">Nike</span><span class="star">✦</span><span class="name">IKEA</span><span class="star">✦</span><span class="name">JD Sports</span><span class="star">✦</span><span class="name">ASOS</span><span class="star">✦</span><span class="name">Baby Village</span><span class="star">✦</span><span class="name">Coach</span><span class="star">✦</span><span class="name">EB Games</span><span class="star">✦</span><span class="name">MECCA</span><span class="star">✦</span><span class="name">New Balance</span><span class="star">✦</span><span class="name">Takingshape</span><span class="star">✦</span><span class="name">Volley</span><span class="star">✦</span><span class="name">BWS</span><span class="star">✦</span><span class="name">Nike</span><span class="star">✦</span><span class="name">IKEA</span><span class="star">✦</span><span class="name">JD Sports</span><span class="star">✦</span><span class="name">ASOS</span><span class="star">✦</span><span class="name">Baby Village</span><span class="star">✦</span><span class="name">Coach</span><span class="star">✦</span></div></div>
@@ -396,6 +440,26 @@
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h2l2 11h10l2-7H7"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></div><span>Grocery</span></div>
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3l7 7-4 4-7-7zM10 7L3 14v7h7l7-7"/></svg></div><span>Tools</span></div>
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="9" r="2"/><circle cx="12" cy="6.5" r="2"/><circle cx="17" cy="9" r="2"/><path d="M8 16c0-3 2-4 4-4s4 1 4 4-2 4-4 4-4-1-4-4z"/></svg></div><span>Pets</span></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Shop by brand</h3></div><a>All</a></div>
+        <div class="brandrow">
+          <div class="brand"><div class="b-tile">Nike</div></div>
+          <div class="brand"><div class="b-tile">Apple</div></div>
+          <div class="brand"><div class="b-tile">Dyson</div></div>
+          <div class="brand"><div class="b-tile">Samsung</div></div>
+          <div class="brand"><div class="b-tile">adidas</div></div>
+          <div class="brand"><div class="b-tile">Sony</div></div>
+          <div class="brand"><div class="b-tile">Bose</div></div>
+          <div class="brand"><div class="b-tile">LEGO</div></div>
+          <div class="brand"><div class="b-tile">Garmin</div></div>
+          <div class="brand"><div class="b-tile">Breville</div></div>
+          <div class="brand"><div class="b-tile">New Balance</div></div>
+          <div class="brand"><div class="b-tile">PUMA</div></div>
+          <div class="brand"><div class="b-tile">Ninja</div></div>
+          <div class="brand"><div class="b-tile">JBL</div></div>
         </div>
       </div>
 
@@ -551,6 +615,7 @@
           <div class="find" data-cat="beauty" onclick="openSheet(this)" data-k="Napoleon Perdis" data-title="Skin Guardian SPF 50+ Sunscreen" data-now="$24" data-was="$48" data-off="50% off" data-detail="Natural-matte broad spectrum SPF 50+ daily sunscreen." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Beauty product"></div></div><div class="info"><div class="st">Napoleon Perdis</div><div class="nm">Skin Guardian SPF 50+ Sunscreen</div><div class="pr"><span class="now tnum">$24</span><span class="was tnum">$48</span></div></div></div>
           <div class="find" data-cat="jewellery" onclick="openSheet(this)" data-k="Prouds" data-title="G-Shock GA400 Watch" data-now="$174" data-was="$349" data-off="50% off" data-detail="Bold analog-digital G-Shock with shock resistance and 200m water resistance." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Watch"></div></div><div class="info"><div class="st">Prouds The Jewellers</div><div class="nm">G-Shock GA400 Watch</div><div class="pr"><span class="now tnum">$174</span><span class="was tnum">$349</span></div></div></div>
         </div>
+        <button class="showmore">Show more</button>
       </div>
 
       <!-- Trending stores: 5+ products per carousel, contained images -->
@@ -600,6 +665,7 @@
             <div class="hp"><div class="imgwrap"><span class="off">30% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Moisturiser"></div></div><div class="hpinfo"><div class="pn">Hydra Boost Moisturiser</div><div class="pp tnum">$28 <s>$40</s></div></div></div>
             <div class="hp"><div class="imgwrap"><span class="off">25% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Cleanser"></div></div><div class="hpinfo"><div class="pn">Gentle Foaming Cleanser</div><div class="pp tnum">$18 <s>$24</s></div></div></div>
           </div></div>
+        <button class="showmore">See all stores</button>
       </div>
 
       <div class="sec">
@@ -717,6 +783,12 @@
 
 
 <script>
+  function setView(mode){
+    var d = mode==='desktop';
+    document.body.classList.toggle('desktop', d);
+    document.getElementById('btnDesktop').classList.toggle('on', d);
+    document.getElementById('btnMobile').classList.toggle('on', !d);
+  }
   function setLogin(on){
     document.getElementById('screen').classList.toggle('logged-in', on);
     document.getElementById('btnIn').classList.toggle('on', on);
