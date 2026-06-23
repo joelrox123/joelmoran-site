@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#ff2d78">
+<title>Click Frenzy — EOFY Frenzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-display:'Passion One',-apple-system,system-ui,sans-serif;
+    --font-ui:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --ink:#15151c;--pink:#ff2d78;--pink-deep:#c5005f;--pink-text:#c5005f;
+    --teal:#0bb6a4;--teal-deep:#078e88;--yellow:#ffce33;
+    --paper:#f4f4f7;--card:#fff;--line:#e7e7ec;--muted:#6a6a74;
+    --imgbg:#eef0f3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--font-ui);background:var(--paper);color:var(--ink);}
+  .head{max-width:760px;text-align:center;color:#fff;margin-bottom:16px;}
+  .head .tag{display:inline-block;background:var(--pink);color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;padding:5px 12px;border-radius:100px;margin-bottom:12px;text-transform:uppercase;}
+  .head h1{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;}
+  .head p{font-size:13px;line-height:1.6;color:#b4b4c0;max-width:560px;margin:0 auto;}
+  .demobar{display:flex;align-items:center;gap:12px;background:#23232c;border:1px solid #34343e;border-radius:100px;padding:7px 8px 7px 16px;margin-bottom:20px;color:#cfcfd6;font-size:12px;font-weight:600;}
+  .demobar .sw{display:inline-flex;background:#0d0d12;border-radius:100px;padding:3px;gap:3px;}
+  .demobar .sw button{border:0;background:transparent;color:#9a9aa6;font-size:11px;font-weight:700;padding:6px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
+  .demobar .sw button.on{background:var(--pink);color:#fff;}
+
+  .screen{background:var(--paper);max-width:480px;margin:0 auto;min-height:100vh;position:relative;box-shadow:0 0 40px rgba(0,0,0,.06);}
+
+  .promostrip{background:linear-gradient(90deg,var(--pink),var(--pink-deep));color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 12px;font-size:12px;font-weight:700;}
+  .promostrip .live{display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.22);padding:2px 8px;border-radius:100px;font-size:10px;letter-spacing:1px;}
+  .dotlive{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,206,51,.6)}70%{box-shadow:0 0 0 6px rgba(255,206,51,0)}100%{box-shadow:0 0 0 0 rgba(255,206,51,0)}}
+
+  /* smaller logo */
+  .appbar{background:#fff;display:flex;align-items:center;justify-content:space-between;padding:9px 14px 8px;}
+  .logo{display:flex;align-items:center;gap:6px;}
+  .logo img{display:block;width:76px;height:auto;}
+  .appbar .right{display:flex;align-items:center;gap:8px;}
+  .b2b{font-size:11px;font-weight:800;color:#fff;background:var(--teal);padding:6px 11px;border-radius:100px;}
+  .acct{font-size:11px;font-weight:700;color:var(--ink);border:1px solid var(--line);padding:6px 11px;border-radius:100px;}
+  .avatar{width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;display:none;align-items:center;justify-content:center;font-weight:800;font-size:12px;}
+  .logged-in .acct{display:none;} .logged-in .avatar{display:flex;}
+
+  .searchwrap{background:#fff;padding:2px 14px 11px;}
+  .search{background:var(--paper);border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;gap:9px;padding:11px 14px;color:#6a6a74;font-size:13.5px;font-weight:500;}
+
+  .pills{position:sticky;top:0;z-index:40;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:7px;padding:9px 14px;overflow-x:auto;scrollbar-width:none;}
+  .pills::-webkit-scrollbar{display:none;}
+  .pill{flex:0 0 auto;font-size:13px;font-weight:700;padding:7px 12px 7px 14px;border-radius:100px;background:var(--paper);color:var(--ink);display:flex;align-items:center;gap:5px;border:1px solid var(--line);}
+  .pill .chev{width:13px;height:13px;opacity:.55;}
+  .pill .lockic{width:12px;height:12px;}
+  .pill .checkic{display:none;width:12px;height:12px;color:var(--teal-deep);}
+  .logged-in .pill .lockic{display:none;}
+  .logged-in .pill.pass .checkic{display:inline-flex;}
+  .pill.pass{border-color:var(--pink);color:var(--pink-text);background:#fff5f9;}
+  .logged-in .pill.pass{border-color:var(--teal);color:var(--teal-deep);background:#effbf9;}
+
+  .sec{margin-top:30px;padding:0 14px;}
+  .sec-h{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px;gap:10px;}
+  .sec-h .t h3{font-size:17px;font-weight:800;letter-spacing:-.3px;}
+  .sec-h .t .clar{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .sec-h a{font-size:12px;font-weight:700;color:var(--pink-text);white-space:nowrap;}
+  .filters{display:flex;gap:7px;overflow-x:auto;margin-bottom:13px;scrollbar-width:none;padding-bottom:2px;}
+  .filters::-webkit-scrollbar{display:none;}
+  .chip{flex:0 0 auto;font-size:12px;font-weight:600;padding:6px 13px;border-radius:100px;background:#fff;border:1px solid var(--line);color:#52525c;cursor:pointer;}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .ph{background:linear-gradient(135deg,#e9e9ef,#dadae2);display:flex;align-items:center;justify-content:center;color:#b6b6c2;}
+  .ph svg{width:26px;height:26px;opacity:.7;}
+  .photo{background-image:var(--img);background-size:cover;background-position:center;}
+  .product-img{width:100%;height:100%;object-fit:contain;display:block;}
+  .tnum{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+  /* contained product image frame */
+  .imgwrap{background:var(--imgbg);display:flex;align-items:center;justify-content:center;position:relative;}
+  .imgwrap .thumb{width:78%;height:78%;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#a6aab8;overflow:hidden;}
+  .imgwrap .thumb svg{width:24px;height:24px;opacity:.8;}
+  /* local logo frame */
+  .logoph{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#9a9aa6;overflow:hidden;}
+  .logoph img{display:block;max-width:86%;max-height:76%;object-fit:contain;}
+  .logoph svg{width:18px;height:18px;opacity:.7;}
+  .logoph small{font-size:8px;font-weight:700;letter-spacing:.5px;}
+
+  /* billboard — caption under banner */
+  .billboard{margin:16px 0 0;padding:0 14px;}
+  .bbscroll{display:flex;gap:11px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
+  .bbscroll::-webkit-scrollbar{display:none;}
+  .bb{flex:0 0 100%;scroll-snap-align:center;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;}
+  .bb .bb-img{height:142px;position:relative;color:#fff;background-size:cover;background-position:center;}
+  .bb .bb-img .lbl{position:absolute;top:11px;left:11px;background:rgba(0,0,0,.4);font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 9px;border-radius:7px;z-index:2;}
+  .bb .bb-img .bigoffer{position:absolute;left:16px;bottom:14px;font-family:var(--font-display);font-weight:900;font-size:30px;letter-spacing:.5px;z-index:2;line-height:.9;text-shadow:0 2px 8px rgba(0,0,0,.3);}
+  .bb .bb-cap{padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .bb .bb-cap .l .nm{font-size:14px;font-weight:800;}
+  .bb .bb-cap .l .of{font-size:12px;color:var(--muted);margin-top:1px;}
+  .bb .bb-cap .codechip{flex:0 0 auto;font-size:11px;font-weight:800;color:var(--pink-text);background:#fff5f9;border:1px dashed var(--pink);padding:6px 10px;border-radius:8px;}
+  .bb-dots{display:flex;gap:6px;justify-content:center;margin-top:10px;}
+  .bb-dots i{width:6px;height:6px;border-radius:50%;background:#cfcfd6;}
+  .bb-dots i.on{width:18px;border-radius:100px;background:var(--pink);}
+
+  .retrow{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .retrow::-webkit-scrollbar{display:none;}
+  .ret{flex:0 0 76px;text-align:center;cursor:pointer;}
+  .ret .logo-tile{width:76px;height:76px;border-radius:18px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#2a2a32;margin-bottom:7px;overflow:hidden;padding:8px;}
+  .ret .logo-tile img{display:block;max-width:100%;max-height:100%;object-fit:contain;}
+  .ret .off{display:inline-block;font-size:11px;color:#fff;background:var(--pink);font-weight:700;padding:2px 7px;border-radius:100px;}
+
+  /* Flash Frenzy card — condensed */
+  .flashcard{background:linear-gradient(140deg,#ffe7f0,#ffd4e4);border-radius:18px;padding:13px 14px;position:relative;overflow:hidden;}
+  .flashcard .fc-head{display:flex;align-items:center;justify-content:space-between;}
+  .flashcard .fc-title{font-family:var(--font-display);font-weight:900;font-size:21px;letter-spacing:.5px;color:var(--ink);display:flex;align-items:center;gap:5px;}
+  .flashcard .fc-title svg{width:17px;height:17px;color:var(--pink);}
+  .flashcard .islive{font-family:var(--font-display);font-weight:900;font-size:13px;letter-spacing:1px;color:var(--pink);display:flex;align-items:center;gap:5px;}
+  .flashcard .islive .d{width:6px;height:6px;border-radius:50%;background:var(--pink);animation:pulse 1.6s infinite;}
+  .flashcard .fc-timer{display:flex;align-items:center;gap:9px;margin:4px 0 9px;}
+  .flashcard .fc-timer .lab{font-size:10px;font-weight:800;letter-spacing:1px;color:var(--ink);text-transform:uppercase;}
+  .flashcard .fc-timer .bar{width:2px;height:14px;background:rgba(21,21,28,.2);}
+  .flashcard .fc-timer .val{font-weight:900;font-size:17px;color:var(--pink);font-variant-numeric:tabular-nums;letter-spacing:1px;}
+  .flashcard .fc-body{display:flex;gap:12px;align-items:center;}
+  .flashcard .fc-img{flex:0 0 70px;height:70px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#c4c7d2;overflow:hidden;padding:7px;}
+  .flashcard .fc-img svg{width:26px;height:26px;}
+  .flashcard .fc-info{flex:1;}
+  .flashcard .fc-off{display:inline-block;font-size:11px;font-weight:800;color:var(--pink-text);background:rgba(255,255,255,.75);padding:2px 8px;border-radius:100px;margin-bottom:3px;}
+  .flashcard .fc-brand{font-size:11px;font-weight:700;color:var(--muted);}
+  .flashcard .fc-name{font-size:14px;font-weight:800;color:var(--ink);line-height:1.15;margin:1px 0 4px;}
+  .flashcard .fc-price{display:flex;align-items:baseline;gap:8px;}
+  .flashcard .fc-price .now{font-family:var(--font-display);font-weight:900;font-size:23px;color:var(--pink);font-variant-numeric:tabular-nums;}
+  .flashcard .fc-price .was{font-size:13px;color:var(--muted);text-decoration:line-through;}
+  .flashcard .fc-act{display:flex;align-items:center;gap:11px;margin-top:11px;}
+  .flashcard .fc-cta{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--pink);color:#fff;font-family:var(--font-display);font-weight:900;font-size:16px;letter-spacing:1px;padding:10px;border-radius:100px;}
+  .flashcard .fc-foot{font-size:10.5px;color:var(--muted);white-space:nowrap;}
+
+  /* Fly & Win card — condensed, with donut */
+  .flycard{border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(165deg,#a8daf6,#d9edfb);margin-top:11px;}
+  .flycard .fly-top{display:flex;justify-content:space-between;align-items:flex-start;padding:13px 14px 0;}
+  .flycard .fly-l{display:flex;flex-direction:column;align-items:flex-start;}
+  .flycard .fly-h{font-family:var(--font-display);font-weight:900;font-size:30px;line-height:.82;letter-spacing:.5px;color:var(--ink);}
+  .flycard .fly-h em{display:block;font-style:normal;color:var(--pink);}
+  .flycard .fly-timer{display:inline-flex;align-items:center;gap:6px;background:rgba(21,21,28,.42);backdrop-filter:blur(3px);border-radius:8px;padding:5px 9px;color:#fff;margin-top:8px;}
+  .flycard .fly-timer .tl{font-size:8px;font-weight:800;letter-spacing:1px;opacity:.85;}
+  .flycard .fly-timer .tv{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums;}
+  .flycard .fly-donut{flex:0 0 62px;width:62px;height:62px;}
+  .flycard .fly-donut svg{width:62px;height:62px;filter:drop-shadow(0 4px 7px rgba(0,0,0,.2));}
+  .flycard .fly-prizes{display:flex;gap:7px;padding:11px 13px 0;}
+  .flycard .prize{flex:1;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.6);border-radius:11px;padding:7px 8px;}
+  .flycard .prize .rk{font-size:9px;font-weight:900;color:var(--pink);letter-spacing:.5px;}
+  .flycard .prize .pz{font-size:11px;font-weight:800;color:var(--ink);line-height:1.15;margin-top:2px;}
+  .flycard .prize .sub{font-size:9px;color:#4a4a55;font-weight:600;}
+  .flycard .fly-foot{display:flex;align-items:center;gap:10px;margin:10px 13px 12px;background:rgba(21,21,28,.6);backdrop-filter:blur(4px);border-radius:13px;padding:8px 9px 8px 12px;}
+  .flycard .fly-foot .ip{flex:1;color:#fff;}
+  .flycard .fly-foot .ip .ipt{font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;opacity:.85;}
+  .flycard .fly-foot .ip .ipd{font-size:11px;font-weight:600;margin-top:1px;}
+  .flycard .fly-foot .play{background:var(--pink);color:#fff;font-family:var(--font-display);font-weight:900;font-size:15px;letter-spacing:1px;padding:9px 16px;border-radius:100px;white-space:nowrap;}
+
+  .catrow2{display:flex;gap:13px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .catrow2::-webkit-scrollbar{display:none;}
+  .cat{flex:0 0 64px;text-align:center;}
+  .cat .ic-box{width:60px;height:60px;border-radius:18px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 6px;color:var(--ink);}
+  .cat .ic-box svg{width:26px;height:26px;}
+  .cat span{font-size:11px;font-weight:600;color:#3a3a44;line-height:1.15;display:block;}
+
+  .feed{column-count:2;column-gap:11px;}
+  .feed .fcard{break-inside:avoid;margin-bottom:11px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);cursor:pointer;}
+  .feed .fcard .ph{width:100%;}
+  .feed .fcard .cap{padding:9px 10px;}
+  .feed .fcard .st{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+  .feed .fcard .of{font-size:13px;font-weight:700;color:#1a1a22;line-height:1.25;margin-top:2px;}
+  .feed .fcard.more{display:none;}
+  .feed.expanded .fcard.more{display:block;}
+  .showmore{width:100%;margin-top:4px;background:#fff;border:1.5px solid var(--ink);color:var(--ink);font-weight:800;font-size:13px;padding:12px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
+
+  .codes{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .codes::-webkit-scrollbar{display:none;}
+  .code{flex:0 0 214px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;}
+  .code .x{font-size:10px;font-weight:800;color:var(--pink-text);letter-spacing:1px;}
+  .code .st{font-size:13px;font-weight:800;margin:6px 0 4px;}
+  .code .of{font-size:12px;color:#52525c;line-height:1.35;margin-bottom:12px;min-height:34px;}
+  .code .reveal .locked{display:flex;align-items:center;gap:7px;justify-content:center;background:var(--pink);color:#fff;border-radius:9px;padding:10px 11px;font-size:12px;font-weight:800;}
+  .code .reveal .unlocked{display:none;align-items:center;justify-content:space-between;border:1px dashed #cfcfd6;border-radius:9px;padding:9px 11px;font-size:12px;font-weight:700;color:var(--ink);}
+  .code .reveal .unlocked b{color:var(--pink-text);}
+  .logged-in .code .reveal .locked{display:none;} .logged-in .code .reveal .unlocked{display:flex;}
+  .code.viewall{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:0 0 150px;background:#fff5f9;border:1px dashed var(--pink);color:var(--pink-text);gap:8px;cursor:pointer;}
+  .code.viewall .arr{width:38px;height:38px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;}
+  .code.viewall b{font-size:13px;font-weight:800;}
+
+  /* product cards — contained image */
+  .finds{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .find{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;}
+  .find .imgwrap{height:124px;padding:12px;}
+  .find .off{position:absolute;top:8px;left:8px;background:var(--pink);color:#fff;font-size:11px;font-weight:800;padding:3px 7px;border-radius:6px;z-index:2;}
+  .find .info{padding:10px 11px 12px;border-top:1px solid var(--line);}
+  .find .st{font-size:11px;font-weight:800;color:var(--muted);}
+  .find .nm{font-size:12px;font-weight:600;color:#1a1a22;line-height:1.3;margin:3px 0 7px;height:31px;overflow:hidden;}
+  .find .pr{display:flex;align-items:baseline;gap:7px;}
+  .find .now{font-size:16px;font-weight:900;color:var(--ink);}
+  .find .was{font-size:11px;color:var(--muted);text-decoration:line-through;}
+
+  .hotblock{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:11px;}
+  .hotblock .hh{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+  .hotblock .hh .nm{font-size:14px;font-weight:900;}
+  .hotblock .hh a{font-size:11px;font-weight:700;color:var(--pink-text);}
+  .hotscroll{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;}
+  .hotscroll::-webkit-scrollbar{display:none;}
+  .hp{flex:0 0 138px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+  .hp .imgwrap{height:104px;}
+  .hp .imgwrap .off{position:absolute;top:7px;left:7px;background:var(--pink);color:#fff;font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px;}
+  .hp .hpinfo{padding:8px 9px 10px;border-top:1px solid var(--line);}
+  .hp .pn{font-size:12px;color:#3a3a44;line-height:1.25;height:30px;overflow:hidden;}
+  .hp .pp{font-size:14px;font-weight:900;margin-top:3px;}
+  .hp .pp s{font-size:11px;color:var(--muted);font-weight:500;margin-left:5px;}
+
+  .fresh{display:flex;gap:11px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .fresh::-webkit-scrollbar{display:none;}
+  .fbox{flex:0 0 210px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+  .fbox .ph{height:112px;}
+  .fbox .meta{padding:11px 12px;}
+  .fbox .meta .st{font-size:13px;font-weight:800;}
+  .fbox .meta .ds{font-size:11px;color:var(--muted);line-height:1.35;margin-top:4px;}
+
+  .holscroll,.subsrow{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+  .holscroll::-webkit-scrollbar,.subsrow::-webkit-scrollbar{display:none;}
+  .hol{flex:0 0 232px;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);cursor:pointer;}
+  .hol .ph{height:132px;position:relative;}
+  .hol .loc{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.5);color:#fff;font-size:10px;font-weight:700;letter-spacing:.5px;padding:3px 9px;border-radius:100px;}
+  .hol .meta{padding:12px;}
+  .hol .meta h4{font-size:14px;font-weight:800;}
+  .hol .meta .fr{font-size:12px;color:var(--muted);margin-top:3px;}
+  .hol .meta .fr b{color:var(--ink);font-size:15px;}
+  .sub{flex:0 0 170px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;}
+  .sub .logoph{height:64px;}
+  .sub .body{padding:11px 12px;}
+  .sub .brand{font-size:12px;font-weight:800;margin-bottom:4px;}
+  .sub .of{font-size:12px;color:#52525c;line-height:1.35;margin-bottom:9px;min-height:46px;}
+  .sub .go{font-size:11px;font-weight:800;color:var(--pink-text);}
+
+  /* frenzy pass + wallet card */
+  .pass-out{background:linear-gradient(125deg,var(--pink),var(--pink-deep));border-radius:18px;padding:18px;color:#fff;}
+  .pass-out .free{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.9;}
+  .pass-out h3{font-family:var(--font-display);font-weight:900;font-size:25px;line-height:.95;letter-spacing:.3px;margin:6px 0 12px;}
+  .benelist{list-style:none;}
+  .benelist li{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;margin-bottom:9px;}
+  .pass-out .benelist li svg{width:18px;height:18px;flex:0 0 18px;background:rgba(255,255,255,.2);border-radius:50%;padding:3px;}
+  .pass-out .cta{display:inline-block;background:#fff;color:var(--pink-text);font-weight:800;font-size:13px;padding:11px 20px;border-radius:100px;margin-top:4px;}
+  .wallet-teaser{position:relative;margin-top:14px;}
+  .wallet-teaser .lockover{position:absolute;inset:0;background:rgba(21,21,28,.5);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:7px;}
+  .wallet-teaser .lockover svg{width:22px;height:22px;}
+  .wallet-teaser .lockover span{font-size:12px;font-weight:800;}
+  .pass-in{display:none;}
+  .logged-in .pass-out{display:none;} .logged-in .pass-in{display:block;}
+  .walletcard{border-radius:16px;background:linear-gradient(135deg,#ff2d78,#c5005f);color:#fff;padding:16px;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(197,0,95,.32);}
+  .walletcard .wc-sheen{position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.12);}
+  .walletcard .wc-top{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2;}
+  .walletcard .wc-brand{display:flex;align-items:center;gap:7px;}
+  .walletcard .wc-brand .b{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;}
+  .walletcard .wc-brand .b svg{width:12px;height:12px;color:#fff;}
+  .walletcard .wc-brand b{font-family:var(--font-display);font-weight:900;font-size:16px;letter-spacing:.4px;}
+  .walletcard .wc-type{font-size:9px;font-weight:800;letter-spacing:1.5px;opacity:.85;}
+  .walletcard .wc-name{font-size:18px;font-weight:800;margin:20px 0 2px;position:relative;z-index:2;}
+  .walletcard .wc-id{font-size:11px;opacity:.85;font-family:ui-monospace,monospace;letter-spacing:2px;position:relative;z-index:2;}
+  .walletcard .wc-foot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:14px;position:relative;z-index:2;}
+  .walletcard .wc-bars{display:flex;align-items:flex-end;gap:2px;height:30px;}
+  .walletcard .wc-bars i{width:2px;background:#fff;opacity:.9;}
+  .walletcard .wc-qr{width:46px;height:46px;background:#fff;border-radius:7px;padding:5px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:1.5px;}
+  .walletcard .wc-qr i{background:var(--ink);border-radius:1px;}
+  .walletbtns{display:flex;gap:9px;margin-top:12px;}
+  .wbtn{flex:1;background:#000;color:#fff;border-radius:10px;padding:10px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;}
+  .wbtn svg{width:14px;height:14px;}
+  .pass-in .benelist{margin-top:14px;}
+  .pass-in .benelist li{color:#3a3a44;}
+  .pass-in .benelist li svg{width:17px;height:17px;flex:0 0 17px;color:var(--teal-deep);}
+
+  .friends{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;}
+  .friends .ftt{font-size:11px;font-weight:800;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:13px;}
+  .frow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .frow .fp{width:92px;text-align:center;}
+  .frow .fp .logoph{height:44px;border-radius:10px;}
+  .frow .fp small{display:block;font-size:9px;color:var(--muted);font-weight:700;margin-top:5px;}
+
+  .footer{background:#15151c;color:#fff;margin-top:24px;padding:24px 18px 30px;}
+  .footer .fcols{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;}
+  .footer h5{font-size:12px;font-weight:800;margin-bottom:9px;}
+  .footer a{display:block;font-size:12px;color:#9a9aa6;margin-bottom:7px;text-decoration:none;}
+  .footer .legal{border-top:1px solid #26262e;margin-top:18px;padding-top:16px;font-size:11px;color:#80808c;line-height:1.6;}
+
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:200;}
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .sheet{position:fixed;left:50%;bottom:0;width:100%;max-width:480px;background:#fff;border-radius:24px 24px 0 0;transform:translate(-50%,120%);transition:transform .3s cubic-bezier(.2,.8,.2,1),visibility .3s;z-index:201;overflow:hidden;visibility:hidden;box-shadow:0 -8px 30px rgba(0,0,0,.18);}
+  .sheet.open{transform:translate(-50%,0);visibility:visible;}
+  .sheet .shtopbar{height:7px;background:var(--pink);}
+  .sheet .shtopbar.hasimg{height:140px;background-size:cover;background-position:center;}
+  .sheet .grab{width:38px;height:4px;border-radius:100px;background:#d8d8e0;margin:10px auto 2px;}
+  .sheet .shbody{padding:12px 18px 20px;}
+  .sheet .shbrand{font-size:20px;font-weight:900;letter-spacing:-.3px;color:var(--ink);margin-bottom:7px;}
+  .sheet .shoffer{display:none;align-items:baseline;gap:8px;font-size:15px;font-weight:800;color:var(--pink-text);margin-bottom:11px;}
+  .sheet .shoffer .off{background:var(--pink);color:#fff;font-size:12px;padding:2px 7px;border-radius:6px;}
+  .sheet .shoffer .now{font-size:20px;font-weight:900;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .sheet .shoffer .was{font-size:14px;color:var(--muted);text-decoration:line-through;font-weight:500;font-variant-numeric:tabular-nums;}
+  .sheet .shdetails{font-size:13px;line-height:1.55;color:#52525c;margin-bottom:12px;}
+  .sheet .shterms{font-size:11px;line-height:1.5;color:#9a9aa6;margin-bottom:16px;}
+  .sheet .shcta{display:block;text-align:center;background:var(--pink);color:#fff;font-weight:800;font-size:14px;padding:13px;border-radius:100px;}
+  .sheet .shclose{position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 1px 4px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;font-weight:800;color:#52525c;cursor:pointer;z-index:3;}
+
+  /* brand style notes under prototype */
+  .brandnotes{width:392px;margin-top:26px;background:#1f1f27;border:1px solid #2e2e38;border-radius:20px;padding:22px;color:#cfcfd6;}
+  .brandnotes h4{color:#fff;font-size:14px;font-weight:800;margin-bottom:4px;}
+  .brandnotes .sub{font-size:11.5px;color:#8a8a96;margin-bottom:16px;}
+  .brandnotes .bn{margin-bottom:14px;}
+  .brandnotes .bn .lbl{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;}
+  .brandnotes .bn p{font-size:12px;line-height:1.55;color:#c2c2cc;}
+  .brandnotes .swatches{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+  .brandnotes .swatches span{font-size:9px;font-weight:700;color:#fff;padding:4px 8px;border-radius:6px;}
+</style>
+</head>
+<body>
+
+  <div class="screen" id="screen">
+      <div class="promostrip"><span class="live"><span class="dotlive"></span>LIVE</span>EOFY Frenzy · Up to 70% off everything</div>
+
+      <div class="appbar">
+        <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAAA4CAYAAAD3u3YSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAACsJJREFUeAHlXE1sHEkV/npm7E28WbDZKIkQkIpAySJg5XDkQluKkOASW3BAQmLHBBCwBzvcOHksbqBg74kDII+RkHIBOwfExWg6Ej+nxeZAll0Q04YoGzvZ9YSJHXvGM739ZrrsnurXv/OXkb+oMj3VVa/f61fvp173GBggvPPJbyztvPI9gROOFAYI25V9UakfrG9dvjGJE4yBUtqD6lPs1WqjGqyVR5e/NYcTioFS2p5VQ7legdX4h9yjK99ewAnEQCmNsFs7JGtrHFtWfXb7yo3CjsiO4gRh4JRWrlexVz9s2hrBsvTqcGr9JCUomYjjxu2m2+2i3eSqLtlt026G3TZC5tNcofQZdjMRE+Wa7R6HRhrW9mL6iH1RrVcK25/5ztS5f/wijJeoaFfmSdc8iTyiXXec6d9wWqDS6IIzdpuF9+IcwTcCmMra7TWlbxrRhGgBWVnNshqfI+k0NPufA4FqrfD48o3Zs+/8ahnJEEdm027z8JeB6OhKn99YCWG3FXgXuGm3CfklFXDBot1yCGeeQCtjyZkj0EVIhZF7fGrHNwWjdVj5hJllXJkFOiuzsFsB/gozZQenNMrIFhGNce7C6/BaVUdRqh00Pp+R1cnY5gJllu/qP4yjuH7LTNcNsjDT3akqjVbOLNoDMZAH75c7gnKtenS86zqW0IYzqF46l9t8/VaULQGN6ZTMSTf9dN/V+0XxcwpM3HcrjVZmFjwMu9202yW7jTmftAKWwScTFN86lRB4QO7xwKo3jvfrNY+1aXasI8Hs3lnz9Z+tF2cX/CyIZPZTmIFjmWULkpn6VxEfxAOnbIr57D2UShNo+nIVUtvELLkP0+mjTwNNJU8ozFJwbnflhkK6SILH2uoWhsvyvDWuVeukOKGQoO85MKThlVk2A8cyu5Odefgv+CDM+fBAi8V3AaRck1UQ81cRvnpMNIUkxqd9mOg4SofHSlOtrX5QQfp/70Or12WXsBVXKP7gJ24X1K7MWbQn84zPPKK5GDSRlCbAr5KbiLePyiFBCp8UFNcok5RQra22U8bQdtndJTQtXSh+/xZ5AYH+ykyLh1PMPCIsAFIa50830EMFJEXJ3mhLkLVVrHrLee3+jjplVEthYeEr31xhyBnojcwCzUxRBbnbHCKAlHad6X8DA4DHh89avqvWlt7ZhVbe98z77penxn87k8PoyBl3d9INeRwI8HsxMpIsIkK6RzBEnnvI6ohE1bY01doyj8qeecMjp3D981/Amz/+OcTZC7K7FzJzezHCNGJgoJVGCnO7SIJqbZnN96Ad1lr6tEy68Xnx7Hn88Uc/lYrrhcx+e9cZxMDAVflVqC5StTZSWOr9Pd/5pLh/3/o1ls59KenGuBPIIsY2iZRWYvqTlHP6AtVFEjzW9t/3wsjgzNhLK0vnr3V9fxkA2oKIKANJaSbT37USVKfBuUjV2hoJictFHh5UPHQufOrj0CwsLJ+71ovXGCjRU42FDKWACAZDSrvL9Mfysf3GXt1bf/Rkkg+eHB0flHePjjcfb+HO3/6Cu5WtkpXSpuuWdgfdhawYzTPnBJq10EDQ8zTa/atKIv9O1tap4HwRXUSZKRpLaxvWmmE786BUql4cW4almb97889i8U+/n9l8/BClvSMF0go30d2EhO51zjmmzbWA995n7fZ3BFRF5BNE7pmQCeaxQADIrdAq5YQms9eVvtgPQfPnrxXsapXOnbs6chZpTTv6TgXlncN9vDry8lHfUKU+NmbmyS2RgorwuiIT8WSmG06eKqrMVGx3u0XpErlwdBUhBWM/U+U2girks6Acms+V+hLMd63Dkp2UlPasQzyo7uKtZzu4X9nFVvU4uzx4IZV1DunGtSszPU4ha4gjc4n5PgU+GVyBT3yTrxvk0XyIpyvnBZorks5TxWDDuQARo9VB1ZSsQpx88ofB3xSVto5oMALPapr59t4TW/h6VtO0Fndzz1be+aHTjeMUNOJXuh36vI5gme8413bL/EV4X0eIKjMHE02vs8LwQQtjSp2gKYOirLIoICEv4XgFca4iKkyHFu8eNRjW6TNT0+ZqaenCNV2rN67VAnKRHxt+sXHscpEEgd7KrAXMp0XEJYA3ocQ39+baRDx/7gfToVNCp2G1ugt7dzaf3VqbIIXR9+mHa0YmpRnqtH/tuzLHYxfp5tVEeyihfZnJeg2mn6xYd3eoFRET3gd8cWA487uUgWlSaXZ6jonp7bWcOuLKqY/cSWutYtG7JFJxjot0w0T7MvsmDTExDX4BkZs8WrBcGYsmZR0CBqKBxk2gM6s2BNqGlcpcJavizmZwOj+WecGz4s0Dp3BsWTrzRrKJ50NmE3zxWMAV84J8rHuCjmYQli9umnZ74nyuIpzpcSQvjZECGquYykzTW2uLYRP++omv5d7eL3kqGzK2bR8e3Pzsf34TREfAKzPxsYn2ZDYQDX73y6D/oiht4PCW+Lq4d/CkqG66T6cymPjQR/Gwume8Wrw9gQHFwFf5OXzavG2ey4wYar+MbS9nTulLYjKp5fcdnVIa3QDhahLq955hND00/1J6yNNPSrv3rIQLtdokBhSktDwa2XPsJhwa9EkvYxRdTY5xf6cxlAXpAfwU2uQF8nqfM28XvvruH5DdXsM/qy3vipTuV57OP0ynV119Kr2c61wuIU+yue+Ru38H4Qu6yMnaS/dI1phFUzE9/THgL/9/D1TeamzEKfO0twpyb9cjmPC+dyNLYX6Yg1ep8w6tjlhakvmc4gpt8kIocmNeGRorwB/dtjQCKWmHOa8z/AhmbNGhEfn3aXFhopVZLuhTBUDW9roO20XqSPa4iSzSjDCOk9NU6FBJakkZQ9+vorWaMsfQmnePyaNVo7QihU/jIBC88uWYHDNOFaCgnM8iPorwX/V+1hZkaVGxztDhkp1CyPXGmfPrKpE8ognmB4FwpfkxvBNyPov4CFIatVlmTrtKm4tBQyA4KeH4F24Cvd6nqfW9fuyV6AYLdA46vAoy4a80OueXlGTh5S2PkN+ndRv9UFKJ4WEJnYFgaMmKfxCohGYqfTq8yRmNmVcnc4nIKMKffcmHoXFAdGcYOkGgirwIOE88hNUilxk6OprxZhXtYQFe/qL8iIP4psKwGoq45MPkCOQRL4VVfawAn8YKV8uCD9TqKi3E5KMIL9SYkHP4UedSHJE3KUlMm4sgTxjyiCdbpIlJlZaEDqEQcz4nWBG8AhaZ+dIdxVWa8OElrvv327tx9+YI/SwY+5p+l5BjrkeZpI54EOAz7CRPrv1eMMoj4N5kfAiFxZp2SkDSn0eJJ3kEP1GOw4dfHFlCPMwhoLyUAOQB1ATkbtAETmmksLDsJwykEPkG0yRDP2oCQMwb6BwMNNNtd0IkEB00L8vQzKGzMINOdss9UgZFq5pe/1IVpCP5n27oBHJIZhUC3kzVRMzflnUCvYhpJJTqxsgd9GPPRpA1wDggXrk41uu43EAvlMYFWwH+rwv0CquIt0fj4lgeffpdereq/CrIrbyG1nfWo1T5ySKjKJfccFjypIKsTUe4xWfB1yvJxQufOe6Kf+DfBEmCXimNQMyrLoYUYgTMcQuPkHFxYaLpAcIeyAr4X1NHODoeBnq5TzPgLZTq6NMPNhyQBzDw/CFQ0b3eXOfgTUrI2vqVlBDiJiVxkWRPG3g/PgCPveW7/8PmlAAAAABJRU5ErkJggg==" alt="Click Frenzy"></div>
+        <div class="right"><span class="b2b">＋ List your brand</span><span class="acct">Log in</span><span class="avatar">J</span></div>
+      </div>
+      <div class="searchwrap"><div class="search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search 1,200+ stores &amp; deals…</div></div>
+
+      <div class="pills">
+        <span class="pill">Stores <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></span>
+        <span class="pill">Categories <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></span>
+        <span class="pill">Coupons <svg class="lockic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span>
+        <span class="pill">Carousels <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></span>
+        <span class="pill pass">Frenzy Pass <svg class="lockic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><svg class="checkic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+      </div>
+
+      <!-- billboard with caption underneath -->
+      <div class="billboard">
+        <div class="bbscroll">
+          <div class="bb">
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(42,15,20,.88),rgba(94,26,34,.14)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMGYxNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhjMWQyYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTg1IiBjeT0iNzgiIHI9IjEyMCIgZmlsbD0iI2ZmY2UzMyIgb3BhY2l0eT0iLjE2Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDE4IDQ4KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3NCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE3OCIgcng9IjE0IiBmaWxsPSIjMjM0MjBmIi8+CiAgICA8cmVjdCB4PSI5IiB5PSIyMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxNzMwMGIiLz4KICAgIDxyZWN0IHg9IjE1IiB5PSI5OCIgd2lkdGg9IjI2IiBoZWlnaHQ9Ijg4IiByeD0iOCIgZmlsbD0iI2Y0ZDlhMCIvPgogICAgPHJlY3QgeD0iNzYiIHk9IjU0IiB3aWR0aD0iNTgiIGhlaWdodD0iMTk4IiByeD0iMTQiIGZpbGw9IiM0YjE5MTYiLz4KICAgIDxyZWN0IHg9Ijg3IiB5PSI0IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzMyMTAwZCIvPgogICAgPHJlY3QgeD0iOTEiIHk9IjEwNSIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijk2IiByeD0iOCIgZmlsbD0iI2Y4ZjBkMSIvPgogICAgPHJlY3QgeD0iMTUxIiB5PSI4NiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE2NiIgcng9IjE0IiBmaWxsPSIjMjc0MDVjIi8+CiAgICA8cmVjdCB4PSIxNjAiIHk9IjM1IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzE3MmE0MiIvPgogICAgPHJlY3QgeD0iMTY1IiB5PSIxMTciIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NCIgcng9IjgiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=')"><span class="lbl">FEATURED RETAILER</span></div>
+            <div class="bb-cap"><div class="l"><div class="nm">Liquorland</div><div class="of">Up to 40% off selected wines &amp; spirits</div></div><span class="codechip">CODE · FRENZY10</span></div>
+          </div>
+          <div class="bb">
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(26,19,32,.9),rgba(61,31,58,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhMTMyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc0MzE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTY1IiBjeT0iOTAiIHI9IjEzMCIgZmlsbD0iI2ZmMmQ3OCIgb3BhY2l0eT0iLjE4Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAwIDU0KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3MiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjE2NCIgcng9IjE4IiBmaWxsPSIjZTliOWNmIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NCIgcng9IjkiIGZpbGw9IiMxMTEiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iNTYiIGZpbGw9IiNmNmQyZGYiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMzIiIGZpbGw9IiNjNTAwNWYiIG9wYWNpdHk9Ii41NSIvPgogICAgPHJlY3QgeD0iMTc0IiB5PSI0MiIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE5NCIgcng9IjIxIiBmaWxsPSIjMTExIi8+CiAgICA8cmVjdCB4PSIxODQiIHk9IjIyIiB3aWR0aD0iMjIiIGhlaWdodD0iMzQiIHJ4PSI4IiBmaWxsPSIjZjZkMmRmIi8+CiAgPC9nPgo8L3N2Zz4K')"><span class="lbl">FEATURED RETAILER</span></div>
+            <div class="bb-cap"><div class="l"><div class="nm">MECCA</div><div class="of">Up to 50% off + extra 10% for members</div></div><span class="codechip">CODE · MECCA10</span></div>
+          </div>
+          <div class="bb">
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(10,39,64,.9),rgba(15,77,107,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzBhMjc0MCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBmNmI4NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzYwIDc0KSI+CiAgICA8cmVjdCB4PSI0OCIgeT0iOTIiIHdpZHRoPSIyMjAiIGhlaWdodD0iOTAiIHJ4PSIxOCIgZmlsbD0iI2U3ZWRmMiIvPgogICAgPHJlY3QgeD0iMjIiIHk9IjcwIiB3aWR0aD0iODYiIGhlaWdodD0iOTYiIHJ4PSIyMiIgZmlsbD0iI2ZmY2UzMyIvPgogICAgPHJlY3QgeD0iMjAyIiB5PSI3MCIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijk2IiByeD0iMjIiIGZpbGw9IiNmZmNlMzMiLz4KICAgIDxyZWN0IHg9Ijc4IiB5PSI1NiIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI1MCIgcng9IjE2IiBmaWxsPSIjYzlkNGRmIi8+CiAgICA8cmVjdCB4PSI3NSIgeT0iMTgyIiB3aWR0aD0iMTgiIGhlaWdodD0iNDIiIHJ4PSI2IiBmaWxsPSIjMGIyMjM4Ii8+CiAgICA8cmVjdCB4PSIyMjIiIHk9IjE4MiIgd2lkdGg9IjE4IiBoZWlnaHQ9IjQyIiByeD0iNiIgZmlsbD0iIzBiMjIzOCIvPgogIDwvZz4KPC9zdmc+Cg==')"><span class="lbl">FEATURED RETAILER</span></div>
+            <div class="bb-cap"><div class="l"><div class="nm">IKEA</div><div class="of">Up to 30% off storewide</div></div><span class="codechip">No code needed</span></div>
+          </div>
+        </div>
+        <div class="bb-dots"><i class="on"></i><i></i><i></i></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Today's Frenzy faves</h3></div><a>View all stores</a></div>
+        <div class="retrow">
+          <div class="ret" onclick="openSheet(this)" data-k="BWS" data-title="BWS" data-detail="Up to 50% off selected beer, wine & spirits this EOFY Frenzy. Online only, while stocks last. Ends 23 June." data-cta="Shop BWS" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMDg3NDNiIi8+CiAgPHBhdGggZD0iTTMzIDE4bDE1OCAxOC0yMCA2Ny0xMzAtOHoiIGZpbGw9IiNmN2Q5MWUiLz4KICA8cmVjdCB4PSI0OCIgeT0iMzUiIHdpZHRoPSIxMjQiIGhlaWdodD0iNTIiIHJ4PSIxMSIgZmlsbD0iIzBiNmYzOCIgdHJhbnNmb3JtPSJyb3RhdGUoLTUgMTEwIDYxKSIvPgogIDx0ZXh0IHg9IjExMCIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmIiB0cmFuc2Zvcm09InJvdGF0ZSgtNSAxMTAgNjEpIj5CV1M8L3RleHQ+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#0a8f3c,#0c6b2e)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMDg3NDNiIi8+CiAgPHBhdGggZD0iTTMzIDE4bDE1OCAxOC0yMCA2Ny0xMzAtOHoiIGZpbGw9IiNmN2Q5MWUiLz4KICA8cmVjdCB4PSI0OCIgeT0iMzUiIHdpZHRoPSIxMjQiIGhlaWdodD0iNTIiIHJ4PSIxMSIgZmlsbD0iIzBiNmYzOCIgdHJhbnNmb3JtPSJyb3RhdGUoLTUgMTEwIDYxKSIvPgogIDx0ZXh0IHg9IjExMCIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmIiB0cmFuc2Zvcm09InJvdGF0ZSgtNSAxMTAgNjEpIj5CV1M8L3RleHQ+Cjwvc3ZnPgo=" alt="BWS"></div><span class="off">Up to 50%</span></div>
+          <div class="ret" onclick="openSheet(this)" data-k="MECCA" data-title="MECCA" data-detail="Up to 50% off cult beauty plus an extra 10% for Frenzy Pass holders. Selected lines only." data-cta="Shop MECCA" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTEwIiB5PSI3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iOCIgZmlsbD0iI2ZmZiI+TUVDQ0E8L3RleHQ+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#1a1a1a,#3a1f3a)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTEwIiB5PSI3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iOCIgZmlsbD0iI2ZmZiI+TUVDQ0E8L3RleHQ+Cjwvc3ZnPgo=" alt="MECCA"></div><span class="off">Up to 50%</span></div>
+          <div class="ret" onclick="openSheet(this)" data-k="IKEA" data-title="IKEA" data-detail="Up to 30% off storewide on selected furniture and homewares. In-store and online. Ends Sunday." data-cta="Shop IKEA" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMDA1OGEzIi8+CiAgPGVsbGlwc2UgY3g9IjExMCIgY3k9IjYwIiByeD0iODIiIHJ5PSIzNSIgZmlsbD0iI2ZmZGIwMCIvPgogIDx0ZXh0IHg9IjExMCIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ2IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDA1OGEzIj5JS0VBPC90ZXh0Pgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#0c5a8a,#0a3f63)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMDA1OGEzIi8+CiAgPGVsbGlwc2UgY3g9IjExMCIgY3k9IjYwIiByeD0iODIiIHJ5PSIzNSIgZmlsbD0iI2ZmZGIwMCIvPgogIDx0ZXh0IHg9IjExMCIgeT0iNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ2IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMDA1OGEzIj5JS0VBPC90ZXh0Pgo8L3N2Zz4K" alt="IKEA"></div><span class="off">Up to 30%</span></div>
+          <div class="ret" onclick="openSheet(this)" data-k="Nike" data-title="Nike" data-detail="40% off selected styles including Pegasus, Jordan and apparel. Members get free shipping." data-cta="Shop Nike" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZmZmIi8+CiAgPHBhdGggZD0iTTE5MCAzNEMxNDggNTEgMTA5IDY4IDY5IDg0Yy0yMiA5LTQxIDctNTEtMy04LTgtNi0yMSA0LTM3IDMgMTMgMTEgMTkgMjQgMjAgMTAgMCAyMi0zIDM3LTlMMTkwIDM0eiIgZmlsbD0iIzExMSIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#15151c,#33333d)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZmZmIi8+CiAgPHBhdGggZD0iTTE5MCAzNEMxNDggNTEgMTA5IDY4IDY5IDg0Yy0yMiA5LTQxIDctNTEtMy04LTgtNi0yMSA0LTM3IDMgMTMgMTEgMTkgMjQgMjAgMTAgMCAyMi0zIDM3LTlMMTkwIDM0eiIgZmlsbD0iIzExMSIvPgo8L3N2Zz4K" alt="Nike"></div><span class="off">40% off</span></div>
+          <div class="ret" onclick="openSheet(this)" data-k="Coach" data-title="Coach Outlet" data-detail="Up to 60% off outlet, plus take a further 10% off. Limited stock." data-cta="Shop Coach" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjNGEyYjE1Ii8+CiAgPHRleHQgeD0iMTEwIiB5PSI3MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmNGQyOWIiPkNvYWNoPC90ZXh0Pgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#5a3210,#3a2008)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjNGEyYjE1Ii8+CiAgPHRleHQgeD0iMTEwIiB5PSI3MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmNGQyOWIiPkNvYWNoPC90ZXh0Pgo8L3N2Zz4K" alt="Coach"></div><span class="off">Up to 60%</span></div>
+          <div class="ret" onclick="openSheet(this)" data-k="ASOS" data-title="ASOS" data-detail="Up to 55% off sitewide across thousands of brands. New lines added daily." data-cta="Shop ASOS" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTEwIiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDQiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIzIiBmaWxsPSIjZmZmIj5BU09TPC90ZXh0Pgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#15151c,#2a2a32)"><div class="logo-tile"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTEwIiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDQiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIzIiBmaWxsPSIjZmZmIj5BU09TPC90ZXh0Pgo8L3N2Zz4K" alt="ASOS"></div><span class="off">Up to 55%</span></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <!-- Flash Frenzy -->
+        <div class="flashcard">
+          <div class="fc-head">
+            <div class="fc-title">FLASH FRENZY<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 10-13h-6l1-7z"/></svg></div>
+            <div class="islive"><span class="d"></span>IS LIVE</div>
+          </div>
+          <div class="fc-timer"><span class="lab">Ends in</span><span class="bar"></span><span class="val">01:59:59</span></div>
+          <div class="fc-body">
+            <div class="fc-img"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjRmNGY3Ii8+CiAgPHJlY3QgeD0iNzAiIHk9IjExMiIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI2MiIgcng9IjIyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkOWRjZTQiLz4KICA8cmVjdCB4PSIxMDEiIHk9IjU0IiB3aWR0aD0iMjAiIGhlaWdodD0iNzYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZDlkY2U0Ii8+CiAgPGNpcmNsZSBjeD0iMTExIiBjeT0iNTUiIHI9IjIwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkOWRjZTQiLz4KICA8cmVjdCB4PSIxNDIiIHk9IjU0IiB3aWR0aD0iMjAiIGhlaWdodD0iNzYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjZDlkY2U0Ii8+CiAgPGNpcmNsZSBjeD0iMTUyIiBjeT0iNTUiIHI9IjIwIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNkOWRjZTQiLz4KPC9zdmc+Cg==" alt="Apple AirPods Pro"></div>
+            <div class="fc-info">
+              <span class="fc-off">71% off</span>
+              <div class="fc-brand">Apple</div>
+              <div class="fc-name">Apple AirPods Pro 2nd Gen</div>
+              <div class="fc-price"><span class="now">$175</span><span class="was tnum">$250</span></div>
+            </div>
+          </div>
+          <div class="fc-act">
+            <div class="fc-cta">↗ BUY NOW</div>
+            <div class="fc-foot">Stock is limited</div>
+          </div>
+        </div>
+
+        <!-- Fly &amp; Win -->
+        <div class="flycard">
+          <div class="fly-top">
+            <div class="fly-l">
+              <div class="fly-h">FLY AND<em>WIN</em></div>
+              <div class="fly-timer"><span class="tl">TIME LEFT</span><span class="tv">3d 0h 19m 31s</span></div>
+            </div>
+            <div class="fly-donut"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#ff5c97"/><circle cx="24" cy="24" r="7.5" fill="#bfe2f7"/><rect x="17.5" y="8.5" width="2.4" height="6" rx="1.2" fill="#ffce33" transform="rotate(22 18.7 11.5)"/><rect x="30" y="11.5" width="2.4" height="6" rx="1.2" fill="#0bb6a4" transform="rotate(-28 31 14.5)"/><rect x="34.5" y="23.5" width="2.4" height="6" rx="1.2" fill="#fff" transform="rotate(62 35.7 26.5)"/><rect x="12.5" y="22" width="2.4" height="6" rx="1.2" fill="#fff" transform="rotate(-52 13.7 25)"/><rect x="22" y="33" width="2.4" height="6" rx="1.2" fill="#ffce33" transform="rotate(14 23.2 36)"/></svg></div>
+          </div>
+          <div class="fly-prizes">
+            <div class="prize"><div class="rk">1ST</div><div class="pz">Maldives</div><div class="sub">2× tickets</div></div>
+            <div class="prize"><div class="rk">2ND</div><div class="pz">iPhone 16</div><div class="sub">256GB</div></div>
+            <div class="prize"><div class="rk">3RD</div><div class="pz">AirPods</div><div class="sub">Pro 2nd gen</div></div>
+          </div>
+          <div class="fly-foot">
+            <div class="ip"><div class="ipt">Daniel's · Instant prize</div><div class="ipd">Fly 300m: free Daniel's Donut</div></div>
+            <span class="play">PLAY NOW</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Shop by category</h3></div><a>All</a></div>
+        <div class="catrow2">
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7l4-3 4 2 4-2 4 3-3 3v9H7v-9L4 7z"/></svg></div><span>Fashion</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c3 4 5 6 5 9a5 5 0 01-10 0c0-3 2-5 5-9z"/></svg></div><span>Beauty</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div><span>Electronics</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 11v7h18v-7M3 11a2 2 0 012-2h14a2 2 0 012 2M6 9V7a2 2 0 012-2h8a2 2 0 012 2v2"/></svg></div><span>Home</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3v7a3 3 0 006 0V3M8 3v18"/><path d="M17 3c-1.5 0-2 2-2 5s.5 4 2 4v9"/></svg></div><span>Kitchen</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 16c2 1 4 1 7 1s6-3 11-3l-1 4H4z"/><path d="M3 16l1-3 4-1 1-2"/></svg></div><span>Sports</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="8" width="20" height="9" rx="4"/><circle cx="8" cy="12.5" r="1"/><path d="M16 11v3M14.5 12.5h3"/></svg></div><span>Toys</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6h.01"/></svg></div><span>Appliances</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2-5 3 10 2-5h7"/></svg></div><span>Health</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12l3 5-9 13L3 8z"/><path d="M3 8h18M9 3L7 8l5 13M15 3l2 5-5 13"/></svg></div><span>Jewellery</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="6" r="2.5"/><path d="M7 21c0-5 2-8 5-8s5 3 5 8M9 13l-3-2M15 13l3-2"/></svg></div><span>Baby</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h2l2 11h10l2-7H7"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg></div><span>Grocery</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3l7 7-4 4-7-7zM10 7L3 14v7h7l7-7"/></svg></div><span>Tools</span></div>
+          <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="9" r="2"/><circle cx="12" cy="6.5" r="2"/><circle cx="17" cy="9" r="2"/><path d="M8 16c0-3 2-4 4-4s4 1 4 4-2 4-4 4-4-1-4-4z"/></svg></div><span>Pets</span></div>
+        </div>
+      </div>
+
+      <!-- Frenzy Feed: fuller + Show more -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>The Frenzy Feed</h3></div><a>View all</a></div>
+        <div class="filters" data-target="#feed">
+          <span class="chip on" data-cat="all" onclick="filterRow(this)">All</span>
+          <span class="chip" data-cat="fashion" onclick="filterRow(this)">Fashion</span>
+          <span class="chip" data-cat="home" onclick="filterRow(this)">Home</span>
+          <span class="chip" data-cat="beauty" onclick="filterRow(this)">Beauty</span>
+          <span class="chip" data-cat="tech" onclick="filterRow(this)">Tech</span>
+          <span class="chip" data-cat="baby" onclick="filterRow(this)">Baby</span>
+        </div>
+        <div class="feed" id="feed">
+          <div class="fcard" data-cat="fashion" onclick="openSheet(this)" data-k="Hansen & Gretel" data-title="Hansen & Gretel" data-detail="Up to 60% off across dresses, knitwear and occasionwear." data-cta="Shop the sale" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#7a2a4a,#4a1830)"><div class="ph photo" style="height:150px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Hansen &amp; Gretel</div><div class="of">Up to 60% off</div></div></div>
+          <div class="fcard" data-cat="tech" onclick="openSheet(this)" data-k="JB Hi-Fi" data-title="JB Hi-Fi" data-detail="Massive EOFY tech deals across laptops, TVs, audio and gaming." data-cta="Shop tech" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#15151c,#33333d)"><div class="ph photo" style="height:104px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K')"></div><div class="cap"><div class="st">JB Hi-Fi</div><div class="of">EOFY tech deals</div></div></div>
+          <div class="fcard" data-cat="home" onclick="openSheet(this)" data-k="salt&pepper" data-title="salt&pepper" data-detail="Save 40% off RRP on homewares, dinner sets and glassware." data-cta="Shop homewares" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjFmM2Y0Ii8+CiAgPGNpcmNsZSBjeD0iOTEiIGN5PSIxMTIiIHI9IjU0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjZmQzZGMiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjkxIiBjeT0iMTEyIiByPSIyOCIgZmlsbD0iI2U2ZTllZiIvPgogIDxyZWN0IHg9IjE0OCIgeT0iNjIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMTYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkM2RjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMTU0IDkyaDQyTTE1NCAxMjJoNDIiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#3a3a44,#1f1f26)"><div class="ph photo" style="height:120px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjFmM2Y0Ii8+CiAgPGNpcmNsZSBjeD0iOTEiIGN5PSIxMTIiIHI9IjU0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjZmQzZGMiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjkxIiBjeT0iMTEyIiByPSIyOCIgZmlsbD0iI2U2ZTllZiIvPgogIDxyZWN0IHg9IjE0OCIgeT0iNjIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMTYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkM2RjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMTU0IDkyaDQyTTE1NCAxMjJoNDIiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=')"></div><div class="cap"><div class="st">salt&amp;pepper</div><div class="of">40% off RRP homewares</div></div></div>
+          <div class="fcard" data-cat="beauty" onclick="openSheet(this)" data-k="Adore Beauty" data-title="Adore Beauty" data-detail="Up to 50% off sitewide plus a bonus gift on orders over $99." data-cta="Shop beauty" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#b8005a,#7a0040)"><div class="ph photo" style="height:128px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Adore Beauty</div><div class="of">Up to 50% off + gift</div></div></div>
+          <div class="fcard" data-cat="fashion" onclick="openSheet(this)" data-k="Connor" data-title="Connor" data-detail="Up to 60% off the winter sale — menswear, knits and outerwear." data-cta="Shop the sale" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#22405a,#13283a)"><div class="ph photo" style="height:110px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Connor</div><div class="of">Up to 60% off winter sale</div></div></div>
+          <div class="fcard" data-cat="home" onclick="openSheet(this)" data-k="Amart Furniture" data-title="Amart Furniture" data-detail="20–60% off sofas, dining, bedroom and outdoor." data-cta="Shop furniture" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmM2Y1Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjEwMyIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI1OCIgcng9IjE2IiBmaWxsPSIjMGM1YThhIi8+CiAgPHJlY3QgeD0iMzEiIHk9IjgyIiB3aWR0aD0iNjYiIGhlaWdodD0iNzAiIHJ4PSIxOCIgZmlsbD0iI2ZmY2UzMyIvPgogIDxyZWN0IHg9IjE2MyIgeT0iODIiIHdpZHRoPSI2NiIgaGVpZ2h0PSI3MCIgcng9IjE4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHJlY3QgeD0iNzYiIHk9IjcwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjQyIiByeD0iMTQiIGZpbGw9IiNkY2U0ZWEiLz4KICA8cGF0aCBkPSJNNjggMTYxdjI4TTE5MiAxNjF2MjgiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#0c5a8a,#0a3f63)"><div class="ph photo" style="height:160px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmM2Y1Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjEwMyIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI1OCIgcng9IjE2IiBmaWxsPSIjMGM1YThhIi8+CiAgPHJlY3QgeD0iMzEiIHk9IjgyIiB3aWR0aD0iNjYiIGhlaWdodD0iNzAiIHJ4PSIxOCIgZmlsbD0iI2ZmY2UzMyIvPgogIDxyZWN0IHg9IjE2MyIgeT0iODIiIHdpZHRoPSI2NiIgaGVpZ2h0PSI3MCIgcng9IjE4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHJlY3QgeD0iNzYiIHk9IjcwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjQyIiByeD0iMTQiIGZpbGw9IiNkY2U0ZWEiLz4KICA8cGF0aCBkPSJNNjggMTYxdjI4TTE5MiAxNjF2MjgiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Amart Furniture</div><div class="of">20–60% off</div></div></div>
+          <div class="fcard more" data-cat="beauty" onclick="openSheet(this)" data-k="MECCA" data-title="MECCA" data-detail="Up to 50% off cult beauty plus an extra 10% for members." data-cta="Shop beauty" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTEwIiB5PSI3MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iOCIgZmlsbD0iI2ZmZiI+TUVDQ0E8L3RleHQ+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#1a1a1a,#3a1f3a)"><div class="ph photo" style="height:122px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">MECCA</div><div class="of">Up to 50% off</div></div></div>
+          <div class="fcard more" data-cat="tech" onclick="openSheet(this)" data-k="Kogan" data-title="Kogan" data-detail="Thousands of tech deals — TVs, audio, computing and smart home." data-cta="Shop tech" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMDA2N2IxIi8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDAiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNmZmYiPktvZ2FuPC90ZXh0Pgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#0c5a8a,#0a3f63)"><div class="ph photo" style="height:108px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K')"></div><div class="cap"><div class="st">Kogan</div><div class="of">Up to 60% off tech</div></div></div>
+          <div class="fcard more" data-cat="fashion" onclick="openSheet(this)" data-k="Kathmandu" data-title="Kathmandu" data-detail="40% off jackets, packs and travel gear." data-cta="Shop outdoor" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#0c6b4a,#08482f)"><div class="ph photo" style="height:118px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Kathmandu</div><div class="of">40% off</div></div></div>
+          <div class="fcard more" data-cat="baby" onclick="openSheet(this)" data-k="Baby Village" data-title="Baby Village" data-detail="Up to 50% off prams, car seats and nursery essentials." data-cta="Shop baby" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjFmM2Y0Ii8+CiAgPGNpcmNsZSBjeD0iOTEiIGN5PSIxMTIiIHI9IjU0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjZmQzZGMiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjkxIiBjeT0iMTEyIiByPSIyOCIgZmlsbD0iI2U2ZTllZiIvPgogIDxyZWN0IHg9IjE0OCIgeT0iNjIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMTYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkM2RjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMTU0IDkyaDQyTTE1NCAxMjJoNDIiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#0bb6a4,#078e88)"><div class="ph photo" style="height:134px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjFmM2Y0Ii8+CiAgPGNpcmNsZSBjeD0iOTEiIGN5PSIxMTIiIHI9IjU0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjZmQzZGMiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjkxIiBjeT0iMTEyIiByPSIyOCIgZmlsbD0iI2U2ZTllZiIvPgogIDxyZWN0IHg9IjE0OCIgeT0iNjIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMTYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkM2RjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMTU0IDkyaDQyTTE1NCAxMjJoNDIiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=')"></div><div class="cap"><div class="st">Baby Village</div><div class="of">Up to 50% off</div></div></div>
+          <!-- revealed by Show more -->
+          <div class="fcard more" data-cat="home" onclick="openSheet(this)" data-k="Temple & Webster" data-title="Temple & Webster" data-detail="Up to 50% off furniture and homewares with free shipping." data-cta="Shop home" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmM2Y1Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjEwMyIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI1OCIgcng9IjE2IiBmaWxsPSIjMGM1YThhIi8+CiAgPHJlY3QgeD0iMzEiIHk9IjgyIiB3aWR0aD0iNjYiIGhlaWdodD0iNzAiIHJ4PSIxOCIgZmlsbD0iI2ZmY2UzMyIvPgogIDxyZWN0IHg9IjE2MyIgeT0iODIiIHdpZHRoPSI2NiIgaGVpZ2h0PSI3MCIgcng9IjE4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHJlY3QgeD0iNzYiIHk9IjcwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjQyIiByeD0iMTQiIGZpbGw9IiNkY2U0ZWEiLz4KICA8cGF0aCBkPSJNNjggMTYxdjI4TTE5MiAxNjF2MjgiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#3a3a44,#1f1f26)"><div class="ph photo" style="height:126px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmM2Y1Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjEwMyIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI1OCIgcng9IjE2IiBmaWxsPSIjMGM1YThhIi8+CiAgPHJlY3QgeD0iMzEiIHk9IjgyIiB3aWR0aD0iNjYiIGhlaWdodD0iNzAiIHJ4PSIxOCIgZmlsbD0iI2ZmY2UzMyIvPgogIDxyZWN0IHg9IjE2MyIgeT0iODIiIHdpZHRoPSI2NiIgaGVpZ2h0PSI3MCIgcng9IjE4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHJlY3QgeD0iNzYiIHk9IjcwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjQyIiByeD0iMTQiIGZpbGw9IiNkY2U0ZWEiLz4KICA8cGF0aCBkPSJNNjggMTYxdjI4TTE5MiAxNjF2MjgiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Temple &amp; Webster</div><div class="of">Up to 50% off</div></div></div>
+          <div class="fcard more" data-cat="fashion" onclick="openSheet(this)" data-k="Cotton On" data-title="Cotton On" data-detail="50% off selected men's, women's and kids' styles." data-cta="Shop fashion" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#15151c,#33333d)"><div class="ph photo" style="height:112px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Cotton On</div><div class="of">50% off selected</div></div></div>
+          <div class="fcard more" data-cat="beauty" onclick="openSheet(this)" data-k="Sephora" data-title="Sephora" data-detail="Up to 50% off plus an additional 10% off selected beauty." data-cta="Shop beauty" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTExIi8+CiAgPHRleHQgeD0iMTMwIiB5PSI3MiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iOCIgZmlsbD0iI2ZmZiI+U0VQSE9SQTwvdGV4dD4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#1a1a1a,#3a1f3a)"><div class="ph photo" style="height:138px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==')"></div><div class="cap"><div class="st">Sephora</div><div class="of">Up to 50% + 10% off</div></div></div>
+          <div class="fcard more" data-cat="tech" onclick="openSheet(this)" data-k="The Good Guys" data-title="The Good Guys" data-detail="EOFY appliance and tech blowout. Limited time deals." data-cta="Shop tech" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#0c5a8a,#0a3f63)"><div class="ph photo" style="height:106px;--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K')"></div><div class="cap"><div class="st">The Good Guys</div><div class="of">EOFY blowout</div></div></div>
+        </div>
+        <button class="showmore" id="feedMore" onclick="showMore()">Show more</button>
+      </div>
+
+      <!-- Promo codes: more categories, scrolls -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Promo codes</h3></div><a>View all</a></div>
+        <div class="filters" data-target="#codes">
+          <span class="chip on" data-cat="all" onclick="filterRow(this)">All</span>
+          <span class="chip" data-cat="tech" onclick="filterRow(this)">Tech</span>
+          <span class="chip" data-cat="fashion" onclick="filterRow(this)">Fashion</span>
+          <span class="chip" data-cat="beauty" onclick="filterRow(this)">Beauty</span>
+          <span class="chip" data-cat="home" onclick="filterRow(this)">Home</span>
+          <span class="chip" data-cat="travel" onclick="filterRow(this)">Travel</span>
+          <span class="chip" data-cat="sport" onclick="filterRow(this)">Sport</span>
+          <span class="chip" data-cat="mobile" onclick="filterRow(this)">Mobile</span>
+          <span class="chip" data-cat="grocery" onclick="filterRow(this)">Grocery</span>
+        </div>
+        <div class="codes" id="codes">
+          <div class="code" data-cat="tech"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Kogan</div><div class="of">5% off Dyson deals for FIRST members</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">Tap to reveal <b>SHOW CODE</b></span></div></div>
+          <div class="code" data-cat="sport"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Decathlon</div><div class="of">Extra 10% off EOFY sale items</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">CLICKFRENZY10 <b>COPY</b></span></div></div>
+          <div class="code" data-cat="tech"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Bose</div><div class="of">Save $50 on S1 Pro+ speaker</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">Tap to reveal <b>SHOW CODE</b></span></div></div>
+          <div class="code" data-cat="fashion"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Net-A-Porter</div><div class="of">Extra 15% off selected pieces</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">FLASH15 <b>COPY</b></span></div></div>
+          <div class="code" data-cat="travel"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Trip.com</div><div class="of">10% off first hotel booking</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">Tap to reveal <b>SHOW CODE</b></span></div></div>
+          <div class="code" data-cat="beauty"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Adore Beauty</div><div class="of">15% off when you spend $80+</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">Tap to reveal <b>SHOW CODE</b></span></div></div>
+          <div class="code" data-cat="mobile"><div class="x">FRENZY EXCLUSIVE</div><div class="st">amaysim</div><div class="of">Save $95 on 200GB annual SIM</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">AMAYSIMFRENZY <b>COPY</b></span></div></div>
+          <div class="code" data-cat="home"><div class="x">FRENZY EXCLUSIVE</div><div class="st">Temple &amp; Webster</div><div class="of">Extra 10% off furniture orders $300+</div><div class="reveal"><span class="locked">🔒 Join free to unlock</span><span class="unlocked">Tap to reveal <b>SHOW CODE</b></span></div></div>
+          <div class="code viewall"><div class="arr">→</div><b>View all<br>promo codes</b></div>
+        </div>
+      </div>
+
+      <!-- Frenzy Picks: contained images + more categories -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Frenzy Picks</h3><div class="clar">Products our team rates this Frenzy</div></div><a>Show all</a></div>
+        <div class="filters" data-target="#finds">
+          <span class="chip on" data-cat="all" onclick="filterRow(this)">All</span>
+          <span class="chip" data-cat="tech" onclick="filterRow(this)">Tech</span>
+          <span class="chip" data-cat="home" onclick="filterRow(this)">Home</span>
+          <span class="chip" data-cat="kitchen" onclick="filterRow(this)">Kitchen</span>
+          <span class="chip" data-cat="fashion" onclick="filterRow(this)">Fashion</span>
+          <span class="chip" data-cat="beauty" onclick="filterRow(this)">Beauty</span>
+          <span class="chip" data-cat="sport" onclick="filterRow(this)">Sport</span>
+          <span class="chip" data-cat="jewellery" onclick="filterRow(this)">Jewellery</span>
+          <span class="chip" data-cat="baby" onclick="filterRow(this)">Baby</span>
+        </div>
+        <div class="finds" id="finds">
+          <div class="find" data-cat="kitchen" onclick="openSheet(this)" data-k="House" data-title="Baccarat Damashiro 9pc Knife Block" data-now="$249" data-was="$1,639" data-off="85% off" data-detail="Premium Japanese-style stainless steel knives in a timber block." data-cta="Buy at House" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjNmMWVlIi8+CiAgPHJlY3QgeD0iMTMyIiB5PSI1NSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjEyNSIgcng9IjEyIiBmaWxsPSIjOGI1YjJmIi8+CiAgPHBhdGggZD0iTTY1IDU3aDE4djEwNkg2NXpNOTMgNDVoMTh2MTE4SDkzek0xMjEgNjdoMTh2OTZoLTE4eiIgZmlsbD0iI2RmZTRlYSIvPgogIDxwYXRoIGQ9Ik02NSAxNDdoNzQiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">85% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjNmMWVlIi8+CiAgPHJlY3QgeD0iMTMyIiB5PSI1NSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjEyNSIgcng9IjEyIiBmaWxsPSIjOGI1YjJmIi8+CiAgPHBhdGggZD0iTTY1IDU3aDE4djEwNkg2NXpNOTMgNDVoMTh2MTE4SDkzek0xMjEgNjdoMTh2OTZoLTE4eiIgZmlsbD0iI2RmZTRlYSIvPgogIDxwYXRoIGQ9Ik02NSAxNDdoNzQiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=" alt="Knife block"></div></div><div class="info"><div class="st">House</div><div class="nm">Baccarat Damashiro 9pc Knife Block</div><div class="pr"><span class="now tnum">$249</span><span class="was tnum">$1,639</span></div></div></div>
+          <div class="find" data-cat="fashion" onclick="openSheet(this)" data-k="The Athlete's Foot" data-title="Raise Standard Womens Trainer" data-now="$19" data-was="$199" data-off="90% off" data-detail="Lightweight everyday trainer. Sizes selling fast." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjJmM2Y2Ii8+CiAgPHBhdGggZD0iTTQ4IDEzN2M0OCAzIDY3LTMzIDkwLTU0IDE0IDI0IDMyIDQyIDcyIDUyIDE1IDQgMjEgMTcgMTIgMjgtOCAxMC0yNyAxNC01OCAxNEg2MWMtMjQgMC0zMy0xMy0xMy00MHoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTgzIDEzN2gxMzIiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTAzIDExOGwzNCA1TTExNiAxMDNsMzEgNSIgc3Ryb2tlPSIjZmYyZDc4IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">90% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjJmM2Y2Ii8+CiAgPHBhdGggZD0iTTQ4IDEzN2M0OCAzIDY3LTMzIDkwLTU0IDE0IDI0IDMyIDQyIDcyIDUyIDE1IDQgMjEgMTcgMTIgMjgtOCAxMC0yNyAxNC01OCAxNEg2MWMtMjQgMC0zMy0xMy0xMy00MHoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTgzIDEzN2gxMzIiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTAzIDExOGwzNCA1TTExNiAxMDNsMzEgNSIgc3Ryb2tlPSIjZmYyZDc4IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Trainer shoe"></div></div><div class="info"><div class="st">The Athlete's Foot</div><div class="nm">Raise Standard Womens Trainer</div><div class="pr"><span class="now tnum">$19</span><span class="was tnum">$199</span></div></div></div>
+          <div class="find" data-cat="home" onclick="openSheet(this)" data-k="Kogan" data-title="Ergolux Bamboo Pocket Spring Mattress (Queen)" data-now="$289" data-was="$1,599" data-off="82% off" data-detail="Pocket spring support with a breathable bamboo cover. Free delivery." data-cta="Buy at Kogan" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHBhdGggZD0iTTM5IDExOWwxMzctMzggNDUgMzktMTM3IDM5eiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkN2RmIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMzkgMTE5djM1bDQ1IDM5IDEzNy0zOXYtMzRMODQgMTU5eiIgZmlsbD0iI2Q3ZTBlOCIvPgogIDxwYXRoIGQ9Ik03MCAxMjlsMTM3LTM4TTk0IDE1MGwxMzctMzgiIHN0cm9rZT0iI2I4YzRjZiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">82% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHBhdGggZD0iTTM5IDExOWwxMzctMzggNDUgMzktMTM3IDM5eiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkN2RmIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMzkgMTE5djM1bDQ1IDM5IDEzNy0zOXYtMzRMODQgMTU5eiIgZmlsbD0iI2Q3ZTBlOCIvPgogIDxwYXRoIGQ9Ik03MCAxMjlsMTM3LTM4TTk0IDE1MGwxMzctMzgiIHN0cm9rZT0iI2I4YzRjZiIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=" alt="Mattress"></div></div><div class="info"><div class="st">Kogan</div><div class="nm">Ergolux Bamboo Pocket Spring Mattress</div><div class="pr"><span class="now tnum">$289</span><span class="was tnum">$1,599</span></div></div></div>
+          <div class="find" data-cat="tech" onclick="openSheet(this)" data-k="JB Hi-Fi" data-title="Lenovo Legion Tab 8.8&quot; 256GB" data-now="$499" data-was="$999" data-off="50% off" data-detail="Snapdragon gaming tablet with 2.5K display and 256GB storage." data-cta="Buy at JB Hi-Fi" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" alt="Tablet"></div></div><div class="info"><div class="st">JB Hi-Fi</div><div class="nm">Lenovo Legion Tab 8.8" 256GB</div><div class="pr"><span class="now tnum">$499</span><span class="was tnum">$999</span></div></div></div>
+          <div class="find" data-cat="beauty" onclick="openSheet(this)" data-k="Napoleon Perdis" data-title="Skin Guardian SPF 50+ Sunscreen" data-now="$24" data-was="$48" data-off="50% off" data-detail="Natural-matte broad spectrum SPF 50+ daily sunscreen." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Beauty product"></div></div><div class="info"><div class="st">Napoleon Perdis</div><div class="nm">Skin Guardian SPF 50+ Sunscreen</div><div class="pr"><span class="now tnum">$24</span><span class="was tnum">$48</span></div></div></div>
+          <div class="find" data-cat="jewellery" onclick="openSheet(this)" data-k="Prouds" data-title="G-Shock GA400 Watch" data-now="$174" data-was="$349" data-off="50% off" data-detail="Bold analog-digital G-Shock with shock resistance and 200m water resistance." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Watch"></div></div><div class="info"><div class="st">Prouds The Jewellers</div><div class="nm">G-Shock GA400 Watch</div><div class="pr"><span class="now tnum">$174</span><span class="was tnum">$349</span></div></div></div>
+        </div>
+      </div>
+
+      <!-- Trending stores: 5+ products per carousel, contained images -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Trending stores</h3><div class="clar">Big deals across these retailers right now</div></div><a>See all stores</a></div>
+        <div class="hotblock"><div class="hh"><span class="nm">Sephora</span><a>See all ›</a></div>
+          <div class="hotscroll">
+            <div class="hp"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Eye brushes"></div></div><div class="hpinfo"><div class="pn">Glitter Power Eye Brushes Set</div><div class="pp tnum">$30 <s>$60</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Blowout kit"></div></div><div class="hpinfo"><div class="pn">Mermade Blowout Kit</div><div class="pp tnum">$77 <s>$129</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">25% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Hair spray"></div></div><div class="hpinfo"><div class="pn">GHD Final Fix Hair Spray</div><div class="pp tnum">$26 <s>$35</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">25% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Shampoo"></div></div><div class="hpinfo"><div class="pn">IGK Repair Shampoo</div><div class="pp tnum">$33 <s>$45</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">30% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Cleanser"></div></div><div class="hpinfo"><div class="pn">Christophe Robin Cleanser</div><div class="pp tnum">$39 <s>$56</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">25% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Styling oil"></div></div><div class="hpinfo"><div class="pn">GHD Styling Oil</div><div class="pp tnum">$52 <s>$70</s></div></div></div>
+          </div></div>
+        <div class="hotblock"><div class="hh"><span class="nm">Nike</span><a>See all ›</a></div>
+          <div class="hotscroll">
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjJmM2Y2Ii8+CiAgPHBhdGggZD0iTTQ4IDEzN2M0OCAzIDY3LTMzIDkwLTU0IDE0IDI0IDMyIDQyIDcyIDUyIDE1IDQgMjEgMTcgMTIgMjgtOCAxMC0yNyAxNC01OCAxNEg2MWMtMjQgMC0zMy0xMy0xMy00MHoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTgzIDEzN2gxMzIiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTAzIDExOGwzNCA1TTExNiAxMDNsMzEgNSIgc3Ryb2tlPSIjZmYyZDc4IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Running shoe"></div></div><div class="hpinfo"><div class="pn">Pegasus Premium Running</div><div class="pp tnum">$192 <s>$320</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjJmM2Y2Ii8+CiAgPHBhdGggZD0iTTQ4IDEzN2M0OCAzIDY3LTMzIDkwLTU0IDE0IDI0IDMyIDQyIDcyIDUyIDE1IDQgMjEgMTcgMTIgMjgtOCAxMC0yNyAxNC01OCAxNEg2MWMtMjQgMC0zMy0xMy0xMy00MHoiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTgzIDEzN2gxMzIiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTAzIDExOGwzNCA1TTExNiAxMDNsMzEgNSIgc3Ryb2tlPSIjZmYyZDc4IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Basketball shoe"></div></div><div class="hpinfo"><div class="pn">Luka 5 Basketball Shoes</div><div class="pp tnum">$114 <s>$190</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" alt="Tee"></div></div><div class="hpinfo"><div class="pn">Sportswear Cotton Tee</div><div class="pp tnum">$33 <s>$55</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" alt="Backpack"></div></div><div class="hpinfo"><div class="pn">Brasilia Backpack 24L</div><div class="pp tnum">$36 <s>$60</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" alt="Jumper"></div></div><div class="hpinfo"><div class="pn">Jordan Flight Jumper</div><div class="pp tnum">$90 <s>$150</s></div></div></div>
+            <div class="hp"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==" alt="Long sleeve tee"></div></div><div class="hpinfo"><div class="pn">City Pack Long-Sleeve Tee</div><div class="pp tnum">$39 <s>$65</s></div></div></div>
+          </div></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Freshly submitted</h3></div></div>
+        <div class="fresh">
+          <div class="fbox"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjdlZGYyIi8+CiAgPHBhdGggZD0iTTcyIDU1bDM2LTE4IDIyIDEyIDIyLTEyIDM2IDE4LTI0IDM4djg4SDk2VjkzeiIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxwYXRoIGQ9Ik0xMDggMzdjNSAxMyAzOSAxMyA0NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTkzIDY4bC0yNCAyNk0xNjcgNjhsMjQgMjYiIHN0cm9rZT0iI2M1MDA1ZiIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="meta"><div class="st">Cotton On</div><div class="ds">Men's shell jacket now 50% off — $50 (was $99.99)</div></div></div>
+          <div class="fbox"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==')"></div><div class="meta"><div class="st">Adore Beauty</div><div class="ds">Up to 50% off sitewide + bonus gift over $99</div></div></div>
+          <div class="fbox"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmM2Y1Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjEwMyIgd2lkdGg9IjE3MCIgaGVpZ2h0PSI1OCIgcng9IjE2IiBmaWxsPSIjMGM1YThhIi8+CiAgPHJlY3QgeD0iMzEiIHk9IjgyIiB3aWR0aD0iNjYiIGhlaWdodD0iNzAiIHJ4PSIxOCIgZmlsbD0iI2ZmY2UzMyIvPgogIDxyZWN0IHg9IjE2MyIgeT0iODIiIHdpZHRoPSI2NiIgaGVpZ2h0PSI3MCIgcng9IjE4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHJlY3QgeD0iNzYiIHk9IjcwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjQyIiByeD0iMTQiIGZpbGw9IiNkY2U0ZWEiLz4KICA8cGF0aCBkPSJNNjggMTYxdjI4TTE5MiAxNjF2MjgiIHN0cm9rZT0iIzExMSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==')"></div><div class="meta"><div class="st">Temple &amp; Webster</div><div class="ds">Up to 50% off furniture + free shipping</div></div></div>
+          <div class="fbox"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZjFmM2Y0Ii8+CiAgPGNpcmNsZSBjeD0iOTEiIGN5PSIxMTIiIHI9IjU0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjZmQzZGMiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxjaXJjbGUgY3g9IjkxIiBjeT0iMTEyIiByPSIyOCIgZmlsbD0iI2U2ZTllZiIvPgogIDxyZWN0IHg9IjE0OCIgeT0iNjIiIHdpZHRoPSI1NCIgaGVpZ2h0PSIxMTYiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjY2ZkM2RjIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMTU0IDkyaDQyTTE1NCAxMjJoNDIiIHN0cm9rZT0iI2NmZDNkYyIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=')"></div><div class="meta"><div class="st">Spotlight</div><div class="ds">20–50% off craft, bedding &amp; homewares</div></div></div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>The Holiday Edit</h3></div><a>View all</a></div>
+        <div class="holscroll">
+          <div class="hol" onclick="openSheet(this)" data-k="Indonesia · Bali" data-title="The Leaf Jimbaran" data-detail="Relax in an upgraded private pool villa between the beach and the hills of Jimbaran. Includes daily breakfast and airport transfers. From $576." data-cta="View package" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#0c6b63,#0a4a52)"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=')"><span class="loc">Indonesia</span></div><div class="meta"><h4>The Leaf Jimbaran</h4><div class="fr">From <b class="tnum">$576</b> · private pool villa</div></div></div>
+          <div class="hol" onclick="openSheet(this)" data-k="Thailand · Phuket" data-title="Phuket Orchid Resort & Spa" data-detail="A fun-filled beachfront escape on Karon Beach. All-inclusive dining, pools with water slides and a kids' club. One child included. From $1,049." data-cta="View package" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#b8005a,#7a0040)"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=')"><span class="loc">Thailand</span></div><div class="meta"><h4>Phuket Orchid Resort &amp; Spa</h4><div class="fr">From <b class="tnum">$1,049</b> · all-inclusive family</div></div></div>
+          <div class="hol" onclick="openSheet(this)" data-k="Australia · NSW" data-title="Sage Hotel Wollongong" data-detail="A stylish seaside retreat 90 minutes from Sydney, surrounded by beaches and coastal trails. From $314." data-cta="View package" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=" data-bg="linear-gradient(135deg,#0c5a8a,#0a3f63)"><div class="ph photo" style="--img:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgMjYwIj4KICA8cmVjdCB3aWR0aD0iNDYwIiBoZWlnaHQ9IjI2MCIgZmlsbD0iIzhlZDlmOCIvPgogIDxjaXJjbGUgY3g9IjM3MCIgY3k9IjU1IiByPSIzNSIgZmlsbD0iI2ZmY2UzMyIvPgogIDxwYXRoIGQ9Ik0wIDE1OGM5My0zMiAxNTAtMjIgMjMwIDBzMTM2IDI3IDIzMCAwdjEwMkgweiIgZmlsbD0iIzBiYjZhNCIvPgogIDxwYXRoIGQ9Ik0wIDIwNWM4MC0yMiAxNTQtMTcgMjI4IDBzMTUxIDI0IDIzMiAwdjU1SDB6IiBmaWxsPSIjZjRkMDhjIi8+Cjwvc3ZnPgo=')"><span class="loc">Australia</span></div><div class="meta"><h4>Sage Hotel Wollongong</h4><div class="fr">From <b class="tnum">$314</b> · seaside retreat</div></div></div>
+        </div>
+      </div>
+
+      <!-- Subscriptions: local logo assets -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Subscriptions &amp; services</h3></div><a>View all</a></div>
+        <div class="subsrow">
+          <div class="sub" onclick="openSheet(this)" data-k="Streaming" data-title="BINGE" data-detail="Get BINGE for $5/month for your first 2 months. New & returning customers only. Ends 31 August 2026." data-cta="Get this offer" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTAxMDE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSI1IiBmaWxsPSIjZmZmIj5CSU5HRTwvdGV4dD4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#15151c,#33333d)"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTAxMDE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSI1IiBmaWxsPSIjZmZmIj5CSU5HRTwvdGV4dD4KPC9zdmc+Cg==" alt="BINGE"></div><div class="body"><div class="brand">BINGE</div><div class="of">$5/month for 2 months. New &amp; returning.</div><div class="go">View details →</div></div></div>
+          <div class="sub" onclick="openSheet(this)" data-k="Streaming" data-title="Kayo Sports" data-detail="Your first month of Kayo Sports for just $1. New customers & Kayo Premium only. Ends 31 December 2026." data-cta="Get this offer" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMGJiNmE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZiI+S2F5bzwvdGV4dD4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#0bb6a4,#078e88)"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMGJiNmE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZiI+S2F5bzwvdGV4dD4KPC9zdmc+Cg==" alt="Kayo Sports"></div><div class="body"><div class="brand">Kayo Sports</div><div class="of">1st month for just $1. New customers.</div><div class="go">View details →</div></div></div>
+          <div class="sub" onclick="openSheet(this)" data-k="Mobile" data-title="amaysim" data-detail="200GB for $175 — save $95 with code AMAYSIMFRENZY at checkout. New online customers only. Ends 24/06/26." data-cta="Get this offer" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZmY2YTNkIi8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIFJvdW5kZWQgTVQgQm9sZCxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQxIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmIj5hbWF5c2ltPC90ZXh0Pgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#ff6a3d,#e5421c)"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZmY2YTNkIi8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIFJvdW5kZWQgTVQgQm9sZCxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQxIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmIj5hbWF5c2ltPC90ZXh0Pgo8L3N2Zz4K" alt="amaysim"></div><div class="body"><div class="brand">amaysim</div><div class="of">200GB for $175. Save $95 with code.</div><div class="go">View details →</div></div></div>
+          <div class="sub" onclick="openSheet(this)" data-k="Payments" data-title="Afterpay" data-detail="Get $50 off your first purchase with Afterpay. Add code NEW50 in the Afterpay app. New customers only." data-cta="Get this offer" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjYjJmY2U0Ii8+CiAgPHJlY3QgeD0iMzYiIHk9IjQ1IiB3aWR0aD0iNDUiIGhlaWdodD0iMzAiIHJ4PSIxNSIgZmlsbD0iIzExMSIvPgogIDx0ZXh0IHg9IjU4LjUiIHk9IjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2IyZmNlNCI+4oaUPC90ZXh0PgogIDx0ZXh0IHg9IjE1OCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIj5BZnRlcnBheTwvdGV4dD4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#b2fce4,#7fe9c8)"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjYjJmY2U0Ii8+CiAgPHJlY3QgeD0iMzYiIHk9IjQ1IiB3aWR0aD0iNDUiIGhlaWdodD0iMzAiIHJ4PSIxNSIgZmlsbD0iIzExMSIvPgogIDx0ZXh0IHg9IjU4LjUiIHk9IjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2IyZmNlNCI+4oaUPC90ZXh0PgogIDx0ZXh0IHg9IjE1OCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIj5BZnRlcnBheTwvdGV4dD4KPC9zdmc+Cg==" alt="Afterpay"></div><div class="body"><div class="brand">Afterpay</div><div class="of">$50 off first purchase with NEW50.</div><div class="go">View details →</div></div></div>
+        </div>
+      </div>
+
+      <!-- Frenzy Pass with wallet card -->
+      <div class="sec">
+        <div class="sec-h"><div class="t"><h3>Frenzy Pass</h3></div></div>
+        <div class="pass-out">
+          <div class="free">Free · no app needed</div>
+          <h3>Unlock the Frenzy Pass</h3>
+          <ul class="benelist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Early access to deals before everyone else</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Exclusive competitions &amp; promotions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Exclusive discounts &amp; deals on this page</li>
+          </ul>
+          <span class="cta">Get my free pass →</span>
+          <div class="wallet-teaser">
+            <div class="walletcard" style="min-height:118px">
+              <div class="wc-sheen"></div>
+              <div class="wc-top"><div class="wc-brand"><span class="b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 10-13h-6l1-7z"/></svg></span><b>FRENZY PASS</b></div><span class="wc-type">REWARDS</span></div>
+            </div>
+            <div class="lockover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><span>Join free to activate your pass</span></div>
+          </div>
+        </div>
+
+        <div class="pass-in">
+          <div class="walletcard">
+            <div class="wc-sheen"></div>
+            <div class="wc-top"><div class="wc-brand"><span class="b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h6l-1 8 10-13h-6l1-7z"/></svg></span><b>FRENZY PASS</b></div><span class="wc-type">MEMBER</span></div>
+            <div class="wc-name">Joel Moran</div>
+            <div class="wc-id">CF-4827-1190</div>
+            <div class="wc-foot">
+              <div class="wc-bars"><i style="height:60%"></i><i style="height:100%"></i><i style="height:40%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:100%"></i><i style="height:35%"></i><i style="height:75%"></i><i style="height:90%"></i><i style="height:45%"></i><i style="height:100%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:40%"></i></div>
+              <div class="wc-qr"><i></i><i style="background:transparent"></i><i></i><i></i><i></i><i></i><i style="background:transparent"></i><i></i><i style="background:transparent"></i><i></i><i></i><i style="background:transparent"></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="walletbtns">
+            <span class="wbtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.1 1.2-.4 2.3-1.1 3.1-.8.9-2 1.5-3.1 1.4-.1-1.1.4-2.3 1.1-3 .8-.9 2.1-1.5 3.1-1.5zM19 17.3c-.5 1.2-.8 1.7-1.4 2.7-.9 1.4-2.2 3.1-3.7 3.1-1.4 0-1.7-.9-3.6-.9s-2.2.9-3.6.9c-1.5 0-2.7-1.6-3.6-2.9C-.1 16.5-.4 11.8 1.6 9.3c1-1.3 2.5-2 4-2 1.5 0 2.5 1 3.7 1 1.2 0 1.9-1 3.7-1 1.3 0 2.7.7 3.7 1.9-3.3 1.8-2.7 6.4 1.6 8.1z"/></svg>Apple Wallet</span>
+            <span class="wbtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.1c-.2 1.2-.9 2.2-1.9 2.9v2.4h3C19.9 17.6 21 15.1 21 12.2z"/><path d="M12 21c2.4 0 4.5-.8 6-2.2l-3-2.4c-.8.6-1.9.9-3 .9-2.3 0-4.3-1.6-5-3.7H4v2.5C5.5 19.1 8.5 21 12 21z"/><path d="M7 13.6c-.2-.6-.3-1.1-.3-1.7s.1-1.2.3-1.7V7.7H4C3.4 9 3 10.5 3 12s.4 3 1 4.3l3-2.7z"/><path d="M12 6.6c1.3 0 2.4.4 3.3 1.3l2.5-2.5C16.5 4 14.4 3 12 3 8.5 3 5.5 5 4 7.7l3 2.5c.7-2.1 2.7-3.6 5-3.6z"/></svg>Google Wallet</span>
+          </div>
+          <ul class="benelist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Early access unlocked</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Exclusive competitions &amp; promotions</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>42 exclusive codes unlocked on this page</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Our Frendz: local logo assets -->
+      <div class="sec">
+        <div class="friends"><div class="ftt">Our Frendz · proudly supported by</div>
+          <div class="frow">
+            <div class="fp"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZTQwMDJiIi8+CiAgPGNpcmNsZSBjeD0iNTgiIGN5PSI2MCIgcj0iMjYiIGZpbGw9IiNmZmYiLz4KICA8cGF0aCBkPSJNNTAgNDJoMTVjMTIgMCAyMCA3IDIwIDE4cy04IDE4LTIwIDE4SDUwVjQyem0xNCAxMnYxMmgzYzQgMCA3LTIgNy02cy0zLTYtNy02aC0zeiIgZmlsbD0iI2U0MDAyYiIvPgogIDx0ZXh0IHg9IjE2NiIgeT0iNjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI5IiBmaWxsPSIjZmZmIj5BdXN0cmFsaWEgUG9zdDwvdGV4dD4KPC9zdmc+Cg==" alt="Australia Post"></div><small>Australia Post</small></div>
+            <div class="fp"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMGJiNmE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtc3R5bGU9Iml0YWxpYyIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI2ZmZiI+S2F5bzwvdGV4dD4KPC9zdmc+Cg==" alt="Kayo Sports"></div><small>Kayo Sports</small></div>
+            <div class="fp"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjZmY2YTNkIi8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIFJvdW5kZWQgTVQgQm9sZCxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjQxIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmIj5hbWF5c2ltPC90ZXh0Pgo8L3N2Zz4K" alt="amaysim"></div><small>AMAYSIM</small></div>
+            <div class="fp"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjQwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjMTAxMDE0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSI3NCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIEJsYWNrLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSI1IiBmaWxsPSIjZmZmIj5CSU5HRTwvdGV4dD4KPC9zdmc+Cg==" alt="BINGE"></div><small>BINGE</small></div>
+            <div class="fp"><div class="logoph"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMTIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjEyMCIgcng9IjI0IiBmaWxsPSIjYjJmY2U0Ii8+CiAgPHJlY3QgeD0iMzYiIHk9IjQ1IiB3aWR0aD0iNDUiIGhlaWdodD0iMzAiIHJ4PSIxNSIgZmlsbD0iIzExMSIvPgogIDx0ZXh0IHg9IjU4LjUiIHk9IjY2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwgQmxhY2ssQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2IyZmNlNCI+4oaUPC90ZXh0PgogIDx0ZXh0IHg9IjE1OCIgeT0iNzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM1IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTExIj5BZnRlcnBheTwvdGV4dD4KPC9zdmc+Cg==" alt="Afterpay"></div><small>Afterpay</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="fcols">
+          <div><h5>Shop</h5><a>All stores</a><a>Categories</a><a>Promo codes</a><a>Frenzy Picks</a></div>
+          <div><h5>Events</h5><a>EOFY Frenzy</a><a>Click Frenzy Main</a><a>Travel Frenzy</a><a>Calendar</a></div>
+          <div><h5>For retailers</h5><a>List your brand (free)</a><a>Advertise with us</a><a>Submit a banner</a><a>Partner login</a></div>
+          <div><h5>Company</h5><a>About</a><a>Contact</a><a>FAQ</a><a>Careers</a></div>
+        </div>
+        <div class="legal">© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs. Prices and offers subject to change.</div>
+      </div>
+
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSheet()"></div>
+    <div class="sheet" id="sheet">
+      <div class="shtopbar" id="shtopbar"></div>
+      <div class="shclose" onclick="closeSheet()">✕</div>
+      <div class="grab"></div>
+      <div class="shbody">
+        <div class="shbrand" id="shbrand">Brand</div>
+        <div class="shoffer" id="shoffer"></div>
+        <p class="shdetails" id="shdetails">Details</p>
+        <div class="shterms" id="shterms"></div>
+        <span class="shcta" id="shcta">Shop the brand</span>
+      </div>
+    </div>
+
+
+<script>
+  function setLogin(on){
+    document.getElementById('screen').classList.toggle('logged-in', on);
+    document.getElementById('btnIn').classList.toggle('on', on);
+    document.getElementById('btnOut').classList.toggle('on', !on);
+  }
+  function filterRow(chip){
+    const row=chip.closest('.filters');
+    row.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    chip.classList.add('on');
+    const target=document.querySelector(row.dataset.target);
+    const cat=chip.dataset.cat;
+    target.querySelectorAll('[data-cat]').forEach(it=>{
+      it.style.display=(cat==='all'||it.dataset.cat===cat)?'':'none';
+    });
+  }
+  function showMore(){
+    document.getElementById('feed').classList.add('expanded');
+    document.getElementById('feedMore').style.display='none';
+  }
+  function openSheet(el){
+    var isProduct = !!el.dataset.now;
+    var brand = isProduct ? (el.dataset.k || 'this store') : (el.dataset.title || el.dataset.k || 'this brand');
+    document.getElementById('shbrand').textContent = brand;
+    // offer line
+    var offerEl = document.getElementById('shoffer');
+    if(isProduct){
+      offerEl.innerHTML = (el.dataset.off ? '<span class="off">'+el.dataset.off+'</span>' : '')
+        + '<span class="now">'+el.dataset.now+'</span>'
+        + (el.dataset.was ? '<span class="was">'+el.dataset.was+'</span>' : '');
+      offerEl.style.display='flex';
+    } else if(el.dataset.offer){
+      offerEl.textContent = el.dataset.offer; offerEl.style.display='block';
+    } else { offerEl.style.display='none'; }
+    // details (for products, lead with the product name)
+    var details = isProduct ? ((el.dataset.title ? el.dataset.title+'. ' : '') + (el.dataset.detail||'')) : (el.dataset.detail||'');
+    document.getElementById('shdetails').textContent = details;
+    // terms & conditions
+    document.getElementById('shterms').textContent = el.dataset.terms || 'T&Cs apply. Offer available for a limited time, while stocks last. See the retailer’s site for full details.';
+    // CTA → shop the brand (links to the brand landing page)
+    document.getElementById('shcta').textContent = el.dataset.cta || ('Shop ' + brand);
+    // header: thin bar by default; full image only if a dedicated header image is supplied
+    var bar = document.getElementById('shtopbar');
+    if(el.dataset.header){ bar.className='shtopbar hasimg'; bar.style.background="url('"+el.dataset.header+"')"; }
+    else { bar.className='shtopbar'; bar.style.background = el.dataset.bg || '#ff2d78'; }
+    document.getElementById('overlay').classList.add('open');
+    document.getElementById('sheet').classList.add('open');
+  }
+  function closeSheet(){
+    document.getElementById('overlay').classList.remove('open');
+    document.getElementById('sheet').classList.remove('open');
+  }
+</script>
+</body>
+</html>
