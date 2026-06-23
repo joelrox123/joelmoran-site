@@ -365,7 +365,14 @@
   body.desktop .feed .fcard.more{display:block;}
   body.desktop #feedMore{display:none;}
   /* desktop: shop by brand full width */
-  body.desktop .brandrow{flex-wrap:wrap;}
+  /* unified shop-by module */
+  .shop-head{align-items:center;justify-content:flex-start;}
+  .shop-head h3{font-size:17px;font-weight:800;letter-spacing:-.3px;}
+  .shop-head .shop-seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:100px;padding:3px;gap:2px;}
+  .shop-head .shop-seg button{border:0;background:transparent;color:#52525c;font-size:12px;font-weight:700;padding:5px 13px;border-radius:100px;cursor:pointer;font-family:var(--font-ui);}
+  .shop-head .shop-seg button.on{background:var(--ink);color:#fff;}
+  .shop-head a{margin-left:auto;}
+  .ic-box.brand-mono{font-weight:900;font-size:18px;color:var(--ink);letter-spacing:-.5px;}
   /* billboard promo code overlay (logged-in only) */
   .bb{position:relative;}
   .bb .bb-code{position:absolute;top:14px;right:14px;background:#fff;color:var(--pink-text);font-weight:800;font-size:12px;padding:6px 11px;border-radius:8px;display:none;z-index:3;box-shadow:0 2px 8px rgba(0,0,0,.18);}
@@ -460,8 +467,12 @@
       </div>
 
       <div class="sec">
-        <div class="sec-h"><div class="t"><h3>Shop by category</h3></div><a>All</a></div>
-        <div class="catrow2">
+        <div class="sec-h shop-head">
+          <h3>Shop by</h3>
+          <div class="shop-seg"><button id="sbCat" class="on" onclick="shopTab('cat')">Category</button><button id="sbBrand" onclick="shopTab('brand')">Brand</button></div>
+          <a>All</a>
+        </div>
+        <div class="catrow2" id="shopCat">
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7l4-3 4 2 4-2 4 3-3 3v9H7v-9L4 7z"/></svg></div><span>Fashion</span></div>
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c3 4 5 6 5 9a5 5 0 01-10 0c0-3 2-5 5-9z"/></svg></div><span>Beauty</span></div>
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div><span>Electronics</span></div>
@@ -477,25 +488,21 @@
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3l7 7-4 4-7-7zM10 7L3 14v7h7l7-7"/></svg></div><span>Tools</span></div>
           <div class="cat"><div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="7" cy="9" r="2"/><circle cx="12" cy="6.5" r="2"/><circle cx="17" cy="9" r="2"/><path d="M8 16c0-3 2-4 4-4s4 1 4 4-2 4-4 4-4-1-4-4z"/></svg></div><span>Pets</span></div>
         </div>
-      </div>
-
-      <div class="sec">
-        <div class="sec-h"><div class="t"><h3>Shop by brand</h3></div><a>All</a></div>
-        <div class="brandrow">
-          <div class="brand"><div class="b-tile">Nike</div></div>
-          <div class="brand"><div class="b-tile">Apple</div></div>
-          <div class="brand"><div class="b-tile">Dyson</div></div>
-          <div class="brand"><div class="b-tile">Samsung</div></div>
-          <div class="brand"><div class="b-tile">adidas</div></div>
-          <div class="brand"><div class="b-tile">Sony</div></div>
-          <div class="brand"><div class="b-tile">Bose</div></div>
-          <div class="brand"><div class="b-tile">LEGO</div></div>
-          <div class="brand"><div class="b-tile">Garmin</div></div>
-          <div class="brand"><div class="b-tile">Breville</div></div>
-          <div class="brand"><div class="b-tile">New Balance</div></div>
-          <div class="brand"><div class="b-tile">PUMA</div></div>
-          <div class="brand"><div class="b-tile">Ninja</div></div>
-          <div class="brand"><div class="b-tile">JBL</div></div>
+        <div class="catrow2" id="shopBrand" style="display:none">
+          <div class="cat"><div class="ic-box brand-mono">N</div><span>Nike</span></div>
+          <div class="cat"><div class="ic-box brand-mono">A</div><span>Apple</span></div>
+          <div class="cat"><div class="ic-box brand-mono">D</div><span>Dyson</span></div>
+          <div class="cat"><div class="ic-box brand-mono">S</div><span>Samsung</span></div>
+          <div class="cat"><div class="ic-box brand-mono">a</div><span>adidas</span></div>
+          <div class="cat"><div class="ic-box brand-mono">S</div><span>Sony</span></div>
+          <div class="cat"><div class="ic-box brand-mono">B</div><span>Bose</span></div>
+          <div class="cat"><div class="ic-box brand-mono">L</div><span>LEGO</span></div>
+          <div class="cat"><div class="ic-box brand-mono">G</div><span>Garmin</span></div>
+          <div class="cat"><div class="ic-box brand-mono">B</div><span>Breville</span></div>
+          <div class="cat"><div class="ic-box brand-mono">NB</div><span>New Balance</span></div>
+          <div class="cat"><div class="ic-box brand-mono">P</div><span>PUMA</span></div>
+          <div class="cat"><div class="ic-box brand-mono">N</div><span>Ninja</span></div>
+          <div class="cat"><div class="ic-box brand-mono">JBL</div><span>JBL</span></div>
         </div>
       </div>
 
@@ -833,6 +840,13 @@
     document.getElementById('screen').classList.toggle('flash-soon', s);
     document.getElementById('btnFlashSoon').classList.toggle('on', s);
     document.getElementById('btnFlashLive').classList.toggle('on', !s);
+  }
+  function shopTab(t){
+    var cat=t==='cat';
+    document.getElementById('shopCat').style.display=cat?'':'none';
+    document.getElementById('shopBrand').style.display=cat?'none':'';
+    document.getElementById('sbCat').classList.toggle('on',cat);
+    document.getElementById('sbBrand').classList.toggle('on',!cat);
   }
   function setLogin(on){
     document.getElementById('screen').classList.toggle('logged-in', on);
