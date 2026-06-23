@@ -336,7 +336,8 @@
   /* ===== DESKTOP MODE ===== */
   body.desktop{background:#e7e7ee;}
   body.desktop .screen{max-width:1080px;box-shadow:0 0 60px rgba(0,0,0,.08);}
-  body.desktop .appsearch{max-width:560px;font-size:14px;padding:11px 14px;}
+  body.desktop .appsearch{max-width:520px;margin:0 auto;font-size:14px;padding:11px 14px;}
+  body.desktop .hamb{display:none;}
   body.desktop .logo img{width:90px;}
   body.desktop .bb{height:300px;}
   body.desktop .bb .bigoffer{font-size:40px;}
@@ -378,7 +379,11 @@
   /* billboard promo code overlay (logged-in only) */
   .bb{position:relative;}
   .bb .bb-code{position:absolute;top:14px;right:14px;background:#fff;color:var(--pink-text);font-weight:800;font-size:12px;padding:6px 11px;border-radius:8px;display:none;z-index:3;box-shadow:0 2px 8px rgba(0,0,0,.18);}
-  body.desktop .logged-in .bb .bb-code{display:inline-block;}
+  body.desktop .bb .bb-code{display:inline-flex;align-items:center;gap:4px;}
+  .bb .bb-code .bcr{display:none;}
+  .logged-in .bb .bb-code .bcr{display:inline;}
+  .bb .bb-code::before{content:"🔒 Log in for code";}
+  .logged-in .bb .bb-code::before{display:none;}
   /* desktop billboard: centered peek carousel with white edge fade */
   body.desktop .billboard{position:relative;}
   body.desktop .bbscroll{scroll-snap-type:x mandatory;gap:16px;padding:0 16.5%;}
@@ -472,11 +477,11 @@
       <div class="billboard">
         <div class="bbscroll" id="bbscroll">
           <div class="bb">
-            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(42,15,20,.88),rgba(94,26,34,.14)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMGYxNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhjMWQyYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTg1IiBjeT0iNzgiIHI9IjEyMCIgZmlsbD0iI2ZmY2UzMyIgb3BhY2l0eT0iLjE2Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDE4IDQ4KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3NCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE3OCIgcng9IjE0IiBmaWxsPSIjMjM0MjBmIi8+CiAgICA8cmVjdCB4PSI5IiB5PSIyMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxNzMwMGIiLz4KICAgIDxyZWN0IHg9IjE1IiB5PSI5OCIgd2lkdGg9IjI2IiBoZWlnaHQ9Ijg4IiByeD0iOCIgZmlsbD0iI2Y0ZDlhMCIvPgogICAgPHJlY3QgeD0iNzYiIHk9IjU0IiB3aWR0aD0iNTgiIGhlaWdodD0iMTk4IiByeD0iMTQiIGZpbGw9IiM0YjE5MTYiLz4KICAgIDxyZWN0IHg9Ijg3IiB5PSI0IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzMyMTAwZCIvPgogICAgPHJlY3QgeD0iOTEiIHk9IjEwNSIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijk2IiByeD0iOCIgZmlsbD0iI2Y4ZjBkMSIvPgogICAgPHJlY3QgeD0iMTUxIiB5PSI4NiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE2NiIgcng9IjE0IiBmaWxsPSIjMjc0MDVjIi8+CiAgICA8cmVjdCB4PSIxNjAiIHk9IjM1IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzE3MmE0MiIvPgogICAgPHJlY3QgeD0iMTY1IiB5PSIxMTciIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NCIgcng9IjgiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · FRENZY10</span></div>
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(42,15,20,.88),rgba(94,26,34,.14)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMGYxNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhjMWQyYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTg1IiBjeT0iNzgiIHI9IjEyMCIgZmlsbD0iI2ZmY2UzMyIgb3BhY2l0eT0iLjE2Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDE4IDQ4KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3NCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE3OCIgcng9IjE0IiBmaWxsPSIjMjM0MjBmIi8+CiAgICA8cmVjdCB4PSI5IiB5PSIyMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxNzMwMGIiLz4KICAgIDxyZWN0IHg9IjE1IiB5PSI5OCIgd2lkdGg9IjI2IiBoZWlnaHQ9Ijg4IiByeD0iOCIgZmlsbD0iI2Y0ZDlhMCIvPgogICAgPHJlY3QgeD0iNzYiIHk9IjU0IiB3aWR0aD0iNTgiIGhlaWdodD0iMTk4IiByeD0iMTQiIGZpbGw9IiM0YjE5MTYiLz4KICAgIDxyZWN0IHg9Ijg3IiB5PSI0IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzMyMTAwZCIvPgogICAgPHJlY3QgeD0iOTEiIHk9IjEwNSIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijk2IiByeD0iOCIgZmlsbD0iI2Y4ZjBkMSIvPgogICAgPHJlY3QgeD0iMTUxIiB5PSI4NiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE2NiIgcng9IjE0IiBmaWxsPSIjMjc0MDVjIi8+CiAgICA8cmVjdCB4PSIxNjAiIHk9IjM1IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzE3MmE0MiIvPgogICAgPHJlY3QgeD0iMTY1IiB5PSIxMTciIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NCIgcng9IjgiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code"><span class="bcr">CODE · FRENZY10</span></span></div>
             <div class="bb-cap"><div class="l"><div class="nm">Liquorland</div><div class="of">Up to 40% off selected wines &amp; spirits</div></div><span class="codechip">CODE · FRENZY10</span></div>
           </div>
           <div class="bb">
-            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(26,19,32,.9),rgba(61,31,58,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhMTMyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc0MzE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTY1IiBjeT0iOTAiIHI9IjEzMCIgZmlsbD0iI2ZmMmQ3OCIgb3BhY2l0eT0iLjE4Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAwIDU0KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3MiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjE2NCIgcng9IjE4IiBmaWxsPSIjZTliOWNmIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NCIgcng9IjkiIGZpbGw9IiMxMTEiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iNTYiIGZpbGw9IiNmNmQyZGYiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMzIiIGZpbGw9IiNjNTAwNWYiIG9wYWNpdHk9Ii41NSIvPgogICAgPHJlY3QgeD0iMTc0IiB5PSI0MiIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE5NCIgcng9IjIxIiBmaWxsPSIjMTExIi8+CiAgICA8cmVjdCB4PSIxODQiIHk9IjIyIiB3aWR0aD0iMjIiIGhlaWdodD0iMzQiIHJ4PSI4IiBmaWxsPSIjZjZkMmRmIi8+CiAgPC9nPgo8L3N2Zz4K')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · MECCA10</span></div>
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(26,19,32,.9),rgba(61,31,58,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhMTMyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc0MzE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTY1IiBjeT0iOTAiIHI9IjEzMCIgZmlsbD0iI2ZmMmQ3OCIgb3BhY2l0eT0iLjE4Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAwIDU0KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3MiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjE2NCIgcng9IjE4IiBmaWxsPSIjZTliOWNmIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NCIgcng9IjkiIGZpbGw9IiMxMTEiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iNTYiIGZpbGw9IiNmNmQyZGYiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMzIiIGZpbGw9IiNjNTAwNWYiIG9wYWNpdHk9Ii41NSIvPgogICAgPHJlY3QgeD0iMTc0IiB5PSI0MiIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE5NCIgcng9IjIxIiBmaWxsPSIjMTExIi8+CiAgICA8cmVjdCB4PSIxODQiIHk9IjIyIiB3aWR0aD0iMjIiIGhlaWdodD0iMzQiIHJ4PSI4IiBmaWxsPSIjZjZkMmRmIi8+CiAgPC9nPgo8L3N2Zz4K')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code"><span class="bcr">CODE · MECCA10</span></span></div>
             <div class="bb-cap"><div class="l"><div class="nm">MECCA</div><div class="of">Up to 50% off + extra 10% for members</div></div><span class="codechip">CODE · MECCA10</span></div>
           </div>
           <div class="bb">
@@ -484,11 +489,11 @@
             <div class="bb-cap"><div class="l"><div class="nm">IKEA</div><div class="of">Up to 30% off storewide</div></div><span class="codechip">No code needed</span></div>
           </div>
           <div class="bb">
-            <div class="bb-img" style="background:linear-gradient(120deg,#15151c,#3a1020)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · NIKE40</span></div>
+            <div class="bb-img" style="background:linear-gradient(120deg,#15151c,#3a1020)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code"><span class="bcr">CODE · NIKE40</span></span></div>
             <div class="bb-cap"><div class="l"><div class="nm">Nike</div><div class="of">40% off selected styles</div></div><span class="codechip">CODE · NIKE40</span></div>
           </div>
           <div class="bb">
-            <div class="bb-img" style="background:linear-gradient(120deg,#0a2740,#0f4d6b)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · JBEOFY</span></div>
+            <div class="bb-img" style="background:linear-gradient(120deg,#0a2740,#0f4d6b)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code"><span class="bcr">CODE · JBEOFY</span></span></div>
             <div class="bb-cap"><div class="l"><div class="nm">JB Hi-Fi</div><div class="of">EOFY tech blowout</div></div><span class="codechip">CODE · JBEOFY</span></div>
           </div>
         </div>
