@@ -353,6 +353,33 @@
   body.desktop .sheet.open{transform:translate(-50%,-50%);}
   body.desktop .sheet .grab{display:none;}
   body.desktop .sheet .shbody{padding:18px 22px 24px;}
+  /* desktop: hide nav pill icons */
+  body.desktop .pill svg{display:none;}
+  /* flash frenzy state toggle (live vs starting soon) */
+  .flashcard.soon{display:none;}
+  .flash-soon .flashcard:not(.soon){display:none;}
+  .flash-soon .flashcard.soon{display:block;}
+  /* desktop: flash + game side by side */
+  body.desktop .flash-sec{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+  /* desktop: feed double length */
+  body.desktop .feed .fcard.more{display:block;}
+  body.desktop #feedMore{display:none;}
+  /* desktop: shop by brand full width */
+  body.desktop .brandrow{flex-wrap:wrap;}
+  /* billboard promo code overlay (logged-in only) */
+  .bb{position:relative;}
+  .bb .bb-code{position:absolute;top:14px;right:14px;background:#fff;color:var(--pink-text);font-weight:800;font-size:12px;padding:6px 11px;border-radius:8px;display:none;z-index:3;box-shadow:0 2px 8px rgba(0,0,0,.18);}
+  body.desktop .logged-in .bb .bb-code{display:inline-block;}
+  /* desktop billboard: centered peek carousel with white edge fade */
+  body.desktop .billboard{position:relative;}
+  body.desktop .bbscroll{scroll-snap-type:x mandatory;gap:16px;padding:0 16.5%;}
+  body.desktop .bb{flex:0 0 67%;scroll-snap-align:center;height:340px;}
+  body.desktop .bb-cap{display:none;}
+  body.desktop .billboard::before,body.desktop .billboard::after{content:"";position:absolute;top:0;height:340px;width:18%;z-index:5;pointer-events:none;}
+  body.desktop .billboard::before{left:0;background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,0));}
+  body.desktop .billboard::after{right:0;background:linear-gradient(270deg,rgba(255,255,255,.95),rgba(255,255,255,0));}
+  /* wallet clarity note */
+  .wallet-note{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;opacity:.95;margin:2px 0 13px;}
 
   /* brand style notes under prototype */
   .brandnotes{width:392px;margin-top:26px;background:#1f1f27;border:1px solid #2e2e38;border-radius:20px;padding:22px;color:#cfcfd6;}
@@ -370,6 +397,7 @@
   <div class="previewbar">
     <div class="seg"><button id="btnMobile" class="on" onclick="setView('mobile')">Mobile</button><button id="btnDesktop" onclick="setView('desktop')">Desktop</button></div>
     <div class="seg"><button id="btnOut" class="on" onclick="setLogin(false)">Logged out</button><button id="btnIn" onclick="setLogin(true)">Logged in</button></div>
+    <div class="seg"><button id="btnFlashLive" class="on" onclick="setFlash('live')">Flash: Live</button><button id="btnFlashSoon" onclick="setFlash('soon')">Soon</button></div>
   </div>
 
   <div class="screen" id="screen">
@@ -394,21 +422,29 @@
 
       <!-- billboard with caption underneath -->
       <div class="billboard">
-        <div class="bbscroll">
+        <div class="bbscroll" id="bbscroll">
           <div class="bb">
-            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(42,15,20,.88),rgba(94,26,34,.14)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMGYxNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhjMWQyYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTg1IiBjeT0iNzgiIHI9IjEyMCIgZmlsbD0iI2ZmY2UzMyIgb3BhY2l0eT0iLjE2Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDE4IDQ4KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3NCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE3OCIgcng9IjE0IiBmaWxsPSIjMjM0MjBmIi8+CiAgICA8cmVjdCB4PSI5IiB5PSIyMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxNzMwMGIiLz4KICAgIDxyZWN0IHg9IjE1IiB5PSI5OCIgd2lkdGg9IjI2IiBoZWlnaHQ9Ijg4IiByeD0iOCIgZmlsbD0iI2Y0ZDlhMCIvPgogICAgPHJlY3QgeD0iNzYiIHk9IjU0IiB3aWR0aD0iNTgiIGhlaWdodD0iMTk4IiByeD0iMTQiIGZpbGw9IiM0YjE5MTYiLz4KICAgIDxyZWN0IHg9Ijg3IiB5PSI0IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzMyMTAwZCIvPgogICAgPHJlY3QgeD0iOTEiIHk9IjEwNSIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijk2IiByeD0iOCIgZmlsbD0iI2Y4ZjBkMSIvPgogICAgPHJlY3QgeD0iMTUxIiB5PSI4NiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE2NiIgcng9IjE0IiBmaWxsPSIjMjc0MDVjIi8+CiAgICA8cmVjdCB4PSIxNjAiIHk9IjM1IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzE3MmE0MiIvPgogICAgPHJlY3QgeD0iMTY1IiB5PSIxMTciIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NCIgcng9IjgiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=')"><span class="lbl">FEATURED RETAILER</span></div>
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(42,15,20,.88),rgba(94,26,34,.14)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzJhMGYxNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzhjMWQyYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTg1IiBjeT0iNzgiIHI9IjEyMCIgZmlsbD0iI2ZmY2UzMyIgb3BhY2l0eT0iLjE2Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDE4IDQ4KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3NCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjE3OCIgcng9IjE0IiBmaWxsPSIjMjM0MjBmIi8+CiAgICA8cmVjdCB4PSI5IiB5PSIyMCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMxNzMwMGIiLz4KICAgIDxyZWN0IHg9IjE1IiB5PSI5OCIgd2lkdGg9IjI2IiBoZWlnaHQ9Ijg4IiByeD0iOCIgZmlsbD0iI2Y0ZDlhMCIvPgogICAgPHJlY3QgeD0iNzYiIHk9IjU0IiB3aWR0aD0iNTgiIGhlaWdodD0iMTk4IiByeD0iMTQiIGZpbGw9IiM0YjE5MTYiLz4KICAgIDxyZWN0IHg9Ijg3IiB5PSI0IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzMyMTAwZCIvPgogICAgPHJlY3QgeD0iOTEiIHk9IjEwNSIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijk2IiByeD0iOCIgZmlsbD0iI2Y4ZjBkMSIvPgogICAgPHJlY3QgeD0iMTUxIiB5PSI4NiIgd2lkdGg9IjU0IiBoZWlnaHQ9IjE2NiIgcng9IjE0IiBmaWxsPSIjMjc0MDVjIi8+CiAgICA8cmVjdCB4PSIxNjAiIHk9IjM1IiB3aWR0aD0iMzYiIGhlaWdodD0iNjYiIHJ4PSIxMCIgZmlsbD0iIzE3MmE0MiIvPgogICAgPHJlY3QgeD0iMTY1IiB5PSIxMTciIHdpZHRoPSIyNiIgaGVpZ2h0PSI3NCIgcng9IjgiIGZpbGw9IiNmZmYiLz4KICA8L2c+Cjwvc3ZnPgo=')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · FRENZY10</span></div>
             <div class="bb-cap"><div class="l"><div class="nm">Liquorland</div><div class="of">Up to 40% off selected wines &amp; spirits</div></div><span class="codechip">CODE · FRENZY10</span></div>
           </div>
           <div class="bb">
-            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(26,19,32,.9),rgba(61,31,58,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhMTMyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc0MzE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTY1IiBjeT0iOTAiIHI9IjEzMCIgZmlsbD0iI2ZmMmQ3OCIgb3BhY2l0eT0iLjE4Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAwIDU0KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3MiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjE2NCIgcng9IjE4IiBmaWxsPSIjZTliOWNmIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NCIgcng9IjkiIGZpbGw9IiMxMTEiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iNTYiIGZpbGw9IiNmNmQyZGYiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMzIiIGZpbGw9IiNjNTAwNWYiIG9wYWNpdHk9Ii41NSIvPgogICAgPHJlY3QgeD0iMTc0IiB5PSI0MiIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE5NCIgcng9IjIxIiBmaWxsPSIjMTExIi8+CiAgICA8cmVjdCB4PSIxODQiIHk9IjIyIiB3aWR0aD0iMjIiIGhlaWdodD0iMzQiIHJ4PSI4IiBmaWxsPSIjZjZkMmRmIi8+CiAgPC9nPgo8L3N2Zz4K')"><span class="lbl">FEATURED RETAILER</span></div>
+            <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(26,19,32,.9),rgba(61,31,58,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhMTMyMCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzc0MzE1ZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGNpcmNsZSBjeD0iNTY1IiBjeT0iOTAiIHI9IjEzMCIgZmlsbD0iI2ZmMmQ3OCIgb3BhY2l0eT0iLjE4Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAwIDU0KSI+CiAgICA8cmVjdCB4PSIwIiB5PSI3MiIgd2lkdGg9IjU4IiBoZWlnaHQ9IjE2NCIgcng9IjE4IiBmaWxsPSIjZTliOWNmIi8+CiAgICA8cmVjdCB4PSIxMiIgeT0iMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NCIgcng9IjkiIGZpbGw9IiMxMTEiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iNTYiIGZpbGw9IiNmNmQyZGYiLz4KICAgIDxjaXJjbGUgY3g9IjExMCIgY3k9IjEzMCIgcj0iMzIiIGZpbGw9IiNjNTAwNWYiIG9wYWNpdHk9Ii41NSIvPgogICAgPHJlY3QgeD0iMTc0IiB5PSI0MiIgd2lkdGg9IjQyIiBoZWlnaHQ9IjE5NCIgcng9IjIxIiBmaWxsPSIjMTExIi8+CiAgICA8cmVjdCB4PSIxODQiIHk9IjIyIiB3aWR0aD0iMjIiIGhlaWdodD0iMzQiIHJ4PSI4IiBmaWxsPSIjZjZkMmRmIi8+CiAgPC9nPgo8L3N2Zz4K')"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · MECCA10</span></div>
             <div class="bb-cap"><div class="l"><div class="nm">MECCA</div><div class="of">Up to 50% off + extra 10% for members</div></div><span class="codechip">CODE · MECCA10</span></div>
           </div>
           <div class="bb">
             <div class="bb-img" style="background-image:linear-gradient(90deg,rgba(10,39,64,.9),rgba(15,77,107,.12)),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMzIwIj4KICA8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzBhMjc0MCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzBmNmI4NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MjAiIGhlaWdodD0iMzIwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzYwIDc0KSI+CiAgICA8cmVjdCB4PSI0OCIgeT0iOTIiIHdpZHRoPSIyMjAiIGhlaWdodD0iOTAiIHJ4PSIxOCIgZmlsbD0iI2U3ZWRmMiIvPgogICAgPHJlY3QgeD0iMjIiIHk9IjcwIiB3aWR0aD0iODYiIGhlaWdodD0iOTYiIHJ4PSIyMiIgZmlsbD0iI2ZmY2UzMyIvPgogICAgPHJlY3QgeD0iMjAyIiB5PSI3MCIgd2lkdGg9Ijg2IiBoZWlnaHQ9Ijk2IiByeD0iMjIiIGZpbGw9IiNmZmNlMzMiLz4KICAgIDxyZWN0IHg9Ijc4IiB5PSI1NiIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI1MCIgcng9IjE2IiBmaWxsPSIjYzlkNGRmIi8+CiAgICA8cmVjdCB4PSI3NSIgeT0iMTgyIiB3aWR0aD0iMTgiIGhlaWdodD0iNDIiIHJ4PSI2IiBmaWxsPSIjMGIyMjM4Ii8+CiAgICA8cmVjdCB4PSIyMjIiIHk9IjE4MiIgd2lkdGg9IjE4IiBoZWlnaHQ9IjQyIiByeD0iNiIgZmlsbD0iIzBiMjIzOCIvPgogIDwvZz4KPC9zdmc+Cg==')"><span class="lbl">FEATURED RETAILER</span></div>
             <div class="bb-cap"><div class="l"><div class="nm">IKEA</div><div class="of">Up to 30% off storewide</div></div><span class="codechip">No code needed</span></div>
           </div>
+          <div class="bb">
+            <div class="bb-img" style="background:linear-gradient(120deg,#15151c,#3a1020)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · NIKE40</span></div>
+            <div class="bb-cap"><div class="l"><div class="nm">Nike</div><div class="of">40% off selected styles</div></div><span class="codechip">CODE · NIKE40</span></div>
+          </div>
+          <div class="bb">
+            <div class="bb-img" style="background:linear-gradient(120deg,#0a2740,#0f4d6b)"><span class="lbl">FEATURED RETAILER</span><span class="bb-code">CODE · JBEOFY</span></div>
+            <div class="bb-cap"><div class="l"><div class="nm">JB Hi-Fi</div><div class="of">EOFY tech blowout</div></div><span class="codechip">CODE · JBEOFY</span></div>
+          </div>
         </div>
-        <div class="bb-dots"><i class="on"></i><i></i><i></i></div>
+        <div class="bb-dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
       </div>
 
       <div class="sec">
@@ -463,7 +499,7 @@
         </div>
       </div>
 
-      <div class="sec">
+      <div class="sec flash-sec">
         <!-- Flash Frenzy -->
         <div class="flashcard">
           <div class="fc-head">
@@ -614,6 +650,8 @@
           <div class="find" data-cat="tech" onclick="openSheet(this)" data-k="JB Hi-Fi" data-title="Lenovo Legion Tab 8.8&quot; 256GB" data-now="$499" data-was="$999" data-off="50% off" data-detail="Snapdragon gaming tablet with 2.5K display and 256GB storage." data-cta="Buy at JB Hi-Fi" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" alt="Tablet"></div></div><div class="info"><div class="st">JB Hi-Fi</div><div class="nm">Lenovo Legion Tab 8.8" 256GB</div><div class="pr"><span class="now tnum">$499</span><span class="was tnum">$999</span></div></div></div>
           <div class="find" data-cat="beauty" onclick="openSheet(this)" data-k="Napoleon Perdis" data-title="Skin Guardian SPF 50+ Sunscreen" data-now="$24" data-was="$48" data-off="50% off" data-detail="Natural-matte broad spectrum SPF 50+ daily sunscreen." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZmZmMmY3Ii8+CiAgPHJlY3QgeD0iNTAiIHk9IjkwIiB3aWR0aD0iNTIiIGhlaWdodD0iODIiIHJ4PSIxNCIgZmlsbD0iI2ZmMmQ3OCIvPgogIDxyZWN0IHg9IjYxIiB5PSI1NCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQ0IiByeD0iOCIgZmlsbD0iIzExMSIvPgogIDxjaXJjbGUgY3g9IjE1NCIgY3k9IjEyNiIgcj0iNTAiIGZpbGw9IiNmNmM1ZDkiLz4KICA8Y2lyY2xlIGN4PSIxNTQiIGN5PSIxMjYiIHI9IjI5IiBmaWxsPSIjYzUwMDVmIiBvcGFjaXR5PSIuNTUiLz4KICA8cmVjdCB4PSIxOTQiIHk9IjU4IiB3aWR0aD0iMjUiIGhlaWdodD0iMTE0IiByeD0iMTIiIGZpbGw9IiMxMTEiLz4KPC9zdmc+Cg==" alt="Beauty product"></div></div><div class="info"><div class="st">Napoleon Perdis</div><div class="nm">Skin Guardian SPF 50+ Sunscreen</div><div class="pr"><span class="now tnum">$24</span><span class="was tnum">$48</span></div></div></div>
           <div class="find" data-cat="jewellery" onclick="openSheet(this)" data-k="Prouds" data-title="G-Shock GA400 Watch" data-now="$174" data-was="$349" data-off="50% off" data-detail="Bold analog-digital G-Shock with shock resistance and 200m water resistance." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">50% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Watch"></div></div><div class="info"><div class="st">Prouds The Jewellers</div><div class="nm">G-Shock GA400 Watch</div><div class="pr"><span class="now tnum">$174</span><span class="was tnum">$349</span></div></div></div>
+          <div class="find" data-cat="tech" onclick="openSheet(this)" data-k="Dyson" data-title="Dyson V8 Origin Cordless Vacuum" data-now="$378" data-was="$699" data-off="46% off" data-detail="Cord-free vacuum with up to 40 minutes of run time and powerful suction." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">46% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmNGY5Ii8+CiAgPHJlY3QgeD0iNDUiIHk9IjU1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjExMCIgcng9IjEyIiBmaWxsPSIjMTExIi8+CiAgPHJlY3QgeD0iNTciIHk9IjY3IiB3aWR0aD0iMTQ2IiBoZWlnaHQ9IjgyIiByeD0iNiIgZmlsbD0iIzBiYjZhNCIvPgogIDxyZWN0IHg9Ijk2IiB5PSIxNjkiIHdpZHRoPSI2OCIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiNjYmQ1ZGYiLz4KICA8cmVjdCB4PSI3OCIgeT0iMTg0IiB3aWR0aD0iMTA0IiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2FlYjhjNCIvPgo8L3N2Zz4K" alt="Vacuum"></div></div><div class="info"><div class="st">Dyson</div><div class="nm">Dyson V8 Origin Cordless Vacuum</div><div class="pr"><span class="now tnum">$378</span><span class="was tnum">$699</span></div></div></div>
+          <div class="find" data-cat="jewellery" onclick="openSheet(this)" data-k="Garmin" data-title="Garmin Forerunner 55 GPS Watch" data-now="$199" data-was="$329" data-off="40% off" data-detail="GPS running watch with heart-rate, training plans and up to 2-week battery." data-cta="Buy now" data-img="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" data-bg="linear-gradient(135deg,#dfe1e8,#cdd0d9)"><div class="imgwrap"><span class="off">40% off</span><div class="thumb"><img class="product-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNjAgMjIwIj4KICA8cmVjdCB3aWR0aD0iMjYwIiBoZWlnaHQ9IjIyMCIgcng9IjIyIiBmaWxsPSIjZWVmMGYzIi8+CiAgPHJlY3QgeD0iMTA1IiB5PSIzNSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE1MCIgcng9IjE3IiBmaWxsPSIjMTExIi8+CiAgPGNpcmNsZSBjeD0iMTMwIiBjeT0iMTEwIiByPSI0OCIgZmlsbD0iIzMzMyIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjkiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxMTAiIHI9IjI4IiBmaWxsPSIjZmZjZTMzIi8+CiAgPHBhdGggZD0iTTEzMCAxMTBsMTctMTNNMTMwIDExMHYyMSIgc3Ryb2tlPSIjMTExIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K" alt="GPS watch"></div></div><div class="info"><div class="st">Garmin</div><div class="nm">Garmin Forerunner 55 GPS Watch</div><div class="pr"><span class="now tnum">$199</span><span class="was tnum">$329</span></div></div></div>
         </div>
         <button class="showmore">Show more</button>
       </div>
@@ -704,6 +742,7 @@
         <div class="pass-out">
           <div class="free">Free · no app needed</div>
           <h3>Unlock the Frenzy Pass</h3>
+          <div class="wallet-note">📲 Lives in your Apple Wallet or Google Wallet — no app needed</div>
           <ul class="benelist">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Early access to deals before everyone else</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Exclusive competitions &amp; promotions</li>
@@ -789,6 +828,12 @@
     document.getElementById('btnDesktop').classList.toggle('on', d);
     document.getElementById('btnMobile').classList.toggle('on', !d);
   }
+  function setFlash(state){
+    var s = state==='soon';
+    document.getElementById('screen').classList.toggle('flash-soon', s);
+    document.getElementById('btnFlashSoon').classList.toggle('on', s);
+    document.getElementById('btnFlashLive').classList.toggle('on', !s);
+  }
   function setLogin(on){
     document.getElementById('screen').classList.toggle('logged-in', on);
     document.getElementById('btnIn').classList.toggle('on', on);
@@ -840,6 +885,15 @@
     document.getElementById('overlay').classList.remove('open');
     document.getElementById('sheet').classList.remove('open');
   }
+  (function(){
+    var i=0;
+    setInterval(function(){
+      var sc=document.getElementById('bbscroll'); if(!sc||!sc.children.length) return;
+      i=(i+1)%sc.children.length;
+      sc.children[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+      var dots=document.querySelectorAll('.bb-dots i'); dots.forEach(function(d,n){d.classList.toggle('on',n===i);});
+    },4500);
+  })();
 </script>
 </body>
 </html>
