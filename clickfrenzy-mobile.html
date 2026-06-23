@@ -347,7 +347,11 @@
   body.desktop .finds{grid-template-columns:repeat(4,1fr);}
   body.desktop .find .imgwrap{height:150px;}
   body.desktop .ret{flex:0 0 96px;} body.desktop .ret .logo-tile{width:96px;height:96px;}
-  body.desktop .flash-sec .flashcard,body.desktop .flash-sec .flycard{max-width:none;margin:0;display:flex;flex-direction:column;}
+  body.desktop .flash-sec .flashcard,body.desktop .flash-sec .flycard{max-width:none;margin:0;}
+  body.desktop .flash-sec .flashcard:not(.soon),body.desktop .flash-sec .flycard{display:flex;flex-direction:column;}
+  body.desktop .flash-sec .flashcard.soon{display:none;}
+  body.desktop .flash-soon .flash-sec .flashcard:not(.soon){display:none;}
+  body.desktop .flash-soon .flash-sec .flashcard.soon{display:flex;flex-direction:column;}
   body.desktop .flash-sec .flashcard .fc-act{margin-top:auto;}
   body.desktop .flash-sec .flycard .fly-foot{margin-top:auto;}
   body.desktop .pass-out,body.desktop .pass-in{max-width:640px;margin-left:auto;margin-right:auto;}
@@ -411,7 +415,7 @@
   /* featured stores: full-width row on desktop */
   body.desktop .retrow{gap:14px;}
   /* softer filter chips */
-  .filters .chip{background:var(--paper);border-color:transparent;}
+  .filters .chip{background:#fff;border:1px solid var(--line);}
   .filters .chip.on{background:var(--ink);border-color:var(--ink);color:#fff;}
   /* ===== product card system (denser, ASOS-style) ===== */
   .find{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;padding:10px 11px 13px;}
