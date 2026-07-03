@@ -285,19 +285,12 @@
           </div>
           <a onclick="showView('list')">View all →</a>
         </div>
+        <div class="cattabs" id="home-tabs"></div>
         <div class="stack" id="home-chart"></div>
-        <button class="morebtn" onclick="showView('list')">
+        <button class="morebtn" id="home-more" onclick="homeMore()">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
-          See the full Frenzy 100
+          <span>See the full Frenzy 100</span>
         </button>
-        <div class="bycat">
-          <span class="bycat-lbl">Or by category:</span>
-          <button class="chip" onclick="goCat('Tech')">Tech</button>
-          <button class="chip" onclick="goCat('Fashion')">Fashion</button>
-          <button class="chip" onclick="goCat('Home')">Home</button>
-          <button class="chip" onclick="goCat('Travel')">Travel</button>
-          <button class="chip" onclick="goCat('Beauty')">Beauty</button>
-        </div>
       </div>
 
       <!-- Homepage context (placeholder) -->
@@ -602,8 +595,22 @@ function dealRow(d){
   </div>`;
 }
 
-/* Homepage module: #1 hero + ranks 2-3 */
-document.getElementById('home-chart').innerHTML=heroCard(deals[0])+deals.slice(1,3).map(dealRow).join('');
+/* Homepage module: fat category filter on top, top 1-2-3 for the selected cat */
+const homeCats=['All','Tech','Fashion','Home','Travel','Beauty'];
+let homeSel='All';
+function renderHomeTabs(){
+  document.getElementById('home-tabs').innerHTML=homeCats.map(c=>
+    `<button class="chip${c===homeSel?' on':''}" onclick="setHomeCat('${c}')">${c}&nbsp;<span style="opacity:.6">${c==='All'?100:cats[c].count}</span></button>`).join('');
+}
+function setHomeCat(c){homeSel=c;renderHomeTabs();renderHomeChart();}
+function renderHomeChart(){
+  let list;
+  if(homeSel==='All'){list=deals.slice(0,3);}
+  else{list=cats[homeSel].deals.slice(0,3).map(d=>({i:d.i,t:d.n,s:d.s,p:d.p,w:d.w,sc:d.sc,r:d.cr,mv:'',mc:'flat'}));}
+  document.getElementById('home-chart').innerHTML=heroCard(list[0])+list.slice(1).map(dealRow).join('');
+  document.querySelector('#home-more span').textContent=homeSel==='All'?'See the full Frenzy 100':`See the Top 100 in ${homeSel}`;
+}
+function homeMore(){homeSel==='All'?showView('list'):goCat(homeSel);}
 
 /* Full list */
 const chart=document.getElementById('chart');
@@ -687,6 +694,8 @@ function renderRail(name){
   } else { h.classList.remove('show'); }
 }
 renderRail('Tech');
+renderHomeTabs();
+renderHomeChart();
 
 function goCat(name){
   showView('list');
