@@ -237,6 +237,45 @@
   .vrow .sub2{color:#a0a0ac;font-weight:500;}
   .xcta{display:block;width:calc(100% - 28px);margin:16px 14px 0;font-weight:800;font-size:13px;background:var(--pink);color:#fff;border:0;border-radius:100px;padding:12px;cursor:pointer;}
 
+  /* ============ Desktop mode ============ */
+  .browserbar{display:none;}
+  .dtbar{display:none;}
+  .phone.desktop{width:min(1160px,96vw);border-radius:14px;padding:0;background:#fff;}
+  .phone.desktop .notch{display:none;}
+  .phone.desktop .status{display:none;}
+  .phone.desktop .appbar{display:none;}
+  .phone.desktop .searchwrap{display:none;}
+  .phone.desktop .screen{border-radius:0 0 14px 14px;height:800px;}
+  .phone.desktop .browserbar{display:flex;align-items:center;gap:8px;background:#e9e9ee;padding:10px 16px;border-radius:14px 14px 0 0;}
+  .browserbar .dot{width:11px;height:11px;border-radius:50%;}
+  .browserbar .url{flex:1;max-width:440px;margin:0 auto;background:#fff;border-radius:100px;padding:6px 16px;font-size:11.5px;color:var(--muted);font-weight:600;text-align:center;}
+  .phone.desktop .dtbar{display:flex;align-items:center;gap:16px;background:#fff;padding:14px 28px;border-bottom:1px solid var(--line);}
+  .dtbar img{width:94px;height:auto;display:block;}
+  .dtsearch{flex:1;max-width:430px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:10px 16px;display:flex;gap:9px;align-items:center;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;}
+  .dtsearch svg{color:var(--pink-text);}
+  .dtbar .spacer{flex:1;}
+  .b2b{font-size:12px;font-weight:800;color:#fff;background:var(--teal);padding:8px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;}
+  .acct{font-size:12px;font-weight:700;color:var(--ink);border:1px solid var(--line);padding:8px 14px;border-radius:100px;cursor:pointer;}
+  .phone.desktop .pills{justify-content:center;}
+  .phone.desktop .bbscroll{padding:22px 28px 0;max-width:1080px;margin:0 auto;}
+  .phone.desktop .bb2{flex:1;min-width:0;}
+  .phone.desktop .sec{max-width:1020px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;}
+  .phone.desktop .cattabs{max-width:1020px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;justify-content:flex-start;}
+  .phone.desktop #list-tabs{justify-content:center;}
+  .phone.desktop .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .phone.desktop .stack>.hero-card{grid-column:1/-1;}
+  .phone.desktop .hero-top{grid-template-columns:300px 1fr auto;}
+  .phone.desktop .hero-img{min-height:200px;}
+  .phone.desktop .rail{flex-wrap:wrap;margin:0;padding:2px 0 4px;}
+  .phone.desktop .listhead .lh-title{font-size:30px;}
+  .phone.desktop .listhead p{max-width:620px;margin:8px auto 0;}
+  .phone.desktop .cta-band{max-width:964px;margin-left:auto;margin-right:auto;}
+  .phone.desktop .passcard{max-width:640px;margin:0 auto;}
+  .phone.desktop #v-explain{max-width:680px;margin:0 auto;}
+  .phone.desktop .footer{padding:30px 40px;}
+  .phone.desktop .footer .fcols{grid-template-columns:repeat(4,1fr);max-width:1020px;margin:0 auto;}
+  .phone.desktop .footer .legal{max-width:1020px;margin:18px auto 0;}
+
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#23232c;color:#fff;font-size:12px;font-weight:600;border-radius:100px;padding:11px 20px;transition:transform .25s ease;z-index:90;white-space:nowrap;border:1px solid #34343e;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
@@ -256,13 +295,25 @@
     <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
     <button id="nav-explain" onclick="showView('explain')">How it's scored</button>
   </span>
+  Device
+  <span class="sw">
+    <button id="dev-mobile" class="on" onclick="setDevice('mobile')">Mobile</button>
+    <button id="dev-desktop" onclick="setDevice('desktop')">Desktop</button>
+  </span>
 </div>
 
-<div class="phone">
+<div class="phone" id="frame">
   <div class="notch"></div>
+  <div class="browserbar">
+    <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+    <span class="url">clickfrenzy.com.au/frenzy-100</span>
+    <span style="width:33px"></span>
+  </div>
   <div class="screen" id="screen">
 
     <div class="status"><span>9:41</span><span>5G&nbsp;&nbsp;100%</span></div>
+
+    <div class="dtbar" id="dtbar"></div>
 
     <div class="appbar">
       <div class="sp"></div>
@@ -690,11 +741,7 @@ function updateMore(list){
 function revealMore(){
   const list=listFor(listCat);
   const next=Math.min(revealed+5,list.length);
-  const wrap=document.createElement('div');
-  wrap.className='reveal';
-  wrap.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:10px;';
-  wrap.innerHTML=list.slice(revealed,next).map(dealRow).join('');
-  document.getElementById('chart').appendChild(wrap);
+  document.getElementById('chart').insertAdjacentHTML('beforeend',list.slice(revealed,next).map(dealRow).join(''));
   revealed=next;
   updateMore(list);
 }
@@ -743,6 +790,19 @@ document.getElementById('coupon-rail').innerHTML=COUPONS.map(cn2=>
 renderHomeTabs();renderHomeChart();
 renderListTabs();renderList();
 setShopBy('cat');
+
+/* Desktop header + device toggle */
+document.getElementById('dtbar').innerHTML=
+  `<img src="${document.querySelector('.logo img').src}" alt="Click Frenzy">
+   <div class="dtsearch" onclick="toast('Search — coming in the full build')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search 1,200+ stores &amp; deals…</div>
+   <span class="spacer"></span>
+   <span class="b2b" onclick="toast('List your brand — coming in the full build')">＋ List your brand</span>
+   <span class="acct" onclick="toast('Log in — coming in the full build')">Log in</span>`;
+function setDevice(dev){
+  document.getElementById('frame').classList.toggle('desktop',dev==='desktop');
+  document.getElementById('dev-mobile').classList.toggle('on',dev==='mobile');
+  document.getElementById('dev-desktop').classList.toggle('on',dev==='desktop');
+}
 
 function showView(v){
   ['home','list','explain'].forEach(k=>{
