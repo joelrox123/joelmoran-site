@@ -85,7 +85,7 @@
   .scorerow .info{color:#b9b9c2;}
 
   .hero-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;cursor:pointer;}
-  .hero-top{display:grid;grid-template-columns:44% 1fr;gap:12px;}
+  .hero-top{display:grid;grid-template-columns:44% 1fr auto;gap:12px;}
   .hero-img{position:relative;background:var(--imgbg);border-radius:14px;min-height:148px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
   .hero-img .offpill{position:absolute;top:8px;left:8px;}
   .hero-img .rankplate{position:absolute;bottom:8px;left:8px;}
@@ -205,6 +205,23 @@
   .vrow .sub2{color:#a0a0ac;font-weight:500;}
   .xcta{display:block;width:calc(100% - 28px);margin:16px 14px 0;font-weight:800;font-size:13px;background:var(--pink);color:#fff;border:0;border-radius:100px;padding:12px;cursor:pointer;}
 
+  .votes{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;align-self:start;}
+  .votes .v-up,.votes .v-dn{display:flex;align-items:center;gap:5px;padding:6px 9px;font-size:12px;font-weight:800;cursor:pointer;}
+  .votes .v-up{color:var(--pink-text);border-bottom:1px solid var(--line);}
+  .votes .v-dn{color:var(--muted);}
+  .votes .v-dn b{color:var(--ink);font-weight:800;}
+  .votes.sm{flex-direction:row;border-radius:100px;}
+  .votes.sm .v-up{border-bottom:0;border-right:1px solid var(--line);padding:3px 8px;font-size:10px;gap:4px;}
+  .votes.sm .v-dn{padding:3px 8px;font-size:10px;gap:4px;}
+  .rcol{display:flex;flex-direction:column;align-items:flex-end;gap:7px;margin-left:auto;}
+  .rcol .mv{margin-left:0;}
+  .card .votes.sm{margin-top:6px;width:fit-content;}
+  .cpill{display:inline-flex;align-items:center;gap:3px;color:var(--pink-text);font-size:9px;font-weight:800;background:#fff5f9;border:1px solid #ffd9e8;border-radius:100px;padding:2px 7px;margin-left:5px;text-transform:uppercase;letter-spacing:.3px;vertical-align:middle;}
+  .bycat{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap;}
+  .bycat-lbl{font-size:11px;color:var(--muted);font-weight:600;}
+  .card.viewall{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#fff5f9;border:1.5px dashed var(--pink);color:var(--pink-text);gap:6px;min-height:150px;}
+  .card.viewall .va-t{font-weight:800;font-size:12px;}
+  .card.viewall .va-s{font-size:9.5px;font-weight:600;opacity:.75;}
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#23232c;color:#fff;font-size:12px;font-weight:600;border-radius:100px;padding:11px 20px;transition:transform .25s ease;z-index:90;white-space:nowrap;border:1px solid #34343e;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
@@ -273,6 +290,14 @@
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
           See the full Frenzy 100
         </button>
+        <div class="bycat">
+          <span class="bycat-lbl">Or by category:</span>
+          <button class="chip" onclick="goCat('Tech')">Tech</button>
+          <button class="chip" onclick="goCat('Fashion')">Fashion</button>
+          <button class="chip" onclick="goCat('Home')">Home</button>
+          <button class="chip" onclick="goCat('Travel')">Travel</button>
+          <button class="chip" onclick="goCat('Beauty')">Beauty</button>
+        </div>
       </div>
 
       <!-- Homepage context (placeholder) -->
@@ -335,13 +360,13 @@
         <div class="stack" id="chart"></div>
         <button class="morebtn" id="morebtn" onclick="revealMore()">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
-          <span id="morelbl">96 more real deals</span>
+          <span id="morelbl">Show 5 more · 95 to go</span>
         </button>
       </div>
 
-      <div class="sec">
+      <div class="sec" id="catsec">
         <div class="sec-h">
-          <div class="lft"><div><h3>Top 20 by category</h3><div class="sub">Same score bar everywhere. If only 13 make it, we show 13.</div></div></div>
+          <div class="lft"><div><h3>Top 10 by category</h3><div class="sub">Same score bar everywhere. If only 8 make it, we show 8.</div></div></div>
         </div>
         <div class="cattabs" id="tabs"></div>
         <div class="honesty" id="honesty"></div>
@@ -427,7 +452,7 @@
 
       <div class="vrow">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
-        <span><b>Frenzy Verified</b> <span class="sub2">· this exact price is the lowest we've seen in 90 days</span></span>
+        <span><b>Frenzy Verified</b> <span class="sub2">· the lowest price we've seen in 90 days, based on our own monitoring of this store's pricing</span></span>
       </div>
 
       <button class="xcta" onclick="showView('list')">See the Frenzy 100 →</button>
@@ -482,12 +507,21 @@ const IC={
  music:'<circle cx="7" cy="18" r="3"/><circle cx="17" cy="15" r="3"/><path d="M10 18V5l10-2v12"/>',
  icecream:'<circle cx="12" cy="8" r="4.5"/><path d="M8 11.5L12 21l4-9.5"/>',
  flame:'<path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/>',
+ ticket:'<path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/>',
+ tup:'<path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3z"/><path d="M7 10l4.2-6.9a2.3 2.3 0 0 1 2.3 2.9L13 10h5.6a2 2 0 0 1 2 2.4l-1.3 6.9a2 2 0 0 1-2 1.7H7"/>',
+ tdn:'<path d="M17 14V3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3z"/><path d="M17 14l-4.2 6.9a2.3 2.3 0 0 1-2.3-2.9L11 14H5.4a2 2 0 0 1-2-2.4l1.3-6.9a2 2 0 0 1 2-1.7H17"/>',
  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
  check:'<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>',
 };
 function ic(n,s,w){return `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="${w||1.5}" stroke-linecap="round" stroke-linejoin="round">${IC[n]||IC.cube}</svg>`;}
 const fmt=n=>'$'+n.toLocaleString('en-AU');
 const off=(p,w)=>Math.round((1-p/w)*100)+'% OFF';
+const COUPON_STORES=['Myer','The Iconic','Adore Beauty','Officeworks','Mecca','Strandbags','Woolworths','rebel'];
+const cp=d=>COUPON_STORES.includes(d.s)?`<span class="cpill">${ic('ticket',10,2)}Coupon</span>`:'';
+const vu=d=>Math.round(d.sc/4)+((d.r||d.cr||1)%7);
+const vd=d=>2+((d.r||d.cr||1)%6);
+const votes=(d,sm)=>`<div class="votes${sm?' sm':''}"><span class="v-up" onclick="vote(event,this)">${ic('tup',sm?10:13,1.8)}<b>${vu(d)}</b></span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',sm?10:13,1.8)}<b>${vd(d)}</b></span></div>`;
+function vote(e,el){e.stopPropagation();const b=el.querySelector('b');b.textContent=+b.textContent+1;}
 
 const seed=[
  {i:'laptop',t:'MacBook Air M4 13"',s:'JB Hi-Fi',p:1097,w:1599,mv:'▲ 4',mc:'up',hero:true},
@@ -546,10 +580,11 @@ function heroCard(d){
       <div class="hero-img">${ic(d.i,42)}<span class="offpill">${off(d.p,d.w)}</span><span class="rankplate">#${d.r}</span></div>
       <div class="hero-body">
         <div class="t">${d.t}</div>
-        <div class="m">${d.s}</div>
+        <div class="m">${d.s}${cp(d)}</div>
         <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
         <div class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',13,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',12,1.8)}</span></div>
       </div>
+      ${votes(d)}
     </div>
     <div class="vbar" onclick="event.stopPropagation();showView('explain')">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
   </div>`;
@@ -559,11 +594,11 @@ function dealRow(d){
     <div class="thumbwrap"><div class="thumb">${ic(d.i,25)}</div><span class="rankplate">#${d.r}</span></div>
     <div class="dinfo">
       <div class="t">${d.t}</div>
-      <div class="m">${d.s}</div>
+      <div class="m">${d.s}${cp(d)}</div>
       <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="offpill">${off(d.p,d.w)}</span></div>
       <div class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
     </div>
-    <span class="mv ${d.mc}">${d.mv}</span>
+    <div class="rcol"><span class="mv ${d.mc}">${d.mv}</span>${votes(d,true)}</div>
   </div>`;
 }
 
@@ -572,11 +607,11 @@ document.getElementById('home-chart').innerHTML=heroCard(deals[0])+deals.slice(1
 
 /* Full list */
 const chart=document.getElementById('chart');
-let revealed=4;
+let revealed=5;
 chart.innerHTML=heroCard(deals[0])+deals.slice(1,revealed).map(dealRow).join('');
 
 function revealMore(){
-  const next=revealed===4?20:Math.min(revealed+20,100);
+  const next=Math.min(revealed+5,100);
   const wrap=document.createElement('div');
   wrap.className='reveal';
   wrap.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:10px;';
@@ -588,36 +623,36 @@ function revealMore(){
     lbl.textContent='Back to top';
     document.getElementById('morebtn').onclick=()=>document.getElementById('screen').scrollTo({top:0,behavior:'smooth'});
   } else {
-    lbl.textContent=`${100-revealed} more real deals`;
+    lbl.textContent=`Show 5 more · ${100-revealed} to go`;
   }
 }
 
 const cats={
- 'Tech':{count:20,deals:[
+ 'Tech':{count:10,deals:[
   {cr:1,i:'laptop',n:'MacBook Air M4',s:'JB Hi-Fi',p:1097,w:1599,sc:97},
   {cr:2,i:'headphones',n:'Sony WH-1000XM5',s:'Amazon AU',p:348,w:499,sc:90},
   {cr:3,i:'tv',n:'LG C4 65" OLED',s:'The Good Guys',p:2395,w:3255,sc:88},
   {cr:4,i:'gamepad',n:'PS5 Slim bundle',s:'EB Games',p:679,w:869,sc:83},
   {cr:5,i:'phone',n:'Pixel 9 128GB',s:'Officeworks',p:949,w:1229,sc:81},
   {cr:6,i:'speaker',n:'Sonos Era 100',s:'JB Hi-Fi',p:319,w:399,sc:79}]},
- 'Fashion':{count:20,deals:[
+ 'Fashion':{count:10,deals:[
   {cr:1,i:'shoe',n:'Nike Pegasus 41',s:'The Iconic',p:129,w:200,sc:91},
   {cr:2,i:'shirt',n:'North Face puffer',s:'THE ICONIC',p:210,w:350,sc:82},
   {cr:3,i:'bag',n:'Longchamp Le Pliage',s:'David Jones',p:139,w:193,sc:77},
   {cr:4,i:'glasses',n:'Ray-Ban Wayfarer',s:'Sunglass Hut',p:119,w:172,sc:75},
   {cr:5,i:'shirt',n:"Levi's 501 2-pack",s:"Levi's",p:110,w:167,sc:74}]},
- 'Home':{count:20,deals:[
+ 'Home':{count:10,deals:[
   {cr:1,i:'wind',n:'Dyson V15 Detect',s:'Myer',p:898,w:1249,sc:94},
   {cr:2,i:'pot',n:'Ninja Foodi 11-in-1',s:'Big W',p:249,w:399,sc:87},
   {cr:3,i:'bed',n:'Koala queen mattress',s:'Koala',p:791,w:1050,sc:84},
   {cr:4,i:'chair',n:'Herman Miller Sayl',s:'Living Edge',p:799,w:1015,sc:79},
   {cr:5,i:'coffee',n:'Breville Barista Pro',s:'Myer',p:649,w:849,sc:76}]},
- 'Travel':{count:13,deals:[
+ 'Travel':{count:8,deals:[
   {cr:1,i:'plane',n:'Bali return, Jetstar',s:'Jetstar',p:249,w:445,sc:93},
   {cr:2,i:'hotel',n:'Gold Coast 3 nights',s:'Luxury Escapes',p:399,w:629,sc:82},
   {cr:3,i:'ship',n:'P&O 4-night cruise',s:'P&O',p:549,w:807,sc:76},
   {cr:4,i:'plane',n:'Tokyo return, Qantas',s:'Qantas',p:899,w:1231,sc:74}]},
- 'Beauty':{count:16,deals:[
+ 'Beauty':{count:10,deals:[
   {cr:1,i:'droplet',n:'Aesop trio gift set',s:'Adore Beauty',p:89,w:119,sc:86},
   {cr:2,i:'sparkle',n:'Charlotte Tilbury kit',s:'Mecca',p:95,w:128,sc:78},
   {cr:3,i:'sparkle',n:'MCoBeauty mega bundle',s:'Woolworths',p:45,w:73,sc:73}]},
@@ -639,17 +674,26 @@ function renderRail(name){
      <div class="top"><span class="rankplate">#${d.cr}</span><span class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',11,1.8)}<b>${d.sc}</b></span></div>
      <div class="img">${ic(d.i,25)}<span class="offpill">${off(d.p,d.w)}</span></div>
      <div class="n">${d.n}</div>
-     <div class="st">${d.s}</div>
+     <div class="st">${d.s}${cp({s:d.s})}</div>
      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
-   </div>`).join('');
-  document.getElementById('rail-foot').innerHTML=`See all ${c.count} in ${name} →`;
+     ${votes(d,true)}
+   </div>`).join('')+
+   `<div class="card viewall" onclick="toast('${name} category page — Top 100 in ${name}, coming in the full build')">${ic('flame',20,1.8)}<div class="va-t">See all ${name}</div><div class="va-s">Top 100 in ${name}</div></div>`;
+  document.getElementById('rail-foot').innerHTML=`See the Top 100 in ${name} →`;
   const h=document.getElementById('honesty');
-  if(c.count<20){
+  if(c.count<10){
     h.innerHTML=`<b>Only ${c.count} made the cut in ${name} today.</b> Every deal here clears the same score bar. We don't pad the list.`;
     h.classList.add('show');
   } else { h.classList.remove('show'); }
 }
 renderRail('Tech');
+
+function goCat(name){
+  showView('list');
+  document.querySelectorAll('.cattabs .chip').forEach(t=>t.classList.toggle('on',t.textContent.trim().startsWith(name)));
+  renderRail(name);
+  setTimeout(()=>document.getElementById('catsec').scrollIntoView({behavior:'smooth'}),80);
+}
 
 /* View switching */
 function showView(v){
