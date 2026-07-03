@@ -216,6 +216,21 @@
   .rcol{display:flex;flex-direction:column;align-items:flex-end;gap:7px;margin-left:auto;}
   .rcol .mv{margin-left:0;}
   .card .votes.sm{margin-top:6px;width:fit-content;}
+  .store-tile2{min-width:96px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+  .store-tile2 .wm{font-weight:900;font-size:12.5px;letter-spacing:-.2px;text-align:center;line-height:1.2;}
+  .store-tile2 .ct{font-size:9.5px;color:var(--muted);font-weight:700;}
+  .store-tile2 .tr{font-size:9.5px;color:var(--teal-deep);font-weight:800;}
+  .catcard{min-width:92px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 10px;text-align:center;cursor:pointer;}
+  .catcard .cic{width:38px;height:38px;border-radius:100px;background:var(--imgbg);display:flex;align-items:center;justify-content:center;margin:0 auto;color:var(--ink);}
+  .catcard .cn{font-size:11px;font-weight:800;margin-top:7px;}
+  .catcard .cc{font-size:9.5px;color:var(--muted);font-weight:600;margin-top:2px;}
+  .coupon-card{min-width:198px;max-width:198px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;}
+  .coupon-card .chd{display:flex;align-items:center;gap:7px;font-weight:800;font-size:12px;}
+  .coupon-card .chd svg{color:var(--pink-text);}
+  .coupon-card .off2{font-size:13px;font-weight:800;margin-top:7px;}
+  .coupon-card .cdesc{font-size:10.5px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .codechip{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border:1.5px dashed var(--pink);color:var(--pink-text);font-weight:800;font-size:11px;border-radius:100px;padding:5px 12px;cursor:pointer;}
+  .codechip.locked{border-color:var(--line);color:var(--muted);}
   .cpill{display:inline-flex;align-items:center;gap:3px;color:var(--pink-text);font-size:9px;font-weight:800;background:#fff5f9;border:1px solid #ffd9e8;border-radius:100px;padding:2px 7px;margin-left:5px;text-transform:uppercase;letter-spacing:.3px;vertical-align:middle;}
   .bycat{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap;}
   .bycat-lbl{font-size:11px;color:var(--muted);font-weight:600;}
@@ -270,10 +285,6 @@
           <div class="bb-img"><span class="k">The best real deals on the internet</span><h2>Ranked.<br>Hourly.</h2></div>
           <div class="bb-cap"><span class="cap">Every deal scored out of 100. No paid placements.</span><a onclick="showView('explain')">How it works →</a></div>
         </div>
-        <div class="bb">
-          <div class="bb-img"><span class="k">Unlock your</span><h2>Frenzy<br>Pass</h2></div>
-          <div class="bb-cap"><span class="cap">Early access, secret coupons, weekly prizes, drop alerts.</span><a onclick="toast('Frenzy Pass — coming in the full build')">Claim yours →</a></div>
-        </div>
       </div>
 
       <!-- Frenzy 100 homepage module -->
@@ -293,25 +304,47 @@
         </button>
       </div>
 
-      <!-- Homepage context (placeholder) -->
+      <!-- Shop by: Category / Store -->
       <div class="sec">
-        <div class="sec-h"><div class="lft"><div><h3>Trending stores</h3></div></div><a onclick="toast('Coming in the full build')">See all →</a></div>
-        <div class="phrail">
-          <div class="store-tile"><div class="ph"></div></div>
-          <div class="store-tile"><div class="ph"></div></div>
-          <div class="store-tile"><div class="ph"></div></div>
-          <div class="store-tile"><div class="ph"></div></div>
-          <div class="store-tile"><div class="ph"></div></div>
+        <div class="sec-h">
+          <div class="lft"><div><h3>Shop by</h3></div></div>
+          <div style="display:flex;gap:6px;">
+            <button class="chip on" id="sb-cat" onclick="setShopBy('cat')">Category</button>
+            <button class="chip" id="sb-store" onclick="setShopBy('store')">Store</button>
+          </div>
+        </div>
+        <div class="rail" id="shopby-rail"></div>
+      </div>
+
+      <!-- Trending stores -->
+      <div class="sec">
+        <div class="sec-h"><div class="lft"><div><h3>Trending stores</h3><div class="sub">Climbing the charts this hour.</div></div></div><a onclick="toast('All stores — coming in the full build')">See all →</a></div>
+        <div class="rail" id="trend-rail"></div>
+      </div>
+
+      <!-- Coupons -->
+      <div class="sec">
+        <div class="sec-h"><div class="lft"><div><h3>Coupons</h3><div class="sub">Stack these on top of sale prices.</div></div></div><a onclick="toast('All coupons — coming in the full build')">See all →</a></div>
+        <div class="rail" id="coupon-rail"></div>
+      </div>
+
+      <!-- Frenzy Pass -->
+      <div class="sec">
+        <div class="bb">
+          <div class="bb-img"><span class="k">Unlock your</span><h2>Frenzy<br>Pass</h2></div>
+          <div class="bb-cap"><span class="cap">Early access · Secret coupons · Weekly prizes · Drop alerts</span><a onclick="toast('Frenzy Pass — coming in the full build')">Claim yours →</a></div>
         </div>
       </div>
+
+      <!-- Subscriptions -->
       <div class="sec">
-        <div class="sec-h"><div class="lft"><div><h3>Frenzy Finds</h3></div></div><a onclick="toast('Coming in the full build')">See all →</a></div>
-        <div class="phrail">
-          <div class="findcard"><div class="fimg"></div><div class="fl1"></div><div class="fl2"></div></div>
-          <div class="findcard"><div class="fimg"></div><div class="fl1"></div><div class="fl2"></div></div>
-          <div class="findcard"><div class="fimg"></div><div class="fl1"></div><div class="fl2"></div></div>
-        </div>
-        <div class="contnote">Homepage continues…</div>
+        <div class="sec-h"><div class="lft"><div><h3>Subscriptions</h3><div class="sub">Never miss a real deal.</div></div></div></div>
+      </div>
+      <div class="cta-band" style="margin-top:0;">
+        <h3>GET THE <span>FRENZY 20</span> EVERY MORNING</h3>
+        <p>The top 20 from today's chart, in your inbox at 7am. Ruthlessly cut. Never sponsored.</p>
+        <button class="cta-primary" onclick="toast('Signed up — you\'re on the list ✓')">Send me the Frenzy 20</button>
+        <button class="cta-primary" style="background:transparent;border:1px solid #34343e;margin-left:8px;" onclick="toast('Price-drop alerts — coming in the full build')">Price-drop alerts</button>
       </div>
 
       <div class="footer">
@@ -501,6 +534,7 @@ const IC={
  icecream:'<circle cx="12" cy="8" r="4.5"/><path d="M8 11.5L12 21l4-9.5"/>',
  flame:'<path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/>',
  ticket:'<path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/>',
+ lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
  tup:'<path d="M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h3z"/><path d="M7 10l4.2-6.9a2.3 2.3 0 0 1 2.3 2.9L13 10h5.6a2 2 0 0 1 2 2.4l-1.3 6.9a2 2 0 0 1-2 1.7H7"/>',
  tdn:'<path d="M17 14V3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3z"/><path d="M17 14l-4.2 6.9a2.3 2.3 0 0 1-2.3-2.9L11 14H5.4a2 2 0 0 1-2-2.4l1.3-6.9a2 2 0 0 1 2-1.7H17"/>',
  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
@@ -696,6 +730,43 @@ function renderRail(name){
 renderRail('Tech');
 renderHomeTabs();
 renderHomeChart();
+
+/* Shop by: Category / Store toggle */
+const CATTILES=[['Tech','laptop'],['Fashion','shirt'],['Home','chair'],['Travel','plane'],['Beauty','sparkle']];
+const STORETILES=[['JB Hi-Fi',34],['Amazon AU',28],['Myer',22],['The Iconic',19],['Kmart',17],['Mecca',14],['Big W',12],['David Jones',11]];
+function setShopBy(mode){
+  document.getElementById('sb-cat').classList.toggle('on',mode==='cat');
+  document.getElementById('sb-store').classList.toggle('on',mode==='store');
+  const rail=document.getElementById('shopby-rail');
+  if(mode==='cat'){
+    rail.innerHTML=CATTILES.map(([n,i])=>
+      `<div class="catcard" onclick="goCat('${n}')"><div class="cic">${ic(i,18,1.7)}</div><div class="cn">${n}</div><div class="cc">Top ${cats[n].count} today</div></div>`).join('');
+  } else {
+    rail.innerHTML=STORETILES.map(([n,c])=>
+      `<div class="store-tile2" onclick="toast('${n} store page — coming in the full build')"><span class="wm">${n}</span><span class="ct">${c} deals</span></div>`).join('');
+  }
+}
+setShopBy('cat');
+
+/* Trending stores */
+const TRENDING=[['Mecca','▲ 3'],['JB Hi-Fi','▲ 2'],['Kmart','▲ 5'],['The Iconic','▲ 1'],['Amazon AU','▲ 4'],['rebel','▲ 2']];
+document.getElementById('trend-rail').innerHTML=TRENDING.map(([n,t])=>
+  `<div class="store-tile2" onclick="toast('${n} store page — coming in the full build')"><span class="tr">${t}</span><span class="wm">${n}</span><span class="ct">Trending</span></div>`).join('');
+
+/* Coupons */
+const COUPONS=[
+  {s:'Myer',o:'Extra 20% off sale styles',c:'FRENZY20'},
+  {s:'The Iconic',o:'25% off full price',c:'ICONIC25'},
+  {s:'Adore Beauty',o:'Free shipping, no minimum',c:'SHIPFREE'},
+  {s:'rebel',o:'$20 off when you spend $100+',c:'Pass members only',locked:true},
+];
+document.getElementById('coupon-rail').innerHTML=COUPONS.map(cn=>
+  `<div class="coupon-card">
+    <div class="chd">${ic('ticket',14,1.8)}${cn.s}</div>
+    <div class="off2">${cn.o}</div>
+    <div class="cdesc">Stacks with sale prices at checkout.</div>
+    <span class="codechip${cn.locked?' locked':''}" onclick="toast('${cn.locked?'Unlock with Frenzy Pass':cn.c+' copied ✓'}')">${ic(cn.locked?'lock':'ticket',11,1.8)}${cn.c}</span>
+  </div>`).join('');
 
 function goCat(name){
   showView('list');
