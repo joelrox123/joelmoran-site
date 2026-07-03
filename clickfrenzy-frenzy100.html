@@ -92,7 +92,7 @@
   .hero-body .t{font-size:14.5px;font-weight:800;line-height:1.25;}
   .hero-body .m{font-size:11px;color:var(--muted);font-weight:500;margin-top:3px;}
   .hero-body .price{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;}
-  .hero-body .now{font-weight:800;font-size:24px;line-height:1;}
+  .hero-body .now{font-weight:900;font-size:24px;line-height:1;color:var(--pink-text);}
   .hero-body .scorerow{margin-top:9px;}
   .vbar{margin-top:11px;background:var(--ink);color:#fff;border-radius:100px;padding:8px 13px;display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;}
   .vbar svg{color:var(--teal);}
@@ -216,6 +216,34 @@
   .rcol{display:flex;flex-direction:column;align-items:flex-end;gap:7px;margin-left:auto;}
   .rcol .mv{margin-left:0;}
   .card .votes.sm{margin-top:6px;width:fit-content;}
+  .ticker{background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;padding:7px 0;font-size:11px;font-weight:800;letter-spacing:.6px;}
+  .ticker .tk{display:inline-block;animation:tick 16s linear infinite;}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .ticker b{font-weight:900;}
+  .listhead{text-align:center;padding:20px 22px 0;}
+  .listhead .lh-title{display:flex;align-items:center;justify-content:center;gap:7px;font-weight:900;font-size:23px;letter-spacing:-.5px;}
+  .listhead .lh-title svg{color:var(--pink-text);}
+  .listhead p{font-size:12.5px;color:var(--muted);font-weight:600;line-height:1.55;margin-top:8px;}
+  .listhead p b{color:var(--pink-text);font-weight:800;}
+  .listhead .lh-link{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;color:var(--pink-text);cursor:pointer;}
+
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .vcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;cursor:pointer;}
+  .vcard .vimg{position:relative;height:118px;background:var(--imgbg);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+  .vimg .rankplate{position:absolute;top:8px;left:8px;}
+  .vimg .mvb{position:absolute;top:36px;left:8px;background:#fff;border:1px solid var(--line);border-radius:100px;font-size:9px;padding:2px 7px;margin-left:0;}
+  .vimg .scorepill{position:absolute;top:8px;right:8px;background:#fff;border:1.5px solid var(--pink);color:var(--pink-text);border-radius:100px;font-weight:800;font-size:10.5px;padding:3px 9px;display:flex;align-items:center;gap:4px;cursor:pointer;}
+  .vimg .offpill{position:absolute;top:37px;right:8px;}
+  .vcard .vcat{font-size:9px;color:var(--muted);font-weight:800;margin-top:8px;text-transform:uppercase;letter-spacing:.6px;}
+  .vcard .vt{font-size:12px;font-weight:800;line-height:1.3;margin-top:3px;min-height:31px;}
+  .vcard .vstore{display:flex;align-items:center;gap:5px;margin-top:6px;flex-wrap:wrap;}
+  .vstore .sav{width:18px;height:18px;min-width:18px;border-radius:50%;background:var(--ink);color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .vstore .sn{font-size:10.5px;color:var(--muted);font-weight:600;}
+  .vstore .cpill{margin-left:0;}
+  .vcard .vprice{display:flex;align-items:center;gap:6px;margin-top:6px;}
+  .vprice .now{font-weight:900;font-size:17px;color:var(--pink-text);}
+  .vprice .info{color:#b9b9c2;cursor:pointer;}
+  .vcard .vfoot{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
   .store-tile2{min-width:96px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
   .store-tile2 .wm{font-weight:900;font-size:12.5px;letter-spacing:-.2px;text-align:center;line-height:1.2;}
   .store-tile2 .ct{font-size:9.5px;color:var(--muted);font-weight:700;}
@@ -368,21 +396,15 @@
         <span class="pill pass" onclick="toast('Frenzy Pass — coming in the full build')">Frenzy Pass</span>
       </div>
 
-      <div class="bbscroll">
-        <div class="bb">
-          <div class="bb-img"><span class="k">The best real deals on the internet</span><h2>Ranked.<br>Hourly.</h2></div>
-          <div class="bb-cap"><span class="cap">Every deal scored out of 100. No paid placements.</span><a onclick="showView('explain')">How it works →</a></div>
-        </div>
+      <div class="ticker"><div class="tk"><b>●</b> LIVE&nbsp;RANKED HOURLY&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;7 NEW THIS HOUR&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;BIGGEST CLIMBER ▲ 14&nbsp;&nbsp;<b>●</b> LIVE&nbsp;RANKED HOURLY&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;7 NEW THIS HOUR&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;BIGGEST CLIMBER ▲ 14&nbsp;&nbsp;</div></div>
+
+      <div class="listhead">
+        <div class="lh-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>TOP 100</div>
+        <p>Australia's 100 best deals right now, ranked by <b>Frenzy Score:</b> the price, the product and the retailer, checked against real price history. No paid placements.</p>
+        <a class="lh-link" onclick="showView('explain')">How it's scored →</a>
       </div>
 
-      <div class="sec">
-        <div class="sec-h">
-          <div class="lft">
-            <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg></span>
-            <div><h3>Today's Top 100</h3><div class="sub">Ranked by Frenzy Score · updated hourly</div></div>
-          </div>
-          <a onclick="showView('explain')">How it's scored →</a>
-        </div>
+      <div class="sec" style="margin-top:16px;">
         <div class="stack" id="chart"></div>
         <button class="morebtn" id="morebtn" onclick="revealMore()">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
@@ -616,16 +638,20 @@ function heroCard(d){
     <div class="vbar" onclick="event.stopPropagation();showView('explain')">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
   </div>`;
 }
-function dealRow(d){
-  return `<div class="deal" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
-    <div class="thumbwrap"><div class="thumb">${ic(d.i,25)}</div><span class="rankplate">#${d.r}</span></div>
-    <div class="dinfo">
-      <div class="t">${d.t}</div>
-      <div class="m">${d.s}${cp(d)}</div>
-      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="offpill">${off(d.p,d.w)}</span></div>
-      <div class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
+const CATMAP={laptop:'Tech',headphones:'Tech',tv:'Tech',phone:'Tech',gamepad:'Tech',speaker:'Tech',monitor:'Tech',battery:'Tech',book:'Tech',wind:'Home',pot:'Home',bed:'Home',chair:'Home',coffee:'Home',icecream:'Home',shoe:'Fashion',shirt:'Fashion',glasses:'Fashion',bag:'Fashion',suitcase:'Fashion',plane:'Travel',hotel:'Travel',ship:'Travel',droplet:'Beauty',sparkle:'Beauty',watch:'Sport',dumbbell:'Sport',bike:'Sport',paw:'Pets',music:'Lifestyle',cube:'Toys',wine:'Liquor',car:'Auto'};
+function vCard(d){
+  return `<div class="vcard" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
+    <div class="vimg">${ic(d.i,32)}
+      <span class="rankplate">#${d.r}</span>
+      ${d.mv?`<span class="mvb mv ${d.mc}">${d.mv}</span>`:''}
+      <span class="scorepill" onclick="event.stopPropagation();showView('explain')">${ic('flame',10,2)}${d.sc}</span>
+      <span class="offpill">${off(d.p,d.w)}</span>
     </div>
-    <div class="rcol"><span class="mv ${d.mc}">${d.mv}</span>${votes(d,true)}</div>
+    <div class="vcat">${CATMAP[d.i]||'Deals'}</div>
+    <div class="vt">${d.t}</div>
+    <div class="vstore"><span class="sav">${d.s[0].toUpperCase()}</span><span class="sn">${d.s}</span>${cp(d)}</div>
+    <div class="vprice tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="info" onclick="event.stopPropagation();showView('explain')">${ic('info',13,1.8)}</span></div>
+    <div class="vfoot">${votes(d,true)}</div>
   </div>`;
 }
 
@@ -641,7 +667,7 @@ function renderHomeChart(){
   let list;
   if(homeSel==='All'){list=deals.slice(0,3);}
   else{list=cats[homeSel].deals.slice(0,3).map(d=>({i:d.i,t:d.n,s:d.s,p:d.p,w:d.w,sc:d.sc,r:d.cr,mv:'',mc:'flat'}));}
-  document.getElementById('home-chart').innerHTML=heroCard(list[0])+list.slice(1).map(dealRow).join('');
+  document.getElementById('home-chart').innerHTML=heroCard(list[0])+`<div class="vgrid">${list.slice(1).map(vCard).join('')}</div>`;
   document.querySelector('#home-more span').textContent=homeSel==='All'?'See the full Frenzy 100':`See the Top 100 in ${homeSel}`;
 }
 function homeMore(){homeSel==='All'?showView('list'):goCat(homeSel);}
@@ -649,14 +675,14 @@ function homeMore(){homeSel==='All'?showView('list'):goCat(homeSel);}
 /* Full list */
 const chart=document.getElementById('chart');
 let revealed=5;
-chart.innerHTML=heroCard(deals[0])+deals.slice(1,revealed).map(dealRow).join('');
+chart.innerHTML=heroCard(deals[0])+`<div class="vgrid">${deals.slice(1,revealed).map(vCard).join('')}</div>`;
 
 function revealMore(){
   const next=Math.min(revealed+5,100);
   const wrap=document.createElement('div');
-  wrap.className='reveal';
-  wrap.style.cssText='display:flex;flex-direction:column;gap:10px;margin-top:10px;';
-  wrap.innerHTML=deals.slice(revealed,next).map(dealRow).join('');
+  wrap.className='vgrid reveal';
+  wrap.style.cssText='margin-top:10px;';
+  wrap.innerHTML=deals.slice(revealed,next).map(vCard).join('');
   chart.appendChild(wrap);
   revealed=next;
   const lbl=document.getElementById('morelbl');
