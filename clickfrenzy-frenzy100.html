@@ -26,7 +26,7 @@
   .head h1{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;}
   .head p{font-size:13px;line-height:1.6;color:#b4b4c0;max-width:560px;margin:0 auto;}
 
-  .demobar{display:flex;align-items:center;gap:12px;background:#23232c;border:1px solid #34343e;border-radius:100px;padding:7px 8px 7px 16px;margin-bottom:20px;color:#cfcfd6;font-size:12px;font-weight:600;}
+  .demobar{display:flex;align-items:center;gap:12px;background:#23232c;border:1px solid #34343e;border-radius:100px;padding:7px 8px 7px 16px;margin-bottom:20px;color:#cfcfd6;font-size:12px;font-weight:600;flex-wrap:wrap;justify-content:center;}
   .demobar .sw{display:flex;gap:4px;background:#16161c;border-radius:100px;padding:3px;}
   .demobar .sw button{background:none;border:0;color:#9a9aa6;font-size:12px;font-weight:700;padding:6px 12px;border-radius:100px;cursor:pointer;}
   .demobar .sw button.on{background:var(--pink);color:#fff;}
@@ -51,7 +51,6 @@
   .pill.on{background:var(--pink);color:#fff;border-color:var(--pink);}
   .pill.on svg{color:#fff;}
 
-  /* Billboard (image-2 style) */
   .bbscroll{display:flex;gap:11px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:14px 14px 0;}
   .bbscroll::-webkit-scrollbar{display:none;}
   .bb2{flex:0 0 84%;scroll-snap-align:start;border-radius:20px;background:linear-gradient(155deg,#e8146e 0%,#a30a50 60%,#7a1541 100%);color:#fff;padding:20px 18px;box-shadow:0 8px 22px rgba(255,45,120,.12);}
@@ -70,7 +69,6 @@
   .sec-h .sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:1px;}
   .sec-h a{font-size:12px;font-weight:700;color:var(--pink-text);text-decoration:none;cursor:pointer;white-space:nowrap;}
 
-  /* Ticker + list heading */
   .ticker{background:var(--pink);color:#fff;overflow:hidden;white-space:nowrap;padding:7px 0;font-size:11px;font-weight:800;letter-spacing:.6px;}
   .ticker .tk{display:inline-block;animation:tick 16s linear infinite;}
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -86,12 +84,31 @@
   .chip .cnt{opacity:.55;font-weight:600;}
   .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700;}
 
-  /* Deal rows (image-1 style) */
+  /* Insight chips */
+  .insight{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;border-radius:100px;padding:3px 9px;letter-spacing:.2px;background:#fff;border:1.5px solid;white-space:nowrap;}
+  .insight svg{min-width:9px;}
+  .insight.hot{background:var(--pink);border-color:var(--pink);color:#fff;}
+  .insight.ever{border-color:var(--teal);color:var(--teal-deep);background:#effbf9;}
+  .insight.cheapest{border-color:#8db8ee;color:#1e5fb8;background:#eef5ff;}
+  .insight.dropped{border-color:#f0a3a3;color:#c22525;background:#fdf0f0;}
+  .insight.daylow{border-color:#e8ca6a;color:#8a6a00;background:#fffbe8;}
+
+  /* Rank + movement lockup */
+  .rklock{position:absolute;bottom:-5px;left:-5px;display:flex;align-items:stretch;}
+  .rankplate{background:var(--ink);color:#fff;font-weight:800;font-size:10px;border-radius:8px;padding:3px 7px;}
+  .rklock .rankplate{border-radius:8px 0 0 8px;}
+  .rkpip{border-radius:0 8px 8px 0;font-size:8px;font-weight:800;padding:3px 6px;display:flex;align-items:center;}
+  .rkpip.up{background:#dff7ef;color:#067a5b;}
+  .rkpip.down{background:#f0f0f4;color:#6a6a74;}
+  .rkpip.flat{background:#f0f0f4;color:#b9b9c2;}
+  .rkpip.new{background:#ffe3ee;color:#c5005f;}
+
   .stack{display:flex;flex-direction:column;gap:10px;}
-  .offpill{background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.3px;border-radius:100px;padding:4px 9px;}
-  .rankplate{background:var(--ink);color:#fff;font-weight:800;font-size:11px;border-radius:8px;padding:3px 8px;}
   .was{font-size:11px;color:var(--muted);font-weight:500;text-decoration:line-through;}
+  .offsm{font-size:10px;color:var(--muted);font-weight:700;}
+  .offpill{background:var(--pink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.3px;border-radius:100px;padding:4px 9px;}
   .cpn{background:var(--maroon);color:#fff;font-size:9.5px;font-weight:800;border-radius:100px;padding:4px 10px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+  .cpn.sm{font-size:8.5px;padding:2px 8px;margin-left:6px;vertical-align:middle;}
   .scorerow{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--muted);cursor:pointer;}
   .scorerow svg{color:var(--pink-text);}
   .scorerow b{color:var(--ink);font-weight:800;}
@@ -109,7 +126,6 @@
   .deal:active{transform:scale(.985);}
   .deal .thumbwrap{position:relative;}
   .deal .thumb{width:82px;height:82px;background:var(--imgbg);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
-  .deal .rankplate{position:absolute;bottom:-5px;left:-5px;font-size:10px;padding:2px 7px;}
   .deal .dinfo{flex:1;min-width:0;}
   .deal .drow1{display:flex;align-items:flex-start;gap:8px;}
   .deal .t{flex:1;min-width:0;font-size:12.5px;font-weight:800;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -118,12 +134,10 @@
   .deal .now{font-weight:900;font-size:18px;line-height:1;color:var(--pink-text);}
   .deal .scorerow{margin-top:6px;}
 
-  /* Hero card */
   .hero-card{background:#fff;border:1.5px solid var(--pink);border-radius:18px;padding:12px;cursor:pointer;}
   .hero-top{display:grid;grid-template-columns:42% 1fr auto;gap:12px;}
-  .hero-img{position:relative;background:var(--imgbg);border-radius:14px;min-height:150px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
-  .hero-img .offpill{position:absolute;top:8px;left:8px;}
-  .hero-img .rankplate{position:absolute;bottom:8px;left:8px;}
+  .hero-img{position:relative;background:var(--imgbg);border-radius:14px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+  .hero-img .insight{position:absolute;top:8px;left:8px;}
   .hero-body{min-width:0;}
   .hero-body .drow1{display:flex;justify-content:flex-end;margin-bottom:4px;}
   .hero-body .t{font-size:14.5px;font-weight:800;line-height:1.25;}
@@ -131,8 +145,10 @@
   .hero-body .price{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;}
   .hero-body .now{font-weight:900;font-size:26px;line-height:1;color:var(--pink-text);}
   .hero-body .scorerow{margin-top:8px;}
+  .why{margin-top:9px;background:#fff5f9;border-radius:10px;padding:8px 11px;font-size:10.5px;font-weight:600;color:var(--pink-text);line-height:1.45;}
+  .why b{font-weight:800;}
   .vbar{margin-top:11px;background:var(--ink);color:#fff;border-radius:100px;padding:8px 13px;display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;}
-  .vbar svg{color:var(--teal);}
+  .vbar svg{color:var(--teal);min-width:14px;}
   .vbar b{font-weight:800;}
   .vbar .sub2{color:#a0a0ac;font-weight:500;}
   .vbar .info{margin-left:auto;color:#7c7c88;}
@@ -140,9 +156,7 @@
   .morebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;background:var(--ink);color:#fff;border:0;border-radius:100px;padding:13px;font-size:13px;font-weight:700;cursor:pointer;}
   .morebtn svg{color:var(--pink);}
   @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .reveal{animation:fadeIn .25s ease;}
 
-  /* Shop by (image-3 style) */
   .seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:100px;padding:3px;}
   .seg button{border:0;background:none;font-size:11px;font-weight:700;padding:5px 13px;border-radius:100px;color:var(--muted);cursor:pointer;}
   .seg button.on{background:var(--ink);color:#fff;}
@@ -150,7 +164,7 @@
   .rail::-webkit-scrollbar{display:none;}
   .catcard{min-width:64px;text-align:center;cursor:pointer;background:none;border:0;}
   .catcard .cic{width:58px;height:58px;border-radius:18px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto;color:var(--ink);}
-  .catcard .cn{font-size:10.5px;font-weight:700;margin-top:6px;color:var(--ink);}
+  .catcard .cn{font-size:10px;font-weight:700;margin-top:6px;color:var(--ink);line-height:1.25;}
 
   .store-tile2{min-width:96px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
   .store-tile2 .wm{font-weight:900;font-size:12.5px;letter-spacing:-.2px;text-align:center;line-height:1.2;}
@@ -165,7 +179,6 @@
   .codechip{display:inline-flex;align-items:center;gap:6px;margin-top:10px;border:1.5px dashed var(--pink);color:var(--pink-text);font-weight:800;font-size:11px;border-radius:100px;padding:5px 12px;cursor:pointer;}
   .codechip.locked{border-color:var(--line);color:var(--muted);}
 
-  /* Frenzy Pass card (image-4 inspo) */
   .passcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(255,45,120,.10);}
   .passhead{background:linear-gradient(155deg,#e8146e 0%,#a30a50 70%);color:#fff;text-align:center;padding:16px 14px 14px;}
   .passhead .k{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;}
@@ -195,47 +208,60 @@
   .view{display:none;}
   .view.on{display:block;}
 
-  /* Explainer */
-  .backrow{display:flex;align-items:center;gap:6px;padding:14px 14px 0;font-size:12px;font-weight:700;color:var(--pink-text);cursor:pointer;}
-  .xhead{padding:10px 14px 0;}
-  .xhead h2{font-size:22px;font-weight:900;letter-spacing:-.4px;line-height:1.1;}
-  .xhead h2 span{color:var(--pink-text);}
-  .xhead .ssub{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.55;font-weight:500;}
-  .badge-hero{display:flex;align-items:center;gap:14px;margin:16px 14px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;}
-  .badge-circ{min-width:84px;width:84px;height:84px;border-radius:50%;background:var(--teal);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;}
-  .badge-circ .t{font-size:8.5px;font-weight:800;letter-spacing:.8px;}
-  .badge-circ .s{font-family:var(--font-display);font-weight:900;font-size:32px;line-height:1;}
-  .badge-circ .b{font-size:7px;font-weight:800;letter-spacing:.8px;opacity:.85;}
-  .badge-hero p{font-size:12.5px;font-weight:700;line-height:1.5;}
-  .sh3{font-weight:800;font-size:15px;letter-spacing:-.2px;margin:20px 14px 8px;}
-  .checks{padding:0 14px;display:flex;flex-direction:column;gap:8px;}
-  .chk{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 13px;display:flex;gap:11px;align-items:flex-start;}
-  .chk .cico{width:32px;height:32px;min-width:32px;border-radius:100px;background:#fff5f9;display:flex;align-items:center;justify-content:center;color:var(--pink-text);}
-  .chk .name{font-weight:800;font-size:12.5px;}
-  .chk p{font-size:11px;font-weight:500;color:var(--muted);line-height:1.5;margin-top:2px;}
-  .sauce{margin:10px 14px 0;background:#fff;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:10px 13px;font-size:11px;color:var(--muted);line-height:1.55;font-weight:500;}
-  .sauce b{color:var(--ink);}
-  .vs-wrap{display:flex;gap:8px;padding:0 14px;}
-  .vs{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px;}
-  .vs.win{border:1.5px solid var(--teal);background:#effbf9;}
-  .vs .vtag{font-size:8.5px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;}
-  .vs.win .vtag{color:var(--teal-deep);}
-  .vs.lose .vtag{color:var(--muted);}
-  .vs .vp{font-weight:800;font-size:19px;margin-top:4px;}
-  .vs ul{list-style:none;margin-top:5px;}
-  .vs li{font-size:10px;font-weight:600;color:var(--muted);line-height:1.75;}
-  .vs li.good{color:var(--teal-deep);}
-  .vs li.bad{color:var(--pink-text);}
-  .vs .vsc{margin-top:7px;font-weight:800;font-size:12px;}
-  .vs.win .vsc{color:var(--teal-deep);}
-  .vs.lose .vsc{color:var(--muted);}
-  .vs-note{margin:9px 14px 0;font-size:11px;font-weight:600;line-height:1.5;color:var(--muted);}
-  .vs-note b{color:var(--ink);}
-  .vrow{display:flex;align-items:center;gap:8px;margin:12px 14px 0;background:var(--ink);color:#fff;border-radius:100px;padding:9px 14px;font-size:10.5px;}
-  .vrow svg{color:var(--teal);min-width:14px;}
-  .vrow b{font-weight:800;}
-  .vrow .sub2{color:#a0a0ac;font-weight:500;}
-  .xcta{display:block;width:calc(100% - 28px);margin:16px 14px 0;font-weight:800;font-size:13px;background:var(--pink);color:#fff;border:0;border-radius:100px;padding:12px;cursor:pointer;}
+  /* ============ How-it-works (dark magenta, sheet + page) ============ */
+  .fsx{background:linear-gradient(180deg,#a31150 0%,#6f0d38 100%);color:#fff;}
+  .fs-head{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 18px 0;gap:10px;}
+  .fs-title{font-family:var(--font-display);font-weight:900;font-size:32px;line-height:.9;letter-spacing:.5px;text-transform:uppercase;color:#fff;}
+  .fs-x{width:30px;height:30px;min-width:30px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+  .fs-sub{font-size:12.5px;color:rgba(255,255,255,.85);line-height:1.55;padding:10px 18px 0;font-weight:500;}
+  .fs-sub b{color:#fff;font-weight:800;}
+  .fs-panel{background:rgba(255,255,255,.13);border-radius:22px;padding:16px;display:flex;gap:15px;align-items:center;margin:16px 18px 0;}
+  .fs-circ{min-width:78px;width:78px;height:78px;border-radius:50%;background:#fff;color:var(--pink-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .fs-circ .n{font-family:var(--font-display);font-weight:900;font-size:30px;line-height:1;}
+  .fs-circ .l{font-size:7.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-top:1px;}
+  .fs-list{list-style:none;}
+  .fs-list li{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:rgba(255,255,255,.88);line-height:1.5;margin-bottom:7px;font-weight:500;}
+  .fs-list li:last-child{margin-bottom:0;}
+  .fs-list b{color:#fff;font-weight:800;}
+  .fs-list svg{min-width:14px;margin-top:1px;}
+  .fs-h{color:#fff;font-weight:800;font-size:15px;margin:20px 18px 8px;letter-spacing:-.2px;}
+  .fs-cards{display:flex;gap:8px;padding:0 18px;}
+  .fs-card{flex:1;background:rgba(255,255,255,.13);border-radius:14px;padding:13px 11px;color:#fff;}
+  .fs-card .ci{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;margin-bottom:9px;}
+  .fs-card .cn{font-weight:800;font-size:12px;}
+  .fs-card p{font-size:10px;color:rgba(255,255,255,.82);line-height:1.45;margin-top:4px;font-weight:500;}
+  .fs-vs{display:flex;gap:8px;padding:0 18px;}
+  .fs-v{flex:1;background:#fff;border-radius:16px;padding:12px;position:relative;color:var(--ink);}
+  .fs-v .tag2{font-size:9px;font-weight:800;letter-spacing:.3px;}
+  .fs-v.win .tag2{color:#067a5b;}
+  .fs-v.lose .tag2{color:#c22525;}
+  .fs-v .vp{font-weight:900;font-size:23px;color:var(--pink-text);margin-top:5px;}
+  .fs-v ul{list-style:none;margin-top:6px;}
+  .fs-v li{font-size:10px;font-weight:600;line-height:1.8;}
+  .fs-v li.good{color:#067a5b;}
+  .fs-v li.bad{color:#c22525;}
+  .fs-v li.mut{color:var(--muted);}
+  .fs-v .fsc{position:absolute;top:10px;right:10px;width:46px;height:46px;border-radius:50%;background:var(--maroon);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .fs-v .fsc .fn{font-weight:900;font-size:15px;line-height:1;}
+  .fs-v .fsc .fl{font-size:5.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
+  .fs-note{padding:10px 18px 0;font-size:11px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.5;}
+  .fs-note b{color:#fff;}
+  .fs-sauce{margin:14px 18px 0;background:rgba(255,255,255,.13);border-radius:12px;padding:11px 13px;font-size:10.5px;color:rgba(255,255,255,.85);line-height:1.55;font-weight:500;}
+  .fs-sauce b{color:#fff;}
+  .fs-vrow{display:flex;align-items:center;gap:8px;margin:12px 18px 0;background:rgba(255,255,255,.13);border-radius:100px;padding:9px 14px;font-size:10px;color:rgba(255,255,255,.85);}
+  .fs-vrow svg{color:#fff;min-width:14px;}
+  .fs-vrow b{color:#fff;font-weight:800;}
+  .fs-cta{display:block;width:calc(100% - 36px);margin:16px 18px;background:#fff;color:var(--pink-deep);font-weight:800;font-size:13px;border:0;border-radius:100px;padding:12px;cursor:pointer;}
+  .fs-back{display:flex;align-items:center;gap:6px;padding:16px 18px 0;font-size:12px;font-weight:700;color:#fff;cursor:pointer;}
+
+  /* Sheet */
+  .overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s;z-index:70;border-radius:36px;}
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .sheet{position:absolute;left:12px;right:12px;bottom:12px;max-height:72%;border-radius:24px 24px 0 0;transform:translateY(115%);transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility .32s;z-index:71;overflow:hidden;visibility:hidden;display:flex;flex-direction:column;}
+  .sheet.open{transform:none;visibility:visible;}
+  .sheet .shscroll{overflow-y:auto;padding-bottom:6px;scrollbar-width:none;}
+  .sheet .shscroll::-webkit-scrollbar{display:none;}
+  .sheet .grab{width:38px;height:4px;border-radius:100px;background:rgba(255,255,255,.4);margin:10px auto 0;flex-shrink:0;}
 
   /* ============ Desktop mode ============ */
   .browserbar{display:none;}
@@ -245,36 +271,41 @@
   .phone.desktop .status{display:none;}
   .phone.desktop .appbar{display:none;}
   .phone.desktop .searchwrap{display:none;}
+  .phone.desktop .pills{display:none;}
   .phone.desktop .screen{border-radius:0 0 14px 14px;height:800px;}
   .phone.desktop .browserbar{display:flex;align-items:center;gap:8px;background:#e9e9ee;padding:10px 16px;border-radius:14px 14px 0 0;}
   .browserbar .dot{width:11px;height:11px;border-radius:50%;}
   .browserbar .url{flex:1;max-width:440px;margin:0 auto;background:#fff;border-radius:100px;padding:6px 16px;font-size:11.5px;color:var(--muted);font-weight:600;text-align:center;}
-  .phone.desktop .dtbar{display:flex;align-items:center;gap:16px;background:#fff;padding:14px 28px;border-bottom:1px solid var(--line);}
-  .dtbar img{width:94px;height:auto;display:block;}
-  .dtsearch{flex:1;max-width:430px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:10px 16px;display:flex;gap:9px;align-items:center;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;}
-  .dtsearch svg{color:var(--pink-text);}
-  .dtbar .spacer{flex:1;}
-  .b2b{font-size:12px;font-weight:800;color:#fff;background:var(--teal);padding:8px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;}
-  .acct{font-size:12px;font-weight:700;color:var(--ink);border:1px solid var(--line);padding:8px 14px;border-radius:100px;cursor:pointer;}
-  .phone.desktop .pills{justify-content:center;}
+  .phone.desktop .dtbar{display:flex;align-items:center;gap:20px;background:#fff;padding:14px 28px;border-bottom:1px solid var(--line);}
+  .dtbar img{width:90px;height:auto;display:block;}
+  .dtnav{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:700;color:var(--ink);}
+  .dtnav span{cursor:pointer;display:flex;align-items:center;gap:3px;white-space:nowrap;}
+  .dtnav svg{color:var(--muted);}
+  .dtsearch{flex:1;max-width:360px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:10px 16px;display:flex;gap:9px;align-items:center;color:var(--muted);font-size:13px;font-weight:500;cursor:pointer;margin-left:auto;}
+  .dtsearch svg{color:var(--muted);}
+  .lyb{font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;white-space:nowrap;}
+  .gfp{background:var(--pink);color:#fff;border-radius:100px;font-weight:800;font-size:12.5px;padding:10px 18px;cursor:pointer;white-space:nowrap;}
   .phone.desktop .bbscroll{padding:22px 28px 0;max-width:1080px;margin:0 auto;}
   .phone.desktop .bb2{flex:1;min-width:0;}
   .phone.desktop .sec{max-width:1020px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;}
-  .phone.desktop .cattabs{max-width:1020px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;justify-content:flex-start;}
-  .phone.desktop #list-tabs{justify-content:center;}
+  .phone.desktop .cattabs{max-width:1020px;margin-left:auto;margin-right:auto;padding-left:28px;padding-right:28px;}
+  .phone.desktop #list-tabs{justify-content:center;flex-wrap:wrap;}
   .phone.desktop .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .phone.desktop .stack>.hero-card{grid-column:1/-1;}
   .phone.desktop .hero-top{grid-template-columns:300px 1fr auto;}
-  .phone.desktop .hero-img{min-height:200px;}
+  .phone.desktop .hero-img{min-height:210px;}
   .phone.desktop .rail{flex-wrap:wrap;margin:0;padding:2px 0 4px;}
   .phone.desktop .listhead .lh-title{font-size:30px;}
   .phone.desktop .listhead p{max-width:620px;margin:8px auto 0;}
   .phone.desktop .cta-band{max-width:964px;margin-left:auto;margin-right:auto;}
   .phone.desktop .passcard{max-width:640px;margin:0 auto;}
-  .phone.desktop #v-explain{max-width:680px;margin:0 auto;}
   .phone.desktop .footer{padding:30px 40px;}
   .phone.desktop .footer .fcols{grid-template-columns:repeat(4,1fr);max-width:1020px;margin:0 auto;}
   .phone.desktop .footer .legal{max-width:1020px;margin:18px auto 0;}
+  .phone.desktop .overlay{border-radius:14px;}
+  .phone.desktop .sheet{left:50%;right:auto;bottom:0;width:min(680px,92%);transform:translate(-50%,115%);}
+  .phone.desktop .sheet.open{transform:translate(-50%,0);}
+  .phone.desktop #v-explain .fs-wrap{max-width:680px;margin:0 auto;}
 
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#23232c;color:#fff;font-size:12px;font-weight:600;border-radius:100px;padding:11px 20px;transition:transform .25s ease;z-index:90;white-space:nowrap;border:1px solid #34343e;}
   .toast.show{transform:translateX(-50%) translateY(0);}
@@ -286,14 +317,14 @@
 <div class="head">
   <span class="tag">Concept Mockup · Electric</span>
   <h1>Click Frenzy — The Frenzy 100</h1>
-  <p>Three views: the homepage, the Frenzy 100 page, and the ranking explainer. Tap any score to open the explainer.</p>
+  <p>Homepage, the Frenzy 100 and the "How it works" page. Tap any score for the half-sheet explainer.</p>
 </div>
 
 <div class="demobar">View
   <span class="sw">
     <button id="nav-home" class="on" onclick="showView('home')">Homepage</button>
     <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
-    <button id="nav-explain" onclick="showView('explain')">How it's scored</button>
+    <button id="nav-explain" onclick="showView('explain')">How it works</button>
   </span>
   Device
   <span class="sw">
@@ -317,7 +348,7 @@
 
     <div class="appbar">
       <div class="sp"></div>
-      <div class="logo"><img src="data:image/png;base64,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" alt="Click Frenzy"></div>
+      <div class="logo"><img id="logoimg" src="data:image/png;base64,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" alt="Click Frenzy"></div>
       <button class="menubtn" onclick="toast('Menu — coming in the full build')"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
     <div class="searchwrap"><div class="search" onclick="toast('Search — coming in the full build')"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search 1,200+ stores &amp; deals…</div></div>
@@ -355,7 +386,6 @@
         </div>
       </div>
 
-      <!-- Frenzy 100 homepage module -->
       <div class="sec">
         <div class="sec-h">
           <div class="lft">
@@ -374,7 +404,6 @@
         </button>
       </div>
 
-      <!-- Shop by (image-3 style) -->
       <div class="sec">
         <div class="sec-h">
           <div class="lft">
@@ -389,19 +418,16 @@
         <div class="rail" id="shopby-rail"></div>
       </div>
 
-      <!-- Trending stores -->
       <div class="sec">
         <div class="sec-h"><div class="lft"><div><h3>Trending stores</h3><div class="sub">Climbing the charts this hour.</div></div></div><a onclick="toast('All stores — coming in the full build')">See all →</a></div>
         <div class="rail" id="trend-rail"></div>
       </div>
 
-      <!-- Coupons -->
       <div class="sec">
         <div class="sec-h"><div class="lft"><div><h3>Coupons</h3><div class="sub">Stack these on top of sale prices.</div></div></div><a onclick="toast('All coupons — coming in the full build')">See all →</a></div>
         <div class="rail" id="coupon-rail"></div>
       </div>
 
-      <!-- Frenzy Pass (image-4 inspo) -->
       <div class="sec">
         <div class="passcard">
           <div class="passhead"><div class="k">Unlock your</div><h2>Frenzy Pass</h2></div>
@@ -418,7 +444,6 @@
         </div>
       </div>
 
-      <!-- Subscriptions -->
       <div class="sec">
         <div class="sec-h"><div class="lft"><div><h3>Subscriptions</h3><div class="sub">Never miss a real deal.</div></div></div></div>
       </div>
@@ -453,16 +478,16 @@
 
       <div class="listhead">
         <div class="lh-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>THE FRENZY 100</div>
-        <p>The top 100 deals ranked by price history, product popularity &amp; retailer reputation. <a onclick="showView('explain')">How Frenzy Score works →</a></p>
+        <p>The top 100 deals ranked by price history, product popularity &amp; retailer reputation. <a onclick="openSheet()">How Frenzy Score works →</a></p>
       </div>
 
       <div class="cattabs" id="list-tabs"></div>
 
       <div class="sec" style="margin-top:12px;">
         <div class="stack" id="chart"></div>
-        <button class="morebtn" id="morebtn" onclick="revealMore()">
+        <button class="morebtn" id="morebtn">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
-          <span id="morelbl">Show 5 more · 95 to go</span>
+          <span id="morelbl"></span>
         </button>
       </div>
 
@@ -483,78 +508,154 @@
       </div>
     </div>
 
-    <!-- ================= VIEW: EXPLAINER ================= -->
-    <div class="view" id="v-explain">
-      <div class="backrow" onclick="showView('list')">
+    <!-- ================= VIEW: HOW IT WORKS (SEO page) ================= -->
+    <div class="view fsx" id="v-explain">
+      <div class="fs-wrap">
+      <div class="fs-back" onclick="showView('list')">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
         The Frenzy 100
       </div>
-      <div class="xhead">
-        <h2>How the <span>Frenzy Score</span> works</h2>
-        <p class="ssub">Every deal earns a score out of 100. Pass the test, make the list.</p>
+      <div class="fs-head" style="padding-top:10px;">
+        <div class="fs-title">How it works<br>The Frenzy Score</div>
+      </div>
+      <p class="fs-sub">Every deal earns a score out of 100.<br><b>We rank the best deals and give you the list.</b></p>
+
+      <div class="fs-panel">
+        <div class="fs-circ"><span class="n" id="count">92</span><span class="l">Frenzy Score</span></div>
+        <ul class="fs-list">
+          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>Three Checks.</b> Price, Product, Store.</span></li>
+          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>One score.</b> Crowd vote + our data.</span></li>
+          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>No paid placements.</b> Ever.</span></li>
+        </ul>
       </div>
 
-      <div class="badge-hero">
-        <div class="badge-circ"><span class="t">REAL DEAL ✓</span><span class="s" id="count">92</span><span class="b">FRENZY SCORE</span></div>
-        <p>Three checks.<br>One score.<br>No paid placements.</p>
-      </div>
-
-      <div class="sh3">What we check</div>
-      <div class="checks">
-        <div class="chk">
-          <div class="cico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
-          <div><div class="name">The price</div><p>Is it a real saving? Including whether it's cheaper than the competition, and how it stacks up against its own price history.</p></div>
+      <div class="fs-h">What we check</div>
+      <div class="fs-cards">
+        <div class="fs-card">
+          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
+          <div class="cn">The Price</div>
+          <p>We've tracked historic pricing and competition.</p>
         </div>
-        <div class="chk">
-          <div class="cico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
-          <div><div class="name">The product</div><p>Is it a popular product? Highly rated by real shoppers, and something people actually want.</p></div>
+        <div class="fs-card">
+          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
+          <div class="cn">The product</div>
+          <p>We've checked that it's something people want.</p>
         </div>
-        <div class="chk">
-          <div class="cico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
-          <div><div class="name">The store</div><p>A name you can trust. Think free shipping, easy returns and a great reputation.</p></div>
+        <div class="fs-card">
+          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
+          <div class="cn">The store</div>
+          <p>Stores with a great reputation rank higher.</p>
         </div>
       </div>
 
-      <div class="sauce"><b>How it adds up is our secret sauce.</b> We'll never break down why a deal scored what it did. What you can be sure of: every deal here passed a serious check, and no one can pay for a better number.</div>
+      <div class="fs-sauce"><b>How it adds up is our secret sauce.</b> We'll never break down why a deal scored what it did. What you can be sure of: every deal here passed a serious check, and no one can pay for a better number.</div>
 
-      <div class="sh3">Cheapest doesn't always win</div>
-      <div class="vs-wrap">
-        <div class="vs win">
-          <div class="vtag">✓ Makes the list</div>
+      <div class="fs-h">Cheapest doesn't always win</div>
+      <div class="fs-vs">
+        <div class="fs-v win">
+          <div class="tag2">✓ MAKES THE LIST</div>
           <div class="vp tnum">$348</div>
           <ul>
             <li class="good">✓ Free shipping</li>
             <li class="good">✓ Easy returns</li>
             <li class="good">✓ 4.8★ store</li>
           </ul>
-          <div class="vsc">SCORE 90</div>
+          <div class="fsc"><span class="fn">90</span><span class="fl">Frenzy Score</span></div>
         </div>
-        <div class="vs lose">
-          <div class="vtag">Doesn't make it</div>
+        <div class="fs-v lose">
+          <div class="tag2">✗ DOESN'T MAKE IT</div>
           <div class="vp tnum">$339</div>
           <ul>
-            <li>$9 cheaper, but…</li>
+            <li class="mut">$9 cheaper, but…</li>
             <li class="bad">✗ $15 shipping</li>
             <li class="bad">✗ No returns · 3.1★</li>
           </ul>
-          <div class="vsc">SCORE 74</div>
+          <div class="fsc"><span class="fn">74</span><span class="fl">Frenzy Score</span></div>
         </div>
       </div>
-      <div class="vs-note">Saving $9 means nothing if the store won't answer the phone. <b>The score knows.</b></div>
+      <p class="fs-note">Saving $9 means nothing if the store won't answer the phone. <b>The score knows.</b></p>
 
-      <div class="vrow">
+      <div class="fs-vrow">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
-        <span><b>Frenzy Verified</b> <span class="sub2">· the lowest price we've seen in 90 days, based on our own monitoring of this store's pricing</span></span>
+        <span><b>Frenzy Verified</b> · the lowest price we've tracked at this store for the period shown: 30, 60, 90, 120 days, or ever.</span>
       </div>
 
-      <button class="xcta" onclick="showView('list')">See the Frenzy 100 →</button>
+      <button class="fs-cta" onclick="showView('list')">See the Frenzy 100 →</button>
+      </div>
 
-      <div class="footer" style="margin-top:22px;">
+      <div class="footer" style="margin-top:0;">
         <div class="fcols">
           <div><h5>Shop</h5><a onclick="showView('list')">The Frenzy 100</a><a>All stores</a><a>Categories</a><a>Promo codes</a></div>
           <div><h5>Company</h5><a>About</a><a>Contact</a><a>FAQ</a><a>Careers</a></div>
         </div>
         <div class="legal">Frenzy Scores are Click Frenzy's own assessment and no retailer can pay to change them.<br>© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs.</div>
+      </div>
+    </div>
+
+    <!-- Half-page sheet -->
+    <div class="overlay" id="overlay" onclick="closeSheet()"></div>
+    <div class="sheet fsx" id="sheet">
+      <div class="grab"></div>
+      <div class="shscroll">
+        <div class="fs-head">
+          <div class="fs-title" style="font-size:27px;">How it works<br>The Frenzy Score</div>
+          <div class="fs-x" onclick="closeSheet()"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+        </div>
+        <p class="fs-sub">Every deal earns a score out of 100.<br><b>We rank the best deals and give you the list.</b></p>
+
+        <div class="fs-panel">
+          <div class="fs-circ"><span class="n" id="count2">92</span><span class="l">Frenzy Score</span></div>
+          <ul class="fs-list">
+            <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>Three Checks.</b> Price, Product, Store.</span></li>
+            <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>One score.</b> Crowd vote + our data.</span></li>
+            <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>No paid placements.</b> Ever.</span></li>
+          </ul>
+        </div>
+
+        <div class="fs-h">What we check</div>
+        <div class="fs-cards">
+          <div class="fs-card">
+            <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
+            <div class="cn">The Price</div>
+            <p>We've tracked historic pricing and competition.</p>
+          </div>
+          <div class="fs-card">
+            <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
+            <div class="cn">The product</div>
+            <p>We've checked that it's something people want.</p>
+          </div>
+          <div class="fs-card">
+            <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
+            <div class="cn">The store</div>
+            <p>Stores with a great reputation rank higher.</p>
+          </div>
+        </div>
+
+        <div class="fs-h">Cheapest doesn't always win</div>
+        <div class="fs-vs">
+          <div class="fs-v win">
+            <div class="tag2">✓ MAKES THE LIST</div>
+            <div class="vp tnum">$348</div>
+            <ul>
+              <li class="good">✓ Free shipping</li>
+              <li class="good">✓ Easy returns</li>
+              <li class="good">✓ 4.8★ store</li>
+            </ul>
+            <div class="fsc"><span class="fn">90</span><span class="fl">Frenzy Score</span></div>
+          </div>
+          <div class="fs-v lose">
+            <div class="tag2">✗ DOESN'T MAKE IT</div>
+            <div class="vp tnum">$339</div>
+            <ul>
+              <li class="mut">$9 cheaper, but…</li>
+              <li class="bad">✗ $15 shipping</li>
+              <li class="bad">✗ No returns · 3.1★</li>
+            </ul>
+            <div class="fsc"><span class="fn">74</span><span class="fl">Frenzy Score</span></div>
+          </div>
+        </div>
+
+        <button class="fs-cta" onclick="closeSheet()">Back to the deals →</button>
       </div>
     </div>
 
@@ -605,96 +706,155 @@ const IC={
  tdn:'<path d="M17 14V3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-3z"/><path d="M17 14l-4.2 6.9a2.3 2.3 0 0 1-2.3-2.9L11 14H5.4a2 2 0 0 1-2-2.4l1.3-6.9a2 2 0 0 1 2-1.7H17"/>',
  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
  check:'<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>',
+ bolt:'<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>',
+ wrench:'<path d="M14.5 6.5a4.5 4.5 0 0 0-6 5.5L3 17.5 6.5 21l5.5-5.5a4.5 4.5 0 0 0 5.5-6L14 13l-3-3 3.5-3.5z"/>',
+ home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+ leaf:'<path d="M4 20C4 11 10 5 20 4c-1 10-7 16-16 16z"/><path d="M4 20c4-6 8-10 13-13"/>',
+ heart:'<path d="M12 20s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/>',
+ cart:'<circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/>',
+ briefcase:'<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
 };
 function ic(n,s,w){return `<svg viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="${w||1.5}" stroke-linecap="round" stroke-linejoin="round">${IC[n]||IC.cube}</svg>`;}
 const fmt=n=>'$'+n.toLocaleString('en-AU');
-const off=(p,w)=>Math.round((1-p/w)*100)+'% off';
-const COUPON_STORES=['Myer','The Iconic','Adore Beauty','Officeworks','Mecca','Strandbags','Woolworths','rebel'];
-const cpn=d=>COUPON_STORES.includes(d.s)?`<span class="cpn">${ic('ticket',10,2)}Coupon</span>`:'';
+const offTxt=(p,w)=>Math.round((1-p/w)*100)+'% off';
+const COUPON_STORES=['Myer','The Iconic','THE ICONIC','Adore Beauty','Officeworks','Mecca','Strandbags','Woolworths','rebel','Big W','Bunnings'];
+const hasCpn=d=>COUPON_STORES.includes(d.s);
 const vu=d=>Math.round(d.sc/4)+((d.r||1)%7);
 const vd=d=>2+((d.r||1)%6);
 const votes=d=>`<div class="votes col"><span class="v-up" onclick="vote(event,this)">${ic('tup',11,1.8)}<b>${vu(d)}</b></span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',11,1.8)}<b>${vd(d)}</b></span></div>`;
 function vote(e,el){e.stopPropagation();const b=el.querySelector('b');b.textContent=+b.textContent+1;}
 
-const CATMAP={laptop:'Tech',headphones:'Tech',tv:'Tech',phone:'Tech',gamepad:'Tech',speaker:'Tech',monitor:'Tech',battery:'Tech',book:'Tech',wind:'Home',pot:'Home',bed:'Home',chair:'Home',coffee:'Home',icecream:'Home',shoe:'Fashion',shirt:'Fashion',glasses:'Fashion',bag:'Fashion',suitcase:'Fashion',plane:'Travel',hotel:'Travel',ship:'Travel',droplet:'Beauty',sparkle:'Beauty',watch:'Sport',dumbbell:'Sport',bike:'Sport',paw:'Sport',music:'Lifestyle',cube:'Lifestyle',wine:'Lifestyle',car:'Lifestyle'};
+/* Frenzy Insight chips: HOT Deal > Lowest ever > Cheapest online > Just dropped > N-day low */
+function insight(d){
+  if(d.r===1) return {k:'hot'};
+  const x=d.r%11;
+  if(x===2) return {k:'ever'};
+  if(x===4) return {k:'cheapest'};
+  if(x===6) return {k:'dropped'};
+  if(x===8||x===0) return {k:'daylow',n:[30,45,60,90,120][d.r%5]};
+  return null;
+}
+function insightChip(d){
+  const s=insight(d);
+  if(!s) return '';
+  if(s.k==='hot') return `<span class="insight hot">${ic('bolt',9,2.4)}HOT Deal</span>`;
+  if(s.k==='ever') return `<span class="insight ever">Lowest price ever</span>`;
+  if(s.k==='cheapest') return `<span class="insight cheapest">Cheapest online</span>`;
+  if(s.k==='dropped') return `<span class="insight dropped">▼ Just dropped</span>`;
+  return `<span class="insight daylow">✓ ${s.n}-day low</span>`;
+}
+const rkpip=d=>d.mv?`<span class="rkpip ${d.mc}">${d.mc==='flat'?'–':d.mv.replace(' ','')}</span>`:'';
+const rklock=d=>`<span class="rklock"><span class="rankplate">#${d.r}</span>${rkpip(d)}</span>`;
 
+/* ===== 23 categories, each its own Top 20 ===== */
+const CATS23=[
+ ['Electronics','monitor'],['Home & Furniture','chair'],['Sports & Outdoors','dumbbell'],['Beauty & Personal Care','droplet'],
+ ['Baby & Kids','cube'],["Men's Fashion",'shirt'],["Women's Fashion",'bag'],['Hobbies & Gifts','sparkle'],
+ ['Automotive','car'],['Toys & Games','gamepad'],['Home Improvement','wrench'],['Appliances','wind'],
+ ['Household','home'],['Kitchen','pot'],['Pets','paw'],['Groceries','cart'],
+ ['Bags & Luggage','suitcase'],['Garden','leaf'],['Alcohol','wine'],['Health','heart'],
+ ['Office','briefcase'],['Books','book'],['Video Games & Media','gamepad'],
+];
+const CATICON=Object.fromEntries(CATS23);
+const CATPROD={
+ 'Electronics':[['Sony WH-1000XM5','Amazon AU',348,499],['LG C4 65" OLED','The Good Guys',2395,3255],['Dell 27" 4K monitor','Dell',399,599]],
+ 'Home & Furniture':[['Koala queen mattress','Koala',791,1050],['Herman Miller Sayl','Living Edge',799,1015],['Oak console table','Temple & Webster',249,419]],
+ 'Sports & Outdoors':[['Garmin Forerunner 265','rebel',479,649],['Weber Baby Q','BBQs Galore',449,569],['ASICS Gel-Resolution','rebel',149,230]],
+ 'Beauty & Personal Care':[['Aesop trio gift set','Adore Beauty',89,119],['Charlotte Tilbury kit','Mecca',95,128],['MCoBeauty mega bundle','Woolworths',45,73]],
+ 'Baby & Kids':[['Bugaboo Fox 5','Baby Bunting',1699,2199],['LEGO Duplo town set','Kmart',49,79],['Bonds Wondersuit 3pk','Bonds',39,60]],
+ "Men's Fashion":[["Levi's 501 2-pack","Levi's",110,167],['North Face puffer','THE ICONIC',210,350],['RM Williams boots','RM Williams',479,649]],
+ "Women's Fashion":[['Havaianas Slim Gold','THE ICONIC',15,26],['Longchamp Le Pliage','David Jones',139,193],['Country Road knit','Country Road',89,149]],
+ 'Hobbies & Gifts':[['Fender Player Strat','Belfield Music',999,1399],['Polaroid Now camera','JB Hi-Fi',129,199],['Lego Botanicals bundle','Kmart',79,118]],
+ 'Automotive':[['Bridgestone 4-tyre deal','mycar',596,736],['Ryco service kit','Supercheap Auto',89,135],['WeatherTech mats','Autobarn',149,209]],
+ 'Toys & Games':[['LEGO Technic set','Big W',199,329],['Barbie Dreamhouse','Target',199,329],['Nerf Elite blaster','Kmart',29,49]],
+ 'Home Improvement':[['Ryobi 18V drill kit','Bunnings',199,299],['Karcher K5 washer','Bunnings',399,549],['Makita circular saw','Total Tools',229,329]],
+ 'Appliances':[['Dyson V15 Detect','Myer',898,1249],['Breville Barista Pro','Myer',649,849],['Samsung 500L fridge','Harvey Norman',899,1299]],
+ 'Household':[['Dyson Purifier Cool','JB Hi-Fi',549,799],['Sheridan towel set','Sheridan',89,160],['Finish tabs 100pk','Woolworths',24,45]],
+ 'Kitchen':[['Ninja Foodi 11-in-1','Big W',249,399],['Le Creuset 24cm oven','David Jones',399,629],['Ninja Creami','Harvey Norman',248,399]],
+ 'Pets':[['PetSafe smart feeder','Petbarn',129,199],['Royal Canin 15kg','PETstock',99,139],['FURminator brush','Petbarn',29,52]],
+ 'Groceries':[['HelloFresh 4-box deal','HelloFresh',89,139],['Nespresso 100 capsules','Nespresso',65,90],['Protein pantry bundle','Woolworths',49,79]],
+ 'Bags & Luggage':[['Samsonite 2-piece set','Strandbags',299,499],['July Carry-On','July',245,325],['Crumpler backpack','Crumpler',119,189]],
+ 'Garden':[['Ozito hedge trimmer','Bunnings',79,119],['Vego raised garden bed','Amazon AU',129,189],['Gardena hose set','Bunnings',59,89]],
+ 'Alcohol':[['Penfolds Bin 28 x6',"Dan Murphy's",210,295],['Four Pillars gin',"Dan Murphy's",65,85],['Balter XPA case','BWS',49,62]],
+ 'Health':[['Theragun Mini','JB Hi-Fi',199,299],['Oral-B iO6','Shaver Shop',179,299],['Blackmores multi 200','Chemist Warehouse',22,40]],
+ 'Office':[['Herman Miller Aeron','Living Edge',1299,1849],['Brother laser printer','Officeworks',149,229],['Logitech MX Master 3S','JB Hi-Fi',119,169]],
+ 'Books':[['Kindle Paperwhite','Amazon AU',179,249],['Kobo Libra Colour','Kobo',319,379],['Atomic Habits','Big W',12,25]],
+ 'Video Games & Media':[['PS5 Slim + 2 games','EB Games',679,869],['Nintendo Switch OLED','Big W',449,539],['Xbox Wireless controller','JB Hi-Fi',59,89]],
+};
+const mvs=[['▲ 2','up'],['▼ 1','down'],['—','flat'],['NEW','new'],['▲ 5','up'],['▼ 3','down'],['—','flat'],['▲ 1','up']];
+
+/* Overall Frenzy 100 */
 const seed=[
- {i:'laptop',t:'MacBook Air M4 13"',s:'JB Hi-Fi',p:1097,w:1599,mv:'▲ 4',mc:'up',hero:true},
- {i:'wind',t:'Dyson V15 Detect',s:'Myer',p:898,w:1249,mv:'▼ 1',mc:'down'},
- {i:'plane',t:'Bali return, Jetstar',s:'Jetstar',p:249,w:445,mv:'NEW',mc:'new'},
- {i:'shoe',t:'Nike Pegasus 41',s:'The Iconic',p:129,w:200,mv:'—',mc:'flat'},
- {i:'headphones',t:'Sony WH-1000XM5',s:'Amazon AU',p:348,w:499,mv:'▲ 14',mc:'up'},
- {i:'tv',t:'LG C4 65" OLED',s:'The Good Guys',p:2395,w:3255,mv:'▼ 2',mc:'down'},
- {i:'pot',t:'Ninja Foodi 11-in-1',s:'Big W',p:249,w:399,mv:'▲ 3',mc:'up'},
- {i:'droplet',t:'Aesop trio gift set',s:'Adore Beauty',p:89,w:119,mv:'NEW',mc:'new'},
- {i:'watch',t:'Garmin Forerunner 265',s:'rebel',p:479,w:649,mv:'—',mc:'flat'},
- {i:'bed',t:'Koala queen mattress',s:'Koala',p:791,w:1050,mv:'▼ 4',mc:'down'},
- {i:'gamepad',t:'PS5 Slim + 2 games',s:'EB Games',p:679,w:869,mv:'▲ 6',mc:'up'},
- {i:'shirt',t:'North Face puffer',s:'THE ICONIC',p:210,w:350,mv:'▲ 1',mc:'up'},
- {i:'hotel',t:'Gold Coast 3 nights',s:'Luxury Escapes',p:399,w:629,mv:'NEW',mc:'new'},
- {i:'phone',t:'Pixel 9 128GB',s:'Officeworks',p:949,w:1229,mv:'▼ 3',mc:'down'},
- {i:'wine',t:'Penfolds Bin 28 x6',s:"Dan Murphy's",p:210,w:295,mv:'—',mc:'flat'},
- {i:'chair',t:'Herman Miller Sayl',s:'Living Edge',p:799,w:1015,mv:'▲ 2',mc:'up'},
- {i:'speaker',t:'Sonos Era 100',s:'JB Hi-Fi',p:319,w:399,mv:'▼ 5',mc:'down'},
- {i:'cube',t:'LEGO Botanicals bundle',s:'Kmart',p:79,w:118,mv:'▲ 8',mc:'up'},
- {i:'sparkle',t:'Charlotte Tilbury kit',s:'Mecca',p:95,w:128,mv:'NEW',mc:'new'},
- {i:'car',t:'Bridgestone 4-tyre deal',s:'mycar',p:596,w:736,mv:'—',mc:'flat'},
+ ['laptop','MacBook Air M4 13"','JB Hi-Fi',1097,1599],['wind','Dyson V15 Detect','Myer',898,1249],
+ ['plane','Bali return, Jetstar','Jetstar',249,445],['shoe','Nike Pegasus 41','The Iconic',129,200],
+ ['headphones','Sony WH-1000XM5','Amazon AU',348,499],['tv','LG C4 65" OLED','The Good Guys',2395,3255],
+ ['pot','Ninja Foodi 11-in-1','Big W',249,399],['droplet','Aesop trio gift set','Adore Beauty',89,119],
+ ['watch','Garmin Forerunner 265','rebel',479,649],['bed','Koala queen mattress','Koala',791,1050],
+ ['gamepad','PS5 Slim + 2 games','EB Games',679,869],['shirt','North Face puffer','THE ICONIC',210,350],
+ ['hotel','Gold Coast 3 nights','Luxury Escapes',399,629],['phone','Pixel 9 128GB','Officeworks',949,1229],
+ ['wine','Penfolds Bin 28 x6',"Dan Murphy's",210,295],['chair','Herman Miller Sayl','Living Edge',799,1015],
+ ['speaker','Sonos Era 100','JB Hi-Fi',319,399],['cube','LEGO Botanicals bundle','Kmart',79,118],
+ ['sparkle','Charlotte Tilbury kit','Mecca',95,128],['car','Bridgestone 4-tyre deal','mycar',596,736],
 ];
 const pool=[
- {i:'coffee',t:'Breville Barista Pro',s:'Myer',p:649,w:849},
- {i:'glasses',t:'Ray-Ban Wayfarer',s:'Sunglass Hut',p:119,w:172},
- {i:'bag',t:'Longchamp Le Pliage',s:'David Jones',p:139,w:193},
- {i:'ship',t:'P&O 4-night cruise',s:'P&O',p:549,w:807},
- {i:'monitor',t:'Dell 27" 4K monitor',s:'Dell',p:399,w:599},
- {i:'pot',t:'HelloFresh 4-box deal',s:'HelloFresh',p:89,w:139},
- {i:'shirt',t:"Levi's 501 2-pack",s:"Levi's",p:110,w:167},
- {i:'suitcase',t:'Samsonite 2-piece set',s:'Strandbags',p:299,w:499},
- {i:'shoe',t:'ASICS Gel-Resolution',s:'rebel',p:149,w:230},
- {i:'plane',t:'Tokyo return, Qantas',s:'Qantas',p:899,w:1231},
- {i:'sparkle',t:'MCoBeauty mega bundle',s:'Woolworths',p:45,w:73},
- {i:'battery',t:'Anker 20K power bank',s:'Amazon AU',p:59,w:99},
- {i:'pot',t:'Le Creuset 24cm oven',s:'David Jones',p:399,w:629},
- {i:'book',t:'Kindle Paperwhite',s:'Amazon AU',p:179,w:249},
- {i:'bike',t:'Reid commuter e-bike',s:'Reid Cycles',p:1299,w:1899},
- {i:'paw',t:'PetSafe smart feeder',s:'Petbarn',p:129,w:199},
- {i:'dumbbell',t:'Bowflex dumbbell pair',s:'rebel',p:549,w:799},
- {i:'music',t:'Fender Player Strat',s:'Belfield Music',p:999,w:1399},
- {i:'dumbbell',t:'Theragun Mini',s:'JB Hi-Fi',p:199,w:299},
- {i:'icecream',t:'Ninja Creami',s:'Harvey Norman',p:248,w:399},
+ ['coffee','Breville Barista Pro','Myer',649,849],['glasses','Ray-Ban Wayfarer','Sunglass Hut',119,172],
+ ['bag','Longchamp Le Pliage','David Jones',139,193],['ship','P&O 4-night cruise','P&O',549,807],
+ ['monitor','Dell 27" 4K monitor','Dell',399,599],['pot','HelloFresh 4-box deal','HelloFresh',89,139],
+ ['shirt',"Levi's 501 2-pack","Levi's",110,167],['suitcase','Samsonite 2-piece set','Strandbags',299,499],
+ ['shoe','ASICS Gel-Resolution','rebel',149,230],['plane','Tokyo return, Qantas','Qantas',899,1231],
+ ['sparkle','MCoBeauty mega bundle','Woolworths',45,73],['battery','Anker 20K power bank','Amazon AU',59,99],
+ ['pot','Le Creuset 24cm oven','David Jones',399,629],['book','Kindle Paperwhite','Amazon AU',179,249],
+ ['bike','Reid commuter e-bike','Reid Cycles',1299,1899],['paw','PetSafe smart feeder','Petbarn',129,199],
+ ['dumbbell','Bowflex dumbbell pair','rebel',549,799],['music','Fender Player Strat','Belfield Music',999,1399],
+ ['dumbbell','Theragun Mini','JB Hi-Fi',199,299],['icecream','Ninja Creami','Harvey Norman',248,399],
 ];
-const mvs=[['▲ 2','up'],['▼ 1','down'],['—','flat'],['NEW','new'],['▲ 5','up'],['▼ 3','down'],['—','flat'],['▲ 1','up']];
-const deals=seed.map((d,i)=>({...d,r:i+1,sc:97-Math.floor(i*20/19)}));
-for(let i=20;i<100;i++){
-  const p=pool[(i-20)%pool.length],m=mvs[i%mvs.length];
-  deals.push({...p,r:i+1,mv:m[0],mc:m[1],sc:76-Math.floor((i-20)*21/79)});
+const deals=[];
+for(let i=0;i<100;i++){
+  const src=i<20?seed[i]:pool[(i-20)%pool.length];
+  const m=mvs[i%mvs.length];
+  deals.push({i:src[0],t:src[1],s:src[2],p:src[3],w:src[4],r:i+1,mv:m[0],mc:m[1],sc:i<20?97-Math.floor(i*20/19):76-Math.floor((i-20)*21/79)});
 }
-const LISTCATS=['All','Tech','Fashion','Home','Travel','Beauty','Sport','Lifestyle'];
-const listFor=c=>c==='All'?deals:deals.filter(d=>(CATMAP[d.i]||'Lifestyle')===c);
+const t20cache={};
+function top20(cat){
+  if(t20cache[cat])return t20cache[cat];
+  const base=CATPROD[cat],icon=CATICON[cat],arr=[];
+  for(let i=0;i<20;i++){
+    const b=base[i%base.length],m=mvs[(i+cat.length)%mvs.length];
+    arr.push({i:icon,t:b[0],s:b[1],p:b[2],w:b[3],r:i+1,sc:96-Math.round(i*1.4),mv:m[0],mc:m[1]});
+  }
+  return t20cache[cat]=arr;
+}
+const LISTCATS=['All',...CATS23.map(c=>c[0])];
+const listFor=c=>c==='All'?deals:top20(c);
 
-function heroCard(d){
+/* ===== Renderers ===== */
+function heroCard(d,cat){
   return `<div class="hero-card" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
     <div class="hero-top">
-      <div class="hero-img">${ic(d.i,42)}<span class="offpill">${off(d.p,d.w)}</span><span class="rankplate">#${d.r}</span></div>
+      <div class="hero-img">${ic(d.i,42)}${insightChip(d)}${rklock(d)}</div>
       <div class="hero-body">
-        <div class="drow1">${cpn(d)||''}</div>
+        <div class="drow1">${hasCpn(d)?`<span class="cpn">${ic('ticket',10,2)}Coupon</span>`:''}</div>
         <div class="t">${d.t}</div>
         <div class="m">${d.s}</div>
-        <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
-        <div class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
+        <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="offpill">${offTxt(d.p,d.w)}</span><span class="was">${fmt(d.w)}</span></div>
+        <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
+        <div class="why">Why it's <b>#1${cat&&cat!=='All'?' in '+cat:''}</b>: a Frenzy Score of <b>${d.sc}</b>, built on price strength, product popularity and store reputation.</div>
       </div>
       ${votes(d)}
     </div>
-    <div class="vbar" onclick="event.stopPropagation();showView('explain')">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
+    <div class="vbar" onclick="event.stopPropagation();openSheet()">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
   </div>`;
 }
 function dealRow(d){
+  const chip=insightChip(d);
+  const coupon=hasCpn(d);
   return `<div class="deal" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
-    <div class="thumbwrap"><div class="thumb">${ic(d.i,28)}</div><span class="rankplate">#${d.r}</span></div>
+    <div class="thumbwrap"><div class="thumb">${ic(d.i,28)}</div>${rklock(d)}</div>
     <div class="dinfo">
-      <div class="drow1"><div class="t">${d.t}</div>${cpn(d)}</div>
-      <div class="m">${d.s}</div>
-      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="offpill">${off(d.p,d.w)}</span><span class="was">${fmt(d.w)}</span></div>
-      <div class="scorerow" onclick="event.stopPropagation();showView('explain')">${ic('flame',11,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',10,1.8)}</span></div>
+      <div class="drow1"><div class="t">${d.t}</div>${chip||(coupon?`<span class="cpn">${ic('ticket',10,2)}Coupon</span>`:'')}</div>
+      <div class="m">${d.s}${chip&&coupon?`<span class="cpn sm">${ic('ticket',9,2)}Coupon</span>`:''}</div>
+      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="offsm">${offTxt(d.p,d.w)}</span></div>
+      <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',11,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',10,1.8)}</span></div>
     </div>
     ${votes(d)}
   </div>`;
@@ -704,28 +864,29 @@ function dealRow(d){
 let homeSel='All';
 function renderHomeTabs(){
   document.getElementById('home-tabs').innerHTML=LISTCATS.map(c=>
-    `<button class="chip${c===homeSel?' on':''}" onclick="setHomeCat('${c}')">${c} <span class="cnt">(${listFor(c).length})</span></button>`).join('');
+    `<button class="chip${c===homeSel?' on':''}" onclick="setHomeCat('${c.replace(/'/g,"\\'")}')">${c} <span class="cnt">(${c==='All'?100:20})</span></button>`).join('');
 }
 function setHomeCat(c){homeSel=c;renderHomeTabs();renderHomeChart();}
 function renderHomeChart(){
   const list=listFor(homeSel).slice(0,3);
-  document.getElementById('home-chart').innerHTML=heroCard(list[0])+list.slice(1).map(dealRow).join('');
-  document.querySelector('#home-more span').textContent=homeSel==='All'?'See the full Frenzy 100':`See all ${homeSel} deals`;
+  document.getElementById('home-chart').innerHTML=heroCard(list[0],homeSel)+list.slice(1).map(dealRow).join('');
+  document.querySelector('#home-more span').textContent=homeSel==='All'?'See the full Frenzy 100':`See the Top 20 in ${homeSel}`;
 }
 function homeMore(){goCat(homeSel);}
 
 /* ===== Frenzy 100 list ===== */
 let listCat='All';
+const initRev=()=>document.getElementById('frame').classList.contains('desktop')?9:5;
 let revealed=5;
 function renderListTabs(){
   document.getElementById('list-tabs').innerHTML=LISTCATS.map(c=>
-    `<button class="chip${c===listCat?' on':''}" onclick="setListCat('${c}')">${c} <span class="cnt">(${listFor(c).length})</span></button>`).join('');
+    `<button class="chip${c===listCat?' on':''}" onclick="setListCat('${c.replace(/'/g,"\\'")}')">${c} <span class="cnt">(${c==='All'?100:20})</span></button>`).join('');
 }
-function setListCat(c){listCat=c;revealed=5;renderListTabs();renderList();}
+function setListCat(c){listCat=c;revealed=initRev();renderListTabs();renderList();}
 function renderList(){
   const list=listFor(listCat);
   const n=Math.min(revealed,list.length);
-  document.getElementById('chart').innerHTML=heroCard(list[0])+list.slice(1,n).map(dealRow).join('');
+  document.getElementById('chart').innerHTML=heroCard(list[0],listCat)+list.slice(1,n).map(dealRow).join('');
   updateMore(list);
 }
 function updateMore(list){
@@ -746,39 +907,35 @@ function revealMore(){
   updateMore(list);
 }
 function goCat(name){
-  listCat=name;revealed=5;
+  listCat=name;revealed=initRev();
   renderListTabs();renderList();
   showView('list');
 }
 
 /* ===== Shop by ===== */
-const CATTILES=[['Fashion','shirt'],['Beauty','droplet'],['Electronics','monitor','Tech'],['Home','bed'],['Kitchen','pot','Home'],['Sport','dumbbell'],['Travel','plane']];
-const BRANDTILES=[['JB Hi-Fi','JB'],['Amazon AU','AM'],['Myer','MY'],['The Iconic','TI'],['Kmart','KM'],['Mecca','ME'],['Big W','BW'],['David Jones','DJ']];
 function setShopBy(mode){
   document.getElementById('sb-cat').classList.toggle('on',mode==='cat');
   document.getElementById('sb-store').classList.toggle('on',mode==='store');
   const rail=document.getElementById('shopby-rail');
   if(mode==='cat'){
-    rail.innerHTML=CATTILES.map(([n,i,target])=>
-      `<div class="catcard" onclick="goCat('${target||n}')"><div class="cic">${ic(i,20,1.6)}</div><div class="cn">${n}</div></div>`).join('');
+    rail.innerHTML=CATS23.slice(0,10).map(([n,i])=>
+      `<div class="catcard" onclick="goCat('${n.replace(/'/g,"\\'")}')"><div class="cic">${ic(i,20,1.6)}</div><div class="cn">${n.split(' & ')[0]}</div></div>`).join('');
   } else {
-    rail.innerHTML=BRANDTILES.map(([n,init])=>
+    rail.innerHTML=[['JB Hi-Fi','JB'],['Amazon AU','AM'],['Myer','MY'],['The Iconic','TI'],['Kmart','KM'],['Mecca','ME'],['Big W','BW'],['David Jones','DJ']].map(([n,init])=>
       `<div class="catcard" onclick="toast('${n} store page — coming in the full build')"><div class="cic" style="font-weight:900;font-size:14px;">${init}</div><div class="cn">${n}</div></div>`).join('');
   }
 }
 
 /* ===== Trending + coupons ===== */
-const TRENDING=[['Mecca','▲ 3'],['JB Hi-Fi','▲ 2'],['Kmart','▲ 5'],['The Iconic','▲ 1'],['Amazon AU','▲ 4'],['rebel','▲ 2']];
-document.getElementById('trend-rail').innerHTML=TRENDING.map(([n,t])=>
+document.getElementById('trend-rail').innerHTML=[['Mecca','▲ 3'],['JB Hi-Fi','▲ 2'],['Kmart','▲ 5'],['The Iconic','▲ 1'],['Amazon AU','▲ 4'],['rebel','▲ 2']].map(([n,t])=>
   `<div class="store-tile2" onclick="toast('${n} store page — coming in the full build')"><span class="tr">${t}</span><span class="wm">${n}</span><span class="ct">Trending</span></div>`).join('');
 
-const COUPONS=[
+document.getElementById('coupon-rail').innerHTML=[
   {s:'Myer',o:'Extra 20% off sale styles',c:'FRENZY20'},
   {s:'The Iconic',o:'25% off full price',c:'ICONIC25'},
   {s:'Adore Beauty',o:'Free shipping, no minimum',c:'SHIPFREE'},
   {s:'rebel',o:'$20 off when you spend $100+',c:'Pass members only',locked:true},
-];
-document.getElementById('coupon-rail').innerHTML=COUPONS.map(cn2=>
+].map(cn2=>
   `<div class="coupon-card">
     <div class="chd">${ic('ticket',14,1.8)}${cn2.s}</div>
     <div class="off2">${cn2.o}</div>
@@ -786,35 +943,49 @@ document.getElementById('coupon-rail').innerHTML=COUPONS.map(cn2=>
     <span class="codechip${cn2.locked?' locked':''}" onclick="toast('${cn2.locked?'Unlock with Frenzy Pass':cn2.c+' copied ✓'}')">${ic(cn2.locked?'lock':'ticket',11,1.8)}${cn2.c}</span>
   </div>`).join('');
 
-/* ===== Init + view switching ===== */
-renderHomeTabs();renderHomeChart();
-renderListTabs();renderList();
-setShopBy('cat');
-
-/* Desktop header + device toggle */
+/* ===== Desktop header ===== */
 document.getElementById('dtbar').innerHTML=
-  `<img src="${document.querySelector('.logo img').src}" alt="Click Frenzy">
-   <div class="dtsearch" onclick="toast('Search — coming in the full build')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search 1,200+ stores &amp; deals…</div>
-   <span class="spacer"></span>
-   <span class="b2b" onclick="toast('List your brand — coming in the full build')">＋ List your brand</span>
-   <span class="acct" onclick="toast('Log in — coming in the full build')">Log in</span>`;
+  `<img src="${document.getElementById('logoimg').src}" alt="Click Frenzy">
+   <div class="dtnav">
+     <span onclick="toast('Stores — coming in the full build')">Stores <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+     <span onclick="toast('Categories — coming in the full build')">Categories <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+     <span onclick="toast('Coupons — coming in the full build')">Coupons</span>
+     <span onclick="goCat('All')">Frenzy 100</span>
+   </div>
+   <div class="dtsearch" onclick="toast('Search — coming in the full build')"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Search stores &amp; deals…</div>
+   <span class="lyb" onclick="toast('List your brand — coming in the full build')">List your brand</span>
+   <span class="gfp" onclick="toast('Frenzy Pass — coming in the full build')">Get Frenzy Pass</span>`;
+
 function setDevice(dev){
   document.getElementById('frame').classList.toggle('desktop',dev==='desktop');
   document.getElementById('dev-mobile').classList.toggle('on',dev==='mobile');
   document.getElementById('dev-desktop').classList.toggle('on',dev==='desktop');
+  revealed=initRev();renderList();
 }
 
+/* ===== Sheet + views ===== */
+function openSheet(){
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('sheet').classList.add('open');
+  const el=document.getElementById('count2');
+  let x=0;const t=setInterval(()=>{x+=4;if(x>=92){x=92;clearInterval(t);}el.textContent=x;},24);
+}
+function closeSheet(){
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('sheet').classList.remove('open');
+}
 function showView(v){
+  closeSheet();
   ['home','list','explain'].forEach(k=>{
     document.getElementById('v-'+k).classList.toggle('on',k===v);
     document.getElementById('nav-'+k).classList.toggle('on',k===v);
   });
   document.getElementById('screen').scrollTo({top:0});
-  if(v==='explain'){
-    const el=document.getElementById('count');
-    let x=0;const t=setInterval(()=>{x+=4;if(x>=92){x=92;clearInterval(t);}el.textContent=x;},24);
-  }
 }
+
+renderHomeTabs();renderHomeChart();
+renderListTabs();renderList();
+setShopBy('cat');
 
 let toastTimer;
 function toast(msg){
