@@ -145,7 +145,7 @@
   .deal .scorerow{margin-top:6px;}
 
   .hero-card{background:#fff;border:1.5px solid var(--pink);border-radius:18px;padding:12px;cursor:pointer;}
-  .hero-top{display:grid;grid-template-columns:42% 1fr auto;gap:12px;}
+  .hero-top{display:grid;grid-template-columns:42% 1fr;gap:12px;}
   .hero-img{position:relative;background:var(--imgbg);border-radius:14px;min-height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
   .hero-img .insight{position:absolute;top:8px;left:8px;}
   .hero-body{min-width:0;}
@@ -324,7 +324,7 @@
   .phone.desktop #list-tabs{justify-content:center;flex-wrap:wrap;}
   .phone.desktop .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .phone.desktop .stack>.hero-card{grid-column:1/-1;}
-  .phone.desktop .hero-top{grid-template-columns:300px 1fr 250px auto;}
+  .phone.desktop .hero-top{grid-template-columns:300px 1fr 250px;}
   .phone.desktop .hero-img{min-height:210px;}
   .phone.desktop .rail{flex-wrap:wrap;margin:0;padding:2px 0 4px;}
   .phone.desktop .listhead .lh-title{font-size:30px;}
@@ -1021,6 +1021,7 @@ function heroCard(d,cat){
         <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
         <div class="chipline">${insightChip(d)}</div>
         <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
+        <div class="votes row"><span class="v-up" onclick="vote(event,this)">${ic('tup',13,1.8)}</span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',13,1.8)}</span></div>
       </div>
       <div class="hero-side">
         <div class="why" onclick="event.stopPropagation();openSheet()">
@@ -1029,7 +1030,6 @@ function heroCard(d,cat){
         </div>
         <button class="getdeal" onclick="event.stopPropagation();toast('Off to ${d.s.replace(/'/g,"\\'")} →')">Get this deal →</button>
       </div>
-      ${votes()}
     </div>
     <div class="vbar" onclick="event.stopPropagation();openSheet()">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
   </div>`;
