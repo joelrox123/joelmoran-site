@@ -80,6 +80,12 @@
 
   .cattabs{display:flex;gap:8px;padding:12px 14px 2px;overflow-x:auto;scrollbar-width:none;}
   .cattabs::-webkit-scrollbar{display:none;}
+  .tabwrap{position:relative;}
+  .catpanel{display:none;position:absolute;top:100%;left:14px;right:14px;z-index:55;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.14);padding:14px;margin-top:6px;grid-template-columns:1fr 1fr;gap:2px 16px;max-height:320px;overflow-y:auto;}
+  .catpanel.open{display:grid;}
+  .catpanel span{font-size:12px;font-weight:600;color:var(--ink);padding:7px 8px;border-radius:8px;cursor:pointer;}
+  .catpanel span:hover{background:var(--paper);}
+  .phone.desktop .catpanel{left:50%;right:auto;transform:translateX(-50%);width:520px;grid-template-columns:1fr 1fr 1fr;}
   .chip{font-weight:600;font-size:12px;padding:7px 14px;border-radius:100px;background:#fff;border:1px solid var(--line);color:#52525c;white-space:nowrap;cursor:pointer;}
   .chip .cnt{opacity:.55;font-weight:600;}
   .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700;}
@@ -114,13 +120,14 @@
   .scorerow b{color:var(--ink);font-weight:800;}
   .scorerow .info{color:#b9b9c2;}
 
-  .votes{display:flex;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;align-self:center;}
+  .votes{display:flex;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;align-self:center;}
   .votes.col{flex-direction:column;}
-  .votes .v-up,.votes .v-dn{display:flex;align-items:center;gap:4px;padding:5px 8px;font-size:10px;font-weight:800;cursor:pointer;}
+  .votes .v-up,.votes .v-dn{display:flex;align-items:center;justify-content:center;padding:11px 13px;cursor:pointer;}
   .votes .v-up{color:var(--pink-text);}
   .votes.col .v-up{border-bottom:1px solid var(--line);}
   .votes .v-dn{color:var(--muted);}
-  .votes .v-dn b{color:var(--ink);}
+  .votes .v-up.sel{background:#ffe3ee;}
+  .votes .v-dn.sel{background:#ececf1;}
 
   .deal{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;gap:11px;align-items:center;cursor:pointer;transition:transform .12s ease;}
   .deal:active{transform:scale(.985);}
@@ -128,7 +135,9 @@
   .deal .thumb{width:82px;height:82px;background:var(--imgbg);border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
   .deal .dinfo{flex:1;min-width:0;}
   .deal .drow1{display:flex;align-items:flex-start;gap:8px;}
-  .deal .t{flex:1;min-width:0;font-size:12.5px;font-weight:800;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .deal .t{flex:1;min-width:0;font-size:12.5px;font-weight:800;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .chipline{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;}
+  .cpico{display:inline-flex;vertical-align:middle;margin-left:5px;color:var(--pink-text);}
   .deal .m{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:2px;}
   .deal .price{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap;}
   .deal .now{font-weight:900;font-size:18px;line-height:1;color:var(--pink-text);}
@@ -145,8 +154,11 @@
   .hero-body .price{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;}
   .hero-body .now{font-weight:900;font-size:26px;line-height:1;color:var(--pink-text);}
   .hero-body .scorerow{margin-top:8px;}
-  .why{margin-top:9px;background:#fff5f9;border-radius:10px;padding:8px 11px;font-size:10.5px;font-weight:600;color:var(--pink-text);line-height:1.45;}
-  .why b{font-weight:800;}
+  .why{display:none;margin-top:10px;background:#effbf9;border:1px solid #bfe8e2;border-radius:12px;padding:10px 12px;font-size:11px;font-weight:600;color:var(--ink);line-height:1.5;gap:9px;align-items:flex-start;}
+  .why svg{color:var(--teal-deep);min-width:16px;margin-top:1px;}
+  .why b{font-weight:800;color:var(--teal-deep);}
+  .phone.desktop .why{display:flex;}
+  .phone.desktop .vbar{display:none;}
   .vbar{margin-top:11px;background:var(--ink);color:#fff;border-radius:100px;padding:8px 13px;display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;}
   .vbar svg{color:var(--teal);min-width:14px;}
   .vbar b{font-weight:800;}
@@ -224,12 +236,21 @@
   .fs-list li:last-child{margin-bottom:0;}
   .fs-list b{color:#fff;font-weight:800;}
   .fs-list svg{min-width:14px;margin-top:1px;}
-  .fs-h{color:#fff;font-weight:800;font-size:15px;margin:20px 18px 8px;letter-spacing:-.2px;}
-  .fs-cards{display:flex;gap:8px;padding:0 18px;}
-  .fs-card{flex:1;background:rgba(255,255,255,.13);border-radius:14px;padding:13px 11px;color:#fff;}
-  .fs-card .ci{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;margin-bottom:9px;}
+  .fs-h{color:#fff;font-weight:800;font-size:15px;margin:16px 18px 8px;letter-spacing:-.2px;}
+  .fs-cards{display:flex;flex-direction:column;gap:7px;padding:0 18px;}
+  .fs-card{background:rgba(255,255,255,.13);border-radius:14px;padding:11px 12px;color:#fff;display:flex;gap:11px;align-items:flex-start;}
+  .fs-card .ci{width:32px;height:32px;min-width:32px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;}
   .fs-card .cn{font-weight:800;font-size:12px;}
-  .fs-card p{font-size:10px;color:rgba(255,255,255,.82);line-height:1.45;margin-top:4px;font-weight:500;}
+  .fs-card p{font-size:10.5px;color:rgba(255,255,255,.82);line-height:1.45;margin-top:2px;font-weight:500;}
+  .fs-two{display:grid;grid-template-columns:1fr;gap:0;}
+  .phone.desktop #v-explain .fs-two{grid-template-columns:1fr 1fr;gap:0 18px;padding:0 18px;align-items:start;}
+  .phone.desktop #v-explain .fs-two .fs-panel{margin:16px 0 0;}
+  .phone.desktop #v-explain .fs-two .fs-h{margin:16px 0 8px;}
+  .phone.desktop #v-explain .fs-two .fs-cards{padding:0;}
+  .phone.desktop #v-explain .fs-two .fs-sauce{margin:12px 0 0;}
+  .fs-score{display:flex;gap:5px;align-items:center;font-size:10px;font-weight:700;color:var(--muted);margin-top:3px;}
+  .fs-score svg{color:var(--pink-text);}
+  .fs-score b{color:var(--ink);font-weight:800;font-size:12px;}
   .fs-vs{display:flex;gap:8px;padding:0 18px;}
   .fs-v{flex:1;background:#fff;border-radius:16px;padding:12px;position:relative;color:var(--ink);}
   .fs-v .tag2{font-size:9px;font-weight:800;letter-spacing:.3px;}
@@ -241,9 +262,6 @@
   .fs-v li.good{color:#067a5b;}
   .fs-v li.bad{color:#c22525;}
   .fs-v li.mut{color:var(--muted);}
-  .fs-v .fsc{position:absolute;top:10px;right:10px;width:46px;height:46px;border-radius:50%;background:var(--maroon);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .fs-v .fsc .fn{font-weight:900;font-size:15px;line-height:1;}
-  .fs-v .fsc .fl{font-size:5.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;}
   .fs-note{padding:10px 18px 0;font-size:11px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.5;}
   .fs-note b{color:#fff;}
   .fs-sauce{margin:14px 18px 0;background:rgba(255,255,255,.13);border-radius:12px;padding:11px 13px;font-size:10.5px;color:rgba(255,255,255,.85);line-height:1.55;font-weight:500;}
@@ -395,7 +413,10 @@
           <a onclick="homeMore()">View all →</a>
         </div>
       </div>
-      <div class="cattabs" id="home-tabs" style="padding-top:0;"></div>
+      <div class="tabwrap">
+        <div class="cattabs" id="home-tabs" style="padding-top:0;"></div>
+        <div class="catpanel" id="panel-home"></div>
+      </div>
       <div class="sec" style="margin-top:12px;">
         <div class="stack" id="home-chart"></div>
         <button class="morebtn" id="home-more" onclick="homeMore()">
@@ -477,11 +498,14 @@
       <div class="ticker"><div class="tk"><b>●</b> <b>LIVE</b>&nbsp;RANKED HOURLY&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;7 NEW THIS HOUR&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;BIGGEST CLIMBER ▲ 14&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;RANKED HOURLY&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;7 NEW THIS HOUR&nbsp;&nbsp;<b>●</b> <b>LIVE</b>&nbsp;BIGGEST CLIMBER ▲ 14&nbsp;&nbsp;</div></div>
 
       <div class="listhead">
-        <div class="lh-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>THE FRENZY 100</div>
+        <div class="lh-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg><span id="lh-txt">THE FRENZY 100</span></div>
         <p>The top 100 deals ranked by price history, product popularity &amp; retailer reputation. <a onclick="openSheet()">How Frenzy Score works →</a></p>
       </div>
 
-      <div class="cattabs" id="list-tabs"></div>
+      <div class="tabwrap">
+        <div class="cattabs" id="list-tabs"></div>
+        <div class="catpanel" id="panel-list"></div>
+      </div>
 
       <div class="sec" style="margin-top:12px;">
         <div class="stack" id="chart"></div>
@@ -520,57 +544,58 @@
       </div>
       <p class="fs-sub">Every deal earns a score out of 100.<br><b>We rank the best deals and give you the list.</b></p>
 
-      <div class="fs-panel">
-        <div class="fs-circ"><span class="n" id="count">92</span><span class="l">Frenzy Score</span></div>
-        <ul class="fs-list">
-          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>Three Checks.</b> Price, Product, Store.</span></li>
-          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>One score.</b> Crowd vote + our data.</span></li>
-          <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>No paid placements.</b> Ever.</span></li>
-        </ul>
+      <div class="fs-two">
+        <div>
+          <div class="fs-panel">
+            <div class="fs-circ"><span class="n" id="count">92</span><span class="l">Frenzy Score</span></div>
+            <ul class="fs-list">
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>Three Checks.</b> Price, Product, Store.</span></li>
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>One score.</b> Crowd vote + our data.</span></li>
+              <li><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg><span><b>No paid placements.</b> Ever.</span></li>
+            </ul>
+          </div>
+          <div class="fs-sauce"><b>How it adds up is our secret sauce.</b> We'll never break down why a deal scored what it did. What you can be sure of: every deal here passed a serious check, and no one can pay for a better number.</div>
+        </div>
+        <div>
+          <div class="fs-h">What we check</div>
+          <div class="fs-cards">
+            <div class="fs-card">
+              <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
+              <div><div class="cn">The Price</div><p>We've tracked historic pricing and competition.</p></div>
+            </div>
+            <div class="fs-card">
+              <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
+              <div><div class="cn">The product</div><p>We've checked that it's something people want.</p></div>
+            </div>
+            <div class="fs-card">
+              <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
+              <div><div class="cn">The store</div><p>Stores with a great reputation rank higher.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="fs-h">What we check</div>
-      <div class="fs-cards">
-        <div class="fs-card">
-          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
-          <div class="cn">The Price</div>
-          <p>We've tracked historic pricing and competition.</p>
-        </div>
-        <div class="fs-card">
-          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
-          <div class="cn">The product</div>
-          <p>We've checked that it's something people want.</p>
-        </div>
-        <div class="fs-card">
-          <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
-          <div class="cn">The store</div>
-          <p>Stores with a great reputation rank higher.</p>
-        </div>
-      </div>
-
-      <div class="fs-sauce"><b>How it adds up is our secret sauce.</b> We'll never break down why a deal scored what it did. What you can be sure of: every deal here passed a serious check, and no one can pay for a better number.</div>
 
       <div class="fs-h">Cheapest doesn't always win</div>
       <div class="fs-vs">
         <div class="fs-v win">
           <div class="tag2">✓ MAKES THE LIST</div>
           <div class="vp tnum">$348</div>
+          <div class="fs-score"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg><b>90</b>&nbsp;Frenzy Score</div>
           <ul>
             <li class="good">✓ Free shipping</li>
             <li class="good">✓ Easy returns</li>
             <li class="good">✓ 4.8★ store</li>
           </ul>
-          <div class="fsc"><span class="fn">90</span><span class="fl">Frenzy Score</span></div>
         </div>
         <div class="fs-v lose">
           <div class="tag2">✗ DOESN'T MAKE IT</div>
           <div class="vp tnum">$339</div>
+          <div class="fs-score"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg><b>74</b>&nbsp;Frenzy Score</div>
           <ul>
             <li class="mut">$9 cheaper, but…</li>
             <li class="bad">✗ $15 shipping</li>
             <li class="bad">✗ No returns · 3.1★</li>
           </ul>
-          <div class="fsc"><span class="fn">74</span><span class="fl">Frenzy Score</span></div>
         </div>
       </div>
       <p class="fs-note">Saving $9 means nothing if the store won't answer the phone. <b>The score knows.</b></p>
@@ -616,18 +641,15 @@
         <div class="fs-cards">
           <div class="fs-card">
             <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/></svg></div>
-            <div class="cn">The Price</div>
-            <p>We've tracked historic pricing and competition.</p>
+            <div><div class="cn">The Price</div><p>We've tracked historic pricing and competition.</p></div>
           </div>
           <div class="fs-card">
             <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div>
-            <div class="cn">The product</div>
-            <p>We've checked that it's something people want.</p>
+            <div><div class="cn">The product</div><p>We've checked that it's something people want.</p></div>
           </div>
           <div class="fs-card">
             <div class="ci"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l2-4h12l2 4M4 8h16M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8M9 20v-6h6v6"/></svg></div>
-            <div class="cn">The store</div>
-            <p>Stores with a great reputation rank higher.</p>
+            <div><div class="cn">The store</div><p>Stores with a great reputation rank higher.</p></div>
           </div>
         </div>
 
@@ -636,22 +658,22 @@
           <div class="fs-v win">
             <div class="tag2">✓ MAKES THE LIST</div>
             <div class="vp tnum">$348</div>
+            <div class="fs-score"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg><b>90</b>&nbsp;Frenzy Score</div>
             <ul>
               <li class="good">✓ Free shipping</li>
               <li class="good">✓ Easy returns</li>
               <li class="good">✓ 4.8★ store</li>
             </ul>
-            <div class="fsc"><span class="fn">90</span><span class="fl">Frenzy Score</span></div>
           </div>
           <div class="fs-v lose">
             <div class="tag2">✗ DOESN'T MAKE IT</div>
             <div class="vp tnum">$339</div>
+            <div class="fs-score"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg><b>74</b>&nbsp;Frenzy Score</div>
             <ul>
               <li class="mut">$9 cheaper, but…</li>
               <li class="bad">✗ $15 shipping</li>
               <li class="bad">✗ No returns · 3.1★</li>
             </ul>
-            <div class="fsc"><span class="fn">74</span><span class="fl">Frenzy Score</span></div>
           </div>
         </div>
 
@@ -719,10 +741,8 @@ const fmt=n=>'$'+n.toLocaleString('en-AU');
 const offTxt=(p,w)=>Math.round((1-p/w)*100)+'% off';
 const COUPON_STORES=['Myer','The Iconic','THE ICONIC','Adore Beauty','Officeworks','Mecca','Strandbags','Woolworths','rebel','Big W','Bunnings'];
 const hasCpn=d=>COUPON_STORES.includes(d.s);
-const vu=d=>Math.round(d.sc/4)+((d.r||1)%7);
-const vd=d=>2+((d.r||1)%6);
-const votes=d=>`<div class="votes col"><span class="v-up" onclick="vote(event,this)">${ic('tup',11,1.8)}<b>${vu(d)}</b></span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',11,1.8)}<b>${vd(d)}</b></span></div>`;
-function vote(e,el){e.stopPropagation();const b=el.querySelector('b');b.textContent=+b.textContent+1;}
+const votes=()=>`<div class="votes col"><span class="v-up" onclick="vote(event,this)">${ic('tup',15,1.8)}</span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',15,1.8)}</span></div>`;
+function vote(e,el){e.stopPropagation();const sib=el.parentElement.querySelectorAll('.sel');sib.forEach(s=>{if(s!==el)s.classList.remove('sel');});el.classList.toggle('sel');}
 
 /* Frenzy Insight chips: HOT Deal > Lowest ever > Cheapest online > Just dropped > N-day low */
 function insight(d){
@@ -828,43 +848,68 @@ const LISTCATS=['All',...CATS23.map(c=>c[0])];
 const listFor=c=>c==='All'?deals:top20(c);
 
 /* ===== Renderers ===== */
+const cpico=d=>hasCpn(d)?`<span class="cpico" title="Coupon available">${ic('ticket',11,2)}</span>`:'';
 function heroCard(d,cat){
   return `<div class="hero-card" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
     <div class="hero-top">
-      <div class="hero-img">${ic(d.i,42)}${insightChip(d)}${rklock(d)}</div>
+      <div class="hero-img">${ic(d.i,42)}${rklock(d)}</div>
       <div class="hero-body">
-        <div class="drow1">${hasCpn(d)?`<span class="cpn">${ic('ticket',10,2)}Coupon</span>`:''}</div>
         <div class="t">${d.t}</div>
-        <div class="m">${d.s}</div>
-        <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="offpill">${offTxt(d.p,d.w)}</span><span class="was">${fmt(d.w)}</span></div>
+        <div class="m">${d.s}${cpico(d)}</div>
+        <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
+        <div class="chipline">${insightChip(d)}</div>
         <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
-        <div class="why">Why it's <b>#1${cat&&cat!=='All'?' in '+cat:''}</b>: a Frenzy Score of <b>${d.sc}</b>, built on price strength, product popularity and store reputation.</div>
+        <div class="why" onclick="event.stopPropagation();openSheet()">
+          ${ic('check',16,2)}
+          <span><b>Why it's #1${cat&&cat!=='All'?' in '+cat:''}:</b> a Frenzy Score of ${d.sc}, built on price strength, product popularity and store reputation.<br><b>Frenzy Verified</b> · this exact price is the lowest we've seen at this store in 90 days.</span>
+        </div>
       </div>
-      ${votes(d)}
+      ${votes()}
     </div>
     <div class="vbar" onclick="event.stopPropagation();openSheet()">${ic('check',15,2)}<span><b>Frenzy Verified</b> <span class="sub2">· lowest in 90 days</span></span><span class="info">${ic('info',13,1.8)}</span></div>
   </div>`;
 }
 function dealRow(d){
   const chip=insightChip(d);
-  const coupon=hasCpn(d);
   return `<div class="deal" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
     <div class="thumbwrap"><div class="thumb">${ic(d.i,28)}</div>${rklock(d)}</div>
     <div class="dinfo">
-      <div class="drow1"><div class="t">${d.t}</div>${chip||(coupon?`<span class="cpn">${ic('ticket',10,2)}Coupon</span>`:'')}</div>
-      <div class="m">${d.s}${chip&&coupon?`<span class="cpn sm">${ic('ticket',9,2)}Coupon</span>`:''}</div>
-      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="offsm">${offTxt(d.p,d.w)}</span></div>
+      <div class="t">${d.t}</div>
+      <div class="m">${d.s}${cpico(d)}</div>
+      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
+      ${chip?`<div class="chipline">${chip}</div>`:''}
       <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',11,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',10,1.8)}</span></div>
     </div>
-    ${votes(d)}
+    ${votes()}
   </div>`;
+}
+
+/* ===== Category tabs (option A: one row + All categories panel) ===== */
+const TOPCATS=['Electronics',"Women's Fashion","Men's Fashion",'Appliances','Toys & Games','Beauty & Personal Care','Kitchen'];
+function tabsHtml(sel,fn,panelId){
+  const esc=s=>s.replace(/'/g,"\\'");
+  const extra=(sel!=='All'&&!TOPCATS.includes(sel))?[sel]:[];
+  return [`<button class="chip${sel==='All'?' on':''}" onclick="${fn}('All')">All</button>`]
+    .concat(extra.map(c=>`<button class="chip on" onclick="${fn}('${esc(c)}')">${c}</button>`))
+    .concat(TOPCATS.map(c=>`<button class="chip${c===sel?' on':''}" onclick="${fn}('${esc(c)}')">${c}</button>`))
+    .concat([`<button class="chip" onclick="togglePanel('${panelId}')">All categories ▾</button>`]).join('');
+}
+function renderPanel(panelId,fn){
+  const esc=s=>s.replace(/'/g,"\\'");
+  document.getElementById(panelId).innerHTML=CATS23.map(([c])=>
+    `<span onclick="togglePanel('${panelId}');${fn}('${esc(c)}')">${c}</span>`).join('');
+}
+function togglePanel(id){
+  const p=document.getElementById(id);
+  const open=p.classList.contains('open');
+  document.querySelectorAll('.catpanel').forEach(x=>x.classList.remove('open'));
+  if(!open)p.classList.add('open');
 }
 
 /* ===== Homepage module ===== */
 let homeSel='All';
 function renderHomeTabs(){
-  document.getElementById('home-tabs').innerHTML=LISTCATS.map(c=>
-    `<button class="chip${c===homeSel?' on':''}" onclick="setHomeCat('${c.replace(/'/g,"\\'")}')">${c} <span class="cnt">(${c==='All'?100:20})</span></button>`).join('');
+  document.getElementById('home-tabs').innerHTML=tabsHtml(homeSel,'setHomeCat','panel-home');
 }
 function setHomeCat(c){homeSel=c;renderHomeTabs();renderHomeChart();}
 function renderHomeChart(){
@@ -879,14 +924,14 @@ let listCat='All';
 const initRev=()=>document.getElementById('frame').classList.contains('desktop')?9:5;
 let revealed=5;
 function renderListTabs(){
-  document.getElementById('list-tabs').innerHTML=LISTCATS.map(c=>
-    `<button class="chip${c===listCat?' on':''}" onclick="setListCat('${c.replace(/'/g,"\\'")}')">${c} <span class="cnt">(${c==='All'?100:20})</span></button>`).join('');
+  document.getElementById('list-tabs').innerHTML=tabsHtml(listCat,'setListCat','panel-list');
 }
 function setListCat(c){listCat=c;revealed=initRev();renderListTabs();renderList();}
 function renderList(){
   const list=listFor(listCat);
   const n=Math.min(revealed,list.length);
   document.getElementById('chart').innerHTML=heroCard(list[0],listCat)+list.slice(1,n).map(dealRow).join('');
+  document.getElementById('lh-txt').textContent=listCat==='All'?'THE FRENZY 100':'THE FRENZY 20 · '+listCat.toUpperCase();
   updateMore(list);
 }
 function updateMore(list){
@@ -985,6 +1030,8 @@ function showView(v){
 
 renderHomeTabs();renderHomeChart();
 renderListTabs();renderList();
+renderPanel('panel-home','setHomeCat');
+renderPanel('panel-list','setListCat');
 setShopBy('cat');
 
 let toastTimer;
