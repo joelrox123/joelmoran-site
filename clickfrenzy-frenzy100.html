@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>The Frenzy 100 · Click Frenzy Concept</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,500;9..40,700;9..40,800;9..40,900&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
   :root{
-    --font-display:'Passion One',-apple-system,system-ui,sans-serif;
-    --font-ui:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --font-display:'Archivo Black',-apple-system,system-ui,sans-serif; /* BBH Hegarty stand-in — marketing banners only */
+    --font-head:'DM Sans',-apple-system,system-ui,sans-serif;          /* section headings */
+    --font-ui:'Manrope',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --ink:#15151c;--pink:#ff2d78;--pink-deep:#c5005f;--pink-text:#c5005f;
     --maroon:#7a1541;
     --teal:#0bb6a4;--teal-deep:#078e88;--yellow:#ffce33;
@@ -55,7 +56,7 @@
   .bbscroll::-webkit-scrollbar{display:none;}
   .bb2{flex:0 0 84%;scroll-snap-align:start;border-radius:20px;background:linear-gradient(155deg,#e8146e 0%,#a30a50 60%,#7a1541 100%);color:#fff;padding:20px 18px;box-shadow:0 8px 22px rgba(255,45,120,.12);}
   .bb2 .k{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
-  .bb2 h2{font-family:var(--font-display);font-weight:900;font-size:44px;line-height:.85;letter-spacing:.5px;text-transform:uppercase;margin-top:4px;}
+  .bb2 h2{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;letter-spacing:0;text-transform:uppercase;margin-top:6px;}
   .bb2 h2 .hl{color:var(--pink);}
   .bb2 ul{list-style:none;margin-top:14px;}
   .bb2 li{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;line-height:2;}
@@ -65,7 +66,7 @@
   .sec-h{display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;gap:10px;}
   .sec-h .lft{display:flex;align-items:center;gap:8px;min-width:0;}
   .sec-h .ico{color:var(--pink-text);}
-  .sec-h h3{font-weight:800;font-size:17px;letter-spacing:-.3px;white-space:nowrap;}
+  .sec-h h3{font-family:var(--font-head);font-weight:800;font-size:17px;letter-spacing:-.3px;white-space:nowrap;}
   .sec-h .sub{font-size:11.5px;color:var(--muted);font-weight:500;margin-top:1px;}
   .sec-h a{font-size:12px;font-weight:700;color:var(--pink-text);text-decoration:none;cursor:pointer;white-space:nowrap;}
 
@@ -73,7 +74,7 @@
   .ticker .tk{display:inline-block;animation:tick 16s linear infinite;}
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .listhead{text-align:center;padding:18px 22px 0;}
-  .listhead .lh-title{display:flex;align-items:center;justify-content:center;gap:7px;font-weight:900;font-size:23px;letter-spacing:-.5px;}
+  .listhead .lh-title{display:flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font-head);font-weight:900;font-size:23px;letter-spacing:-.5px;}
   .listhead .lh-title svg{color:var(--pink-text);}
   .listhead p{font-size:12px;color:var(--muted);font-weight:600;line-height:1.55;margin-top:7px;}
   .listhead p a{color:var(--pink-text);font-weight:800;text-decoration:none;cursor:pointer;}
@@ -160,7 +161,10 @@
   .why svg{color:var(--teal-deep);min-width:16px;margin-top:1px;}
   .why b{font-weight:800;color:var(--teal-deep);}
   .phone.desktop .vbar{display:none;}
-  .perks{display:flex;gap:10px;margin-top:6px;font-size:10px;font-weight:700;color:var(--teal-deep);flex-wrap:wrap;}
+  .perks{display:none;gap:10px;margin-top:6px;font-size:10px;font-weight:700;color:var(--teal-deep);flex-wrap:wrap;}
+  .phone.desktop .perks{display:flex;}
+  .slogo{display:none!important;}
+  .phone.desktop .slogo{display:flex!important;}
   .hero-side{display:none;flex-direction:column;gap:10px;justify-content:center;width:250px;}
   .phone.desktop .hero-side{display:flex;}
   .spark{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px;}
@@ -169,8 +173,6 @@
   .spark .sfoot{font-size:10px;font-weight:700;color:var(--ink);margin-top:5px;}
   .spark .sfoot span{color:var(--teal-deep);}
   .getdeal{background:var(--pink);color:#fff;font-weight:800;font-size:13px;border:0;border-radius:100px;padding:13px;cursor:pointer;width:100%;}
-  .getdeal.mob{display:block;margin-top:11px;}
-  .phone.desktop .getdeal.mob{display:none;}
   .vbar{margin-top:11px;background:var(--ink);color:#fff;border-radius:100px;padding:8px 13px;display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;}
   .vbar svg{color:var(--teal);min-width:14px;}
   .vbar b{font-weight:800;}
@@ -206,7 +208,7 @@
   .passcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(255,45,120,.10);}
   .passhead{background:linear-gradient(155deg,#e8146e 0%,#a30a50 70%);color:#fff;text-align:center;padding:16px 14px 14px;}
   .passhead .k{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;}
-  .passhead h2{font-family:var(--font-display);font-weight:900;font-size:38px;line-height:.85;letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+  .passhead h2{font-family:var(--font-display);font-weight:400;font-size:30px;line-height:.95;letter-spacing:.5px;text-transform:uppercase;margin-top:2px;}
   .passtick{background:#fff5f9;color:var(--pink-text);overflow:hidden;white-space:nowrap;padding:5px 0;font-size:9px;font-weight:800;letter-spacing:1px;}
   .passtick .tk{display:inline-block;animation:tick 12s linear infinite;}
   .passbens{display:flex;justify-content:space-around;padding:16px 12px 6px;}
@@ -218,7 +220,7 @@
   .passcta .pl{flex:1;text-align:center;font-weight:800;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--pink-text);}
 
   .cta-band{margin:26px 14px 0;background:var(--ink);border-radius:20px;padding:18px 16px;}
-  .cta-band h3{font-family:var(--font-display);font-weight:900;font-size:26px;line-height:.9;letter-spacing:.5px;text-transform:uppercase;color:#fff;}
+  .cta-band h3{font-family:var(--font-display);font-weight:400;font-size:21px;line-height:1.05;letter-spacing:.3px;text-transform:uppercase;color:#fff;}
   .cta-band h3 span{color:var(--pink);}
   .cta-band p{font-size:11.5px;color:#a0a0ac;margin-top:6px;line-height:1.5;font-weight:500;}
   .cta-primary{font-weight:800;font-size:13px;background:var(--pink);color:#fff;border:0;border-radius:100px;padding:11px 20px;cursor:pointer;margin-top:12px;}
@@ -235,13 +237,13 @@
   /* ============ How-it-works (dark magenta, sheet + page) ============ */
   .fsx{background:linear-gradient(180deg,#a31150 0%,#6f0d38 100%);color:#fff;}
   .fs-head{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 18px 0;gap:10px;}
-  .fs-title{font-family:var(--font-display);font-weight:900;font-size:32px;line-height:.9;letter-spacing:.5px;text-transform:uppercase;color:#fff;}
+  .fs-title{font-family:var(--font-display);font-weight:400;font-size:24px;line-height:1.05;letter-spacing:.3px;text-transform:uppercase;color:#fff;}
   .fs-x{width:30px;height:30px;min-width:30px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;}
   .fs-sub{font-size:12.5px;color:rgba(255,255,255,.85);line-height:1.55;padding:10px 18px 0;font-weight:500;}
   .fs-sub b{color:#fff;font-weight:800;}
   .fs-panel{background:rgba(255,255,255,.13);border-radius:22px;padding:16px;display:flex;gap:15px;align-items:center;margin:16px 18px 0;}
   .fs-circ{min-width:78px;width:78px;height:78px;border-radius:50%;background:#fff;color:var(--pink-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .fs-circ .n{font-family:var(--font-display);font-weight:900;font-size:30px;line-height:1;}
+  .fs-circ .n{font-family:var(--font-ui);font-weight:800;font-size:28px;line-height:1;}
   .fs-circ .l{font-size:7.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;margin-top:1px;}
   .fs-list{list-style:none;}
   .fs-list li{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:rgba(255,255,255,.88);line-height:1.5;margin-bottom:7px;font-weight:500;}
@@ -337,6 +339,73 @@
   .phone.desktop .sheet.open{transform:translate(-50%,0);}
   .phone.desktop #v-explain .fs-wrap{max-width:680px;margin:0 auto;}
 
+  /* Pass v2 */
+  .passhead{position:relative;}
+  .passhead .cur,.pf-head .cur{position:absolute;left:10px;top:8px;width:66px;transform:rotate(-6deg);filter:drop-shadow(0 5px 9px rgba(0,0,0,.35));}
+  .passcta{position:relative;overflow:hidden;user-select:none;touch-action:pan-y;}
+  .passcta .zap{transition:transform .18s ease;will-change:transform;}
+  .member{display:flex;align-items:center;gap:9px;margin:12px 14px 14px;background:#effbf9;border:1.5px solid var(--teal);border-radius:100px;padding:12px 16px;font-weight:800;font-size:12px;color:var(--teal-deep);justify-content:center;}
+  .passform{position:absolute;left:12px;right:12px;bottom:12px;max-height:90%;border-radius:24px 24px 0 0;transform:translateY(115%);transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility .32s;z-index:72;overflow:hidden;visibility:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,#a31150,#6f0d38);}
+  .passform.open{transform:none;visibility:visible;}
+  .phone.desktop .passform{left:50%;right:auto;bottom:0;width:min(480px,92%);transform:translate(-50%,115%);}
+  .phone.desktop .passform.open{transform:translate(-50%,0);}
+  .pf-scroll{overflow-y:auto;scrollbar-width:none;}
+  .pf-head{position:relative;text-align:center;padding:20px 14px 12px;color:#fff;}
+  .pf-head .k{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;}
+  .pf-head h2{font-family:var(--font-display);font-size:26px;text-transform:uppercase;line-height:.95;margin-top:2px;}
+  .pf-x{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;}
+  .pf-tick{background:rgba(0,0,0,.2);color:#fff;overflow:hidden;white-space:nowrap;padding:6px 0;font-size:9px;font-weight:800;letter-spacing:.6px;}
+  .pf-tick .tk{display:inline-block;animation:tick 14s linear infinite;}
+  .pf-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:9px;}
+  .pf-body input{border:0;border-radius:12px;padding:13px 14px;font-size:13px;font-family:var(--font-ui);font-weight:600;background:#fff;color:var(--ink);outline:none;}
+  .pf-note{font-size:9.5px;color:rgba(255,255,255,.75);font-weight:600;}
+  .pf-cta{background:var(--ink);color:#fff;border:0;border-radius:100px;padding:14px;font-weight:800;font-size:13px;letter-spacing:.4px;cursor:pointer;margin-top:3px;}
+
+  /* Coupons v2 */
+  .cpnband{background:linear-gradient(160deg,#ffe9f3,#fff7fb);border-radius:16px;padding:14px 16px;margin-bottom:4px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+  .cpnband h3{font-family:var(--font-head);font-weight:800;font-size:16px;}
+  .cpnband .csub{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--muted);margin-top:3px;}
+  .cpnband .csub svg{color:var(--pink-text);}
+  .cpnband a{font-size:11.5px;font-weight:700;color:var(--pink-text);white-space:nowrap;cursor:pointer;margin-top:3px;}
+  .ccard{position:relative;min-width:212px;max-width:212px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 12px 12px;margin-top:10px;}
+  .ccard .fx{position:absolute;top:-8px;left:10px;background:var(--pink);color:#fff;font-size:8px;font-weight:800;letter-spacing:.6px;border-radius:100px;padding:3px 9px;text-transform:uppercase;}
+  .ccard .crow{display:flex;gap:9px;align-items:flex-start;}
+  .ccard .clogo{width:34px;height:34px;min-width:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:10px;}
+  .ccard .coff{font-size:13px;font-weight:800;}
+  .ccard .coff b{color:var(--pink-text);}
+  .ccard .cq{font-size:10px;font-weight:700;color:var(--teal-deep);margin-top:1px;}
+  .ccard .cd{font-size:9.5px;color:var(--muted);font-weight:500;margin-top:2px;}
+  .ccard .cbot{display:flex;align-items:center;justify-content:space-between;margin-top:11px;gap:8px;}
+  .ccard .mask{letter-spacing:3px;color:var(--muted);font-weight:800;font-size:12px;}
+  .ccard .code{font-weight:800;font-size:11px;color:var(--pink-text);border:1.5px dashed var(--pink);border-radius:8px;padding:4px 9px;}
+  .ccard .showc{background:var(--pink);color:#fff;border:0;border-radius:100px;font-weight:800;font-size:10.5px;padding:8px 14px;cursor:pointer;}
+
+  /* Trending round logos */
+  .rstore{min-width:88px;text-align:center;cursor:pointer;}
+  .rlogo{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;margin:0 auto;position:relative;}
+  .rtr{position:absolute;top:-5px;right:-9px;background:#dff7ef;color:#067a5b;font-size:8.5px;font-weight:800;border-radius:100px;padding:2px 6px;border:1px solid #bfe8e2;}
+  .rstore .rn{font-size:10.5px;font-weight:700;margin-top:6px;}
+  .rstore .roff{display:inline-block;margin-top:4px;background:var(--pink);color:#fff;font-size:8.5px;font-weight:800;border-radius:100px;padding:3px 8px;}
+
+  /* Store product carousels */
+  .slogohead{width:30px;height:30px;min-width:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:11px;}
+  .pcard{min-width:140px;max-width:140px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:9px;cursor:pointer;}
+  .pcard .pimg{position:relative;height:86px;background:var(--imgbg);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+  .pcard .pimg .insight{position:absolute;top:6px;left:6px;font-size:8px;padding:2px 7px;}
+  .pcard .pt{font-size:10.5px;font-weight:700;line-height:1.3;margin-top:7px;min-height:27px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .pcard .pp{margin-top:4px;display:flex;align-items:center;gap:5px;}
+  .pcard .pp .now{font-weight:800;font-size:13px;color:var(--pink-text);}
+  .pcard .pp .was{font-size:9.5px;}
+  .votes.row{flex-direction:row;align-self:flex-start;margin-top:6px;}
+  .votes.row .v-up{border-bottom:0;border-right:1px solid var(--line);padding:6px 10px;}
+  .votes.row .v-dn{padding:6px 10px;}
+
+  /* Desktop full-width marketing banners */
+  .phone.desktop .bbscroll{padding:0;max-width:none;gap:0;margin:0;}
+  .phone.desktop .bb2{flex:0 0 100%;border-radius:0;min-height:250px;display:flex;flex-direction:column;justify-content:center;padding:34px 64px;box-shadow:none;}
+  .phone.desktop .bb2 h2{font-size:52px;}
+  .phone.desktop .bb2 ul li{font-size:13px;}
+
   /* Chip library */
   .chipdoc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:flex;gap:16px;align-items:flex-start;}
   .chipdoc .cd-chip{min-width:158px;display:flex;flex-direction:column;gap:7px;align-items:flex-start;}
@@ -368,6 +437,11 @@
   <span class="sw">
     <button id="dev-mobile" class="on" onclick="setDevice('mobile')">Mobile</button>
     <button id="dev-desktop" onclick="setDevice('desktop')">Desktop</button>
+  </span>
+  State
+  <span class="sw">
+    <button id="st-out" class="on" onclick="setLogin(false)">Logged out</button>
+    <button id="st-in" onclick="setLogin(true)">Logged in</button>
   </span>
 </div>
 
@@ -460,29 +534,23 @@
       </div>
 
       <div class="sec">
-        <div class="sec-h"><div class="lft"><div><h3>Trending stores</h3><div class="sub">Climbing the charts this hour.</div></div></div><a onclick="toast('All stores — coming in the full build')">See all →</a></div>
+        <div class="sec-h"><div class="lft"><div><h3>Trending stores</h3><div class="sub">Climbing the charts this hour.</div></div></div><a onclick="toast('All retailers — coming in the full build')">See all retailers</a></div>
         <div class="rail" id="trend-rail"></div>
       </div>
 
+      <div class="sec" id="car-amazon"></div>
+      <div class="sec" id="car-iconic"></div>
+
       <div class="sec">
-        <div class="sec-h"><div class="lft"><div><h3>Coupons</h3><div class="sub">Stack these on top of sale prices.</div></div></div><a onclick="toast('All coupons — coming in the full build')">See all →</a></div>
+        <div class="cpnband">
+          <div><h3>Coupons and Promo Codes</h3><div class="csub" id="cpn-sub"></div></div>
+          <a onclick="toast('All discount codes — coming in the full build')">View all discount codes</a>
+        </div>
         <div class="rail" id="coupon-rail"></div>
       </div>
 
       <div class="sec">
-        <div class="passcard">
-          <div class="passhead"><div class="k">Unlock your</div><h2>Frenzy Pass</h2></div>
-          <div class="passtick"><div class="tk">NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸&nbsp;</div></div>
-          <div class="passbens">
-            <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></div><div class="pbl">Early Access</div></div>
-            <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div><div class="pbl">Exclusive promotions</div></div>
-            <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg></div><div class="pbl">Discounts &amp; deals</div></div>
-          </div>
-          <div class="passcta" onclick="toast('Frenzy Pass — coming in the full build')">
-            <span class="zap"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
-            <span class="pl">Get your free pass now ▸▸</span>
-          </div>
-        </div>
+        <div class="passcard" id="passcard"></div>
       </div>
 
       <div class="sec">
@@ -689,8 +757,29 @@
       </div>
     </div>
 
+    <!-- Frenzy Pass signup form -->
+    <div class="passform" id="passform">
+      <div class="pf-scroll">
+        <div class="pf-head">
+          <span class="cur" id="pf-cur"></span>
+          <div class="pf-x" onclick="closePassForm()"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+          <div class="k">Unlock your</div>
+          <h2>Frenzy Pass</h2>
+        </div>
+        <div class="pf-tick"><div class="tk">EARLY ACCESS ✓&nbsp;&nbsp;SECRET COUPONS ✓&nbsp;&nbsp;WEEKLY PRIZES ✓&nbsp;&nbsp;DROP ALERTS ✓&nbsp;&nbsp;EARLY ACCESS ✓&nbsp;&nbsp;SECRET COUPONS ✓&nbsp;&nbsp;WEEKLY PRIZES ✓&nbsp;&nbsp;DROP ALERTS ✓&nbsp;&nbsp;</div></div>
+        <div class="pf-body">
+          <input type="text" placeholder="First Name">
+          <input type="text" placeholder="Last Name">
+          <input type="email" placeholder="Email">
+          <input type="tel" placeholder="Mobile Number">
+          <div class="pf-note">We'll text a code to confirm your number.</div>
+          <button class="pf-cta" onclick="passSignup()">GET MY FREE PASS NOW ▸▸</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Half-page sheet -->
-    <div class="overlay" id="overlay" onclick="closeSheet()"></div>
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
     <div class="sheet fsx" id="sheet">
       <div class="grab"></div>
       <div class="shscroll">
@@ -932,7 +1021,6 @@ function heroCard(d,cat){
         <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
         <div class="chipline">${insightChip(d)}</div>
         <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
-        <button class="getdeal mob" onclick="event.stopPropagation();toast('Off to ${d.s.replace(/'/g,"\\'")} →')">Get this deal →</button>
       </div>
       <div class="hero-side">
         <div class="why" onclick="event.stopPropagation();openSheet()">
@@ -1048,22 +1136,130 @@ function setShopBy(mode){
   }
 }
 
-/* ===== Trending + coupons ===== */
-document.getElementById('trend-rail').innerHTML=[['Mecca','▲ 3'],['JB Hi-Fi','▲ 2'],['Kmart','▲ 5'],['The Iconic','▲ 1'],['Amazon AU','▲ 4'],['rebel','▲ 2']].map(([n,t])=>
-  `<div class="store-tile2" onclick="toast('${n} store page — coming in the full build')"><span class="tr">${t}</span><span class="wm">${n}</span><span class="ct">Trending</span></div>`).join('');
+/* ===== Logged in/out state ===== */
+let loggedIn=false;
+const CURSOR=`<svg viewBox="0 0 64 64" width="100%" height="100%"><defs><linearGradient id="curg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7ab5"/><stop offset=".5" stop-color="#ff2d78"/><stop offset="1" stop-color="#8e0a44"/></linearGradient></defs><path d="M14 6 L14 50 L26 39 L33 56 L41 52 L34 36 L50 35 Z" fill="url(#curg)" stroke="#ffd1e6" stroke-width="2.5" stroke-linejoin="round"/></svg>`;
+function setLogin(v){
+  loggedIn=v;
+  document.getElementById('st-out').classList.toggle('on',!v);
+  document.getElementById('st-in').classList.toggle('on',v);
+  renderPass();renderCoupons();
+}
 
-document.getElementById('coupon-rail').innerHTML=[
-  {s:'Myer',o:'Extra 20% off sale styles',c:'FRENZY20'},
-  {s:'The Iconic',o:'25% off full price',c:'ICONIC25'},
-  {s:'Adore Beauty',o:'Free shipping, no minimum',c:'SHIPFREE'},
-  {s:'rebel',o:'$20 off when you spend $100+',c:'Pass members only',locked:true},
-].map(cn2=>
-  `<div class="coupon-card">
-    <div class="chd">${ic('ticket',14,1.8)}${cn2.s}</div>
-    <div class="off2">${cn2.o}</div>
-    <div class="cdesc">Stacks with sale prices at checkout.</div>
-    <span class="codechip${cn2.locked?' locked':''}" onclick="toast('${cn2.locked?'Unlock with Frenzy Pass':cn2.c+' copied ✓'}')">${ic(cn2.locked?'lock':'ticket',11,1.8)}${cn2.c}</span>
+/* ===== Frenzy Pass card ===== */
+function renderPass(){
+  const el=document.getElementById('passcard');
+  const bens=`<div class="passbens">
+    <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></div><div class="pbl">Early Access</div></div>
+    <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg></div><div class="pbl">Exclusive promotions</div></div>
+    <div class="pb"><div class="pbi"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11V4a1 1 0 0 1 1-1h7l9 9-8 8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg></div><div class="pbl">Discounts &amp; deals</div></div>
+  </div>`;
+  if(!loggedIn){
+    el.innerHTML=`<div class="passhead"><span class="cur">${CURSOR}</span><div class="k">Unlock your</div><h2>Frenzy Pass</h2></div>
+      <div class="passtick"><div class="tk">NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸ NO APP NEEDED! ▸▸ FREE! ▸▸&nbsp;</div></div>
+      ${bens}
+      <div class="passcta" id="passcta">
+        <span class="zap" id="passknob"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
+        <span class="pl">Swipe to get your pass ▸▸</span>
+      </div>`;
+    initSwipe();
+  } else {
+    el.innerHTML=`<div class="passhead"><span class="cur">${CURSOR}</span><div class="k">Your</div><h2>Frenzy Pass</h2></div>
+      <div class="passtick"><div class="tk">MEMBER ✓ ▸▸ ACTIVE ✓ ▸▸ MEMBER ✓ ▸▸ ACTIVE ✓ ▸▸ MEMBER ✓ ▸▸ ACTIVE ✓ ▸▸ MEMBER ✓ ▸▸ ACTIVE ✓ ▸▸&nbsp;</div></div>
+      ${bens}
+      <div class="member">✓ Frenzy Pass active · drop alerts on</div>`;
+  }
+}
+function initSwipe(){
+  const cta=document.getElementById('passcta'),knob=document.getElementById('passknob');
+  if(!cta||!knob)return;
+  let sx=null;
+  knob.addEventListener('pointerdown',e=>{sx=e.clientX;knob.setPointerCapture(e.pointerId);e.stopPropagation();});
+  knob.addEventListener('pointermove',e=>{
+    if(sx===null)return;
+    const max=cta.clientWidth-52;
+    knob.style.transform=`translateX(${Math.min(Math.max(0,e.clientX-sx),max)}px)`;
+  });
+  knob.addEventListener('pointerup',()=>{sx=null;knob.style.transform='';openPassForm();});
+  cta.addEventListener('click',()=>openPassForm());
+}
+function openPassForm(){
+  document.getElementById('pf-cur').innerHTML=CURSOR;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('passform').classList.add('open');
+}
+function closePassForm(){
+  document.getElementById('passform').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+function passSignup(){
+  setLogin(true);
+  closePassForm();
+  toast("You're in — Frenzy Pass active ✓");
+}
+function closeAll(){closeSheet();closePassForm();}
+
+/* ===== Trending stores (round logos) ===== */
+document.getElementById('trend-rail').innerHTML=[
+ ['LEGO','#d32f2f','▲3','Up to 50%'],['Adidas','#111111','▲2','Up to 50%'],['Sportsgirl','#c2185b','▲5','Up to 30%'],
+ ['Country Road','#55555f','▲1','40% off'],['Mecca','#15151c','▲4','Up to 60%'],['JB Hi-Fi','#e6b800','▲2','Up to 50%'],
+].map(([n,c,t,o])=>
+  `<div class="rstore" onclick="toast('${n} store page — coming in the full build')">
+    <div class="rlogo" style="background:${c}">${n.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()}<span class="rtr">${t}</span></div>
+    <div class="rn">${n}</div>
+    <span class="roff">${o}</span>
   </div>`).join('');
+
+/* ===== Store product carousels ===== */
+const votesRow=()=>`<div class="votes row"><span class="v-up" onclick="vote(event,this)">${ic('tup',12,1.8)}</span><span class="v-dn" onclick="vote(event,this)">${ic('tdn',12,1.8)}</span></div>`;
+function renderCar(elId,label,color,match){
+  const items=deals.filter(d=>match.includes(d.s)).slice(0,8);
+  document.getElementById(elId).innerHTML=
+   `<div class="sec-h">
+      <div class="lft"><span class="slogohead" style="background:${color}">${label.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()}</span><h3>${label}</h3></div>
+      <a onclick="toast('${label} store page — coming in the full build')">See all →</a>
+    </div>
+    <div class="rail">${items.map(d=>
+     `<div class="pcard" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
+        <div class="pimg">${ic(d.i,26)}${insightChip(d)}</div>
+        <div class="pt">${d.t}</div>
+        <div class="pp tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
+        ${votesRow()}
+      </div>`).join('')}</div>`;
+}
+function renderCarousels(){
+  renderCar('car-amazon','Amazon','#232f3e',['Amazon AU']);
+  renderCar('car-iconic','THE ICONIC','#111111',['The Iconic','THE ICONIC']);
+}
+
+/* ===== Coupons and promo codes ===== */
+const CPS=[
+ {b:'GE Appliances',c:'#1f4e9c',off:'20% Off',scope:'Sitewide',q:'Appliances only ✓',code:'GE20'},
+ {b:'Booktopia',c:'#0a7d4f',off:'50% Off',scope:'Bestsellers',q:'Selected titles ✓',code:'BOOK50'},
+ {b:'Sukin Naturals',c:'#b9a97c',off:'15% Off',scope:'Sitewide',q:'Sukin Naturals ✓',code:'SUKIN15'},
+ {b:'Myer',c:'#15151c',off:'$20 Off',scope:'$100+ spend',q:'Members only ✓',code:'MYER20'},
+];
+function renderCoupons(){
+  document.getElementById('cpn-sub').innerHTML=loggedIn
+    ?`${ic('check',12,2)} Unlocked with your Frenzy Pass`
+    :`${ic('lock',12,2)} Frenzy Pass exclusive, free to unlock`;
+  document.getElementById('coupon-rail').innerHTML=CPS.map(cp2=>
+   `<div class="ccard">
+      <span class="fx">Frenzy Exclusive</span>
+      <div class="crow">
+        <span class="clogo" style="background:${cp2.c}">${cp2.b.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()}</span>
+        <div>
+          <div class="coff"><b>${cp2.off}</b> ${cp2.scope}</div>
+          <div class="cq">${cp2.q}</div>
+          <div class="cd">${cp2.b} · stacks with sale prices at checkout</div>
+        </div>
+      </div>
+      <div class="cbot">
+        ${loggedIn?`<span class="code">${cp2.code}</span><button class="showc" onclick="toast('${cp2.code} copied ✓')">Copy Code</button>`
+                  :`<span class="mask">✱✱✱✱✱✱</span><button class="showc" onclick="openPassForm()">Show Code</button>`}
+      </div>
+    </div>`).join('');
+}
 
 /* ===== Desktop header ===== */
 document.getElementById('dtbar').innerHTML=
@@ -1097,7 +1293,7 @@ function closeSheet(){
   document.getElementById('sheet').classList.remove('open');
 }
 function showView(v){
-  closeSheet();
+  closeAll();
   ['home','list','explain','chips'].forEach(k=>{
     document.getElementById('v-'+k).classList.toggle('on',k===v);
     document.getElementById('nav-'+k).classList.toggle('on',k===v);
@@ -1110,6 +1306,7 @@ renderListTabs();renderList();
 renderPanel('panel-home','setHomeCat');
 renderPanel('panel-list','setListCat');
 setShopBy('cat');
+renderPass();renderCoupons();renderCarousels();
 
 let toastTimer;
 function toast(msg){
