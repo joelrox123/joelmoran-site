@@ -337,6 +337,13 @@
   .phone.desktop .sheet.open{transform:translate(-50%,0);}
   .phone.desktop #v-explain .fs-wrap{max-width:680px;margin:0 auto;}
 
+  /* Chip library */
+  .chipdoc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;display:flex;gap:16px;align-items:flex-start;}
+  .chipdoc .cd-chip{min-width:158px;display:flex;flex-direction:column;gap:7px;align-items:flex-start;}
+  .chipdoc .cd-name{font-weight:800;font-size:13px;}
+  .chipdoc .cd-desc{font-size:11.5px;color:var(--muted);line-height:1.55;font-weight:500;margin-top:2px;}
+  .chipdoc .cd-pr{font-size:9px;font-weight:800;color:var(--pink-text);letter-spacing:.6px;text-transform:uppercase;margin-bottom:2px;}
+  .phone.desktop #v-chips .sec{max-width:720px;}
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#23232c;color:#fff;font-size:12px;font-weight:600;border-radius:100px;padding:11px 20px;transition:transform .25s ease;z-index:90;white-space:nowrap;border:1px solid #34343e;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
@@ -355,6 +362,7 @@
     <button id="nav-home" class="on" onclick="showView('home')">Homepage</button>
     <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
     <button id="nav-explain" onclick="showView('explain')">How it works</button>
+    <button id="nav-chips" onclick="showView('chips')">Insight chips</button>
   </span>
   Device
   <span class="sw">
@@ -626,6 +634,58 @@
           <div><h5>Company</h5><a>About</a><a>Contact</a><a>FAQ</a><a>Careers</a></div>
         </div>
         <div class="legal">Frenzy Scores are Click Frenzy's own assessment and no retailer can pay to change them.<br>© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs.</div>
+      </div>
+    </div>
+
+    <!-- ================= VIEW: INSIGHT CHIP LIBRARY ================= -->
+    <div class="view" id="v-chips">
+      <div class="listhead">
+        <div class="lh-title"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>FRENZY INSIGHTS CHIPS</div>
+        <p>Driven by our price tracking. One chip per product, highest priority wins. These replace "% off RRP" as the deal signal.</p>
+      </div>
+
+      <div class="sec" style="margin-top:16px;">
+        <div class="stack">
+          <div class="chipdoc">
+            <div class="cd-chip"><span class="cd-pr">Priority 1</span><span class="insight hot"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>HOT Deal</span></div>
+            <div><div class="cd-name">HOT Deal</div><div class="cd-desc">Our pick of the very best deals live right now. The only filled chip, and rare by design: if everything is hot, nothing is.</div></div>
+          </div>
+          <div class="chipdoc">
+            <div class="cd-chip"><span class="cd-pr">Priority 2</span><span class="insight ever">Lowest price ever</span></div>
+            <div><div class="cd-name">Lowest price ever</div><div class="cd-desc">The lowest price we've ever tracked for this product at this store. The king claim, and only we can make it.</div></div>
+          </div>
+          <div class="chipdoc">
+            <div class="cd-chip"><span class="cd-pr">Priority 3</span><span class="insight cheapest">Cheapest online</span></div>
+            <div><div class="cd-name">Cheapest online</div><div class="cd-desc">Beats every other store we track right now, across 1,200+ stores. The market-comparison check made visible.</div></div>
+          </div>
+          <div class="chipdoc">
+            <div class="cd-chip"><span class="cd-pr">Priority 4</span><span class="insight dropped">▼ Just dropped</span></div>
+            <div><div class="cd-name">Just dropped</div><div class="cd-desc">The price fell within the last 24 hours. Freshness and urgency, verified by our monitoring.</div></div>
+          </div>
+          <div class="chipdoc">
+            <div class="cd-chip">
+              <span class="cd-pr">Priority 5</span>
+              <span class="insight daylow">✓ 30-day low</span>
+              <span class="insight daylow">✓ 45-day low</span>
+              <span class="insight daylow">✓ 60-day low</span>
+              <span class="insight daylow">✓ 90-day low</span>
+              <span class="insight daylow">✓ 120-day low</span>
+            </div>
+            <div><div class="cd-name">N-day low</div><div class="cd-desc">The lowest price at this store in the period shown: 30, 45, 60, 90 or 120 days. Part of the Frenzy Verified family — the tick carries through.</div></div>
+          </div>
+          <div class="chipdoc" style="background:#effbf9;border-color:#bfe8e2;">
+            <div class="cd-chip"><span class="cd-pr" style="color:var(--teal-deep);">Rules</span></div>
+            <div><div class="cd-desc" style="color:var(--ink);font-weight:600;">One chip per product, maximum. Highest priority wins. Outline style only, except HOT Deal. Every claim must be verifiable from our own price tracking: no "sale ends soon", no "selling fast", and never a claim against RRP.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer" style="margin-top:26px;">
+        <div class="fcols">
+          <div><h5>Shop</h5><a onclick="showView('list')">The Frenzy 100</a><a>All stores</a><a>Categories</a><a>Promo codes</a></div>
+          <div><h5>Company</h5><a>About</a><a onclick="showView('explain')">How scoring works</a><a>Contact</a><a>FAQ</a></div>
+        </div>
+        <div class="legal">Frenzy Insights chips are generated from Click Frenzy's own price monitoring. No retailer can pay for a chip.<br>© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs.</div>
       </div>
     </div>
 
@@ -1038,7 +1098,7 @@ function closeSheet(){
 }
 function showView(v){
   closeSheet();
-  ['home','list','explain'].forEach(k=>{
+  ['home','list','explain','chips'].forEach(k=>{
     document.getElementById('v-'+k).classList.toggle('on',k===v);
     document.getElementById('nav-'+k).classList.toggle('on',k===v);
   });
