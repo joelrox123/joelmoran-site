@@ -159,6 +159,17 @@
   .why b{font-weight:800;color:var(--teal-deep);}
   .phone.desktop .why{display:flex;}
   .phone.desktop .vbar{display:none;}
+  .perks{display:flex;gap:10px;margin-top:6px;font-size:10px;font-weight:700;color:var(--teal-deep);flex-wrap:wrap;}
+  .hero-side{display:none;flex-direction:column;gap:10px;justify-content:center;width:250px;}
+  .phone.desktop .hero-side{display:flex;}
+  .spark{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:11px 13px;}
+  .spark .sl{font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:6px;}
+  .spark .sl b{color:var(--teal-deep);}
+  .spark .sfoot{font-size:10px;font-weight:700;color:var(--ink);margin-top:5px;}
+  .spark .sfoot span{color:var(--teal-deep);}
+  .getdeal{background:var(--pink);color:#fff;font-weight:800;font-size:13px;border:0;border-radius:100px;padding:13px;cursor:pointer;width:100%;}
+  .getdeal.mob{display:block;margin-top:11px;}
+  .phone.desktop .getdeal.mob{display:none;}
   .vbar{margin-top:11px;background:var(--ink);color:#fff;border-radius:100px;padding:8px 13px;display:flex;align-items:center;gap:8px;font-size:11px;cursor:pointer;}
   .vbar svg{color:var(--teal);min-width:14px;}
   .vbar b{font-weight:800;}
@@ -310,7 +321,7 @@
   .phone.desktop #list-tabs{justify-content:center;flex-wrap:wrap;}
   .phone.desktop .stack{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .phone.desktop .stack>.hero-card{grid-column:1/-1;}
-  .phone.desktop .hero-top{grid-template-columns:300px 1fr auto;}
+  .phone.desktop .hero-top{grid-template-columns:300px 1fr 250px auto;}
   .phone.desktop .hero-img{min-height:210px;}
   .phone.desktop .rail{flex-wrap:wrap;margin:0;padding:2px 0 4px;}
   .phone.desktop .listhead .lh-title{font-size:30px;}
@@ -856,6 +867,7 @@ function heroCard(d,cat){
       <div class="hero-body">
         <div class="t">${d.t}</div>
         <div class="m">${d.s}${cpico(d)}</div>
+        <div class="perks"><span>✓ Free shipping</span><span>✓ Easy returns</span><span>✓ 4.8★ store</span></div>
         <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span></div>
         <div class="chipline">${insightChip(d)}</div>
         <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',12,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',11,1.8)}</span></div>
@@ -863,6 +875,19 @@ function heroCard(d,cat){
           ${ic('check',16,2)}
           <span><b>Why it's #1${cat&&cat!=='All'?' in '+cat:''}:</b> a Frenzy Score of ${d.sc}, built on price strength, product popularity and store reputation.<br><b>Frenzy Verified</b> · this exact price is the lowest we've seen at this store in 90 days.</span>
         </div>
+        <button class="getdeal mob" onclick="event.stopPropagation();toast('Off to ${d.s.replace(/'/g,"\\'")} →')">Get this deal →</button>
+      </div>
+      <div class="hero-side">
+        <div class="spark">
+          <div class="sl"><span>90-day price</span><b>▼ Lowest today</b></div>
+          <svg viewBox="0 0 222 50" width="100%" height="50" fill="none">
+            <polyline points="2,16 24,14 42,20 62,12 82,17 100,11 120,15 138,9 158,14 176,8 196,13 214,40" stroke="#b9b9c2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="2" y1="40" x2="214" y2="40" stroke="#0bb6a4" stroke-width="1" stroke-dasharray="3 4" opacity=".55"/>
+            <circle cx="214" cy="40" r="4" fill="#0bb6a4"/>
+          </svg>
+          <div class="sfoot">Today: ${fmt(d.p)} <span>· 90-day low</span></div>
+        </div>
+        <button class="getdeal" onclick="event.stopPropagation();toast('Off to ${d.s.replace(/'/g,"\\'")} →')">Get this deal →</button>
       </div>
       ${votes()}
     </div>
