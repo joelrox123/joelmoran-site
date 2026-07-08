@@ -497,6 +497,23 @@
   .integrity{display:flex;gap:9px;align-items:flex-start;background:#effbf9;border:1px solid #bfe8e2;border-radius:12px;padding:11px 12px;font-size:10.5px;font-weight:600;color:var(--ink);line-height:1.5;margin-top:12px;}
   .integrity svg{color:var(--teal-deep);min-width:14px;margin-top:1px;}
   .integrity b{color:var(--teal-deep);font-weight:800;}
+  /* Store cover banner (claimed) */
+  .stcover{position:relative;height:150px;background:linear-gradient(115deg,#5c000f 0%,#b3001b 45%,#e4002b 82%,#ff4d38 115%);overflow:hidden;color:#fff;cursor:pointer;display:flex;flex-direction:column;justify-content:center;padding:0 18px;}
+  .stcover::before{content:'';position:absolute;right:-50px;top:-70px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,.09);}
+  .stcover::after{content:'';position:absolute;right:60px;bottom:-100px;width:200px;height:200px;border-radius:50%;background:rgba(0,0,0,.16);}
+  .stcover .cin{position:relative;z-index:1;}
+  .stcover .ck{font-size:9.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;opacity:.85;}
+  .stcover .ch{font-family:var(--font-display);font-weight:400;font-size:32px;line-height:.95;text-transform:uppercase;margin-top:4px;}
+  .stcover .cs{font-size:11.5px;font-weight:700;margin-top:8px;opacity:.95;}
+  .stcover .btag{position:absolute;top:12px;right:14px;z-index:1;background:rgba(0,0,0,.18);}
+  .stcover .cwm{position:absolute;right:18px;bottom:11px;z-index:1;font-family:var(--font-display);font-weight:400;font-size:14px;letter-spacing:1px;text-transform:uppercase;opacity:.92;}
+  .stlogo.lift{width:66px;height:66px;min-width:66px;margin-top:-34px;border:3px solid #fff;box-shadow:0 5px 14px rgba(0,0,0,.18);font-size:22px;position:relative;z-index:2;}
+  .phone.desktop .stcover{height:250px;padding:0 40px;}
+  .phone.desktop .stcover .cin{max-width:1020px;margin:0 auto;width:100%;}
+  .phone.desktop .stcover .ch{font-size:54px;}
+  .phone.desktop .stcover .cs{font-size:13px;}
+  .phone.desktop .stcover .cwm{font-size:20px;right:40px;bottom:16px;}
+  .phone.desktop .stlogo.lift{width:84px;height:84px;min-width:84px;margin-top:-44px;font-size:28px;}
   #v-store .sec{scroll-margin-top:100px;}
   .phone.desktop #v-store .sec{scroll-margin-top:56px;}
 
@@ -1564,10 +1581,10 @@ function renderStoreFeed(){
 
 function renderStoreHead(){
   document.getElementById('st-banner').innerHTML=storeClaimed
-   ?'<div class="stbanner" onclick="toast(\'EOFY Frenzy at '+STORE.name+' - retailer banner click-through\')"><span class="bmark">'+STORE.name+'</span><span class="bmsg">EOFY Frenzy &mdash; up to 60% off tech, ends Sunday</span><span class="btag">Official store</span></div>'
+   ?'<div class="stcover" onclick="toast(\'EOFY Frenzy at '+STORE.name+' - retailer campaign click-through\')"><div class="cin"><div class="ck">'+STORE.name+' official</div><div class="ch">EOFY<br>Frenzy</div><div class="cs">Up to 60% off tech &middot; ends Sunday</div></div><span class="btag">Official store</span><span class="cwm">'+STORE.name+'</span></div>'
    :'<div class="stclaimband">'+ic('info',14,2)+'<span><b>Unclaimed profile.</b> We track '+STORE.name+' automatically.</span><a onclick="toast(\'Claim flow - coming in the full build\')">Is this your store? Claim it free &rarr;</a></div>';
   document.getElementById('st-head').innerHTML='<div class="sthead"><div class="stwrap">'
-  +'<div class="row1"><span class="stlogo">KG</span><div style="flex:1;min-width:0;">'
+  +'<div class="row1"><span class="stlogo'+(storeClaimed?' lift':'')+'">KG</span><div style="flex:1;min-width:0;">'
   +'<div class="stname">'+STORE.name+(storeClaimed?ic('check',17,2.4):'')+'</div>'
   +'<div class="stmeta"><b class="tnum">'+STORE.rating+'</b>'+star+'<span class="tnum">('+STORE.revs+' store reviews)</span><span>&middot;</span><b class="tnum">'+STORE.tracked+'</b><span>deals tracked</span></div>'
   +'<span class="stbadge '+(storeClaimed?'claimed':'unclaimed')+'">'+(storeClaimed?ic('check',9,3)+' Claimed &middot; verified retailer':'Unclaimed store profile')+'</span>'
