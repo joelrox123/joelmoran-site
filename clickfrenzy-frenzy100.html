@@ -416,6 +416,90 @@
   .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(80px);background:#23232c;color:#fff;font-size:12px;font-weight:600;border-radius:100px;padding:11px 20px;transition:transform .25s ease;z-index:90;white-space:nowrap;border:1px solid #34343e;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;}}
+
+  /* ============ Store page ============ */
+  .stbanner{display:flex;align-items:center;gap:10px;padding:11px 14px;background:linear-gradient(100deg,#8f0018 0%,#e4002b 60%,#ff4d38 135%);color:#fff;cursor:pointer;}
+  .stbanner .bmark{font-family:var(--font-display);font-weight:400;font-size:14px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap;}
+  .stbanner .bmsg{font-size:11.5px;font-weight:700;opacity:.95;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .stbanner .btag{font-size:8px;font-weight:800;letter-spacing:.6px;border:1px solid rgba(255,255,255,.55);border-radius:100px;padding:3px 8px;text-transform:uppercase;white-space:nowrap;}
+  .sthead{background:#fff;padding:16px 14px 14px;border-bottom:1px solid var(--line);}
+  .stwrap{max-width:1020px;margin:0 auto;}
+  .sthead .row1{display:flex;gap:12px;align-items:center;}
+  .stlogo{width:54px;height:54px;min-width:54px;border-radius:50%;background:#e4002b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:19px;}
+  .stname{display:flex;align-items:center;gap:6px;font-family:var(--font-head);font-weight:900;font-size:20px;letter-spacing:-.4px;}
+  .stname svg{color:var(--teal);min-width:17px;}
+  .stmeta{font-size:11px;color:var(--muted);font-weight:600;margin-top:3px;display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
+  .stmeta b{color:var(--ink);}
+  .stbadge{display:inline-flex;align-items:center;gap:4px;font-size:8.5px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;border-radius:100px;padding:3px 9px;margin-top:6px;}
+  .stbadge.claimed{background:#effbf9;color:var(--teal-deep);border:1px solid #bfe8e2;}
+  .stbadge.unclaimed{background:#f0f0f4;color:var(--muted);border:1px solid var(--line);}
+  .stbtns{display:flex;gap:8px;margin-top:13px;}
+  .stbtns .visit{flex:1;background:var(--pink);color:#fff;border:0;border-radius:100px;padding:11px;font-weight:800;font-size:12.5px;cursor:pointer;}
+  .stbtns .follow{background:#fff;border:1.5px solid var(--ink);color:var(--ink);border-radius:100px;padding:11px 16px;font-weight:800;font-size:12.5px;cursor:pointer;display:flex;gap:6px;align-items:center;}
+  .stperks{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px;}
+  .stperk{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--teal-deep);background:#effbf9;border:1px solid #bfe8e2;border-radius:100px;padding:4px 10px;}
+  .stclaimband{display:flex;align-items:center;gap:10px;background:#fff7e0;border-bottom:1px solid #f0e2b0;padding:10px 14px;font-size:11px;font-weight:600;color:#7a5c00;line-height:1.4;}
+  .stclaimband a{color:var(--pink-text);font-weight:800;cursor:pointer;white-space:nowrap;}
+  .sttabs{position:sticky;top:52px;z-index:45;display:flex;gap:7px;padding:9px 14px;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;}
+  .sttabs::-webkit-scrollbar{display:none;}
+  .phone.desktop .sttabs{top:0;justify-content:center;}
+  .phone.desktop .stbanner{padding:13px 28px;}
+  .phone.desktop .sthead .row1,.phone.desktop .stbanner>*{position:relative;}
+  .phone.desktop .sthead{padding:22px 28px 18px;}
+  .phone.desktop .stbtns{max-width:420px;}
+
+  /* Sale event tiles — style A: ticket list */
+  .sale-a{background:#fff;border:1px solid var(--line);border-left:4px solid var(--pink);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;cursor:pointer;}
+  .sale-a .sa-body{flex:1;min-width:0;}
+  .sale-a .sa-claim{font-family:var(--font-head);font-weight:800;font-size:15px;letter-spacing:-.2px;}
+  .sale-a .sa-det{font-size:10.5px;color:var(--muted);font-weight:500;line-height:1.45;margin-top:3px;}
+  .sale-a .go{color:var(--pink-text);min-width:16px;}
+  .sale-chips{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+  .scopechip{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;border-radius:100px;padding:3px 9px;border:1.5px solid var(--line);color:#52525c;background:#fff;letter-spacing:.2px;}
+  .endchip{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;border-radius:100px;padding:3px 9px;border:1.5px solid #e8ca6a;color:#8a6a00;background:#fffbe8;letter-spacing:.2px;}
+  .codechip2{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;border-radius:100px;padding:3px 9px;border:1.5px dashed var(--pink);color:var(--pink-text);background:#fff;letter-spacing:.4px;}
+
+  /* Sale event tiles — style B: poster (auto colour, no asset) */
+  .sale-b{border-radius:16px;padding:16px;color:#fff;cursor:pointer;}
+  .sale-b.c0{background:linear-gradient(135deg,#e8146e,#a30a50);}
+  .sale-b.c1{background:linear-gradient(135deg,#26262e,#15151c);}
+  .sale-b.c2{background:linear-gradient(135deg,#a31150,#6f0d38);}
+  .sale-b.c3{background:linear-gradient(135deg,#7a1541,#3c0a22);}
+  .sale-b .sb-claim{font-family:var(--font-display);font-weight:400;font-size:21px;line-height:1.05;text-transform:uppercase;}
+  .sale-b .sb-det{font-size:10.5px;color:rgba(255,255,255,.82);font-weight:500;line-height:1.45;margin-top:7px;}
+  .sale-b .sale-chips .scopechip{border-color:rgba(255,255,255,.5);color:#fff;background:transparent;}
+  .sale-b .sale-chips .endchip{border-color:rgba(255,255,255,.5);color:#fff;background:transparent;}
+  .sale-b .sale-chips .codechip2{border-color:#fff;color:#fff;background:transparent;}
+
+  /* Sale event tiles — style C: optional image, degrades to text */
+  .sale-c{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;cursor:pointer;}
+  .sale-c.noimg{grid-template-columns:1fr;}
+  .sale-c .sc-claim{font-family:var(--font-head);font-weight:800;font-size:16px;letter-spacing:-.3px;}
+  .sale-c .sc-det{font-size:10.5px;color:var(--muted);font-weight:500;line-height:1.45;margin-top:4px;}
+  .sale-c .sc-img{height:76px;background:var(--imgbg);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+  .phone.desktop .salewrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .salewrap{display:flex;flex-direction:column;gap:10px;}
+
+  .stempty{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:22px 16px;text-align:center;color:var(--muted);}
+  .stempty .ei{color:#b9b9c2;margin-bottom:8px;display:flex;justify-content:center;}
+  .stempty .et{font-weight:800;font-size:13px;color:var(--ink);}
+  .stempty .es{font-size:11px;font-weight:500;margin-top:4px;line-height:1.5;}
+  .claimpanel{margin-top:10px;background:linear-gradient(135deg,#a31150,#6f0d38);border-radius:16px;padding:16px;color:#fff;}
+  .claimpanel h4{font-family:var(--font-display);font-weight:400;font-size:18px;text-transform:uppercase;line-height:1.1;}
+  .claimpanel p{font-size:11px;color:rgba(255,255,255,.85);font-weight:500;line-height:1.5;margin-top:6px;}
+  .claimpanel button{background:#fff;color:var(--pink-deep);border:0;border-radius:100px;padding:10px 18px;font-weight:800;font-size:12px;margin-top:11px;cursor:pointer;}
+
+  .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .stgrid .pcard{min-width:0;max-width:none;}
+  .phone.desktop .stgrid{grid-template-columns:repeat(4,1fr);}
+  .stsrcnote{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);font-weight:600;margin-top:10px;}
+  .stsrcnote svg{color:var(--teal-deep);min-width:12px;}
+  .integrity{display:flex;gap:9px;align-items:flex-start;background:#effbf9;border:1px solid #bfe8e2;border-radius:12px;padding:11px 12px;font-size:10.5px;font-weight:600;color:var(--ink);line-height:1.5;margin-top:12px;}
+  .integrity svg{color:var(--teal-deep);min-width:14px;margin-top:1px;}
+  .integrity b{color:var(--teal-deep);font-weight:800;}
+  #v-store .sec{scroll-margin-top:100px;}
+  .phone.desktop #v-store .sec{scroll-margin-top:56px;}
+
 </style>
 </head>
 <body>
@@ -423,7 +507,7 @@
 <div class="head">
   <span class="tag">Concept Mockup · Electric</span>
   <h1>Click Frenzy — The Frenzy 100</h1>
-  <p>Homepage, the Frenzy 100 and the "How it works" page. Tap any score for the half-sheet explainer.</p>
+  <p>Homepage, the Frenzy 100, the store page and the "How it works" page. Tap any score for the half-sheet explainer.</p>
 </div>
 
 <div class="demobar">View
@@ -432,6 +516,7 @@
     <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
     <button id="nav-explain" onclick="showView('explain')">How it works</button>
     <button id="nav-chips" onclick="showView('chips')">Insight chips</button>
+    <button id="nav-store" onclick="showView('store')">Store page</button>
   </span>
   Device
   <span class="sw">
@@ -442,6 +527,11 @@
   <span class="sw">
     <button id="st-out" class="on" onclick="setLogin(false)">Logged out</button>
     <button id="st-in" onclick="setLogin(true)">Logged in</button>
+  </span>
+  Store
+  <span class="sw">
+    <button id="cs-yes" class="on" onclick="setClaim(true)">Claimed</button>
+    <button id="cs-no" onclick="setClaim(false)">Unclaimed</button>
   </span>
 </div>
 
@@ -754,6 +844,37 @@
           <div><h5>Company</h5><a>About</a><a onclick="showView('explain')">How scoring works</a><a>Contact</a><a>FAQ</a></div>
         </div>
         <div class="legal">Frenzy Insights chips are generated from Click Frenzy's own price monitoring. No retailer can pay for a chip.<br>© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs.</div>
+      </div>
+    </div>
+
+    <!-- ================= VIEW: STORE PAGE ================= -->
+    <div class="view" id="v-store">
+      <div class="pills">
+        <span class="pill" onclick="showView('list')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>Top 100</span>
+        <span class="pill" onclick="toast('Categories - coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
+        <span class="pill on"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1-5h14l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/></svg>Stores</span>
+        <span class="pill" onclick="toast('Coupons - coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Coupons</span>
+      </div>
+
+      <div id="st-banner"></div>
+      <div id="st-head"></div>
+      <div class="sttabs" id="st-tabs"></div>
+
+      <div class="sec" id="st-sales" style="margin-top:20px;"></div>
+      <div class="sec" id="st-coupons"></div>
+      <div class="sec" id="st-featured"></div>
+      <div class="sec" id="st-feed"></div>
+      <div class="cta-band" id="st-trust"></div>
+      <div class="sec" id="st-notes"></div>
+
+      <div class="footer">
+        <div class="fcols">
+          <div><h5>Shop</h5><a onclick="showView('list')">The Frenzy 100</a><a>All stores</a><a>Categories</a><a>Promo codes</a></div>
+          <div><h5>Events</h5><a>EOFY Frenzy</a><a>Click Frenzy Main</a><a>Travel Frenzy</a><a>Calendar</a></div>
+          <div><h5>For retailers</h5><a>List your brand (free)</a><a>Advertise with us</a><a>Submit a banner</a><a>Partner login</a></div>
+          <div><h5>Company</h5><a>About</a><a onclick="showView('explain')">How scoring works</a><a>Contact</a><a>FAQ</a></div>
+        </div>
+        <div class="legal">Deals are checked hourly against price history, availability and store terms. Frenzy Scores are Click Frenzy's own assessment and no retailer can pay to change them.<br>&copy; 2026 Click Frenzy. Privacy &middot; Terms &middot; Competition T&amp;Cs.</div>
       </div>
     </div>
 
@@ -1294,7 +1415,7 @@ function closeSheet(){
 }
 function showView(v){
   closeAll();
-  ['home','list','explain','chips'].forEach(k=>{
+  ['home','list','explain','chips','store'].forEach(k=>{
     document.getElementById('v-'+k).classList.toggle('on',k===v);
     document.getElementById('nav-'+k).classList.toggle('on',k===v);
   });
@@ -1316,6 +1437,177 @@ function toast(msg){
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
 }
+
+/* ===================== STORE PAGE ===================== */
+const STORE={name:'Kogan',dom:'kogan.com',color:'#e4002b',rating:'4.6',revs:'12,480',followers:'8.2k',tracked:'1,842'};
+let storeClaimed=true, saleStyle='a', feedCat='All', feedSort='score';
+
+/* Sale events: store-provided. Claim <=25 chars, details/T&Cs <=130 chars, optional scope + end + code. No image required. */
+const SALES=[
+ {c:'20% off all footwear',d:'Auto-applied at checkout. Excludes clearance styles. One per order.',scope:'Footwear',ends:'Sun',img:false},
+ {c:'50% off selected TVs',d:'Selected 55&ndash;75&quot; QLED and OLED models. While stocks last.',scope:'TVs',ends:null,img:true},
+ {c:'$100 off $500 spend',d:'Code at checkout. One use per customer. Excludes gift cards &amp; pre-orders.',scope:'Sitewide',ends:'Jul 14',code:'FRENZY100',img:false},
+ {c:'Half price headphones',d:'All wireless over-ear and earbud styles. Ends 11:59pm AEST.',scope:'Audio',ends:'Tonight',img:false},
+];
+const SCP_CLAIMED=[
+ {off:'15% Off',scope:'Sitewide',q:'Verified by Kogan',code:'FRENZY15',rate:'Worked 94% &middot; used 2.1k times',ex:false},
+ {off:'$20 Off',scope:'$199+ spend',q:'Verified by Kogan',code:'KOGAN20',rate:'Worked 88% &middot; used 940 times',ex:false},
+ {off:'25% Off',scope:'Kogan First members',q:'Frenzy Exclusive',code:'FIRST25',rate:'Members only',ex:true},
+];
+const SCP_UNCLAIMED=[
+ {off:'10% Off',scope:'Sitewide',q:'Community sourced',code:'SAVE10',rate:'Worked 71% &middot; tried 480 times',ex:false},
+ {off:'$15 Off',scope:'First order',q:'Community sourced',code:'NEW15',rate:'Worked 64% &middot; tried 210 times',ex:false},
+];
+const SPRODUCTS=[
+ {i:'tv',t:'Kogan 65&quot; QLED 4K Smart TV',p:799,w:1099,r:1,sc:91,cat:'TVs'},
+ {i:'headphones',t:'Kogan Active III Pro ANC Headphones',p:89,w:159,r:13,sc:88,cat:'Audio'},
+ {i:'laptop',t:'Kogan Atlas 14&quot; Ultrabook 16GB',p:649,w:899,r:15,sc:86,cat:'Computing'},
+ {i:'phone',t:'Kogan Pulse 5G 256GB Smartphone',p:329,w:449,r:17,sc:85,cat:'Phones'},
+ {i:'speaker',t:'Kogan SoundBar 2.1 with Wireless Sub',p:139,w:229,r:19,sc:84,cat:'Audio'},
+ {i:'pot',t:'Kogan 12L Digital Air Fryer Oven',p:119,w:189,r:22,sc:83,cat:'Appliances'},
+ {i:'monitor',t:'Kogan 27&quot; 144Hz QHD Gaming Monitor',p:249,w:379,r:3,sc:82,cat:'Computing'},
+ {i:'watch',t:'Kogan Pulse Fit GPS Smart Watch',p:99,w:169,r:5,sc:81,cat:'Phones'},
+ {i:'wind',t:'Kogan SmartCool Tower Fan',p:79,w:129,r:7,sc:80,cat:'Appliances'},
+ {i:'tv',t:'Kogan 55&quot; 4K UHD Smart TV',p:479,w:649,r:9,sc:79,cat:'TVs'},
+ {i:'gamepad',t:'Kogan RGB Wireless Controller',p:39,w:69,r:14,sc:78,cat:'Computing'},
+ {i:'bed',t:'Kogan Memory Foam Queen Mattress',p:399,w:699,r:25,sc:77,cat:'Home'},
+];
+const FEEDCATS=['All','TVs','Audio','Computing','Phones','Appliances','Home'];
+
+const star='<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" stroke="none"><path d="M12 3l2.7 5.8 6.3.8-4.6 4.3 1.2 6.1-5.6-3.1-5.6 3.1 1.2-6.1L3 9.6l6.3-.8z"/></svg>';
+
+function saleChips(s){
+  let h='<div class="sale-chips">';
+  h+='<span class="scopechip">'+s.scope+'</span>';
+  if(s.ends)h+='<span class="endchip">'+ic('flame',9,2.2)+'Ends '+s.ends+'</span>';
+  if(s.code)h+='<span class="codechip2">'+ic('ticket',9,2.2)+s.code+'</span>';
+  return h+'</div>';
+}
+function saleTile(s,idx){
+  const click=' onclick="toast(\''+s.c.replace(/'/g,'')+' - shop the event at '+STORE.dom+'\')"';
+  if(saleStyle==='b'){
+    return '<div class="sale-b c'+(idx%4)+'"'+click+'><div class="sb-claim">'+s.c+'</div><div class="sb-det">'+s.d+'</div>'+saleChips(s)+'</div>';
+  }
+  if(saleStyle==='c'){
+    const has=s.img;
+    return '<div class="sale-c'+(has?'':' noimg')+'"'+click+'><div><div class="sc-claim">'+s.c+'</div><div class="sc-det">'+s.d+'</div>'+saleChips(s)+'</div>'+(has?'<div class="sc-img">'+ic('tv',26)+'</div>':'')+'</div>';
+  }
+  return '<div class="sale-a"'+click+'><div class="sa-body"><div class="sa-claim">'+s.c+'</div><div class="sa-det">'+s.d+'</div>'+saleChips(s)+'</div><span class="go">'+ic('bolt',16,2)+'</span></div>';
+}
+function setSaleStyle(v){saleStyle=v;renderStoreSales();}
+function renderStoreSales(){
+  const el=document.getElementById('st-sales');
+  if(!storeClaimed){
+    el.innerHTML='<div class="sec-h"><div class="lft"><span class="ico">'+ic('flame',18,1.7)+'</span><div><h3>Sale events</h3></div></div></div>'
+    +'<div class="stempty"><div class="ei">'+ic('flame',26,1.5)+'</div><div class="et">No sale events yet</div><div class="es">'+STORE.name+' hasn\'t claimed this page. Sale events appear when a store shares what\'s on.</div></div>'
+    +'<div class="claimpanel"><h4>Run '+STORE.name+'? Claim this page free</h4><p>Add your banner, post sale events, verify coupons and feature products. Frenzy Scores stay ours &mdash; claiming never buys a better number.</p><button onclick="toast(\'Claim flow - coming in the full build\')">Claim your store &rarr;</button></div>';
+    return;
+  }
+  el.innerHTML='<div class="sec-h"><div class="lft"><span class="ico">'+ic('flame',18,1.7)+'</span><div><h3>Sale events</h3><div class="sub">Shared by '+STORE.name+' &middot; checked by us</div></div></div>'
+  +'<div class="seg"><button id="ss-a" class="'+(saleStyle==='a'?'on':'')+'" onclick="setSaleStyle(\'a\')">Ticket</button><button id="ss-b" class="'+(saleStyle==='b'?'on':'')+'" onclick="setSaleStyle(\'b\')">Poster</button><button id="ss-c" class="'+(saleStyle==='c'?'on':'')+'" onclick="setSaleStyle(\'c\')">Image</button></div></div>'
+  +'<div class="salewrap">'+SALES.map(saleTile).join('')+'</div>';
+}
+
+function scpCard(cp){
+  const locked=cp.ex&&!loggedIn;
+  const bot=locked
+    ?'<span class="mask">&bull;&bull;&bull;&bull;&bull;&bull;</span><button class="showc" onclick="openPassForm()">'+ic('lock',10,2.4)+' Unlock</button>'
+    :'<span class="mask" id="m-'+cp.code+'">&bull;&bull;&bull;&bull;&bull;&bull;</span><button class="showc" onclick="revealCode(event,\''+cp.code+'\')">Show code</button>';
+  return '<div class="ccard"><span class="fx"'+(cp.ex?'':' style="background:var(--teal-deep)"')+'>'+cp.q+'</span>'
+  +'<div class="crow"><span class="clogo" style="background:'+STORE.color+'">KG</span>'
+  +'<div><div class="coff"><b>'+cp.off+'</b> '+cp.scope+'</div><div class="cq">'+(cp.ex?ic('lock',10,2.2)+' Frenzy Pass exclusive':ic('check',10,2.2)+' '+(storeClaimed?'Store verified':'Community'))+'</div><div class="cd">'+cp.rate+'</div></div></div>'
+  +'<div class="cbot">'+bot+'</div></div>';
+}
+function revealCode(e,code){
+  const m=document.getElementById('m-'+code);
+  if(m){m.outerHTML='<span class="code">'+code+'</span>';}
+  e.target.outerHTML='<span class="cq">'+ic('check',10,2.2)+' Copied</span>';
+  toast('Code '+code+' copied - paste it at checkout');
+}
+function renderStoreCoupons(){
+  const list=storeClaimed?SCP_CLAIMED:SCP_UNCLAIMED;
+  document.getElementById('st-coupons').innerHTML=
+  '<div class="cpnband"><div><h3>'+STORE.name+' coupons</h3><div class="csub">'+(storeClaimed?ic('check',12,2)+' Verified by the store, tested by us':ic('info',12,2)+' Found by our community &mdash; test before checkout')+'</div></div><a onclick="toast(\'All '+STORE.name+' codes - coming in the full build\')">View all</a></div>'
+  +'<div class="rail">'+list.map(scpCard).join('')+'</div>';
+}
+
+function storePcard(d){
+  return '<div class="pcard" onclick="toast(\''+d.t.replace(/'/g,'').replace(/&quot;/g,'')+' - deal page coming in full build\')">'
+  +'<div class="pimg">'+ic(d.i,26)+insightChip(d)+'</div>'
+  +'<div class="pt">'+d.t+'</div>'
+  +'<div class="pp tnum"><span class="now">'+fmt(d.p)+'</span><span class="was">'+fmt(d.w)+'</span></div>'
+  +votesRow()+'</div>';
+}
+function renderStoreFeatured(){
+  const el=document.getElementById('st-featured');
+  if(!storeClaimed){el.innerHTML='';return;}
+  el.innerHTML='<div class="sec-h"><div class="lft"><span class="slogohead" style="background:'+STORE.color+'">KG</span><div><h3>Featured by '+STORE.name+'</h3><div class="sub">Their picks &mdash; our scores</div></div></div></div>'
+  +'<div class="rail">'+SPRODUCTS.slice(0,6).map(storePcard).join('')+'</div>'
+  +'<div class="integrity">'+ic('check',14,2)+'<span><b>Retailers pick, we score.</b> '+STORE.name+' chooses what to feature here. Frenzy Scores and Insight chips stay ours &mdash; no store can pay to change them.</span></div>';
+}
+
+function setFeedCat(c){feedCat=c;renderStoreFeed();}
+function setFeedSort(s){feedSort=s;renderStoreFeed();}
+function renderStoreFeed(){
+  let items=feedCat==='All'?SPRODUCTS.slice():SPRODUCTS.filter(d=>d.cat===feedCat);
+  if(feedSort==='price')items.sort((a,b)=>a.p-b.p);
+  else if(feedSort==='drop')items.sort((a,b)=>(b.w-b.p)/b.w-(a.w-a.p)/a.w);
+  else items.sort((a,b)=>b.sc-a.sc);
+  document.getElementById('st-feed').innerHTML=
+  '<div class="sec-h"><div class="lft"><div><h3>All '+STORE.name+' deals</h3><div class="sub tnum">'+STORE.tracked+' products tracked</div></div></div>'
+  +'<div class="seg"><button class="'+(feedSort==='score'?'on':'')+'" onclick="setFeedSort(\'score\')">Top score</button><button class="'+(feedSort==='price'?'on':'')+'" onclick="setFeedSort(\'price\')">Price</button><button class="'+(feedSort==='drop'?'on':'')+'" onclick="setFeedSort(\'drop\')">Biggest drop</button></div></div>'
+  +'<div class="cattabs" style="padding:2px 0 12px;">'+FEEDCATS.map(c=>'<span class="chip '+(feedCat===c?'on':'')+'" onclick="setFeedCat(\''+c+'\')">'+c+'</span>').join('')+'</div>'
+  +'<div class="stgrid">'+items.slice(0,8).map(storePcard).join('')+'</div>'
+  +'<button class="morebtn" onclick="toast(\'Loading more '+STORE.name+' deals...\')">'+ic('flame',15,1.8)+'<span>Load more deals</span></button>'
+  +'<div class="stsrcnote">'+ic('check',12,2.2)+(storeClaimed?'Feed synced from '+STORE.dom+' hourly &middot; prices checked against our history':'Products found by our crawler &middot; prices checked against our history')+'</div>';
+}
+
+function renderStoreHead(){
+  document.getElementById('st-banner').innerHTML=storeClaimed
+   ?'<div class="stbanner" onclick="toast(\'EOFY Frenzy at '+STORE.name+' - retailer banner click-through\')"><span class="bmark">'+STORE.name+'</span><span class="bmsg">EOFY Frenzy &mdash; up to 60% off tech, ends Sunday</span><span class="btag">Official store</span></div>'
+   :'<div class="stclaimband">'+ic('info',14,2)+'<span><b>Unclaimed profile.</b> We track '+STORE.name+' automatically.</span><a onclick="toast(\'Claim flow - coming in the full build\')">Is this your store? Claim it free &rarr;</a></div>';
+  document.getElementById('st-head').innerHTML='<div class="sthead"><div class="stwrap">'
+  +'<div class="row1"><span class="stlogo">KG</span><div style="flex:1;min-width:0;">'
+  +'<div class="stname">'+STORE.name+(storeClaimed?ic('check',17,2.4):'')+'</div>'
+  +'<div class="stmeta"><b class="tnum">'+STORE.rating+'</b>'+star+'<span class="tnum">('+STORE.revs+' store reviews)</span><span>&middot;</span><b class="tnum">'+STORE.tracked+'</b><span>deals tracked</span></div>'
+  +'<span class="stbadge '+(storeClaimed?'claimed':'unclaimed')+'">'+(storeClaimed?ic('check',9,3)+' Claimed &middot; verified retailer':'Unclaimed store profile')+'</span>'
+  +'</div></div>'
+  +'<div class="stbtns"><button class="follow" onclick="toast(\'Following '+STORE.name+' - price-drop alerts on\')">'+ic('heart',13,2)+'Follow</button><button class="visit" onclick="toast(\'Off to '+STORE.dom+' ...\')">Visit '+STORE.dom+' &rarr;</button></div>'
+  +(storeClaimed?'<div class="stperks"><span class="stperk">'+ic('check',10,2.4)+'Free shipping $79+</span><span class="stperk">'+ic('check',10,2.4)+'14-day returns</span><span class="stperk">'+ic('check',10,2.4)+'Ships in 24h</span></div>':'')
+  +'</div></div>';
+  const tabs=[['st-sales','Sale events'],['st-coupons','Coupons'],['st-featured','Featured'],['st-feed','All products']].filter(t=>storeClaimed||(t[0]!=='st-featured'));
+  document.getElementById('st-tabs').innerHTML=tabs.map((t,i)=>'<span class="chip'+(i===0?' on':'')+'" onclick="storeTab(event,\''+t[0]+'\')">'+t[1]+'</span>').join('');
+}
+function storeTab(e,id){
+  document.querySelectorAll('#st-tabs .chip').forEach(c=>c.classList.toggle('on',c===e.target));
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function renderStoreTrust(){
+  document.getElementById('st-trust').innerHTML=
+  '<h3>WHY <span>'+STORE.name.toUpperCase()+'</span> RANKS</h3>'
+  +'<p>Store reputation feeds every Frenzy Score: <b style="color:#fff">'+STORE.rating+'&#9733;</b> rated, easy returns, fast shipping. A great store lifts every deal it lists &mdash; and no store can pay for a point.</p>'
+  +'<button class="cta-primary" onclick="openSheet()">How the Frenzy Score works</button>';
+}
+function renderStoreNotes(){
+  document.getElementById('st-notes').innerHTML=
+  '<div class="stack">'
+  +'<div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight ever">Sale events</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">Store-provided, text-first. Claim &le;25 characters, details/T&amp;Cs &le;130 characters, plus a scope tag, optional end date and optional code. No image required &mdash; the Image style accepts one but every tile must stand alone as text.</div></div></div>'
+  +'<div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight cheapest">Claimed vs not</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">Claiming unlocks the banner, sale events, verified coupons, featured picks and perk chips. It never touches Frenzy Scores, Insight chips or rankings &mdash; those stay ours on every store page.</div></div></div>'
+  +'</div>';
+}
+function renderStore(){
+  renderStoreHead();renderStoreSales();renderStoreCoupons();renderStoreFeatured();renderStoreFeed();renderStoreTrust();renderStoreNotes();
+}
+function setClaim(v){
+  storeClaimed=v;
+  document.getElementById('cs-yes').classList.toggle('on',v);
+  document.getElementById('cs-no').classList.toggle('on',!v);
+  renderStore();
+}
+const __setLoginOrig=setLogin;
+setLogin=function(v){__setLoginOrig(v);renderStoreCoupons();};
+IC.info='<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>';
+renderStore();
 </script>
 </body>
 </html>
