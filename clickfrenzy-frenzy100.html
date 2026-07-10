@@ -27,8 +27,15 @@
   .head h1{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;}
   .head p{font-size:13px;line-height:1.6;color:#b4b4c0;max-width:560px;margin:0 auto;}
 
-  .demobar{display:flex;align-items:center;gap:12px;background:#23232c;border:1px solid #34343e;border-radius:100px;padding:7px 8px 7px 16px;margin-bottom:20px;color:#cfcfd6;font-size:12px;font-weight:600;flex-wrap:wrap;justify-content:center;}
+  .demobar{display:flex;flex-direction:column;align-items:center;gap:9px;background:#23232c;border:1px solid #34343e;border-radius:22px;padding:12px 16px;margin-bottom:20px;color:#cfcfd6;font-size:12px;font-weight:600;}
+  .demobar .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .demobar .grp{display:flex;align-items:center;gap:8px;}
+  .demobar .grp .lbl{font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#8a8a96;}
+  .demobar .grp.hide{display:none;}
   .demobar .sw{display:flex;gap:4px;background:#16161c;border-radius:100px;padding:3px;}
+  .sharebtn{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid #34343e;color:#cfcfd6;font-size:11.5px;font-weight:700;border-radius:100px;padding:8px 14px;cursor:pointer;}
+  .sharebtn:hover{border-color:#4a4a56;color:#fff;}
+  .sharebtn svg{color:var(--pink);}
   .demobar .sw button{background:none;border:0;color:#9a9aa6;font-size:12px;font-weight:700;padding:6px 12px;border-radius:100px;cursor:pointer;}
   .demobar .sw button.on{background:var(--pink);color:#fff;}
 
@@ -517,6 +524,101 @@
   #v-store .sec{scroll-margin-top:100px;}
   .phone.desktop #v-store .sec{scroll-margin-top:56px;}
 
+  /* ============ Category page ============ */
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .catseo{background:#fff;border-bottom:1px solid var(--line);padding:16px 14px;}
+  .catseo .crumb{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;cursor:pointer;}
+  .catseo .crumb svg{color:var(--pink-text);}
+  .catseo h1{font-family:var(--font-head);font-weight:900;font-size:26px;letter-spacing:-.6px;margin-top:8px;}
+  .catseo p{font-size:12px;color:var(--muted);font-weight:500;line-height:1.6;margin-top:6px;max-width:560px;}
+  .catseo .stats{display:flex;gap:8px;margin-top:11px;flex-wrap:wrap;}
+  .catseo .stat{display:inline-flex;align-items:center;gap:5px;background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:5px 11px;font-size:10px;font-weight:800;letter-spacing:.3px;color:var(--ink);}
+  .catseo .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 1.6s infinite;}
+  .phone.desktop .catseo{padding:26px 28px 22px;}
+  .phone.desktop .catseo .inner{max-width:1020px;margin:0 auto;}
+  .phone.desktop .catseo h1{font-size:38px;}
+  .phone.desktop .catseo p{font-size:13.5px;}
+  .cathero{position:relative;margin:14px 14px 0;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#1b1b26 0%,#15151c 55%,#2a1030 100%);color:#fff;padding:20px 18px 18px;}
+  .cathero .crumb{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;color:#a0a0ac;text-transform:uppercase;letter-spacing:.8px;cursor:pointer;}
+  .cathero .crumb svg{color:var(--pink);}
+  .cathero h2{font-family:var(--font-display);font-weight:400;font-size:36px;line-height:.98;text-transform:uppercase;margin-top:8px;}
+  .cathero h2 span{color:var(--pink);}
+  .cathero .stats{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .cathero .stat{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:5px 11px;font-size:10px;font-weight:800;letter-spacing:.3px;}
+  .cathero .stat .dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:pulse 1.6s infinite;}
+  .cathero .stat b{color:var(--teal);}
+  .cathero .wm{position:absolute;right:-14px;top:6px;opacity:.14;transform:rotate(8deg);color:#fff;}
+  .cathero .wm2{position:absolute;right:64px;bottom:-16px;opacity:.10;transform:rotate(-10deg);color:#fff;}
+  .sponsorwrap{margin:10px 14px 0;}
+  .sponsorlbl{display:flex;align-items:center;justify-content:space-between;padding:0 4px 4px;}
+  .sponsorlbl .l{font-size:8.5px;font-weight:800;letter-spacing:1px;color:#b0b0ba;text-transform:uppercase;}
+  .sponsorlbl .r{font-size:8.5px;font-weight:700;color:#b0b0ba;cursor:pointer;}
+  .sponsor{display:flex;align-items:center;gap:12px;background:#111;border-radius:14px;padding:10px 12px;cursor:pointer;border:1px solid var(--line);}
+  .sponsor .jb{width:44px;height:44px;min-width:44px;border-radius:9px;background:#ffe100;color:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:11px;line-height:1;letter-spacing:-.5px;}
+  .sponsor .jb span{font-size:8px;font-family:var(--font-ui);font-weight:800;margin-top:1px;}
+  .sponsor .sbody{flex:1;min-width:0;color:#fff;}
+  .sponsor .st1{font-size:12.5px;font-weight:800;line-height:1.25;}
+  .sponsor .st1 em{color:#ffe100;font-style:normal;}
+  .sponsor .st2{font-size:9.5px;color:#9a9aa6;font-weight:600;margin-top:2px;}
+  .sponsor .scta{background:#ffe100;color:#111;font-weight:800;font-size:10px;border:0;border-radius:100px;padding:8px 12px;cursor:pointer;white-space:nowrap;}
+  .updated{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;color:var(--teal-deep);}
+  .updated .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 1.6s infinite;}
+  .toolbar{position:sticky;top:52px;z-index:39;background:var(--paper);border-bottom:1px solid var(--line);padding:9px 14px;margin-top:18px;}
+  .toolrow{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;align-items:center;}
+  .toolrow::-webkit-scrollbar{display:none;}
+  .sortbtn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border:0;border-radius:100px;font-size:12px;font-weight:800;padding:8px 14px;cursor:pointer;white-space:nowrap;}
+  .sortbtn svg{color:var(--pink);}
+  .sortbtn .sl{color:#9a9aa6;font-weight:600;}
+  .fchip{flex:0 0 auto;font-weight:700;font-size:12px;padding:8px 13px;border-radius:100px;background:#fff;border:1px solid var(--line);color:#52525c;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:5px;}
+  .fchip svg{color:var(--muted);}
+  .fchip.on{background:#ffe3ee;color:var(--pink-text);border-color:var(--pink);}
+  .fchip.on svg{color:var(--pink-text);}
+  .sortmenu{display:none;position:absolute;top:calc(100% + 4px);left:14px;z-index:56;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 34px rgba(0,0,0,.14);padding:8px;min-width:230px;}
+  .sortmenu.open{display:block;}
+  .sortmenu button{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;font-size:12.5px;font-weight:600;color:var(--ink);padding:10px 12px;border-radius:10px;cursor:pointer;text-align:left;gap:10px;}
+  .sortmenu button:hover{background:var(--paper);}
+  .sortmenu button.on{font-weight:800;color:var(--pink-text);background:#fff5f9;}
+  .sortmenu .tick{color:var(--pink-text);}
+  .sortmenu .note{font-size:9.5px;color:var(--muted);font-weight:600;padding:7px 12px 4px;border-top:1px solid var(--line);margin-top:5px;line-height:1.5;}
+  .feedcount{font-size:11px;color:var(--muted);font-weight:600;padding:12px 14px 0;}
+  .feedcount b{color:var(--ink);}
+  .catcard.on .cic{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .stripwrap{margin:2px 0;}
+  .striplbl{font-size:8px;font-weight:800;letter-spacing:1px;color:#b0b0ba;text-transform:uppercase;padding:0 4px 3px;}
+  .stripad{width:320px;max-width:100%;height:50px;margin:0 auto;border-radius:10px;background:linear-gradient(90deg,#0e0e14,#23232e);border:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 12px;cursor:pointer;overflow:hidden;}
+  .stripad .sq{width:30px;height:30px;min-width:30px;border-radius:7px;background:#fff;color:#111;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:8px;letter-spacing:-.2px;}
+  .stripad .sbody{flex:1;min-width:0;color:#fff;}
+  .stripad .l1{font-size:10.5px;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .stripad .l2{font-size:8.5px;color:#9a9aa6;font-weight:600;}
+  .stripad .go{font-size:9.5px;font-weight:800;color:#7cd6ff;white-space:nowrap;}
+  .stripwrap.desktop-size{display:none;}
+  .stripad.lb{width:728px;max-width:100%;height:90px;border-radius:12px;padding:0 22px;gap:14px;}
+  .stripad.lb .sq{width:46px;height:46px;font-size:11px;border-radius:10px;}
+  .stripad.lb .l1{font-size:14px;}
+  .stripad.lb .l2{font-size:10.5px;}
+  .stripad.lb .go{font-size:12px;}
+  .phone.desktop .cathero{max-width:964px;margin:22px auto 0;padding:34px 40px;border-radius:22px;}
+  .phone.desktop .cathero h2{font-size:56px;}
+  .phone.desktop .cathero .stats{margin-top:16px;}
+  .phone.desktop .cathero .stat{font-size:11px;padding:6px 14px;}
+  .phone.desktop .sponsorwrap{max-width:964px;margin:12px auto 0;padding:0;}
+  .phone.desktop .sponsor{max-width:728px;height:90px;margin:0 auto;padding:0 20px;gap:16px;border-radius:16px;}
+  .phone.desktop .sponsor .jb{width:56px;height:56px;font-size:14px;}
+  .phone.desktop .sponsor .st1{font-size:16px;}
+  .phone.desktop .sponsor .st2{font-size:11px;}
+  .phone.desktop .sponsor .scta{font-size:12px;padding:11px 18px;}
+  .phone.desktop .sponsorlbl{max-width:728px;margin:0 auto;}
+  .phone.desktop .toolbar{top:0;padding:10px 28px;}
+  .phone.desktop .toolrow{max-width:1020px;margin:0 auto;}
+  .phone.desktop .sortmenu{left:28px;}
+  .phone.desktop .feedcount{max-width:1020px;margin:0 auto;padding:14px 28px 0;}
+  .phone.desktop .stack .stripwrap{grid-column:1/-1;}
+  .phone.desktop .stripwrap.mobile-size{display:none;}
+  .phone.desktop .stripwrap.desktop-size{display:block;}
+  .phone.desktop #v-cat .rail{flex-wrap:nowrap;overflow-x:auto;}
+  #v-cat .toolbar{scroll-margin-top:52px;}
+  .phone.desktop #v-cat .toolbar{scroll-margin-top:0;}
+
 </style>
 </head>
 <body>
@@ -524,39 +626,50 @@
 <div class="head">
   <span class="tag">Concept Mockup · Electric</span>
   <h1>Click Frenzy — The Frenzy 100</h1>
-  <p>Homepage, the Frenzy 100, the store page and the "How it works" page. Tap any score for the half-sheet explainer.</p>
+  <p>Homepage, the Frenzy 100, the category page (Electronics), the store page and the "How it works" page. Tap any score for the half-sheet explainer.</p>
 </div>
 
-<div class="demobar">View
-  <span class="sw">
-    <button id="nav-home" class="on" onclick="showView('home')">Homepage</button>
-    <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
-    <button id="nav-explain" onclick="showView('explain')">How it works</button>
-    <button id="nav-chips" onclick="showView('chips')">Insight chips</button>
-    <button id="nav-store" onclick="showView('store')">Store page</button>
-  </span>
-  Device
-  <span class="sw">
-    <button id="dev-mobile" class="on" onclick="setDevice('mobile')">Mobile</button>
-    <button id="dev-desktop" onclick="setDevice('desktop')">Desktop</button>
-  </span>
-  State
-  <span class="sw">
-    <button id="st-out" class="on" onclick="setLogin(false)">Logged out</button>
-    <button id="st-in" onclick="setLogin(true)">Logged in</button>
-  </span>
-  Store
-  <span class="sw">
-    <button id="cs-yes" class="on" onclick="setClaim(true)">Claimed</button>
-    <button id="cs-no" onclick="setClaim(false)">Unclaimed</button>
-  </span>
+<div class="demobar">
+  <div class="row">
+    <span class="grp"><span class="lbl">Page</span>
+      <span class="sw">
+        <button id="nav-home" class="on" onclick="showView('home')">Homepage</button>
+        <button id="nav-list" onclick="showView('list')">Frenzy 100</button>
+        <button id="nav-cat" onclick="showView('cat')">Category</button>
+        <button id="nav-store" onclick="showView('store')">Store</button>
+        <button id="nav-explain" onclick="showView('explain')">How it works</button>
+        <button id="nav-chips" onclick="showView('chips')">Insight chips</button>
+      </span>
+    </span>
+  </div>
+  <div class="row">
+    <span class="grp" id="grp-device"><span class="lbl">Device</span>
+      <span class="sw">
+        <button id="dev-mobile" class="on" onclick="setDevice('mobile')">Mobile</button>
+        <button id="dev-desktop" onclick="setDevice('desktop')">Desktop</button>
+      </span>
+    </span>
+    <span class="grp" id="grp-state"><span class="lbl">Member</span>
+      <span class="sw">
+        <button id="st-out" class="on" onclick="setLogin(false)">Logged out</button>
+        <button id="st-in" onclick="setLogin(true)">Logged in</button>
+      </span>
+    </span>
+    <span class="grp hide" id="grp-claim"><span class="lbl">This store</span>
+      <span class="sw">
+        <button id="cs-yes" class="on" onclick="setClaim(true)">Claimed</button>
+        <button id="cs-no" onclick="setClaim(false)">Unclaimed</button>
+      </span>
+    </span>
+    <span class="grp"><button class="sharebtn" onclick="copyLink()"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Copy link</button></span>
+  </div>
 </div>
 
 <div class="phone" id="frame">
   <div class="notch"></div>
   <div class="browserbar">
     <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
-    <span class="url">clickfrenzy.com.au/frenzy-100</span>
+    <span class="url" id="urltxt">clickfrenzy.com.au/frenzy-100</span>
     <span style="width:33px"></span>
   </div>
   <div class="screen" id="screen">
@@ -576,7 +689,7 @@
     <div class="view on" id="v-home">
       <div class="pills">
         <span class="pill" onclick="showView('list')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>Top 100</span>
-        <span class="pill" onclick="toast('Categories — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
+        <span class="pill" onclick="showView('cat')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
         <span class="pill" onclick="toast('Stores — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1-5h14l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/></svg>Stores</span>
         <span class="pill" onclick="toast('Coupons — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Coupons</span>
       </div>
@@ -685,7 +798,7 @@
     <div class="view" id="v-list">
       <div class="pills">
         <span class="pill on"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>Top 100</span>
-        <span class="pill" onclick="toast('Categories — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
+        <span class="pill" onclick="showView('cat')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
         <span class="pill" onclick="toast('Stores — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1-5h14l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/></svg>Stores</span>
         <span class="pill" onclick="toast('Coupons — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Coupons</span>
       </div>
@@ -868,7 +981,7 @@
     <div class="view" id="v-store">
       <div class="pills">
         <span class="pill" onclick="showView('list')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>Top 100</span>
-        <span class="pill" onclick="toast('Categories - coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
+        <span class="pill" onclick="showView('cat')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
         <span class="pill on"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1-5h14l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/></svg>Stores</span>
         <span class="pill" onclick="toast('Coupons - coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Coupons</span>
       </div>
@@ -892,6 +1005,121 @@
           <div><h5>Company</h5><a>About</a><a onclick="showView('explain')">How scoring works</a><a>Contact</a><a>FAQ</a></div>
         </div>
         <div class="legal">Deals are checked hourly against price history, availability and store terms. Frenzy Scores are Click Frenzy's own assessment and no retailer can pay to change them.<br>&copy; 2026 Click Frenzy. Privacy &middot; Terms &middot; Competition T&amp;Cs.</div>
+      </div>
+    </div>
+
+    <!-- ================= VIEW: CATEGORY PAGE (Electronics) ================= -->
+    <div class="view" id="v-cat">
+      <div class="pills">
+        <span class="pill" onclick="showView('list')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>Top 100</span>
+        <span class="pill on"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.5 11h10L20 8H6"/></svg>Categories</span>
+        <span class="pill" onclick="showView('store')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1-5h14l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M4 9h16M9 20v-6h6v6"/></svg>Stores</span>
+        <span class="pill" onclick="toast('Coupons — coming in the full build')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-6z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>Coupons</span>
+      </div>
+
+      <!-- SEO-first text header (H1 + crawlable intro — no creative banner) -->
+      <div class="catseo">
+        <div class="inner">
+          <div class="crumb" onclick="toast('All categories — coming in the full build')"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>All categories</div>
+          <h1>Electronics Deals</h1>
+          <p>Browse 486 live electronics deals from Australian retailers, ranked hourly by Frenzy Score — real price history, product popularity and store reputation. Never sponsored, never pay-to-rank.</p>
+          <div class="stats">
+            <span class="stat"><span class="dot"></span>486 LIVE DEALS</span>
+            <span class="stat">RANKED HOURLY</span>
+            <span class="stat">✓ CHECKED TODAY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Electronics Top 20 preview — first real content is ours -->
+      <div class="sec" style="margin-top:16px;">
+        <div class="sec-h">
+          <div class="lft">
+            <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg></span>
+            <div><h3>Electronics Top Picks</h3><div class="sub">Ranked by Frenzy Score, updated hourly</div></div>
+          </div>
+          <a onclick="catSetSort('rec');document.getElementById('cat-toolbar').scrollIntoView({behavior:'smooth'})">All 486 deals ↓</a>
+        </div>
+        <div class="stack" id="cat-chart"></div>
+      </div>
+
+      <!-- Electronics stores — right under the score-ranked picks -->
+      <div class="sec">
+        <div class="sec-h">
+          <div class="lft"><div><h3>Shop Electronics stores</h3><div class="sub">Retailers with live electronics deals</div></div></div>
+          <a onclick="toast('All retailers — coming in the full build')">See all retailers</a>
+        </div>
+        <div class="rail" id="cat-stores"></div>
+      </div>
+
+      <!-- Category Partner (sponsored) — always-on, below the organic content -->
+      <div class="sponsorwrap" style="margin-top:20px;">
+        <div class="sponsorlbl"><span class="l">Electronics Category Partner · Sponsored</span><span class="r" onclick="toast('Partners never influence Frenzy Scores or rankings')">Why this ad?</span></div>
+        <div class="sponsor" onclick="toast('Sponsored — off to JB Hi-Fi')">
+          <div class="jb">JB<span>HI-FI</span></div>
+          <div class="sbody">
+            <div class="st1">20% off all TVs at JB Hi-Fi <em>this weekend</em></div>
+            <div class="st2">Category Partner offer · ends Sunday · T&amp;Cs apply</div>
+          </div>
+          <button class="scta">Shop JB Hi-Fi →</button>
+        </div>
+      </div>
+
+      <!-- Browse by type — sits with the feed, works as a filter -->
+      <div class="sec" style="margin-top:22px;">
+        <div class="sec-h">
+          <div class="lft"><div><h3>Browse Electronics</h3><div class="sub">Tap a type to filter the deals below</div></div></div>
+        </div>
+        <div class="rail" id="cat-types"></div>
+      </div>
+
+      <!-- Sort + filter toolbar -->
+      <div class="toolbar" id="cat-toolbar">
+        <div class="toolrow">
+          <button class="sortbtn" onclick="catToggleSort(event)">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16m0 0l-3-3m3 3l3-3M17 20V4m0 0l-3 3m3-3l3 3"/></svg>
+            <span class="sl">Sort:</span>&nbsp;<span id="cat-sortlbl">Frenzy Recommended</span>
+          </button>
+          <span class="fchip" id="cat-f-hot" onclick="catToggleHot()"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>HOT Deals</span>
+          <span class="fchip" id="cat-f-ver" onclick="catToggleVer()"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>Frenzy Verified</span>
+          <span class="fchip" onclick="toast('Retailer picker — coming in the full build')">Retailer <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          <span class="fchip" onclick="toast('Brand picker — coming in the full build')">Brand <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+          <span class="fchip" onclick="toast('Price range — coming in the full build')">Price <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </div>
+        <div class="sortmenu" id="cat-sortmenu"></div>
+      </div>
+
+      <div class="feedcount" id="cat-count"></div>
+      <div class="sec" style="margin-top:10px;">
+        <div class="stack" id="cat-feed"></div>
+        <button class="morebtn" onclick="toast('Loading more Electronics deals…')">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 6 5.5 6 10a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .5 1.5 1.5 2 2.5 2C9.5 7 11 5 12 3z"/></svg>
+          <span>Show more Electronics deals</span>
+        </button>
+      </div>
+
+      <!-- Concept notes -->
+      <div class="sec">
+        <div class="stack">
+          <div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight ever">SEO-first</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">One template, 23 categories, config-driven. Real build ships server-rendered with unique title/meta per category, indexable subcategory URLs, internal links to store &amp; deal pages, and ItemList/Offer schema. The H1 + intro copy above is the crawlable text block — no creative banner up top by design.</div></div></div>
+          <div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight cheapest">Ad rules</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">Two paid units max per category page. Category Partner: exclusive tenancy, always-on, sits below Top Picks so the first real content is ours. In-feed strip (320×50 mobile / 728×90 desktop): house ads at 20% share of voice, or advertisers like PayPal, Mastercard, Australia Post. Both labelled. Neither ever touches Frenzy Scores or rankings.</div></div></div>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <h3>GET THE <span>FRENZY 20</span> EVERY MORNING</h3>
+        <p>The top 20 from today's chart, in your inbox at 7am. Ruthlessly cut. Never sponsored.</p>
+        <button class="cta-primary" onclick="toast('Signed up — you\'re on the list ✓')">Send me the Frenzy 20</button>
+      </div>
+
+      <div class="footer">
+        <div class="fcols">
+          <div><h5>Shop</h5><a onclick="showView('list')">The Frenzy 100</a><a>All stores</a><a onclick="showView('cat')">Categories</a><a>Promo codes</a></div>
+          <div><h5>Events</h5><a>EOFY Frenzy</a><a>Click Frenzy Main</a><a>Travel Frenzy</a><a>Calendar</a></div>
+          <div><h5>For retailers</h5><a>List your brand (free)</a><a>Advertise with us</a><a>Submit a banner</a><a>Partner login</a></div>
+          <div><h5>Company</h5><a>About</a><a onclick="showView('explain')">How scoring works</a><a>Contact</a><a>FAQ</a></div>
+        </div>
+        <div class="legal">Deals are checked hourly against price history, availability and store terms. Frenzy Scores are Click Frenzy's own assessment and no retailer can pay to change them. Sponsored placements are always labelled and never affect rankings.<br>© 2026 Click Frenzy. Privacy · Terms · Competition T&amp;Cs.</div>
       </div>
     </div>
 
@@ -1282,6 +1510,7 @@ function setLogin(v){
   document.getElementById('st-out').classList.toggle('on',!v);
   document.getElementById('st-in').classList.toggle('on',v);
   renderPass();renderCoupons();
+  syncURL();
 }
 
 /* ===== Frenzy Pass card ===== */
@@ -1404,7 +1633,7 @@ document.getElementById('dtbar').innerHTML=
   `<img src="${document.getElementById('logoimg').src}" alt="Click Frenzy">
    <div class="dtnav">
      <span onclick="toast('Stores — coming in the full build')">Stores <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
-     <span onclick="toast('Categories — coming in the full build')">Categories <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
+     <span onclick="showView('cat')">Categories <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>
      <span onclick="toast('Coupons — coming in the full build')">Coupons</span>
      <span onclick="goCat('All')">Frenzy 100</span>
    </div>
@@ -1417,6 +1646,7 @@ function setDevice(dev){
   document.getElementById('dev-mobile').classList.toggle('on',dev==='mobile');
   document.getElementById('dev-desktop').classList.toggle('on',dev==='desktop');
   revealed=initRev();renderList();
+  syncURL();
 }
 
 /* ===== Sheet + views ===== */
@@ -1430,12 +1660,34 @@ function closeSheet(){
   document.getElementById('overlay').classList.remove('open');
   document.getElementById('sheet').classList.remove('open');
 }
+const VURL={home:'clickfrenzy.com.au',list:'clickfrenzy.com.au/frenzy-100',explain:'clickfrenzy.com.au/how-it-works',chips:'clickfrenzy.com.au/frenzy-100',store:'clickfrenzy.com.au/kogan',cat:'clickfrenzy.com.au/categories/electronics'};
+let curView='home';
+function syncURL(){
+  const q=new URLSearchParams();
+  if(curView!=='home')q.set('view',curView);
+  if(document.getElementById('frame').classList.contains('desktop'))q.set('device','desktop');
+  if(loggedIn)q.set('member','in');
+  if(typeof storeClaimed!=='undefined'&&!storeClaimed)q.set('store','unclaimed');
+  const s=q.toString();
+  try{history.replaceState(null,'',location.pathname+(s?'?'+s:''));}catch(e){}
+}
+function copyLink(){
+  const url=location.href;
+  const done=()=>toast('Link copied — opens with this exact view ✓');
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,()=>toast(url));}
+  else{toast(url);}
+}
 function showView(v){
   closeAll();
-  ['home','list','explain','chips','store'].forEach(k=>{
+  ['home','list','cat','explain','chips','store'].forEach(k=>{
     document.getElementById('v-'+k).classList.toggle('on',k===v);
     document.getElementById('nav-'+k).classList.toggle('on',k===v);
   });
+  const u=document.getElementById('urltxt');if(u)u.textContent=VURL[v]||VURL.home;
+  /* contextual demo controls: sign-in state only where it changes the page; claim toggle only on the store page */
+  document.getElementById('grp-state').classList.toggle('hide',!['home','store'].includes(v));
+  document.getElementById('grp-claim').classList.toggle('hide',v!=='store');
+  curView=v;syncURL();
   document.getElementById('screen').scrollTo({top:0});
 }
 
@@ -1620,11 +1872,124 @@ function setClaim(v){
   document.getElementById('cs-yes').classList.toggle('on',v);
   document.getElementById('cs-no').classList.toggle('on',!v);
   renderStore();
+  syncURL();
 }
 const __setLoginOrig=setLogin;
 setLogin=function(v){__setLoginOrig(v);renderStoreCoupons();};
 IC.info='<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>';
 renderStore();
+
+/* ===================== CATEGORY PAGE (Electronics) ===================== */
+const CATFEED=[
+ {i:'tv',t:'LG C4 65" OLED evo 4K Smart TV',s:'JB Hi-Fi',p:2495,w:3299,sc:94,pop:96,chip:'hot',ver:false,sub:'TVs'},
+ {i:'laptop',t:'Apple MacBook Air 13" M4 256GB',s:'JB Hi-Fi',p:1497,w:1799,sc:93,pop:99,chip:'ever',ver:true,sub:'Laptops'},
+ {i:'headphones',t:'Sony WH-1000XM6 Noise Cancelling Headphones',s:'Amazon AU',p:398,w:549,sc:92,pop:94,chip:'hot',ver:false,sub:'Audio'},
+ {i:'phone',t:'Samsung Galaxy S26 Ultra 256GB',s:'The Good Guys',p:1596,w:2099,sc:91,pop:97,chip:'cheapest',ver:false,sub:'Phones'},
+ {i:'gamepad',t:'Nintendo Switch 2 + Mario Kart World Bundle',s:'Big W',p:679,w:769,sc:90,pop:98,chip:'daylow',n:90,ver:true,sub:'Gaming'},
+ {i:'monitor',t:'Apple iPad 11" A16 128GB Wi-Fi',s:'Officeworks',p:497,w:599,sc:89,pop:92,chip:'ever',ver:true,sub:'Laptops'},
+ {i:'watch',t:'Garmin Forerunner 265 GPS Watch',s:'Amazon AU',p:479,w:649,sc:88,pop:85,chip:'dropped',ver:false,sub:'Wearables'},
+ {i:'speaker',t:'Sonos Era 300 Smart Speaker',s:'Bing Lee',p:549,w:749,sc:87,pop:81,chip:'daylow',n:60,ver:true,sub:'Audio'},
+ {i:'cube',t:'DJI Mini 5 Pro Fly More Combo',s:'JB Hi-Fi',p:1299,w:1499,sc:86,pop:83,chip:'cheapest',ver:false,sub:'Gaming'},
+ {i:'monitor',t:'Samsung 34" Ultrawide OLED Monitor',s:'Kogan',p:1099,w:1599,sc:85,pop:78,chip:'dropped',ver:false,sub:'Monitors'},
+ {i:'cube',t:'GoPro HERO 13 Black Creator Kit',s:'The Good Guys',p:598,w:799,sc:84,pop:80,chip:'daylow',n:30,ver:true,sub:'Gaming'},
+ {i:'battery',t:'Anker 737 GaN 120W Charger',s:'Amazon AU',p:89,w:149,sc:83,pop:88,chip:'daylow',n:90,ver:true,sub:'Charging'},
+ {i:'headphones',t:'Bose QuietComfort Ultra Earbuds',s:'Myer',p:299,w:449,sc:82,pop:86,chip:'daylow',n:60,ver:true,sub:'Audio'},
+ {i:'tv',t:'Hisense 75" U8N Mini-LED 4K TV',s:'Bing Lee',p:1795,w:2499,sc:81,pop:74,chip:'cheapest',ver:false,sub:'TVs'},
+ {i:'gamepad',t:'ASUS ROG Ally X Handheld Console',s:'JB Hi-Fi',p:1099,w:1399,sc:80,pop:76,chip:'daylow',n:30,ver:true,sub:'Gaming'},
+ {i:'watch',t:'Apple Watch Series 11 GPS 45mm',s:'Amazon AU',p:629,w:749,sc:79,pop:90,chip:'dropped',ver:false,sub:'Wearables'},
+];
+const CATSORTS=[['rec','Frenzy Recommended'],['disc','Highest discount'],['pop','Most popular'],['plo','Price: Low to High'],['phi','Price: High to Low']];
+const CATTYPES=[['tv','TVs'],['laptop','Laptops'],['headphones','Audio'],['phone','Phones'],['watch','Wearables'],['gamepad','Gaming'],['monitor','Monitors'],['battery','Charging']];
+let catSort='rec',catHot=false,catVer=false,catType='All';
+const catDisc=d=>Math.round((1-d.p/d.w)*100);
+function catChipHtml(d){
+  if(d.chip==='hot')return `<span class="insight hot">${ic('bolt',9,2.4)}HOT Deal</span>`;
+  if(d.chip==='ever')return '<span class="insight ever">Lowest price ever</span>';
+  if(d.chip==='cheapest')return '<span class="insight cheapest">Cheapest online</span>';
+  if(d.chip==='dropped')return '<span class="insight dropped">▼ Just dropped</span>';
+  return `<span class="insight daylow">✓ ${d.n||90}-day low</span>`;
+}
+function catRow(d){
+  return `<div class="deal" onclick="toast('${d.t.replace(/'/g,"\\'")} — deal page coming in full build')">
+    <div class="thumbwrap"><div class="thumb">${ic(d.i,28)}</div></div>
+    <div class="dinfo">
+      <div class="t">${d.t}</div>
+      <div class="m">${d.s}${cpico(d)}</div>
+      <div class="price tnum"><span class="now">${fmt(d.p)}</span><span class="was">${fmt(d.w)}</span><span class="offsm">${catDisc(d)}% off</span></div>
+      <div class="chipline">${catChipHtml(d)}</div>
+      <div class="scorerow" onclick="event.stopPropagation();openSheet()">${ic('flame',11,1.8)}<b>${d.sc}</b>&nbsp;Frenzy Score<span class="info">${ic('info',10,1.8)}</span></div>
+    </div>
+    ${votes()}
+  </div>`;
+}
+function renderCatTop(){
+  const list=top20('Electronics').slice(0,5);
+  document.getElementById('cat-chart').innerHTML=heroCard(list[0],'Electronics')+list.slice(1).map(dealRow).join('');
+}
+function setCatType(t){
+  catType=(catType===t)?'All':t;
+  renderCatTypes();renderCatFeed();
+  document.getElementById('cat-toolbar').scrollIntoView({behavior:'smooth'});
+}
+function renderCatTypes(){
+  document.getElementById('cat-types').innerHTML=CATTYPES.map(([ic2,n])=>
+   `<button class="catcard${catType===n?' on':''}" onclick="setCatType('${n}')"><span class="cic">${ic(ic2,24,1.6)}</span><span class="cn">${n}</span></button>`).join('');
+}
+function renderCatStores(){
+  document.getElementById('cat-stores').innerHTML=[
+   ['JB Hi-Fi','#e6b800','▲2','Up to 50%',''],['Kogan','#e4002b','▲4','Up to 60%','store'],['Amazon AU','#232f3e','▲1','Up to 45%',''],
+   ['The Good Guys','#15151c','▲3','Up to 40%',''],['Bing Lee','#0d4ea2','▲2','Up to 35%',''],['Officeworks','#0057ff','▲1','Up to 30%',''],
+  ].map(([n,c,t,o,go])=>
+   `<div class="rstore" onclick="${go?`showView('store')`:`toast('${n} store page — coming in the full build')`}">
+     <div class="rlogo" style="background:${c}">${n.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase()}<span class="rtr">${t}</span></div>
+     <div class="rn">${n}</div>
+     <span class="roff">${o}</span>
+   </div>`).join('');
+}
+function renderCatSortMenu(){
+  document.getElementById('cat-sortmenu').innerHTML=CATSORTS.map(s=>
+   `<button class="${s[0]===catSort?'on':''}" onclick="catSetSort('${s[0]}')"><span>${s[1]}</span>${s[0]===catSort?'<span class="tick">✓</span>':''}</button>`).join('')
+   +'<div class="note">Frenzy Recommended ranks by Frenzy Score — price history, product popularity and store reputation. Never sponsored.</div>';
+}
+function catToggleSort(e){e.stopPropagation();document.getElementById('cat-sortmenu').classList.toggle('open');}
+function catSetSort(m){catSort=m;document.getElementById('cat-sortlbl').textContent=CATSORTS.find(s=>s[0]===m)[1];document.getElementById('cat-sortmenu').classList.remove('open');renderCatSortMenu();renderCatFeed();}
+document.addEventListener('click',e=>{if(!e.target.closest('#cat-toolbar')){const m=document.getElementById('cat-sortmenu');if(m)m.classList.remove('open');}});
+function catToggleHot(){catHot=!catHot;document.getElementById('cat-f-hot').classList.toggle('on',catHot);renderCatFeed();}
+function catToggleVer(){catVer=!catVer;document.getElementById('cat-f-ver').classList.toggle('on',catVer);renderCatFeed();}
+function catStripAd(cls,size){
+  return '<div class="stripwrap '+cls+'">'
+  +'<div class="striplbl">Ad · '+size+'</div>'
+  +'<div class="stripad'+(cls==='desktop-size'?' lb':'')+'" onclick="toast(\'Ad — off to PayPal\')">'
+  +'<span class="sq">PayPal</span>'
+  +'<span class="sbody"><span class="l1">Pay in 4 with PayPal on tech deals</span><br><span class="l2">Available at 900+ Click Frenzy retailers.</span></span>'
+  +'<span class="go">Learn more →</span>'
+  +'</div></div>';
+}
+function renderCatFeed(){
+  let list=CATFEED.filter(d=>(!catHot||d.chip==='hot')&&(!catVer||d.ver)&&(catType==='All'||d.sub===catType));
+  const sorters={rec:(a,b)=>b.sc-a.sc,disc:(a,b)=>catDisc(b)-catDisc(a),pop:(a,b)=>b.pop-a.pop,plo:(a,b)=>a.p-b.p,phi:(a,b)=>b.p-a.p};
+  list=[...list].sort(sorters[catSort]);
+  document.getElementById('cat-count').innerHTML='<b>486 Electronics deals</b> · showing '+list.length+(catType==='All'?'':' in '+catType)+' · sorted by '+CATSORTS.find(s=>s[0]===catSort)[1];
+  let html='';
+  list.forEach((d,i)=>{
+    html+=catRow(d);
+    if(i===5){html+=catStripAd('mobile-size','320×50')+catStripAd('desktop-size','728×90');}
+  });
+  if(!list.length)html='<div style="text-align:center;padding:30px 0;color:var(--muted);font-size:12px;font-weight:600;">No deals match those filters. Try clearing one.</div>';
+  document.getElementById('cat-feed').innerHTML=html;
+}
+renderCatTop();renderCatTypes();renderCatStores();renderCatSortMenu();renderCatFeed();
+
+/* ===== Shareable state: read URL params on load ===== */
+(function(){
+  const q=new URLSearchParams(location.search);
+  const st=q.get('store'), mem=q.get('member'), dev=q.get('device'), v=q.get('view');
+  if(st==='unclaimed')setClaim(false);
+  if(mem==='in')setLogin(true);
+  if(dev==='desktop')setDevice('desktop');
+  if(v&&document.getElementById('v-'+v)&&document.getElementById('nav-'+v))showView(v);
+  else syncURL();
+})();
 </script>
 </body>
 </html>
