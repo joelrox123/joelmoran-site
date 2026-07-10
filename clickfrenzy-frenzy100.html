@@ -625,18 +625,33 @@
   .cattop h2{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;text-transform:uppercase;margin-top:6px;}
   .cattop p{font-size:12px;font-weight:600;margin-top:8px;color:#3d3400;line-height:1.5;max-width:420px;}
   .cattop .cbtn{background:#111;color:#ffe100;border:0;border-radius:100px;font-weight:800;font-size:12.5px;padding:11px 20px;margin-top:14px;cursor:pointer;}
-  .cattop .jbmark{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:10px;background:#111;color:#ffe100;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;line-height:1;letter-spacing:-.5px;overflow:hidden;}
+  .cattop .jbmark{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:10px;background:#111;color:#ffe100;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;line-height:1;letter-spacing:-.5px;overflow:hidden;z-index:4;}
   .cattop .jbmark .jbtxt{display:flex;flex-direction:column;align-items:center;}
   .cattop .jbmark .jbtxt span{font-size:8px;font-family:var(--font-ui);font-weight:800;margin-top:1px;}
   .cattop .jbmark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+  .cprods{display:flex;gap:9px;margin-top:14px;}
+  .cprod{background:#fff;border-radius:14px;width:88px;height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--ink);box-shadow:0 5px 14px rgba(0,0,0,.16);}
+  .cprod .cp{font-weight:800;font-size:11px;}
+  .cauto{display:flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;color:#3d3400;margin-top:9px;}
+  .cauto svg{min-width:11px;}
   .phone.desktop .cattopwrap{margin:16px 28px 0;}
   .phone.desktop .cattopwrap .sponsorlbl{max-width:1020px;margin:0 auto;}
-  .phone.desktop .cattop{max-width:1020px;margin:0 auto;border-radius:20px;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:30px 44px;padding-right:190px;}
+  .phone.desktop .cattop{max-width:1020px;margin:0 auto;border-radius:20px;min-height:210px;display:flex;align-items:center;gap:34px;padding:32px 48px;}
+  .phone.desktop .cattop .ctext{flex:1;}
   .phone.desktop .cattop h2{font-size:44px;}
   .phone.desktop .cattop p{font-size:13.5px;}
   .phone.desktop .cattop .cbtn{padding:12px 28px;}
-  .phone.desktop .cattop .jbmark{top:50%;transform:translateY(-50%);right:44px;width:104px;height:104px;font-size:21px;border-radius:18px;}
-  .phone.desktop .cattop .jbmark .jbtxt span{font-size:12px;}
+  .phone.desktop .cattop .cvis{position:relative;width:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:10px;}
+  .phone.desktop .cprods{margin-top:0;gap:0;}
+  .phone.desktop .cprod{width:118px;height:118px;border-radius:18px;gap:8px;}
+  .phone.desktop .cprod svg{width:40px;height:40px;}
+  .phone.desktop .cprod .cp{font-size:13px;}
+  .phone.desktop .cprod.r0{transform:rotate(-7deg) translateY(8px);z-index:1;}
+  .phone.desktop .cprod.r1{transform:rotate(2deg) translateY(-8px);margin:0 -13px;z-index:3;}
+  .phone.desktop .cprod.r2{transform:rotate(8deg) translateY(10px);z-index:2;}
+  .phone.desktop .cattop .jbmark{top:-18px;right:2px;width:60px;height:60px;font-size:15px;border-radius:13px;}
+  .phone.desktop .cattop .jbmark .jbtxt span{font-size:9px;}
+  .phone.desktop .cauto{margin-top:16px;font-size:10.5px;}
 
 </style>
 </head>
@@ -1060,11 +1075,17 @@
       <div class="cattopwrap" id="cat-topbanner" style="display:none;">
         <div class="sponsorlbl"><span class="l">Electronics Category Partner · Sponsored</span><span class="r" onclick="event.stopPropagation();toast('Partners never influence Frenzy Scores or rankings')">Why this ad?</span></div>
         <div class="cattop" onclick="toast('Sponsored — off to JB Hi-Fi')">
-          <span class="jbmark"><span class="jbtxt">JB<span>HI-FI</span></span><img src="https://img.logo.dev/jbhifi.com.au?token=pk_MAupF3goTca_weWmBffAFA&amp;size=210&amp;format=png" alt="JB Hi-Fi" onerror="this.remove()"></span>
-          <div class="ck">Tech Frenzy</div>
-          <h2>20% off<br>all TVs</h2>
-          <p>At JB Hi-Fi until 31 July. Big screens, bigger drops.</p>
-          <button class="cbtn">Shop JB Hi-Fi →</button>
+          <div class="ctext">
+            <div class="ck">Tech Frenzy</div>
+            <h2>20% off<br>all TVs</h2>
+            <p>At JB Hi-Fi until 31 July. Big screens, bigger drops.</p>
+            <button class="cbtn">Shop JB Hi-Fi →</button>
+          </div>
+          <div class="cvis">
+            <span class="jbmark"><span class="jbtxt">JB<span>HI-FI</span></span><img src="https://img.logo.dev/jbhifi.com.au?token=pk_MAupF3goTca_weWmBffAFA&amp;size=210&amp;format=png" alt="JB Hi-Fi" onerror="this.remove()"></span>
+            <div class="cprods" id="cat-banner-prods"></div>
+            <div class="cauto"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>Pulled live from today's JB Hi-Fi deals</div>
+          </div>
         </div>
       </div>
 
@@ -1135,18 +1156,12 @@
         </button>
       </div>
 
-      <!-- Concept notes -->
+      <!-- Explore other categories — no dead ends -->
       <div class="sec">
-        <div class="stack">
-          <div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight ever">SEO-first</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">One template, 23 categories, config-driven. Real build ships server-rendered with unique title/meta per category, indexable subcategory URLs, internal links to store &amp; deal pages, and ItemList/Offer schema. The H1 + intro copy above is the crawlable text block — no creative banner up top by design.</div></div></div>
-          <div class="chipdoc"><div class="cd-chip"><span class="cd-pr">Concept note</span><span class="insight cheapest">Ad rules</span></div><div><div class="cd-desc" style="color:var(--ink);font-weight:600;">Two paid units max per category page. Category Partner: exclusive tenancy, always-on, sits below Top Picks so the first real content is ours. In-feed strip (320×50 mobile / 728×90 desktop): house ads at 20% share of voice, or advertisers like PayPal, Mastercard, Australia Post. Both labelled. Neither ever touches Frenzy Scores or rankings.</div></div></div>
+        <div class="sec-h">
+          <div class="lft"><div><h3>Explore more categories</h3><div class="sub">Every category has its own deals page like this one</div></div></div>
         </div>
-      </div>
-
-      <div class="cta-band">
-        <h3>GET THE <span>FRENZY 20</span> EVERY MORNING</h3>
-        <p>The top 20 from today's chart, in your inbox at 7am. Ruthlessly cut. Never sponsored.</p>
-        <button class="cta-primary" onclick="toast('Signed up — you\'re on the list ✓')">Send me the Frenzy 20</button>
+        <div class="rail" id="cat-more"></div>
       </div>
 
       <div class="footer">
@@ -1936,6 +1951,24 @@ const CATFEED=[
  {i:'tv',t:'Hisense 75" U8N Mini-LED 4K TV',s:'Bing Lee',p:1795,w:2499,sc:81,pop:74,chip:'cheapest',ver:false,sub:'TVs'},
  {i:'gamepad',t:'ASUS ROG Ally X Handheld Console',s:'JB Hi-Fi',p:1099,w:1399,sc:80,pop:76,chip:'daylow',n:30,ver:true,sub:'Gaming'},
  {i:'watch',t:'Apple Watch Series 11 GPS 45mm',s:'Amazon AU',p:629,w:749,sc:79,pop:90,chip:'dropped',ver:false,sub:'Wearables'},
+ {i:'phone',t:'Apple iPhone 17 128GB',s:'JB Hi-Fi',p:1247,w:1399,sc:78,pop:95,chip:'ever',ver:true,sub:'Phones'},
+ {i:'phone',t:'Google Pixel 10 Pro 256GB',s:'Officeworks',p:1189,w:1449,sc:77,pop:84,chip:'dropped',ver:false,sub:'Phones'},
+ {i:'phone',t:'Samsung Galaxy S26 128GB',s:'Amazon AU',p:1044,w:1349,sc:76,pop:89,chip:'daylow',n:60,ver:true,sub:'Phones'},
+ {i:'phone',t:'Motorola Edge 60 Pro 512GB',s:'Big W',p:649,w:999,sc:75,pop:71,chip:'cheapest',ver:false,sub:'Phones'},
+ {i:'tv',t:'Samsung 65" QN90D Neo QLED 4K TV',s:'The Good Guys',p:2295,w:3499,sc:74,pop:82,chip:'daylow',n:90,ver:true,sub:'TVs'},
+ {i:'tv',t:'Sony Bravia 8 55" OLED TV',s:'Bing Lee',p:1895,w:2795,sc:73,pop:77,chip:'ever',ver:true,sub:'TVs'},
+ {i:'tv',t:'TCL 85" C755 Mini-LED 4K TV',s:'JB Hi-Fi',p:1995,w:2995,sc:72,pop:70,chip:'dropped',ver:false,sub:'TVs'},
+ {i:'laptop',t:'ASUS Zenbook 14 OLED Ultra 7',s:'JB Hi-Fi',p:1399,w:1899,sc:71,pop:79,chip:'dropped',ver:false,sub:'Laptops'},
+ {i:'laptop',t:'HP Spectre x360 14" 2-in-1',s:'Harvey Norman',p:2149,w:2799,sc:70,pop:68,chip:'daylow',n:45,ver:true,sub:'Laptops'},
+ {i:'laptop',t:'Lenovo Yoga Slim 7x Snapdragon',s:'Officeworks',p:1499,w:2099,sc:69,pop:72,chip:'cheapest',ver:false,sub:'Laptops'},
+ {i:'headphones',t:'JBL Charge 6 Portable Speaker',s:'Amazon AU',p:139,w:199,sc:68,pop:87,chip:'daylow',n:30,ver:true,sub:'Audio'},
+ {i:'headphones',t:'Apple AirPods Pro 3',s:'Officeworks',p:349,w:429,sc:67,pop:96,chip:'cheapest',ver:false,sub:'Audio'},
+ {i:'watch',t:'Fitbit Charge 7 Fitness Tracker',s:'Amazon AU',p:179,w:269,sc:66,pop:81,chip:'daylow',n:90,ver:true,sub:'Wearables'},
+ {i:'watch',t:'Samsung Galaxy Watch 8 44mm',s:'The Good Guys',p:429,w:599,sc:65,pop:78,chip:'dropped',ver:false,sub:'Wearables'},
+ {i:'monitor',t:'Dell 27" 4K USB-C Monitor',s:'Officeworks',p:499,w:749,sc:64,pop:69,chip:'ever',ver:true,sub:'Monitors'},
+ {i:'monitor',t:'LG 32" UltraGear 165Hz Gaming Monitor',s:'JB Hi-Fi',p:449,w:699,sc:63,pop:74,chip:'daylow',n:60,ver:true,sub:'Monitors'},
+ {i:'battery',t:'Belkin 3-in-1 MagSafe Charging Stand',s:'Amazon AU',p:129,w:219,sc:62,pop:75,chip:'cheapest',ver:false,sub:'Charging'},
+ {i:'battery',t:'UGREEN Nexode 100W GaN Charger',s:'Amazon AU',p:69,w:119,sc:61,pop:80,chip:'daylow',n:45,ver:true,sub:'Charging'},
 ];
 const CATSORTS=[['rec','Frenzy Recommended'],['disc','Highest discount'],['pop','Most popular'],['plo','Price: Low to High'],['phi','Price: High to Low']];
 const CATTYPES=[['tv','TVs'],['laptop','Laptops'],['headphones','Audio'],['phone','Phones'],['watch','Wearables'],['gamepad','Gaming'],['monitor','Monitors'],['battery','Charging']];
@@ -1973,6 +2006,15 @@ function setCatType(t){
 function renderCatTypes(){
   document.getElementById('cat-types').innerHTML=CATTYPES.map(([ic2,n])=>
    `<button class="catcard${catType===n?' on':''}" onclick="setCatType('${n}')"><span class="cic">${ic(ic2,24,1.6)}</span><span class="cn">${n}</span></button>`).join('');
+}
+function renderCatBanner(){
+  const items=CATFEED.filter(d=>d.s==='JB Hi-Fi').slice(0,3);
+  document.getElementById('cat-banner-prods').innerHTML=items.map((d,i)=>
+   `<div class="cprod r${i}">${ic(d.i,26,1.6)}<span class="cp tnum">${fmt(d.p)}</span></div>`).join('');
+}
+function renderCatMore(){
+  document.getElementById('cat-more').innerHTML=CATS23.filter(([n])=>n!=='Electronics').map(([n,i])=>
+   `<button class="catcard" onclick="goCat('${n.replace(/'/g,"\\'")}')"><span class="cic">${ic(i,24,1.6)}</span><span class="cn">${n}</span></button>`).join('');
 }
 function renderCatStores(){
   document.getElementById('cat-stores').innerHTML=[
@@ -2017,7 +2059,7 @@ function renderCatFeed(){
   if(!list.length)html='<div style="text-align:center;padding:30px 0;color:var(--muted);font-size:12px;font-weight:600;">No deals match those filters. Try clearing one.</div>';
   document.getElementById('cat-feed').innerHTML=html;
 }
-renderCatTop();renderCatTypes();renderCatStores();renderCatSortMenu();renderCatFeed();
+renderCatTop();renderCatTypes();renderCatStores();renderCatSortMenu();renderCatFeed();renderCatMore();renderCatBanner();
 
 /* ===== Category Partner placement toggle: top banner vs in-page strip ===== */
 let catSponsor='strip';
