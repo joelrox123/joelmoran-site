@@ -618,6 +618,21 @@
   .phone.desktop #v-cat .rail{flex-wrap:nowrap;overflow-x:auto;}
   #v-cat .toolbar{scroll-margin-top:52px;}
   .phone.desktop #v-cat .toolbar{scroll-margin-top:0;}
+  /* Category Partner TOP banner (alternative to in-page strip) — JB brand contained in unit */
+  .cattopwrap{margin:12px 14px 0;}
+  .cattop{position:relative;border-radius:20px;overflow:hidden;background:linear-gradient(140deg,#ffe100 0%,#ffd400 55%,#ffc800 100%);color:#111;padding:20px 18px;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.10);}
+  .cattop .ck{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#3d3400;}
+  .cattop h2{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;text-transform:uppercase;margin-top:6px;}
+  .cattop p{font-size:12px;font-weight:600;margin-top:8px;color:#3d3400;line-height:1.5;max-width:420px;}
+  .cattop .cbtn{background:#111;color:#ffe100;border:0;border-radius:100px;font-weight:800;font-size:12.5px;padding:11px 20px;margin-top:14px;cursor:pointer;}
+  .cattop .jbmark{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:10px;background:#111;color:#ffe100;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;line-height:1;letter-spacing:-.5px;}
+  .cattop .jbmark span{font-size:8px;font-family:var(--font-ui);font-weight:800;margin-top:1px;}
+  .phone.desktop .cattopwrap{margin:0;}
+  .phone.desktop .cattop{border-radius:0;min-height:220px;display:flex;flex-direction:column;justify-content:center;padding:30px 64px;box-shadow:none;}
+  .phone.desktop .cattop h2{font-size:50px;}
+  .phone.desktop .cattop p{font-size:13.5px;}
+  .phone.desktop .cattop .jbmark{top:auto;right:64px;width:64px;height:64px;font-size:17px;border-radius:13px;}
+  .phone.desktop .cattopwrap .sponsorlbl{max-width:none;padding:6px 28px 4px;}
 
 </style>
 </head>
@@ -659,6 +674,12 @@
       <span class="sw">
         <button id="cs-yes" class="on" onclick="setClaim(true)">Claimed</button>
         <button id="cs-no" onclick="setClaim(false)">Unclaimed</button>
+      </span>
+    </span>
+    <span class="grp hide" id="grp-sponsor"><span class="lbl">Partner ad</span>
+      <span class="sw">
+        <button id="sp-strip" class="on" onclick="setSponsor('strip')">Strip below</button>
+        <button id="sp-top" onclick="setSponsor('top')">Top banner</button>
       </span>
     </span>
     <span class="grp"><button class="sharebtn" onclick="copyLink()"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Copy link</button></span>
@@ -1031,6 +1052,18 @@
         </div>
       </div>
 
+      <!-- Category Partner TOP banner (toggle alternative — under the H1, above Top Picks) -->
+      <div class="cattopwrap" id="cat-topbanner" style="display:none;">
+        <div class="sponsorlbl"><span class="l">Electronics Category Partner · Sponsored</span><span class="r" onclick="event.stopPropagation();toast('Partners never influence Frenzy Scores or rankings')">Why this ad?</span></div>
+        <div class="cattop" onclick="toast('Sponsored — off to JB Hi-Fi')">
+          <span class="jbmark">JB<span>HI-FI</span></span>
+          <div class="ck">Tech Frenzy</div>
+          <h2>20% off<br>all TVs</h2>
+          <p>At JB Hi-Fi until 31 July. Big screens, bigger drops.</p>
+          <button class="cbtn">Shop JB Hi-Fi →</button>
+        </div>
+      </div>
+
       <!-- Electronics Top 20 preview — first real content is ours -->
       <div class="sec" style="margin-top:16px;">
         <div class="sec-h">
@@ -1053,7 +1086,7 @@
       </div>
 
       <!-- Category Partner (sponsored) — always-on, below the organic content -->
-      <div class="sponsorwrap" style="margin-top:20px;">
+      <div class="sponsorwrap" id="cat-sponsor-strip" style="margin-top:20px;">
         <div class="sponsorlbl"><span class="l">Electronics Category Partner · Sponsored</span><span class="r" onclick="toast('Partners never influence Frenzy Scores or rankings')">Why this ad?</span></div>
         <div class="sponsor" onclick="toast('Sponsored — off to JB Hi-Fi')">
           <div class="jb">JB<span>HI-FI</span></div>
@@ -1668,6 +1701,7 @@ function syncURL(){
   if(document.getElementById('frame').classList.contains('desktop'))q.set('device','desktop');
   if(loggedIn)q.set('member','in');
   if(typeof storeClaimed!=='undefined'&&!storeClaimed)q.set('store','unclaimed');
+  if(typeof catSponsor!=='undefined'&&catSponsor==='top')q.set('sponsor','top');
   const s=q.toString();
   try{history.replaceState(null,'',location.pathname+(s?'?'+s:''));}catch(e){}
 }
@@ -1687,6 +1721,7 @@ function showView(v){
   /* contextual demo controls: sign-in state only where it changes the page; claim toggle only on the store page */
   document.getElementById('grp-state').classList.toggle('hide',!['home','store'].includes(v));
   document.getElementById('grp-claim').classList.toggle('hide',v!=='store');
+  document.getElementById('grp-sponsor').classList.toggle('hide',v!=='cat');
   curView=v;syncURL();
   document.getElementById('screen').scrollTo({top:0});
 }
@@ -1980,12 +2015,24 @@ function renderCatFeed(){
 }
 renderCatTop();renderCatTypes();renderCatStores();renderCatSortMenu();renderCatFeed();
 
+/* ===== Category Partner placement toggle: top banner vs in-page strip ===== */
+let catSponsor='strip';
+function setSponsor(mode){
+  catSponsor=mode;
+  document.getElementById('sp-strip').classList.toggle('on',mode==='strip');
+  document.getElementById('sp-top').classList.toggle('on',mode==='top');
+  document.getElementById('cat-topbanner').style.display=mode==='top'?'block':'none';
+  document.getElementById('cat-sponsor-strip').style.display=mode==='top'?'none':'block';
+  syncURL();
+}
+
 /* ===== Shareable state: read URL params on load ===== */
 (function(){
   const q=new URLSearchParams(location.search);
-  const st=q.get('store'), mem=q.get('member'), dev=q.get('device'), v=q.get('view');
+  const st=q.get('store'), mem=q.get('member'), dev=q.get('device'), v=q.get('view'), sp=q.get('sponsor');
   if(st==='unclaimed')setClaim(false);
   if(mem==='in')setLogin(true);
+  if(sp==='top')setSponsor('top');
   if(dev==='desktop')setDevice('desktop');
   if(v&&document.getElementById('v-'+v)&&document.getElementById('nav-'+v))showView(v);
   else syncURL();
