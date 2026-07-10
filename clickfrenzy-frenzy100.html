@@ -625,14 +625,18 @@
   .cattop h2{font-family:var(--font-display);font-weight:400;font-size:34px;line-height:1;text-transform:uppercase;margin-top:6px;}
   .cattop p{font-size:12px;font-weight:600;margin-top:8px;color:#3d3400;line-height:1.5;max-width:420px;}
   .cattop .cbtn{background:#111;color:#ffe100;border:0;border-radius:100px;font-weight:800;font-size:12.5px;padding:11px 20px;margin-top:14px;cursor:pointer;}
-  .cattop .jbmark{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:10px;background:#111;color:#ffe100;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;line-height:1;letter-spacing:-.5px;}
-  .cattop .jbmark span{font-size:8px;font-family:var(--font-ui);font-weight:800;margin-top:1px;}
-  .phone.desktop .cattopwrap{margin:0;}
-  .phone.desktop .cattop{border-radius:0;min-height:220px;display:flex;flex-direction:column;justify-content:center;padding:30px 64px;box-shadow:none;}
-  .phone.desktop .cattop h2{font-size:50px;}
+  .cattop .jbmark{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:10px;background:#111;color:#ffe100;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;line-height:1;letter-spacing:-.5px;overflow:hidden;}
+  .cattop .jbmark .jbtxt{display:flex;flex-direction:column;align-items:center;}
+  .cattop .jbmark .jbtxt span{font-size:8px;font-family:var(--font-ui);font-weight:800;margin-top:1px;}
+  .cattop .jbmark img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+  .phone.desktop .cattopwrap{margin:16px 28px 0;}
+  .phone.desktop .cattopwrap .sponsorlbl{max-width:1020px;margin:0 auto;}
+  .phone.desktop .cattop{max-width:1020px;margin:0 auto;border-radius:20px;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:30px 44px;padding-right:190px;}
+  .phone.desktop .cattop h2{font-size:44px;}
   .phone.desktop .cattop p{font-size:13.5px;}
-  .phone.desktop .cattop .jbmark{top:auto;right:64px;width:64px;height:64px;font-size:17px;border-radius:13px;}
-  .phone.desktop .cattopwrap .sponsorlbl{max-width:none;padding:6px 28px 4px;}
+  .phone.desktop .cattop .cbtn{padding:12px 28px;}
+  .phone.desktop .cattop .jbmark{top:50%;transform:translateY(-50%);right:44px;width:104px;height:104px;font-size:21px;border-radius:18px;}
+  .phone.desktop .cattop .jbmark .jbtxt span{font-size:12px;}
 
 </style>
 </head>
@@ -1056,7 +1060,7 @@
       <div class="cattopwrap" id="cat-topbanner" style="display:none;">
         <div class="sponsorlbl"><span class="l">Electronics Category Partner · Sponsored</span><span class="r" onclick="event.stopPropagation();toast('Partners never influence Frenzy Scores or rankings')">Why this ad?</span></div>
         <div class="cattop" onclick="toast('Sponsored — off to JB Hi-Fi')">
-          <span class="jbmark">JB<span>HI-FI</span></span>
+          <span class="jbmark"><span class="jbtxt">JB<span>HI-FI</span></span><img src="https://img.logo.dev/jbhifi.com.au?token=pk_MAupF3goTca_weWmBffAFA&amp;size=210&amp;format=png" alt="JB Hi-Fi" onerror="this.remove()"></span>
           <div class="ck">Tech Frenzy</div>
           <h2>20% off<br>all TVs</h2>
           <p>At JB Hi-Fi until 31 July. Big screens, bigger drops.</p>
